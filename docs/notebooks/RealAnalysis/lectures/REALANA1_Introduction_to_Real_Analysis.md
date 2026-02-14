@@ -9,7 +9,12 @@
       - Take the limit as the number of rectangles goes to infinity.
     - Limitation of Riemann Integral: 
       - Dirichlet function: 
-      $$ D(x)  = \mathbb{I}_Q(x)  , x \in [0,1] $$ where $\mathcal{I}_Q(x)$ is the indicator function of the rational numbers.
+
+      ```math
+D(x)  = \mathbb{I}_Q(x)  , x \in [0,1]
+      ```
+
+      where $\mathcal{I}_Q(x)$ is the indicator function of the rational numbers.
         - Dirichlet function is not Riemann integrable. 
         - However, **there exists a sequence of increasing Riemann integrable functions that converges to the  Dirichlet function (Riemann unintegrable)**:
             - Arrange the rational numbers in a sequence: $q_1, q_2, q_3, \cdots, q_n, \cdots$

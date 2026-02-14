@@ -26,14 +26,18 @@
 - *Proof*: 
   - By contradiction, assume $\mathbb{R}$ is countable. Since $\mathbb{R} \sim (0,1)$, then $(0,1)$ is countable. 
   - Then we can list all numbers in $(0,1)$ as $a^{(1)}, a^{(2)}, a^{(3)}, \cdots$. Then we try to represent such sequence by decimal expansion:
-    $$\begin{aligned}
-    a^{(1)} &= 0.a_{11}a_{12}a_{13}\cdots \\
-    a^{(2)} &= 0.a_{21}a_{22}a_{23}\cdots \\
-    a^{(3)} &= 0.a_{31}a_{32}a_{33}\cdots \\
-    &\cdots \\
-    a^{(n)} &= 0.a_{n1}a_{n2}a_{n3}\cdots\\
-    &\cdots
-    \end{aligned}$$
+
+    ```math
+\begin{aligned}
+a^{(1)} &= 0.a_{11}a_{12}a_{13}\cdots \\
+a^{(2)} &= 0.a_{21}a_{22}a_{23}\cdots \\
+a^{(3)} &= 0.a_{31}a_{32}a_{33}\cdots \\
+&\cdots \\
+a^{(n)} &= 0.a_{n1}a_{n2}a_{n3}\cdots\\
+&\cdots
+\end{aligned}
+    ```
+
   - Then we can construct a new number $b$ that is different from all $a^{(n)} \cdots$, which means $b$ is not in the list (cannot be listed, is not countable). In specific, define $b=0.b_1b_2b_3\cdots$, where $b_i = 1$ if $a^{(i)}_{i}\neq 1$, and $b_i = 2$ if $a^{(i)}_{i} = 1$. **Q.E.D.**
 
 

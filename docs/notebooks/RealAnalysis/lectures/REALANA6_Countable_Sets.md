@@ -20,12 +20,16 @@
 - *Example*: Obviously, finite union of finite sets is finite.
 - *Proof*: **Here, we only give the proof of disjoint union.**
   - Denote 
-  $$\begin{aligned}
-    A_1 &= \{a_{11}, a_{12}, a_{13}, a_{14}, \cdots\} \\
-    A_2 &= \{a_{21}, a_{22}, a_{23}, a_{24}, \cdots\} \\
-    A_3 &= \{a_{31}, a_{32}, a_{33}, a_{34}, \cdots\} \\
-    &\cdots
-    \end{aligned}$$
+
+  ```math
+\begin{aligned}
+  A_1 &= \{a_{11}, a_{12}, a_{13}, a_{14}, \cdots\} \\
+  A_2 &= \{a_{21}, a_{22}, a_{23}, a_{24}, \cdots\} \\
+  A_3 &= \{a_{31}, a_{32}, a_{33}, a_{34}, \cdots\} \\
+  &\cdots
+  \end{aligned}
+  ```
+
   - We may count the union of $A_1, A_2, A_3, \cdots$ in the following way:
     - $a_{11}, a_{12}, a_{21}, a_{13}, a_{22}, a_{31}, a_{14}, a_{23}, a_{32}, a_{41}, \cdots$
 

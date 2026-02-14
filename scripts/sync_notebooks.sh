@@ -61,6 +61,10 @@ for course_dir in sorted([p for p in notebooks_dir.iterdir() if p.is_dir()], key
     )
 PY
 
+python3 "$ROOT_DIR/scripts/normalize_math_delimiters.py" "$NOTEBOOKS_DIR"
+python3 "$ROOT_DIR/scripts/normalize_math_blocks.py" "$NOTEBOOKS_DIR"
+python3 "$ROOT_DIR/scripts/convert_math_blocks_to_fences.py" "$NOTEBOOKS_DIR"
+
 python3 - "$NOTEBOOKS_DIR" "$MKDOCS_FILE" <<'PY'
 from pathlib import Path
 import re

@@ -32,6 +32,7 @@ bash scripts/sync_notebooks.sh
 - 仅同步 Markdown 笔记（`*.md`）
 - 不同步 `Assets/`
 - 不同步 `archive/`
+- 自动标准化数学公式块（修复`$$...$$`渲染问题）
 - 自动按 Course 生成顶部导航（Notebook Tabs）
 - 自动按 Lecture 生成左侧导航
 

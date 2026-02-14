@@ -11,9 +11,11 @@ Does it still hold for the outer measure?
 
 Recall its definition:
 ***Definition (Outer Measure):*** Define the outer measure of  a set $E \subset \mathbb{R}$ as: 
-$$
+
+```math
 m^*(E) = \inf\left\{\sum_{i=1}^{\infty} |I_i| : E \subset \bigcup_{i=1}^{\infty} I_i, I_i \text{ open interval}\right\}
-$$
+```
+
 which tells us that:
 1. For any open interval of $E$, say, $\{I_i\}_{i=1}^{\infty}$, we have $m^*(E) \leq \sum_{i=1}^{\infty} |I_i|$.
 2. There always exists a sequence of open intervals $\{I_i\}_{i=1}^{\infty}$ such that $\forall \epsilon > 0$, $E \subset \bigcup_{i=1}^{\infty} I_i$ and $\sum_{i=1}^{\infty} |I_i| \leq m^*(E) + \epsilon$ (by the definition of infimum).
@@ -22,7 +24,11 @@ Then start from the definition of outer measure, here try to prove the following
 - **Non-negativity**: It's obvious that $\mu^*(E) \geq 0$ for all $E \subset \mathbb{R}$.
 - **Sub-Countable subadditivity**: 
   - ***Definition (Subadditivity):*** For any $A_1, A_2, \ldots \subset \mathbb{R}$ and outer measure $m^*$, we have
-  $$ m^*\left(\bigcup_{i=1}^{\infty} A_i\right) \leq \sum_{i=1}^{\infty} m^*(A_i) $$
+
+  ```math
+m^*\left(\bigcup_{i=1}^{\infty} A_i\right) \leq \sum_{i=1}^{\infty} m^*(A_i)
+  ```
+
     - *Intuition*:
       - Take an arbitrary open interval cover $\{I_{ij}\}_{j=1}^{\infty}$ for each $A_i$. Then $\bigcup_{i=1}^{\infty} A_i \subset \bigcup_{i=1}^{\infty} \bigcup_{j=1}^{\infty} I_{ij}$. And the RHS is countable union of open intervals, so $m^*(\bigcup_{i=1}^{\infty} A_i) \leq \sum_{i=1}^{\infty} \sum_{j=1}^{\infty} |I_{ij}|$ (by property 1 of outer measure).
       - As $\{I_{ij}\}_{j=1}^{\infty}$ is arbitrary, we can specify it to make $\sum_{i=1}^{\infty} \sum_{j=1}^{\infty} |I_{ij}| \leq \sum_{i=1}^{\infty} m^*(A_i) + \epsilon$ for any $\epsilon > 0$ (By letting each $m^*(A_i) \ge \sum_{j=1}^{\infty} |I_{ij}| - \frac{\epsilon}{2^i}$). 

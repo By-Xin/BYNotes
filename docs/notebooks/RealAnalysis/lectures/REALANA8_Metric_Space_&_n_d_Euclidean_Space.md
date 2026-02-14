@@ -24,10 +24,16 @@ There are other ways to define metric, such as:
 ***Definition (Subspace)***: Given a metric space $(X,d)$, a subset $Y\notin\emptyset, Y \subset X$ is called a **subspace** of $X$ if the metric $d$ is restricted to $Y$.
 
 ***Definition (Distance between subspaces)***: Given two subspaces $Y_1, Y_2$ of a metric space $X$, the **distance** between $Y_1$ and $Y_2$ is defined as:
-$$d(Y_1,Y_2) = \inf_{y_1\in Y_1, y_2\in Y_2} d(y_1,y_2).$$
+
+```math
+d(Y_1,Y_2) = \inf_{y_1\in Y_1, y_2\in Y_2} d(y_1,y_2).
+```
 
 ***Definition (Diameter of a set)***: Given a subset $A$ of a metric space $X$, the **diameter** of $A$ is defined as:
-$$\text{diam}(A) = \sup_{x,y\in A} d(x,y).$$
+
+```math
+\text{diam}(A) = \sup_{x,y\in A} d(x,y).
+```
 
 ***Definition (Bounded set)***: A subset $A$ of a metric space $X$ is called **bounded** if $\text{diam}(A) < \infty$.
 
@@ -36,7 +42,10 @@ $$\text{diam}(A) = \sup_{x,y\in A} d(x,y).$$
 ---
 
 ***Definition ($\delta$-neighborhood)***: Given a center $P_0$ and a radius $\delta>0$, the **$\delta$-neighborhood** of $P_0$ is defined as:
-$$U_\delta(P_0) = \{P\in X | d(P,P_0) < \delta\}.$$
+
+```math
+U_\delta(P_0) = \{P\in X | d(P,P_0) < \delta\}.
+```
 
 - ***Property 1***: $P\in U_\delta(P)$
 - ***Property 2***: $\forall \delta_1, \delta_2>0$, there always exists $\delta_3>0$ such that $U_{\delta_3}(P) \subset \left(U_{\delta_1}(P) \cap U_{\delta_2}(P)\right)$.

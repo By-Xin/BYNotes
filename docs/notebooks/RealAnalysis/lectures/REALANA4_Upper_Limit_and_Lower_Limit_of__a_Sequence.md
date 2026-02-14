@@ -55,10 +55,15 @@ To restate the definition of **upper limit** and **lower limit** of a sequence o
 ---
 
 *[Example]*  Consider a set of points 
- $$ A_n = \begin{cases} 
-      [0, 2 - \frac{1}{2m+1}] & n = 2m+1, m=0,1,2,\ldots \\
-      [0, 1 + \frac{1}{2m}] & n = 2m, m=1,2,\ldots
-    \end{cases}$$ Compute the upper limit and lower limit of the sequence of sets $\{A_n\}$.
+
+ ```math
+ A_n = \begin{cases}
+     [0, 2 - \frac{1}{2m+1}] & n = 2m+1, m=0,1,2,\ldots \\
+     [0, 1 + \frac{1}{2m}] & n = 2m, m=1,2,\ldots
+   \end{cases}
+ ```
+
+    Compute the upper limit and lower limit of the sequence of sets $\{A_n\}$.
 
 **Solution**:
 - First, $\bigcup_{k\geq n}A_k = [0,2)$. Then $\overline{\lim}_{n\to\infty}A_n = \bigcap_{n\ge1}\bigcup_{k\geq n}A_k = [0,2)$.
@@ -67,8 +72,15 @@ $\square$
 
 *[Example]*  $\lim_{n\to\infty}a_n = a$ if and only if $\forall \epsilon>0, \exists N\in\mathbb{N}$ such that $\forall n\geq N, |a_n-a|<\epsilon$.
 This can be restated as: 
-$$ a\in \bigcap_{\epsilon\in\mathbb{R}^+} \left[\bigcup_{N=1}^\infty\bigcap_{n\geq N}\{x: |a_n-x|<\epsilon\}\right]$$
+
+```math
+a\in \bigcap_{\epsilon\in\mathbb{R}^+} \left[\bigcup_{N=1}^\infty\bigcap_{n\geq N}\{x: |a_n-x|<\epsilon\}\right]
+```
+
 The brackets is actually the lower limit: $\underline{\lim}_{n\to\infty}\{x: |a_n-x|<\epsilon\}$, which is the set of all points that are 'close' to $a$.
 Thus, it can be restated as: 
-$$\bigcap_{\epsilon\in\mathbb{R}^+} \underline{\lim}_{n\to\infty}\{x: |a_n-x|<\epsilon\} $$
+
+```math
+\bigcap_{\epsilon\in\mathbb{R}^+} \underline{\lim}_{n\to\infty}\{x: |a_n-x|<\epsilon\}
+```
 

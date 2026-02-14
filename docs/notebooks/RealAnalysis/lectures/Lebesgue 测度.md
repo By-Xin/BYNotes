@@ -35,7 +35,10 @@
 
 ***定义 (Lebesgue 外测度)***:
 - 对于 $\mathbb{R}^n$ 上的任意集合 $E$, 总能找到开区间序列 $I_1, I_2, \ldots$ 使得 $E \subset \bigcup_{k=1}^\infty I_k$. 计算出这些开区间的体积之和的下确界, 即为该集合的 Lebesgue 外测度:
-$$\mu^*(E) = \inf \left\{ \sum_{k=1}^\infty |I_k| : E \subset \bigcup_{k=1}^\infty I_k \right\}$$
+
+```math
+\mu^*(E) = \inf \left\{ \sum_{k=1}^\infty |I_k| : E \subset \bigcup_{k=1}^\infty I_k \right\}
+```
 
 > 区别该定义与有限开覆盖定理. 后者也认为一定存在 $\bigcup_{k=1}^\infty I_k$ 使得 $E \subset \bigcup_{k=1}^\infty I_k$. 但后者要求 $E$ 必为闭区间, 然而 Lebesgue 外测度则会对 $\mathbb{R}^n$ 上的任意集合 $E$ 都成立.
 
@@ -60,5 +63,9 @@ $$\mu^*(E) = \inf \left\{ \sum_{k=1}^\infty |I_k| : E \subset \bigcup_{k=1}^\inf
 
 ***Theorem (Carathéodory 定理)***:
 对于 $\mathbb{R}^n$ 上的任意集合 $A$, 我们称 $A$ 为 Lebesgue 可测的, 如果对于 $\mathbb{R}^n$ 上的任意集合 $E$, 以及外测度 $\mu^*$, 都有
-$$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c).$$
+
+```math
+\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^c).
+```
+
 这时, 记 $\mu(A) = \mu^*(A)$, 为 $A$ 的 Lebesgue 测度.
