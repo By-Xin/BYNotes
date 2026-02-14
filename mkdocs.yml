@@ -1,0 +1,76 @@
+site_name: Statdiy Notes
+site_description: Course notebooks published from Obsidian lectures
+site_author: By Xin
+repo_url: https://github.com/By-Xin/BYNotes
+repo_name: By-Xin/BYNotes
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.details
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/onenote.css
+
+nav:
+  - 首页: index.md
+  # AUTO_NOTEBOOK_NAV_START
+  - 'ConvexOptimization_CMU':
+      - 'Notebook Home': 'notebooks/ConvexOptimization_CMU/index.md'
+      - 'Lectures':
+          - '02 Convexity(I)': 'notebooks/ConvexOptimization_CMU/lectures/02_Convexity(I).md'
+          - '03 Convexity(II)': 'notebooks/ConvexOptimization_CMU/lectures/03_Convexity(II).md'
+          - '04 Canonical Problems': 'notebooks/ConvexOptimization_CMU/lectures/04_CanonicalProblems.md'
+          - '05 Gradient Descent': 'notebooks/ConvexOptimization_CMU/lectures/05_GradientDescent.md'
+          - '06 Sub Gradient': 'notebooks/ConvexOptimization_CMU/lectures/06_SubGradient.md'
+          - '07 Sub Gradient Methods': 'notebooks/ConvexOptimization_CMU/lectures/07_SubGradientMethods.md'
+          - '08 Proximal Gradient Descent': 'notebooks/ConvexOptimization_CMU/lectures/08_ProximalGradientDescent.md'
+  - 'RealAnalysis':
+      - 'Notebook Home': 'notebooks/RealAnalysis/index.md'
+      - 'Lectures':
+          - 'Lebesgue 测度': 'notebooks/RealAnalysis/lectures/Lebesgue 测度.md'
+          - 'REALANA1 Introduction to Real Analysis': 'notebooks/RealAnalysis/lectures/REALANA1_Introduction_to_Real_Analysis.md'
+          - 'REALANA2 Representations of Sets and its Operations': 'notebooks/RealAnalysis/lectures/REALANA2_Representations_of_Sets_and_its_Operations.md'
+          - 'REALANA3 Describe a Statement by Sets': 'notebooks/RealAnalysis/lectures/REALANA3_Describe_a_Statement_by_Sets.md'
+          - 'REALANA4 Upper Limit and Lower Limit of a Sequence': 'notebooks/RealAnalysis/lectures/REALANA4_Upper_Limit_and_Lower_Limit_of__a_Sequence.md'
+          - 'REALANA5 Equivalent and Cardinality': 'notebooks/RealAnalysis/lectures/REALANA5_Equivalent_and_Cardinality.md'
+          - 'REALANA6 Countable Sets': 'notebooks/RealAnalysis/lectures/REALANA6_Countable_Sets.md'
+          - 'REALANA7 Uncountable Sets': 'notebooks/RealAnalysis/lectures/REALANA7_Uncountable_Sets.md'
+          - 'REALANA8 Metric Space & n d Euclidean Space': 'notebooks/RealAnalysis/lectures/REALANA8_Metric_Space_&_n_d_Euclidean_Space.md'
+          - 'REALANA9 Cluster Points Interior Points Boundary Points': 'notebooks/RealAnalysis/lectures/REALANA9_Cluster_Points_Interior_Points_Boundary_Points.md'
+          - 'REALANA10 Open Sets and Closed Sets': 'notebooks/RealAnalysis/lectures/REALANA10_Open_Sets_and_Closed_Sets.md'
+          - 'REALANA11 Measurement Theory Introduction': 'notebooks/RealAnalysis/lectures/REALANA11_Measurement_Theory_Introduction.md'
+          - 'REALANA12 Outer Measure': 'notebooks/RealAnalysis/lectures/REALANA12_Outer_Measure.md'
+          - '集合论': 'notebooks/RealAnalysis/lectures/集合论.md'
+  # AUTO_NOTEBOOK_NAV_END
