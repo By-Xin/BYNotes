@@ -1,8 +1,9 @@
-# GitHub: https://github.com/By-Xin/BYNotes
+# Statdiy README
 
-Live site: https://by-xin.github.io/BYNotes/
 
-# Statdiy (Quartz)
+- GitHub: https://github.com/By-Xin/BYNotes
+
+- Live site: https://by-xin.github.io/BYNotes/
 
 This repository publishes notes with Quartz.
 
