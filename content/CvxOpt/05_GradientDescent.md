@@ -173,7 +173,6 @@ $$
 ## Descent Methods
 
 > [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 > - Reading: Convex Optimization by Boyd & Vandenberghe, Section 9.2
 
 ### General Descent Methods

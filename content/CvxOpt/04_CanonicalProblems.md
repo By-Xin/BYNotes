@@ -3,7 +3,6 @@
 ## Linear Programs (LPs)
 
 > [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 > - Reading: Convex Optimization by Boyd & Vandenberghe, Section 4.3
 
 ***Definition:* (Linear Program, LP)** 目标函数和约束函数都是 affine 时的优化问题称为线性规划 (Linear Program, LP), 其一般形式为:
@@ -102,7 +101,6 @@ $$
 ## Quadratic Programs (QPs)
 
 > [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 > - Reading: Convex Optimization by Boyd & Vandenberghe, Section 4.4
 
 ***Definition:* (Convex Quadratic Program, CQP)** 凸二次规划（Convex Quadratic Program, CQP）的一般形式为:
@@ -157,7 +155,6 @@ $$
 ## Semidefinite Programs (SDPs)
 
 > [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 > - Reading: Convex Optimization by Boyd & Vandenberghe, Section 4.6.2
 
 **Motivation**
@@ -224,7 +221,6 @@ $$
 ## Conic Programs
 
 > [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 > - Reading: Convex Optimization by Boyd & Vandenberghe, Section 4.6.1
 
 锥规划 (Conic Program) 是一种更一般的凸优化问题形式, 其目标函数为线性函数, 约束条件为变量属于某个凸锥.
