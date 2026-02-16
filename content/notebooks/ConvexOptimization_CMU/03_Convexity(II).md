@@ -35,20 +35,19 @@ $$
 ### Global and Local Optimality
 
 - 若优化问题有解, 则记所有最优解组成的集合为 $X_{\text{opt}}$:
-  $$
+$$
   X_{\text{opt}} = \{x^* \in \argmax f(x) \mid g_i(x) \leq 0, \forall i~; Ax=b\}
-  $$
-
+$$
 - 若优化问题对于 $\epsilon > 0$ 满足
-  $$
+$$
   f(x) \leq p^\star + \epsilon
-  $$
+$$
   则称 $x$ 为 $\epsilon$-suboptimal point.
 
 - 若对于某个 feasible point $x_0$, 存在某个 $R>0$, 满足
-  $$
+$$
   f(x_0)  = \inf \{f(z) \mid g_i(z) \leq 0, \forall i~; Az=b; \|z - x_0\|_2 \leq R\}
-  $$
+$$
   则称 $x_0$ 为该优化问题的局部最优解.
 
 关于最优解集, 有两条重要性质:
@@ -83,13 +82,13 @@ $$
 \end{aligned}
 $$
 - 其中 $\delta_C(x)$ 是 indicator function, 定义为:
-    $$
+$$
 \begin{aligned}
     \delta_C(x) = \begin{cases}
     0 & \text{if } x\in C \\
     \infty & \text{otherwise}
     \end{cases}
-    \end{aligned}
+\end{aligned}
 $$
 
 ---
@@ -186,28 +185,28 @@ $$
 
 - *Proof.* 
   - 根据初始的一阶最优条件, $\mathbf{x}^*$ 应当满足 $A\mathbf{x}^* = \mathbf{b}$; 且对所有满足 $A\mathbf{y}=\mathbf{b}$ 的 $\mathbf{y}$, 有
-    $$
+$$
 \begin{aligned}
     \nabla f(\mathbf{x}^*)^\top (\mathbf{y} - \mathbf{x}^*) \geq 0.
-    \end{aligned}
+\end{aligned}
 $$
   - 由于 $\mathbf{y},\mathbf{x}^*$ 同时满足等式约束, 故 $A(\mathbf{y} - \mathbf{x}^*) := A\mathbf{u} = 0$. 这说明, 所有的可行位移都应处在 $A$ 的零空间内, 即 $\mathbf{u} \in \text{Nul}(A) = \{\mathbf{u} \mid A^\top \mathbf{u} = 0\}$. 换言之, 所有可行的 $\mathbf{y}$ 都应满足 $\mathbf{y} = \mathbf{x}^* + \mathbf{u}, \mathbf{u} \in \text{Nul}(A)$, 即 $\mathbf{y}$ 和 $\mathbf{u}$ 是一一对应的, 故最优性条件可以改写为:
-    $$
+$$
 \begin{aligned}
     \nabla f(\mathbf{x}^*)^\top \mathbf{u} \geq 0, \quad \forall \mathbf{u} \in \text{Nul}(A)
-    \end{aligned}
+\end{aligned}
 $$
   - 而由于 $\mathbf{u}$ 的取值任意性, 必有 $\nabla f(\mathbf{x}^*)^\top \mathbf{u} = 0$. 这是因为定同时有 $\nabla f(\mathbf{x}^*)^\top \mathbf{u} \geq 0$ 和 $\nabla f(\mathbf{x}^*)^\top (-\mathbf{u}) \geq 0$ 成立. 故有
-    $$
+$$
 \begin{aligned}
     \nabla f(\mathbf{x}^*)^\top \mathbf{u} = 0, \quad \forall \mathbf{u} \in \text{Nul}(A)
-    \end{aligned}
+\end{aligned}
 $$
   - 而这一表述等价于 $\nabla f(\mathbf{x}^*) \perp \text{Nul}(A)$. 又根据线性代数结论, $A$ 的 Null Space 的正交补空间为 Row Space, 即 $A^\top$ 的 Column Space , 因此 $\nabla f(\mathbf{x}^*) \in \text{Col}(A^\top)$, 即存在 $\mathbf{v} \in \mathbb{R}^{n}$, 使得 $\nabla f(\mathbf{x}^*) = A^\top \mathbf{v}$. 记 $\mathbf{u}^* = -\mathbf{v}$, 则有
-    $$
+$$
 \begin{aligned}
     \nabla f(\mathbf{x}^*) + A^\top \mathbf{u}^* = 0. 
-    \end{aligned}
+\end{aligned}
 $$
 
   $\square$
@@ -282,26 +281,26 @@ $$
 
 - *Proof.* 
   - 根据 Infimum 的定义, 对于任意 $x_1, x_2 \in \text{dom}(g)$, 以及任意 $\epsilon > 0$, 存在 $y_1, y_2 \in C$ 使得:
-    $$
+$$
 \begin{aligned}
     g(x_1) &\geq f(x_1, y_1) - \epsilon \\
     g(x_2) &\geq f(x_2, y_2) - \epsilon
-    \end{aligned}
+\end{aligned}
 $$
   - 根据 $g$ 的定义, 对于对于任意 $\theta \in [0,1]$:
-    $$
+$$
 \begin{aligned}
     g(\theta x_1 + (1-\theta)x_2) &= \inf_{y\in C} f(\theta x_1 + (1-\theta)x_2, y) \\
     &\leq f(\theta x_1 + (1-\theta)x_2, \theta y_1 + (1-\theta)y_2) \quad (\text{Infimum})\\
     &\leq \theta f(x_1,y_1) + (1-\theta) f(x_2,y_2) \quad (\text{Jensen Ineq.})\\
     &= \theta g(x_1) + (1-\theta) g(x_2) + \epsilon  \quad (\text{Infimum})
-    \end{aligned}
+\end{aligned}
 $$
   - 由于 $\epsilon > 0$ 是任意的, 故有:
-    $$
+$$
 \begin{aligned}
     g(\theta x_1 + (1-\theta)x_2) \leq \theta g(x_1) + (1-\theta) g(x_2)
-    \end{aligned}
+\end{aligned}
 $$
 
 因此, 该性质说明, 我们能够将一个关于多个变量的凸函数, 通过对部分变量取 Infimum 的方式, 得到一个关于剩余变量的凸函数. 
