@@ -1,10 +1,11 @@
 # Gradient Descent
 
-> Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: Convex Optimization by Boyd & Vandenberghe, Section 9.1
 
 ## Unconstrained Minimization Problems
 
-- *Book Reference: Convex Optimization by Boyd & Vandenberghe, Section 9.1*
 
 给定无约束优化问题:
 
@@ -171,7 +172,9 @@ $$
 
 ## Descent Methods
 
-- *Book Reference: Convex Optimization by Boyd & Vandenberghe, Section 9.2*
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: Convex Optimization by Boyd & Vandenberghe, Section 9.2
 
 ### General Descent Methods
 

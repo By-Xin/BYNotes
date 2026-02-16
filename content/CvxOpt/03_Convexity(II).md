@@ -1,10 +1,11 @@
 # Convexity (II): Convex Optimization Problems
 
-> Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: Boyd & Vandenberghe, Convex Optimization, Section 4.2
 
 ## Optimization Problems
 
-- *Book Reference: Boyd & Vandenberghe, Convex Optimization, Section 4.2*
 
 ### Problem Formulation
 
@@ -119,7 +120,9 @@ $$
 
 ### First-Order Optimality Conditions
 
-- *Book Reference: Boyd & Vandenberghe, Convex Optimization, Section 4.2*
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: Boyd & Vandenberghe, Convex Optimization, Section 4.2
 
 给定可微的凸函数 $f$, 考虑如下优化问题:
 $$
@@ -214,7 +217,9 @@ $$
 
 ## Equivalence between Different Forms of Optimization Problems
 
-- *Book Reference: Boyd & Vandenberghe, Convex Optimization, Section 4.1.3*
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: Boyd & Vandenberghe, Convex Optimization, Section 4.1.3
 
 有一些变换可以将不同形式的优化问题相互转化. 
 
@@ -268,7 +273,9 @@ $$
 
 ### Partial Optimum
 
-- *Book Reference: Boyd & Vandenberghe, Convex Optimization, Section 3.2.5, Section 4.1.3*
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: Boyd & Vandenberghe, Convex Optimization, Section 3.2.5, Section 4.1.3
 
 如如果 $f$ 关于 $(x,y)$ 是凸函数 , 且 $C$ 是非空凸集, 则函数
 $$

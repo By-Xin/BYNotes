@@ -1,8 +1,8 @@
 # Subgradient
 
-> Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
->
-> Reading Reference: 最优化: 建模、算法与理论, 刘浩洋等, 2.7 小节.
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: 最优化: 建模、算法与理论, 刘浩洋等, 2.7 小节.
 
 ## Subgradients and Subdifferentials
 

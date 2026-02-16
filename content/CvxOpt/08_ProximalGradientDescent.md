@@ -1,10 +1,11 @@
 # Proximal Gradient Descent
 
-> - Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: 最优化：建模、算法与理论，刘浩洋等，第 8.1 节
 
 ## Proximal Gradient Descent
 
-- *Reading Reference: 最优化：建模、算法与理论，刘浩洋等，第 8.1 节*
 
 ### Decomposable Functions
 
@@ -156,7 +157,9 @@ $$X^{(k+1)} = U \cdot \text{Diag}(\max\{|d - t_k P \odot (X^{(k)} - M)| - t_k \m
 
 ## Convergence Analysis
 
-- *Reading Reference: 最优化：建模、算法与理论，刘浩洋等，第 8.1 节*
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: 最优化：建模、算法与理论，刘浩洋等，第 8.1 节
 
 ### Algorithm and Assumptions
 
@@ -244,7 +247,9 @@ $$x^{(k+1)} = \text{Proj}_{\mathcal{C}}(x^{(k)} - t_k \nabla \phi(x^{(k)}))$$
 
 ### Proximal Point Algorithm 
 
-- *Reading Reference: 最优化：建模、算法与理论，刘浩洋等，第 8.3 节*
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: 最优化：建模、算法与理论，刘浩洋等，第 8.3 节
 
 当光滑部分 $\phi$ 恒为零时, 考虑如下优化问题:
 $$\min_{x\in\mathbb{R}^n} F(x)$$

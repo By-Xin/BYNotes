@@ -15,6 +15,11 @@ rsync -a --delete --prune-empty-dirs \
   --exclude '*' \
   "$SRC/" "$DST/"
 
+# Normalize filename for consistency in published routes.
+if [ -f "$DST/09——StochasticGradientDescent.md" ]; then
+  mv "$DST/09——StochasticGradientDescent.md" "$DST/09_StochasticGradientDescent.md"
+fi
+
 cat > "$DST/index.md" << 'EOF'
 ---
 title: Convex Optimization - CMU - Fall18

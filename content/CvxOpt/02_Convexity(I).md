@@ -1,6 +1,8 @@
 # Convexity (I)
 
-> Ref: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading:
 
 ## Introduction
 

@@ -1,7 +1,8 @@
 # Subgradient Methods
 
-> - Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
-> - Reading Reference: https://stanford.edu/class/ee364b/lectures/subgrad_method_slides.pdf
+> [!info] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> - Reading: https://stanford.edu/class/ee364b/lectures/subgrad_method_slides.pdf
 
 ## Introduction & Motivation
 
