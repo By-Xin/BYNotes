@@ -55,11 +55,13 @@ $$\boxed{
     - 由  subgradient 的定义, $f(x^*) \geq f(x^{(k)}) + (g^{(k)})^\top (x^* - x^{(k)})$, 从而 $(g^{(k)})^\top (x^{(k)} - x^*) \geq f(x^{(k)}) - f(x^*)$. 因此上不等式最终可以化为:
         $$\|x^{(k+1)} - x^*\|_2^2 \leq \|x^{(k)} - x^*\|_2^2 - 2t_k [f(x^{(k)}) - f(x^*)] + t_k^2 \|g^{(k)}\|_2^2$$
   - 接下来, 将上述不等式$^{(1)}$进行迭代展开 , 并根据 $^{(2)}$ $f(x_\text{best}^{(k)}) = \min_{0 \leq i \leq k} f(x^{(i)})$, 因此 $f(x^{(i)}) - f(x^*) \geq f(x_\text{best}^{(k)}) - f(x^*)$ 对于所有 $0 \leq i \leq k$ 都成立 ,以及$^{(3)}$ $\|x^{(0)} - x^*\|_2 \leq R$ 的假设, 可以得到:
-    $$\begin{aligned}
+    $$
+\begin{aligned}
         \|x^{(k+1)} - x^*\|_2^2 & \stackrel{(1)}{\leq} \|x^{(0)} - x^*\|_2^2 - 2 \sum_{i=0}^k t_i [f(x^{(i)}) - f(x^*)] + \sum_{i=0}^k t_i^2 \|g^{(i)}\|_2^2 \\
         & \stackrel{(2)}{\leq} \|x^{(0)} - x^*\|_2^2 - 2 [f(x_\text{best}^{(k)}) - f(x^*)] \sum_{i=0}^k t_i + \sum_{i=0}^k t_i^2 \|g^{(i)}\|_2^2 \\
         & \stackrel{(3)}{\leq} R^2 - 2 [f(x_\text{best}^{(k)}) - f(x^*)] \sum_{i=0}^k t_i + \sum_{i=0}^k t_i^2 \|g^{(i)}\|_2^2
-    \end{aligned}$$
+    \end{aligned}
+$$
   - 进而整理得到:
     $$f(x_\text{best}^{(k)}) - f(x^*) \leq \frac{R^2 + \sum_{i=0}^k t_i^2 \|g^{(i)}\|_2^2}{2 \sum_{i=0}^k t_i}$$
   - 若进一步利用 $f$ 的 Lipschitz 连续性, 即 $\|g^{(i)}\|_2 \leq G$ 对于所有 $i$, 则可以得到:
@@ -70,11 +72,13 @@ $$\boxed{
   - 对于固定步长 $t_k = t$, 上式可以化简为:
     $$f(x_\text{best}^{(k)}) - f(x^*) \leq \frac{R^2+G^2 t^2 (k+1)}{2 t (k+1)}\stackrel{k\to\infty}{\longrightarrow} \frac{G^2 t}{2}$$
   - 对于固定步进 $t_k = \gamma / \|g^{(k)}\|_2$, 将其带入 Lipschitz 连续性化简前的不等式, 可以得到:
-    $$\begin{aligned}
+    $$
+\begin{aligned}
         f(x_\text{best}^{(k)}) - f(x^*) &\leq \frac{R^2 + \sum_{i=0}^k \left(\frac{\gamma}{\|g^{(i)}\|_2}\right)^2 \|g^{(i)}\|_2^2}{2 \sum_{i=0}^k \frac{\gamma}{\|g^{(i)}\|_2}} \\
         &= \frac{R^2 + (k+1) \gamma^2}{2 \gamma \sum_{i=0}^k 1/\|g^{(i)}\|_2} \\
         &\leq \frac{R^2 + (k+1) \gamma^2}{2 \gamma (k+1)/G}  \stackrel{k\to\infty}{\longrightarrow} \frac{G \gamma}{2}
-    \end{aligned}$$
+    \end{aligned}
+$$
   - 对于平方收敛步长 $t: \sum t_k^2 < \infty$ 和 $\sum t_k = \infty$, 上式可以化简为:
     $$f(x_\text{best}^{(k)}) - f(x^*) \leq \frac{R^2 + G^2 \sum_{i=0}^k t_i^2}{2 \sum_{i=0}^k t_i} \stackrel{k\to\infty}{\longrightarrow} 0$$
 
@@ -152,13 +156,15 @@ $$\min_x f(x) = g(x) + h(x)$$
   - 因此对于 $f(x) = \max_{1 \leq i \leq m} f_i(x)$, 记 $I(x) = \{i: f_i(x) = f(x)\}$ 为最大值对应的索引集合, 则 
         $$\partial f(x) = \text{conv}\left(\bigcup_{i \in I(x)} \partial f_i(x)\right)$$
 - 进而 subgradient method 的更新公式为:
-    $$\begin{aligned}
+    $$
+\begin{aligned}
     x^{(k+1)}
     &=x^{(k)}-f(x^{(k)})\frac{x^{(k)}-\text{Proj}_{\mathcal{C}_j}(x^{(k)})}{\|x^{(k)}-\text{Proj}_{\mathcal{C}_j}(x^{(k)})\|_2}\\
     &=x^{(k)}-\|x^{(k)}-\text{Proj}_{\mathcal{C}_j}(x^{(k)})\|_2\frac{x^{(k)}-\text{Proj}_{\mathcal{C}_j}(x^{(k)})}{\|x^{(k)}-\text{Proj}_{\mathcal{C}_j}(x^{(k)})\|_2}\\
     &=x^{(k)}-\big(x^{(k)}-\text{Proj}_{\mathcal{C}_j}(x^{(k)})\big)\\
     &=\text{Proj}_{\mathcal{C}_j}(x^{(k)}).
-    \end{aligned}$$
+    \end{aligned}
+$$
 
 因此, 在每次迭代中, subgradient method 都会将当前点 $x^{(k)}$ 投影到距离其最远的集合 $\mathcal{C}_j$ 上. 这就是 alternating projections 的核心思想. 通过不断地交替投影, 可以逐渐逼近交集 $\mathcal{C}$ 中的一个点.
 

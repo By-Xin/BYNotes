@@ -27,11 +27,13 @@ $$
 - 而 $\Delta x = \nabla f(x)$ 的选择使得 $x^+$ 成为上述近似目标函数的最小值: $x^+ = \arg\min_{z} f(x) + \nabla f(x)^\top (z-x) + \frac{1}{2t} \|z-x\|^2$.
 
 在当前的 Composable Functions 的设置中, 类似地有:
-$$\begin{aligned}
+$$
+\begin{aligned}
 x^+ &= \arg\min_{z} \left[\phi(z)+h(z)\right] \\
 &\approx \arg\min_{z} \left[\phi(x) + \nabla \phi(x)^\top (z-x) + \frac{1}{2t} \|z-x\|^2  + h(z)\right] \\
 &= \arg\min_{z} \left[\frac{1}{2t} \left\|z - (x - t \nabla \phi(x))\right\|^2 + h(z)\right]
-\end{aligned}$$
+\end{aligned}
+$$
 - 其中最后一个等式就是将最小化中与 $z$ 无关项丢弃后并配方得到的纯代数整理结果.
 - 这个更新步骤的核心思想是: 在每次迭代中, 首先对光滑部分 $\phi$ 进行梯度下降的更新, 得到一个临时变量 $x' = x - t \nabla \phi(x)$; 然后通过最小化一个包含非光滑部分 $h$ 的二次近似目标函数来得到新的参数 $x^+$.
 
@@ -82,11 +84,13 @@ Proximal Gradient Descent 的迭代更新步骤如下:
     $$x^{(k+1)} = \text{Proj}_{\mathcal{C}}(x^{(k)} - t_k \nabla \phi(x^{(k)}))$$
 
 观察上述迭代更新, 其还可以等价表述为:
-$$\begin{aligned}
+$$
+\begin{aligned}
 x^{(k+1)} &= \text{prox}_{t_k h}\left(x^{(k)} - t_k \nabla \phi(x^{(k)})\right) \\
 &= x^{(k)} - t_k \cdot \frac{x^{(k)} - \text{prox}_{t_k h}(x^{(k)} - t_k \nabla \phi(x^{(k)}))}{t_k} \\&:= \boxed{x^{(k)} - t_k G_{t_k}(x^{(k)})}\\
 &= \boxed{x^{(k)} - t_k  \nabla \phi(x^{(k)}) - t_k g^{(k)}}
-\end{aligned}$$
+\end{aligned}
+$$
 - 其中第三个等式中 
   $$G_{t_k}(x^{(k)}) =  \frac{x^{(k)} - \text{prox}_{t_k h}[x^{(k)} - t_k \nabla \phi(x^{(k)})]}{t_k}$$ 
   被称为**近端梯度映射(proximal gradient mapping)**.
@@ -119,10 +123,14 @@ $$\min_{\beta\in\mathbb{R}^p} \underbrace{\frac{1}{2} \|y - X\beta\|_2^2}_{\phi(
 #### Low-rank Matrix Completion
 
 给定一个矩阵 $M \in \mathbb{R}^{m\times n}$ 以及一个索引集合 $\Omega \subseteq \{1, \ldots, m\} \times \{1, \ldots, n\}$ 表示已知的矩阵元素索引, 低秩矩阵补全的目标函数为:
-$$\begin{aligned} &\min_{X\in\mathbb{R}^{m\times n}} && \text{rank}(X) \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega \end{aligned}$$
+$$
+\begin{aligned} &\min_{X\in\mathbb{R}^{m\times n}} && \text{rank}(X) \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega \end{aligned}
+$$
 
 该优化问题进一步可以通过 Nuclear Norm 的松弛来转化为如下形式:
-$$\begin{aligned} &\min_{X\in\mathbb{R}^{m\times n}} && \|X\|_* \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega  \end{aligned}$$
+$$
+\begin{aligned} &\min_{X\in\mathbb{R}^{m\times n}} && \|X\|_* \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega  \end{aligned}
+$$
 - 可以证明该形式是一个凸优化问题. 
 
 若进一步考虑到观测数据中可能存在噪声, 则可以将约束条件松弛为一个正则项, 从而得到如下优化问题:
@@ -185,20 +193,24 @@ $$F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2 t k}$$
     $$h(x - t G_t(x)) \leq h(z) - (G_t(x) - \nabla \phi(x))^\top (z - x + t G_t(x)),\quad(3)$$
       - 其中 $g = G_t(x) - \nabla \phi(x) \in \partial h(x-t G_t(x))$ 是根据 prox 算子与次梯度的关系得到的结果, 见 $(\dagger)$.
   - 将 $(1), (2), (3)$ 三个不等式相加, 并根据 decomposable function 的定义 $F(x) = \phi(x) + h(x)$, 经整理化简, 对任意 $z\in\text{dom}(F)$ 都有:
-    $$\begin{aligned}
+    $$
+\begin{aligned}
     F(x - t G_t(x)) &\leq F(z) +G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2 \\
-    \end{aligned}$$
+    \end{aligned}
+$$
     若另记 $x^+ = x - t G_t(x)$, 则上式可以化作如下形式:
   $$F(x^+) \leq F(z) + G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2$$
   - 令 $z=x$, 则有:
     $$F(x^+) \leq F(x) - \frac{t}{2} \|G_t(x)\|^2$$
      - 这表明每次迭代都会使得函数值至少下降 $\frac{t}{2} \|G_t(x)\|^2$, 从而保证了函数值的单调不增.
   - 特别地, 令 $z = x^*$, 则有:
-    $$\begin{aligned}
+    $$
+\begin{aligned}
     F(x^+) &\leq F(x^*) + G_t(x)^\top (x-x^*) - \frac{t}{2} \|G_t(x)\|^2 \\
     &= \frac{1}{2t} (\|x-x^*\|^2 - \|x - x^*- t G_t(x)\|^2) \\
     &= \frac{1}{2t} (\|x-x^*\|^2 - \|x^+ - x^*\|^2) 
-    \end{aligned}$$
+    \end{aligned}
+$$
     - 其中第二个等式是通过单纯的代数整理得到的: $v^\top u - \frac{t}{2} \|v\|^2 = \frac{1}{2t} (\|u\|^2 - \|u - t v\|^2)$.
   - 因此从 $x^{(0)}$ 开始迭代, 可以得到如下递推关系:
     $$F(x^{(k+1)}) - F^* \leq \frac{1}{2t} (\|x^{(k)}-x^*\|^2 - \|x^{(k+1)} - x^*\|^2)$$

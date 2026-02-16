@@ -460,22 +460,28 @@ $$
 ### Worst-case Lower Bound of First-order Methods
 
 一般地, 一阶方法 (first-order method) 都可以抽象为如下的迭代过程: 对于第 $k$ 次迭代, 其更新点 $x^{(k)}$ 为:
-$$\begin{aligned}
+$$
+\begin{aligned}
 x^{(k)} \in x^{(0)} + \text{span}\{\nabla f(x^{(0)}), \nabla f(x^{(1)}), \ldots, \nabla f(x^{(k-1)})\}.
-\end{aligned}$$
+\end{aligned}
+$$
 
 如下定理说明任意一阶方法在的收敛速率下界为 $\mathcal{\Omega}(1/k^2)$.
 
 对于任意 $k \leq (n-1)/2$ 及任意初始点 $x^{(0)}$, 都能存在一个 $M$-Smooth 的凸函数 $f: \mathbb{R}^n \to \mathbb{R}$, 使得对于任意满足上述迭代过程的一阶方法, 都有:
-$$\begin{aligned}
+$$
+\begin{aligned}
 f(x^{(k)}) - p^\star \geq \frac{3M\|x^{(0)} - x^\star\|_2^2}{32(k+1)^2} 
-\end{aligned}$$
+\end{aligned}
+$$
 
 若进一步放宽 Convexity 的要求, 此时对于非凸优化问题, 我们只能考察其 $\epsilon$-stationary point 的收敛速率 (即 $\|\nabla f(x^{(k)})\|_2 \leq \epsilon$), 有定理如下.
 
 对于固定步长 $t\leq 1/L$, GD 方法有:
-$$\begin{aligned}
+$$
+\begin{aligned}
 \min_{i=0,\ldots,k} \|\nabla f(x^{(i)})\|_2 \leq \sqrt{\frac{2(f(x^{(0)}) - p^\star)}{t(k+1)}}.
-\end{aligned}$$
+\end{aligned}
+$$
 
 这说明在非凸优化问题中, GD 的收敛速率将不超过 $\mathcal{O}(1/\sqrt{k})$.
