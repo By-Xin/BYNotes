@@ -54,13 +54,13 @@ $$\partial f(x) = \text{conv}\left\{\nabla f_i(x): i \in \mathcal{A}(x)\right\} 
     - 由支撑超平面定理, 对于任意 $y \in \mathbb{R}^n$ 和 $i \in \mathcal{A}(x)$, 都有 $f_i(y) \geq f_i(x) + \nabla f_i(x)^\top (y - x)$.
     - 又根据 $\max$ 的性质, 对于任意 $y \in \mathbb{R}^n$: $f(y) = \max_{i=1...n} f_i(y) \geq \sum_{i \in \mathcal{A}(x)} \alpha_i f_i(y)$.
     - 因此, 对于任意 $y \in \mathbb{R}^n$:
-        $$
+$$
 \begin{aligned}
         f(y) &\geq \sum_{i \in \mathcal{A}(x)} \alpha_i f_i(y) \\
         &\geq \sum_{i \in \mathcal{A}(x)} \alpha_i [f_i(x) + \nabla f_i(x)^\top (y - x)] \\
         &= \sum_i \alpha_i f_i(x) + \left(\sum_{i \in \mathcal{A}(x)} \alpha_i \nabla f_i(x)\right)^\top (y - x) \\
         &:= f(x) + g^\top (y - x).
-        \end{aligned}
+\end{aligned}
 $$
 
 
@@ -154,12 +154,12 @@ $$0 \in \partial f(x) + \mathcal{N}_C(x).$$
 ***Example 1:*** 对于 $y\in \mathbb{R}^n, X\in \mathbb{R}^{n\times p}$ 和 $\lambda \geq 0$, 考虑 Lasso 问题:
 $$\min_\beta \frac{1}{2}\|y - X\beta\|_2^2 + \lambda \|\beta\|_1.$$
 - 该问题的次微分最优性条件为:
-    $$
+$$
 \begin{aligned}
     0 &\in \partial \left(\frac{1}{2}\|y - X\beta\|_2^2 + \lambda \|\beta\|_1\right) \\
     & = \partial \left(\frac{1}{2}\|y - X\beta\|_2^2\right) + \partial \left(\lambda \|\beta\|_1\right) \\
     & = -X^\top (y - X\beta) + \lambda \partial \|\beta\|_1.
-    \end{aligned}
+\end{aligned}
 $$
 - 故整理有 $X^\top (y - X\beta)  = \lambda g$, 其中  $g \in \partial \|\beta\|_1$, 即对于每个 $i= 1\cdots p$:
     $$g_i = \begin{cases}1, & \beta_i > 0 \\ -1, & \beta_i < 0 \\ [-1, 1], & \beta_i = 0\end{cases}.$$

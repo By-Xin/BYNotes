@@ -193,10 +193,10 @@ $$F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2 t k}$$
     $$h(x - t G_t(x)) \leq h(z) - (G_t(x) - \nabla \phi(x))^\top (z - x + t G_t(x)),\quad(3)$$
       - 其中 $g = G_t(x) - \nabla \phi(x) \in \partial h(x-t G_t(x))$ 是根据 prox 算子与次梯度的关系得到的结果, 见 $(\dagger)$.
   - 将 $(1), (2), (3)$ 三个不等式相加, 并根据 decomposable function 的定义 $F(x) = \phi(x) + h(x)$, 经整理化简, 对任意 $z\in\text{dom}(F)$ 都有:
-    $$
+$$
 \begin{aligned}
     F(x - t G_t(x)) &\leq F(z) +G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2 \\
-    \end{aligned}
+\end{aligned}
 $$
     若另记 $x^+ = x - t G_t(x)$, 则上式可以化作如下形式:
   $$F(x^+) \leq F(z) + G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2$$
@@ -204,12 +204,12 @@ $$
     $$F(x^+) \leq F(x) - \frac{t}{2} \|G_t(x)\|^2$$
      - 这表明每次迭代都会使得函数值至少下降 $\frac{t}{2} \|G_t(x)\|^2$, 从而保证了函数值的单调不增.
   - 特别地, 令 $z = x^*$, 则有:
-    $$
+$$
 \begin{aligned}
     F(x^+) &\leq F(x^*) + G_t(x)^\top (x-x^*) - \frac{t}{2} \|G_t(x)\|^2 \\
     &= \frac{1}{2t} (\|x-x^*\|^2 - \|x - x^*- t G_t(x)\|^2) \\
     &= \frac{1}{2t} (\|x-x^*\|^2 - \|x^+ - x^*\|^2) 
-    \end{aligned}
+\end{aligned}
 $$
     - 其中第二个等式是通过单纯的代数整理得到的: $v^\top u - \frac{t}{2} \|v\|^2 = \frac{1}{2t} (\|u\|^2 - \|u - t v\|^2)$.
   - 因此从 $x^{(0)}$ 开始迭代, 可以得到如下递推关系:
