@@ -83,20 +83,24 @@ $$
 \end{aligned}
 $$
 - 其中 $\delta_C(x)$ 是 indicator function, 定义为:
-    $$\begin{aligned}
+    $$
+    \begin{aligned}
     \delta_C(x) = \begin{cases}
     0 & \text{if } x\in C \\
     \infty & \text{otherwise}
     \end{cases}
-    \end{aligned}$$
+    \end{aligned}
+    $$
 
 ---
 
 ***Example* (LASSO)** 给定 $\boldsymbol{y} \in \mathbb{R}^n$, $\boldsymbol{X} \in \mathbb{R}^{n \times p}$, LASSO 问题定义为:
-$$\begin{aligned}
+$$
+\begin{aligned}
 \min_{\boldsymbol{\beta} \in \mathbb{R}^p} \quad & \|\boldsymbol{y} - \boldsymbol{X}\boldsymbol{\beta}\|_2^2 \\
 \text{s.t.} \quad & \|\boldsymbol{\beta}\|_1 \leq \lambda
-\end{aligned}$$
+\end{aligned}
+$$
 
 - 若 $n\ge p$ 且 $\boldsymbol{{X}}$ 是列满秩的, 则该问题的解是唯一的. 
   - *Proof.* 
@@ -268,9 +272,11 @@ $$
 - *Book Reference: Boyd & Vandenberghe, Convex Optimization, Section 3.2.5, Section 4.1.3*
 
 如如果 $f$ 关于 $(x,y)$ 是凸函数 , 且 $C$ 是非空凸集, 则函数
-$$\begin{aligned}
+$$
+\begin{aligned}
 g(x) = \inf_{y\in C} f(x,y)
-\end{aligned}$$
+\end{aligned}
+$$
 也是 $x$ 的凸函数 (只要 $g(x)$ 在其定义域内取值有限). 
 - 其中 $\text{dom}(g) = \{x \mid \exists y\in C, \text{ s.t. } (x,y)\in\text{dom}(f)\}$, 即 $\text{dom}(f)$ 在 $x$ 方向上的投影.    
 
