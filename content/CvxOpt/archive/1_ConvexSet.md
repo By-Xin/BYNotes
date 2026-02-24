@@ -3,7 +3,7 @@
 > Refs:
 > - Nonlinear Programming: Theory and Algorithms, Mokhtar S. Bazaraa, Hanif D. Sherali, C. M. Shetty, 2006.
 > - Convex Optimization, Stephen Boyd, Lieven Vandenberghe, 2004.
- 
+
 ## 1. Definition of Convex Sets
 
 ***Definition* (Convex Set)**: 对于任意两个点 \(x_1, x_2 \in C\)，对于任意 \(\lambda \in [0, 1]\), 有:
@@ -38,13 +38,12 @@
 1. 交集 (Intersection): \(C = C_1 \cap C_2\) 是凸集.
    - 并集 (Union) 一般不是凸集.
 2. Minkowski Sum: \(C = C_1 \pm C_2 = \{x_1 \pm x_2 \mid x_1 \in C_1, x_2 \in C_2\}\) 是凸集.
-3. 仿射映射 (Affine Mapping) 是凸集. 
+3. 仿射映射 (Affine Mapping) 是凸集.
    - 设 $f: \mathbb{R}^n \to \mathbb{R}^m$ 为仿射映射, 即 \(f(x) = Ax + b\)，其中 \(A \in \mathbb{R}^{m \times n}\), \(b \in \mathbb{R}^m\). 则对于凸集 \(C \subseteq \mathbb{R}^n\), 有 \(f(C) = \{f(x) \mid x \in C\}\) , \(f^{-1}(C) = \{x \mid f(x) \in C\}\) 也是凸集.
    - 特殊的仿射映射包括:
      - 平移 (Translation): \(C + a = \{x + a \mid x \in C\}\).
      - 缩放 (Scaling): \(\alpha C = \{\alpha x \mid x \in C\}\).
      - 投影 (Projection): 设 \(C \subseteq \mathbb{R}^{m+n}\), 则其在前 \(m\) 个坐标上的投影为 \(\{x \in \mathbb{R}^m \mid \exists y \in \mathbb{R}^n, \begin{bmatrix} x \\ y \end{bmatrix} \in C\}\).
-
 
 ## 4. Basic Properties of Convex Sets
 
@@ -57,7 +56,6 @@
    \]
    即, 向量 \(y - x_0\) 与从 \(x_0\) 指向 \(C\) 中任意点的向量成钝角.
 
-
 ***Theorem* (Separating Hyperplane Theorem)**: 设 \(C_1\) 和 \(C_2\) 为两个非空凸集, 若对于非零向量 \(a \in \mathbb{R}^n\) 和标量 \(b \in \mathbb{R}\), 有:
 \[\alpha^\top x \ge b, \quad \forall x \in C_1, \quad \alpha^\top z \le b, \quad \forall z \in C_2
 \]
@@ -69,7 +67,6 @@
 \[\alpha^\top x \le \alpha^\top x_0, \quad \forall x \in C
 \]
 即, 存在一个超平面 \(H = \{x \mid \alpha^\top x = \alpha^\top x_0\}\) 支持 (supports) 集合 \(C\) 在点 \(x_0\) 处.
-
 
 ## 5. Farkas' Lemma
 
@@ -96,7 +93,7 @@
 ***Properties of Convex Functions**:
 1. 凸函数必然是连续的.
 2. \(f\) 是凸函数等价于对任意给定的 \(x_1, x_2\) 在定义域内, 有 \(\phi(\alpha) = f(x_1 + \alpha x_2)\) 也是凸函数.
-3.  \(f(x)\) 是 \(C\) 上的凸函数的充要条件是 
+3.  \(f(x)\) 是 \(C\) 上的凸函数的充要条件是
     \[f(y) \ge f(x) + \nabla f(x)^\top (y - x), \quad \forall x, y \in C
     \]
     - 该不等式称为 *一阶凸性条件* (first-order condition for convexity), 表示函数在任意点的切平面位于函数图像的下方.
@@ -116,12 +113,10 @@
    \]
    也是凸函数.
 
-
 3. 最大值 (Maximum): 设 \(f_1, f_2, \ldots, f_k\) 是凸函数, 则函数:
    \[f(x) = \max_{1 \leq i \leq k} f_i(x)
    \]
    也是凸函数.
-
 
 ***Definition* (Level Set)**: 给定函数 \(f: \mathbb{R}^n \to \mathbb{R}\) 和标量 \(\alpha \in \mathbb{R}\), 定义水平集 (level set) 为:
 \[ L_\alpha = \{x \mid f(x) \leq \alpha, x \in C\]

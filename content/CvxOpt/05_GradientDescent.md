@@ -12,7 +12,7 @@ $$
 \min_x f(x)
 $$
 
-其中 $f: \mathbb{R}^n \to \mathbb{R}$ 为二次可微函数. 
+其中 $f: \mathbb{R}^n \to \mathbb{R}$ 为二次可微函数.
 
 假设该问题存在最优解 $x^\star$ 且唯一, 并记为最优值 $p^\star := f(x^\star) = \inf_x f(x)$.
 
@@ -39,6 +39,7 @@ $$
 $$
 \boxed{f(y) \geq f(x) + \nabla f(x)^\top (y-x) + \frac{m}{2}\|y-x\|_2^2, \quad \forall x,y \in S \quad (\star)}
 $$
+
 - *Proof.*
   - 对于强凸函数 $f(x)$ 进行二阶 Taylor 展开, 可得:
 
@@ -50,9 +51,9 @@ $$
   - 由于 $\nabla^2 f(z) \succeq m I$, 因此 $(y-x)^\top \nabla^2 f(z)(y-x) \geq m \|y-x\|_2^2$, 代入上式即得所需不等式.
     $\square$
 
-- 当 $m=0$ 时, 上述不等式即退化为一般的凸函数定义. 当 $m>0$ 时, 该不等式提供了一个更为强的下界. 
+- 当 $m=0$ 时, 上述不等式即退化为一般的凸函数定义. 当 $m>0$ 时, 该不等式提供了一个更为强的下界.
 
-利用该不等式, 我们可以有效的分析梯度的大小对于优化值与最优值差距 $f(x)-p^\star$ 的影响, 分析如下. 
+利用该不等式, 我们可以有效的分析梯度的大小对于优化值与最优值差距 $f(x)-p^\star$ 的影响, 分析如下.
 
 - 将上述不等式的 RHS 看作是关于 $y$ 的凸二次函数
 
@@ -69,17 +70,20 @@ $$
     $$
     f(y) \geq q(y) \geq q(\tilde{y}) = f(x) - \frac{1}{2m} \|\nabla f(x)\|_2^2.
     $$
+
 - 由于 $f(y) \geq f(x) - \frac{1}{2m} \|\nabla f(x)\|_2^2$ 对任意 $y \in S$ 成立, 故取 $y = x^\star$ 可得:
 
 $$
 p^\star = f(x^\star) \geq f(x) - \frac{1}{2m} \|\nabla f(x)\|_2^2
 $$
+
 - 整理可得重要不等式:
 
 $$
 \boxed{f(x) - p^\star \leq \frac{1}{2m} \|\nabla f(x)\|_2^2}
 $$
-- 其直观含义很简单: 当点 $x$ 处的梯度 $\nabla f(x)$ 越小, 则该点的函数值 $f(x)$ 越接近最优值 $p^\star$. 
+
+- 其直观含义很简单: 当点 $x$ 处的梯度 $\nabla f(x)$ 越小, 则该点的函数值 $f(x)$ 越接近最优值 $p^\star$.
 - 这里相当于在强凸假设下给出了收敛的速度估计. 根据收敛准则 $f(x^{(k)}) - p^\star < \epsilon$, 故令 $\frac{1}{2m} \|\nabla f(x^{(k)})\|_2^2 < \epsilon$, 可得梯度范数的**次优性条件**:
 
 $$
@@ -93,6 +97,7 @@ $$
   $$
   f(x^\star) \geq f(x) + \nabla f(x)^\top (x^\star - x) + \frac{m}{2}\|x^\star - x\|_2^2.
   $$
+
 - 注意到 $\nabla f(x)^\top (x^\star - x)$ 作为内积, 可由 Cauchy-Schwarz 不等式得到下界:
 
   $$
@@ -104,21 +109,25 @@ $$
   $$
   f(x^\star) \geq f(x) - \|\nabla f(x)\|_2 \cdot  \|x^\star - x\|_2 + \frac{m}{2}\|x^\star - x\|_2^2.
   $$
+
 - 由于 $f(x^\star) - f(x) \leq 0$, 故上式移项可得:
 
   $$
   -\|\nabla f(x)\|_2 \cdot  \|x^\star - x\|_2 + \frac{m}{2}\|x^\star - x\|_2^2 \leq f(x^\star) - f(x) \leq 0.
   $$
+
 - 记 $r := \|x^\star - x\|_2 \geq 0$, 则上式可化为关于 $r$ 的不等式:
 
   $$
   -\|\nabla f(x)\|_2 \cdot r + \frac{m}{2} r^2  = r\left(\frac{m}{2}r - \|\nabla f(x)\|_2\right) \leq 0.
   $$
+
 - 由于 $r \geq 0$, 故上式成立当且仅当 $\frac{m}{2}r - \|\nabla f(x)\|_2 \leq 0$, 整理可得:
 
   $$
   \boxed{\|x - x^\star\|_2 \leq \frac{2}{m} \|\nabla f(x)\|_2}
   $$
+
 - 该不等式说明, 当点 $x$ 处的梯度 $\nabla f(x)$ 越小, 则该点与最优解 $x^\star$ 之间的距离越近.
 
 ### Smoothness
@@ -128,11 +137,13 @@ $$
 $$
 \nabla^2 f(x) \preceq M I
 $$
+
 - 该条件说明, 在集合 $S$ 上, 函数 $f$ 的曲率 (curvature) 被上界 $M$ 所控制. 这也称为函数 $f$ 在集合 $S$ 上是 $M$-Smooth 的, 或者说函数 $f$ 在集合 $S$ 上具有 $M$-Lipschitz 连续的梯度:
 
   $$
   \|\nabla f(x) - \nabla f(y)\|_2 \leq M \|x-y\|_2, \quad \forall x,y \in S.
   $$
+
 - 据此, 由 $M-$Smooth 提供的关于 Hessian 的上界, 可得如下重要不等式:
 
 $$
@@ -147,7 +158,7 @@ $$
 
 进一步定义 $\kappa := \frac{M}{m} \geq 1$, 称为函数 $f$ 在集合 $S$ 上的条件数 (condition number). 该条件数反映了函数在该集合上的曲率变化情况, 其值越接近 1, 则说明函数在该集合上越接近于二次函数.
 
-> **关于 Lowner 序的补充说明**: 
+> **关于 Lowner 序的补充说明**:
 > - 对于两个对称矩阵 $A,B \in \mathbb{S}^n$, 若 $A-B$ 为半正定矩阵, 则称 $A \succeq B$ (或等价地 $B \preceq A$). 该关系称为 Lowner 序 (Lowner order).  在数学上, 可以表达为, 若 $A \succeq B$, 则对任意非零向量 $v \in \mathbb{R}^n$, 有 $v^\top (A-B) v \geq 0$, 或等价地
 >
 >   $$
@@ -168,7 +179,6 @@ $$
 > m \leq \lambda_{\min}(\nabla^2 f(x)), \quad \lambda_{\max}(\nabla^2 f(x)) \leq M.
 > $$
 > - 该结果说明, $m I \preceq \nabla^2 f(x) \preceq M I$ 等价于 Hessian 矩阵的特征值被界定在区间 $[m,M]$ 上.
-
 
 ## Descent Methods
 
@@ -211,10 +221,11 @@ $$
 $$
 \nabla f(x^{(k)})^\top \Delta x < 0.
 $$
+
 - 直观从几何意义上, 这说明搜索方向 $\Delta x$ 必须与负梯度 $-\nabla f(x^{(k)})$ 形成锐角, 即沿最陡下降的某个方向进行搜索.
 - *Proof*.
   - 根据凸性的 supporting hyperplane 定理, 对于任意 $x, x^+$, 有 $f(x^+) - f(x) \leq \nabla f(x)^\top (x^+ - x) = t \nabla f(x)^\top \Delta x$. 由于 Descent Method 要求 $f(x^+) < f(x)$ 对任意 $t > 0$ 成立, 故 $\nabla f(x)^\top \Delta x < 0$.
-    $\square$ 
+    $\square$
 
 ### Line Search
 
@@ -227,7 +238,6 @@ $$
 $$
 t^* = \arg\min_{t \ge 0} f(x + t \Delta x)
 $$
-
 
 ***Backtracking Line Search***
 
@@ -249,11 +259,10 @@ $$
   f(x + t \Delta x) \approx f(x) + t \nabla f(x)^\top \Delta x < \underbrace{f(x) + \alpha t \nabla f(x)^\top \Delta x}_{\text{Armijo Cond.}}.
   $$
 
-  (由于 $\alpha \in (0,0.5), \nabla f(x)^\top \Delta x < 0$, 故 $\alpha t \nabla f(x)^\top \Delta x$ 是一个更小的负数). 
+  (由于 $\alpha \in (0,0.5), \nabla f(x)^\top \Delta x < 0$, 故 $\alpha t \nabla f(x)^\top \Delta x$ 是一个更小的负数).
   因此只要 $t$ 能够被不断缩小, 就能满足 Armijo 条件.
 
-经验上, $\alpha \in (0.01, 0.3)$, 表示可接受的 $f$ 的减少量是线性外推的 $1\%$ 到 $30\%$ 之间; $\beta \in (0.1, 0.8)$, 表示每次缩小步长的比例, 其越小表示每次缩小的幅度越大, 搜索越粗糙. 
-
+经验上, $\alpha \in (0.01, 0.3)$, 表示可接受的 $f$ 的减少量是线性外推的 $1\%$ 到 $30\%$ 之间; $\beta \in (0.1, 0.8)$, 表示每次缩小步长的比例, 其越小表示每次缩小的幅度越大, 搜索越粗糙.
 
 ## Gradient Descent
 
@@ -262,9 +271,6 @@ $$
 $$
 x^{(k+1)} = x^{(k)} - t^{(k)} \nabla f(x^{(k)}).
 $$
-
-
-
 
 ### Convergence Analysis for Gradient Descent
 
@@ -281,7 +287,8 @@ $$
 &= f(x) - t \|\nabla f(x)\|_2^2 + \frac{M}{2} t^2 \|\nabla f(x)\|_2^2. \quad (\dagger)
 \end{aligned}
 $$
-这一不等式将在后续分析中被反复使用. 
+
+这一不等式将在后续分析中被反复使用.
 
 #### Convergence with Strong Convexity and Smoothness
 
@@ -297,7 +304,8 @@ $$
   &= f(x) - \frac{1}{2M} \|\nabla f(x)\|_2^2.
   \end{aligned}
   $$
-  - RHS 就是当作为关于 $t$ 的二次函数即可正常求得. 
+
+  - RHS 就是当作为关于 $t$ 的二次函数即可正常求得.
 
 - 再进一步对上述不等式左右两侧同时减去最优值 $p^\star$, 可得:
 
@@ -306,6 +314,7 @@ $$
   f(x^+) - p^\star &\leq f(x) - p^\star - \frac{1}{2M} \|\nabla f(x)\|_2^2
   \end{aligned}
   $$
+
 - 由强凸性得到的 $f(x) - p^\star \leq \frac{1}{2m} \|\nabla f(x)\|_2^2$ 仍然成立, 故可得:
 
 $$
@@ -316,19 +325,22 @@ f(x^+) - p^\star &\leq f(x) - p^\star - \frac{1}{2M} \|\nabla f(x)\|_2^2 \\
 &:=c\cdot (f(x) - p^\star).
 \end{aligned}
 $$
+
 - 若从 $k=0$ 开始迭代, 则可得:
 
 $$
 \boxed{f(x^{(k)}) - p^\star \leq c^k (f(x^{(0)}) - p^\star)}
 $$
-  - 其中 $c = 1 - \frac{m}{M} \in (0,1)$. 
-  - 这说明 $f(x^{(k)})$ geometrically 收敛到 $p^\star$, 其收敛率由 $c$ 决定. 由于 $c$ 与条件数 $\kappa = \frac{M}{m}$ 有关, 故函数的条件数越小, 则 GD 的收敛率越快. 
+
+  - 其中 $c = 1 - \frac{m}{M} \in (0,1)$.
+  - 这说明 $f(x^{(k)})$ geometrically 收敛到 $p^\star$, 其收敛率由 $c$ 决定. 由于 $c$ 与条件数 $\kappa = \frac{M}{m}$ 有关, 故函数的条件数越小, 则 GD 的收敛率越快.
   - 这种收敛速度在优化算法中被称为线性收敛 (linear convergence), 其含义是误差 $f(x^{(k)}) - p^\star$ 的减少率在每次迭代中至少是一个常数 $c$ 的倍数.
 - 若再进一步结合收敛准则 $f(x^{(k)}) - p^\star < \epsilon$, 即令 $c^k (f(x^{(0)}) - p^\star) \leq \epsilon$, 可得 GD 的迭代次数 $k$ 满足:
 
   $$
   k \geq \frac{\log\left(\frac{f(x^{(0)}) - p^\star}{\epsilon}\right)}{\log\left(\frac{1}{c}\right)} = \frac{\log\left(\frac{f(x^{(0)}) - p^\star}{\epsilon}\right)}{\log\left(\frac{M}{m}\right)}.
   $$
+
   - 分子说明迭代的次数依赖于初始点 $x^{(0)}$ 的选择 (反映在初始点与最优点的 gap) 和容许的误差 $\epsilon$ (结束点与最优点的 gap).
   - 分母说明迭代的次数依赖于函数的条件数 $\kappa = \frac{M}{m}$, 其值越大 (即函数越不平坦), 则迭代的次数越多.
 
@@ -347,14 +359,16 @@ $$
       $$
       t - \frac{M}{2} t^2 \geq \frac{t}{2}, \quad t \in [0,1/M].
       $$
+
     - 因此, 当 $t \in [0,1/M]$ 时, 可得
 
       $$
       \tilde f(t) \leq f(x) - \|\nabla f(x)\|_2^2 \cdot \left(t - \frac{M}{2} t^2\right) \leq f(x) - \frac{t}{2} \|\nabla f(x)\|_2^2.
       $$
+
       由于 $\alpha \in (0,0.5)$, 故 $\frac{t}{2} \|\nabla f(x)\|_2^2 > \alpha t \|\nabla f(x)\|_2^2$, 进而可得 $\tilde f(t) \leq f(x) - \frac{1}{2} t \|\nabla f(x)\|_2^2 < f(x) - \alpha t \|\nabla f(x)\|_2^2$. 综上, 当 $t \in [0,1/M]$ 时, Armijo 条件必然满足.
 
-接着讨论其收敛率. 
+接着讨论其收敛率.
 
 -  Backtracking Line Search 的算法设计保证了, 其步长 $t$ 要么终止在 $t=1$, 要么终止在 $t \geq \beta/M$ (因为当 $t \leq 1/M$ 时, Armijo 条件必然满足, 故不会继续缩小步长, 故 $\beta/M$ 将会是最后一次缩小步长的下界). 因此, 考虑 Backtracking Line Search 的 Armijo 条件, 可得:
   - 当 $t=1$, 则 Armijo 条件为: $f(x - \nabla f(x)) \leq f(x) - \alpha \|\nabla f(x)\|_2^2$.
@@ -364,6 +378,7 @@ $$
   $$
   f(x^+) \leq f(x) - \alpha \min\{1, \frac{\beta}{M}\} \|\nabla f(x)\|_2^2.
   $$
+
 - 进一步对上述不等式左右两侧同时减去最优值 $p^\star$, 可得:
 
 $$
@@ -371,6 +386,7 @@ $$
 f(x^+) - p^\star &\leq f(x) - p^\star - \alpha \min\{1, \frac{\beta}{M}\} \|\nabla f(x)\|_2^2
 \end{aligned}
 $$
+
 - 进一步由强凸性(或 PL) 的等价形式 $\|\nabla f(x)\|_2^2 \geq 2m(f(x)-p^\star)$, 乘上负系数 $-\alpha \min\{1, \frac{\beta}{M}\}<0$ 时不等号方向翻转, 从而可得:
 
 $$
@@ -391,13 +407,14 @@ $$
 $$
 \tilde f(t) \leq f(x) - t \|\nabla f(x)\|_2^2 + \frac{M}{2} t^2 \|\nabla f(x)\|_2^2.
 $$
+
 并且在 Backtracking Line Search 中, 曾讨论当 $t \in [0,1/M]$ 时, 有
 
 $$
 \tilde f(t) = f(x^+) \leq f(x) - \frac{t}{2} \|\nabla f(x)\|_2^2.
 $$
 
-下面在此基础上通过一般的凸性条件来分析 GD 的收敛率. 
+下面在此基础上通过一般的凸性条件来分析 GD 的收敛率.
 - 由凸性的 Supporting Hyperplane 定理:
 
   $$
@@ -409,6 +426,7 @@ $$
   $$
   f(x) - p^\star \leq \nabla f(x)^\top (x - x^\star).
   $$
+
 - 对 $\|x^+ - x^\star\|_2^2$ 进行展开, 可得:
 
   $$
@@ -423,6 +441,7 @@ $$
     $$
     2t \nabla f(x)^\top (x - x^\star) = \|x - x^\star\|_2^2 - \|x^+ - x^\star\|_2^2 + t^2 \|\nabla f(x)\|_2^2.
     $$
+
 - 结合上述两式, 可得:
 
   $$
@@ -432,6 +451,7 @@ $$
   &\leq \frac{1}{2t} \left(\|x - x^\star\|_2^2 - \|x^+ - x^\star\|_2^2\right)
   \end{aligned}
   $$
+
   - 其中最后一步是由于 $t^2 \|\nabla f(x)\|_2^2 \geq 0$.
 - 迭代 $k$ 次后, 可得:
 
@@ -450,17 +470,19 @@ $$
     &\leq \frac{1}{2t} \|x^{(0)} - x^\star\|_2^2.
     \end{aligned}
     $$
+
   - 又由于 Descent Method 要求 $f(x^{(i)})$ 是单调递减的, 故 $k\cdot (f(x^{(k)}) - p^\star) \leq \sum_{i=1}^k (f(x^{(i)}) - p^\star)$, 进而可得:
 
 $$
 \boxed{f(x^{(k)}) - p^\star \leq \frac{1}{k} \cdot \frac{1}{2t} \|x^{(0)} - x^\star\|_2^2}
 $$
-- 该不等式说明, 在一般的凸性条件下, GD 的收敛率为 sublinear convergence, 即 $f(x^{(k)}) - p^\star = \mathcal{O}(1/k)$, 或 $k = \mathcal{O}(1/\epsilon)$. 相比于强凸性条件下的线性收敛, $k = \mathcal{O}(\log(1/\epsilon))$, 其收敛速度明显变慢.
 
+- 该不等式说明, 在一般的凸性条件下, GD 的收敛率为 sublinear convergence, 即 $f(x^{(k)}) - p^\star = \mathcal{O}(1/k)$, 或 $k = \mathcal{O}(1/\epsilon)$. 相比于强凸性条件下的线性收敛, $k = \mathcal{O}(\log(1/\epsilon))$, 其收敛速度明显变慢.
 
 ### Worst-case Lower Bound of First-order Methods
 
 一般地, 一阶方法 (first-order method) 都可以抽象为如下的迭代过程: 对于第 $k$ 次迭代, 其更新点 $x^{(k)}$ 为:
+
 $$
 \begin{aligned}
 x^{(k)} \in x^{(0)} + \text{span}\{\nabla f(x^{(0)}), \nabla f(x^{(1)}), \ldots, \nabla f(x^{(k-1)})\}.
@@ -470,15 +492,17 @@ $$
 如下定理说明任意一阶方法在的收敛速率下界为 $\mathcal{\Omega}(1/k^2)$.
 
 对于任意 $k \leq (n-1)/2$ 及任意初始点 $x^{(0)}$, 都能存在一个 $M$-Smooth 的凸函数 $f: \mathbb{R}^n \to \mathbb{R}$, 使得对于任意满足上述迭代过程的一阶方法, 都有:
+
 $$
 \begin{aligned}
-f(x^{(k)}) - p^\star \geq \frac{3M\|x^{(0)} - x^\star\|_2^2}{32(k+1)^2} 
+f(x^{(k)}) - p^\star \geq \frac{3M\|x^{(0)} - x^\star\|_2^2}{32(k+1)^2}
 \end{aligned}
 $$
 
 若进一步放宽 Convexity 的要求, 此时对于非凸优化问题, 我们只能考察其 $\epsilon$-stationary point 的收敛速率 (即 $\|\nabla f(x^{(k)})\|_2 \leq \epsilon$), 有定理如下.
 
 对于固定步长 $t\leq 1/L$, GD 方法有:
+
 $$
 \begin{aligned}
 \min_{i=0,\ldots,k} \|\nabla f(x^{(i)})\|_2 \leq \sqrt{\frac{2(f(x^{(0)}) - p^\star)}{t(k+1)}}.

@@ -20,7 +20,7 @@
 
 如下是几个特殊的凸优化问题的最优性条件:
 
-**无约束凸优化** 
+**无约束凸优化**
 \[\min f(x), x \in \mathbb{R}^n\]
 - $x^*$ 是最优解的充分必要条件是 $\nabla f(x^*) = 0$.
 
@@ -30,16 +30,15 @@
 \text{s.t.} & \quad Ax = b
 \end{align*}
 \]
-- $x^*$ 是最优解的充分必要条件是存在向量 $\lambda$ 使得 
+- $x^*$ 是最优解的充分必要条件是存在向量 $\lambda$ 使得
     \[\nabla f(x^*) + A^\top \lambda = 0, \quad Ax^* = b.
     \]
 
-> 这一结论可以理解如下. 
-> - 回顾, 对于 $x\in \mathbb{R}^n$ , $a^\top x = b$ 描述了一个超平面, 其法向量为 $a\in \mathbb{R}^n$. 
-> - 在等式约束 $Ax = b$ 下, 可行域为多个超平面的交集, 每个超平面的法向量为 $A$ 的一行. 
+> 这一结论可以理解如下.
+> - 回顾, 对于 $x\in \mathbb{R}^n$ , $a^\top x = b$ 描述了一个超平面, 其法向量为 $a\in \mathbb{R}^n$.
+> - 在等式约束 $Ax = b$ 下, 可行域为多个超平面的交集, 每个超平面的法向量为 $A$ 的一行.
 > - 故在最优点处, 目标函数的梯度 $\nabla f(x^*)$ 必须和所有的约束超平面相交的空间正交, 即 $\nabla f(x^*)$ 必须是这些法向量的线性组合, 即存在 $\lambda$ 使得 $\nabla f(x^*) + A^\top \lambda = 0$. (因为只有正交, 才说明在当前最优点处, 沿着可行域的方向, 目标函数不会再减小.)
 > - 结合等式约束本身, 即可得到最优性条件.
-
 
 **非负约束的凸优化**
 \[\begin{align*}
@@ -113,7 +112,7 @@
 \end{align*}
 \]
 
-- 其中绝对值 $|a^\top x + c|$ 等价于 $\max(a^\top x + c, -(a^\top x + c))$. 
+- 其中绝对值 $|a^\top x + c|$ 等价于 $\max(a^\top x + c, -(a^\top x + c))$.
 - 故令 $|a^\top x + c| \leq t$ 等价于 $a^\top x + c \leq t$ 且 $-(a^\top x + c) \leq t$.
 
 **最小化多面体函数**:
@@ -147,7 +146,7 @@
 \min & \quad \frac{1}{2} x^\top Q x + c^\top x \\
 \text{s.t.} & \quad x^\top Q_i x + a_i^\top x + b_i \leq 0, \quad i = 1, \ldots, m \\
 & \quad Ax \leq d
-\end{align*}    
+\end{align*}
 \]
 其中 \(Q, Q_i \succeq 0\).
 
