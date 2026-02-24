@@ -263,9 +263,11 @@ $$
       - 其中 $g = G_t(x) - \nabla \phi(x) \in \partial h(x-t G_t(x))$ 是根据 prox 算子与次梯度的关系得到的结果, 见 $(\dagger)$.
 
   - 将 $(1), (2), (3)$ 三个不等式相加, 并根据 composite objective 的定义 $F(x) = \phi(x) + h(x)$, 经整理化简, 对任意 $z\in\text{dom}(F)$ 都有:
-    $$\begin{aligned}
+    $$
+    \begin{aligned}
     F(x - t G_t(x)) &\leq F(z) +G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2 \\
-    \end{aligned}$$
+    \end{aligned}
+    $$
     若另记 $x^+ = x - t G_t(x)$, 则上式可以化作如下形式:
     $$
     F(x^+) \leq F(z) + G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2
