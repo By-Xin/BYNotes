@@ -34,11 +34,13 @@
 ## 1. First-Order Optimality Conditions
 
 回顾, 考虑如下一般的含约束的优化问题 (不要求是凸的):
-$$\begin{aligned}
+$$
+\begin{aligned}
 & \min_{\mathbf{x}\in \mathbb{R}^n} && f(\mathbf{x}) \\
 & \text{subject to} && c_i(\mathbf{x}) \leq 0, i\in \mathcal{I} \\
 & && c_j(\mathbf{x}) = 0, j\in \mathcal{E}
-\end{aligned}$$
+\end{aligned}
+$$
 
 其 Lagrangian 函数为 (统一记号: 等式约束乘子为 $\lambda_j$, 不等式约束乘子为 $\mu_i \ge 0$):
 $$
