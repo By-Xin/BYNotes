@@ -1,6 +1,7 @@
 # Convexity (I): Convexity in Maths
 
-> Ref: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> [!quote] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 
 ## Introduction
 
