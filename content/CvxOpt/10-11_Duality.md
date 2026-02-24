@@ -7,11 +7,13 @@
 ## Duality and Lagrangian
 
 考虑如下一般的含约束的优化问题 (不要求是凸的):
-$$\begin{aligned}
+$$
+\begin{aligned}
 & \min_{\mathbf{x}\in \mathbb{R}^n} && f(x) \\
 & \text{subject to} && g_i(\mathbf{x}) \leq 0, i\in \mathcal{I} \\
 & && h_j(\mathbf{x}) = 0, j\in \mathcal{E}
-\end{aligned}$$
+\end{aligned}
+$$
 
 其中 $f, g_i, h_j$ 都是定义在 $\mathbb{R}^n$ 上或其子集上的实值函数. 该问题的可行域为: $\mathcal{X} = \{\mathbf{x}\in \mathbb{R}^n: g_i(\mathbf{x}) \leq 0, i\in \mathcal{I}, h_j(\mathbf{x}) = 0, j\in \mathcal{E}\}$. 记该问题的最优值为 $p^* = \inf_{\mathbf{x}\in \mathcal{X}} f(\mathbf{x})$. 若存在 $\mathbf{x}^*\in \mathcal{X}$ 使得 $f(\mathbf{x}^*) = p^*$, 则称 $\mathbf{x}^*$ 为最优解.
 
@@ -36,6 +38,7 @@ $$
 $$
 d(\boldsymbol{\lambda}, \boldsymbol{\nu}) \leq p^*
 $$
+
 - *Proof*
     - 对于可行解 $\mathbf{x}\in \mathcal{X}$, 由于 $g_i(\mathbf{x}) \leq 0$ 和 $h_j(\mathbf{x}) = 0$, 可得:
         $$
