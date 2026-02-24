@@ -1,11 +1,10 @@
 # Gradient Descent
 
-> [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
-> - Reading: Convex Optimization by Boyd & Vandenberghe, Section 9.1
+> Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 
 ## Unconstrained Minimization Problems
 
+- *Book Reference: Convex Optimization by Boyd & Vandenberghe, Section 9.1*
 
 给定无约束优化问题:
 
@@ -80,14 +79,15 @@ $$
 $$
 \boxed{f(x) - p^\star \leq \frac{1}{2m} \|\nabla f(x)\|_2^2}
 $$
-    - 其直观含义很简单: 当点 $x$ 处的梯度 $\nabla f(x)$ 越小, 则该点的函数值 $f(x)$ 越接近最优值 $p^\star$. 
-    - 这里相当于在强凸假设下给出了收敛的速度估计. 根据收敛准则 $f(x^{(k)}) - p^\star < \epsilon$, 故令 $\frac{1}{2m} \|\nabla f(x^{(k)})\|_2^2 < \epsilon$, 可得梯度范数的**次优性条件**:
+- 其直观含义很简单: 当点 $x$ 处的梯度 $\nabla f(x)$ 越小, 则该点的函数值 $f(x)$ 越接近最优值 $p^\star$. 
+- 这里相当于在强凸假设下给出了收敛的速度估计. 根据收敛准则 $f(x^{(k)}) - p^\star < \epsilon$, 故令 $\frac{1}{2m} \|\nabla f(x^{(k)})\|_2^2 < \epsilon$, 可得梯度范数的**次优性条件**:
 
-  $$
-  \boxed{\|\nabla f(x^{(k)})\|_2 < \sqrt{2m\epsilon}}
-  $$
+$$
+\boxed{\|\nabla f(x^{(k)})\|_2 < \sqrt{2m\epsilon}}
+$$
 
 除了在函数值层面的分析, 还可以在任意点 $x \in S$ 上分析其与最优解 $x^\star$ 之间的距离, 具体如下.
+
 - 根据强凸性性质, 特令 $(\star)$ 中的 $y = x^\star$, 可得:
 
   $$
@@ -172,8 +172,7 @@ $$
 
 ## Descent Methods
 
-> [!info] References
-> - Reading: Convex Optimization by Boyd & Vandenberghe, Section 9.2
+- *Book Reference: Convex Optimization by Boyd & Vandenberghe, Section 9.2*
 
 ### General Descent Methods
 
@@ -462,28 +461,22 @@ $$
 ### Worst-case Lower Bound of First-order Methods
 
 一般地, 一阶方法 (first-order method) 都可以抽象为如下的迭代过程: 对于第 $k$ 次迭代, 其更新点 $x^{(k)}$ 为:
-$$
-\begin{aligned}
+$$\begin{aligned}
 x^{(k)} \in x^{(0)} + \text{span}\{\nabla f(x^{(0)}), \nabla f(x^{(1)}), \ldots, \nabla f(x^{(k-1)})\}.
-\end{aligned}
-$$
+\end{aligned}$$
 
 如下定理说明任意一阶方法在的收敛速率下界为 $\mathcal{\Omega}(1/k^2)$.
 
 对于任意 $k \leq (n-1)/2$ 及任意初始点 $x^{(0)}$, 都能存在一个 $M$-Smooth 的凸函数 $f: \mathbb{R}^n \to \mathbb{R}$, 使得对于任意满足上述迭代过程的一阶方法, 都有:
-$$
-\begin{aligned}
+$$\begin{aligned}
 f(x^{(k)}) - p^\star \geq \frac{3M\|x^{(0)} - x^\star\|_2^2}{32(k+1)^2} 
-\end{aligned}
-$$
+\end{aligned}$$
 
 若进一步放宽 Convexity 的要求, 此时对于非凸优化问题, 我们只能考察其 $\epsilon$-stationary point 的收敛速率 (即 $\|\nabla f(x^{(k)})\|_2 \leq \epsilon$), 有定理如下.
 
 对于固定步长 $t\leq 1/L$, GD 方法有:
-$$
-\begin{aligned}
+$$\begin{aligned}
 \min_{i=0,\ldots,k} \|\nabla f(x^{(i)})\|_2 \leq \sqrt{\frac{2(f(x^{(0)}) - p^\star)}{t(k+1)}}.
-\end{aligned}
-$$
+\end{aligned}$$
 
 这说明在非凸优化问题中, GD 的收敛速率将不超过 $\mathcal{O}(1/\sqrt{k})$.

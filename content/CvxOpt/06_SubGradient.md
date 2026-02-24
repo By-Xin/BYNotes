@@ -1,8 +1,8 @@
 # Subgradient
 
-> [!info] References
-> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
-> - Reading: 最优化: 建模、算法与理论, 刘浩洋等, 2.7 小节.
+> Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+>
+> Reading Reference: 最优化: 建模、算法与理论, 刘浩洋等, 2.7 小节.
 
 ## Subgradients and Subdifferentials
 
@@ -54,14 +54,12 @@ $$\partial f(x) = \text{conv}\left\{\nabla f_i(x): i \in \mathcal{A}(x)\right\} 
     - 由支撑超平面定理, 对于任意 $y \in \mathbb{R}^n$ 和 $i \in \mathcal{A}(x)$, 都有 $f_i(y) \geq f_i(x) + \nabla f_i(x)^\top (y - x)$.
     - 又根据 $\max$ 的性质, 对于任意 $y \in \mathbb{R}^n$: $f(y) = \max_{i=1...n} f_i(y) \geq \sum_{i \in \mathcal{A}(x)} \alpha_i f_i(y)$.
     - 因此, 对于任意 $y \in \mathbb{R}^n$:
-$$
-\begin{aligned}
+        $$\begin{aligned}
         f(y) &\geq \sum_{i \in \mathcal{A}(x)} \alpha_i f_i(y) \\
         &\geq \sum_{i \in \mathcal{A}(x)} \alpha_i [f_i(x) + \nabla f_i(x)^\top (y - x)] \\
         &= \sum_i \alpha_i f_i(x) + \left(\sum_{i \in \mathcal{A}(x)} \alpha_i \nabla f_i(x)\right)^\top (y - x) \\
         &:= f(x) + g^\top (y - x).
-\end{aligned}
-$$
+        \end{aligned}$$
 
 
 ***Example 4:*** 特别地, 考虑 indicator function $\delta_C(x)$, 其定义为:
@@ -130,10 +128,8 @@ $$\partial f(x; d) = \lim_{t \to 0^+} \frac{f(x + t d) - f(x)}{t} = \inf_{t > 0}
 - 对于可微函数, 上述定理退化为 $f$ 在 $x^*$ 处的梯度 $\nabla f(x^*)$ 等于 $0$ 是 $f$ 的一个全局最小点的充分必要条件. 但对于不可微函数, 上述定理提供了一个更一般的最优性条件.
 
 进一步考虑任意凸优化问题, 此时由于约束的存在, 其最优性并不一定在全局最小点处达到. 不过仍然可以通过次梯度来刻画其局部最优点的性质. 回顾, 对于一个凸优化问题, 给定 $f$ 是凸且可微的, 则
-$$
-\begin{aligned}\min_x &\quad f(x) \\
-\text{s.t.} &\quad x \in C\end{aligned}
-$$
+$$\begin{aligned}\min_x &\quad f(x) \\
+\text{s.t.} &\quad x \in C\end{aligned}$$
 其在 $x$ 是最优点的一阶充要条件为:
 $$
 \nabla f(x)^\top (y - x) \geq 0, \quad \forall y \in C.
@@ -154,12 +150,10 @@ $$0 \in \partial f(x) + \mathcal{N}_C(x).$$
 ***Example 1:*** 对于 $y\in \mathbb{R}^n, X\in \mathbb{R}^{n\times p}$ 和 $\lambda \geq 0$, 考虑 Lasso 问题:
 $$\min_\beta \frac{1}{2}\|y - X\beta\|_2^2 + \lambda \|\beta\|_1.$$
 - 该问题的次微分最优性条件为:
-$$
-\begin{aligned}
+    $$\begin{aligned}
     0 &\in \partial \left(\frac{1}{2}\|y - X\beta\|_2^2 + \lambda \|\beta\|_1\right) \\
     & = \partial \left(\frac{1}{2}\|y - X\beta\|_2^2\right) + \partial \left(\lambda \|\beta\|_1\right) \\
     & = -X^\top (y - X\beta) + \lambda \partial \|\beta\|_1.
-\end{aligned}
-$$
+    \end{aligned}$$
 - 故整理有 $X^\top (y - X\beta)  = \lambda g$, 其中  $g \in \partial \|\beta\|_1$, 即对于每个 $i= 1\cdots p$:
     $$g_i = \begin{cases}1, & \beta_i > 0 \\ -1, & \beta_i < 0 \\ [-1, 1], & \beta_i = 0\end{cases}.$$
