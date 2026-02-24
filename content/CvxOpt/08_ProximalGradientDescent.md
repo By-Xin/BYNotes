@@ -1,6 +1,8 @@
 # Proximal Gradient Descent
 
-> - Lecture Reference: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+> [!quote] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
+
 
 ## Proximal Gradient Descent
 
@@ -80,7 +82,9 @@ $$\boxed{\text{prox}_{t h}(x) = \arg\min_{z} \left[h(z) + \frac{1}{2t} \|z - x\|
 - 上述和次梯度的关系同样成立: $u = \text{prox}_{t h}(x)$ 等价于 $\frac{x-u}{t} \in \partial h(u)$.
 
 ***Example* ($\ell_1$ 的 prox 算子):** 对于 $h(x) = \|x\|_1$ 其中 $x\in\mathbb{R}^n$ 及 $t>0$, 其 prox 算子 $u = \text{prox}_{t h}(x)$ 的计算结果为:
-$$\text{prox}_{t h}(x) = \text{sign}(x) \odot \max\{|x| - t, 0\}$$
+$$
+\text{prox}_{t h}(x) = \text{sign}(x) \odot \max\{|x| - t, 0\}
+$$
 
 ### Proximal Gradient Descent Algorithm
 
@@ -101,11 +105,15 @@ Proximal Gradient Descent 的迭代更新步骤如下:
     $$x^{(k+1)} = \text{Proj}_{\mathcal{C}}(x^{(k)} - t_k \nabla \phi(x^{(k)}))$$
 
 观察上述迭代更新, 其还可以等价表述为:
-$$\begin{aligned}
+
+$$
+\begin{aligned}
 x^{(k+1)} &= \text{prox}_{t_k h}\left(x^{(k)} - t_k \nabla \phi(x^{(k)})\right) \\
 &= x^{(k)} - t_k \cdot \frac{x^{(k)} - \text{prox}_{t_k h}(x^{(k)} - t_k \nabla \phi(x^{(k)}))}{t_k} \\&:= \boxed{x^{(k)} - t_k G_{t_k}(x^{(k)})}\\
 &= \boxed{x^{(k)} - t_k  \nabla \phi(x^{(k)}) - t_k g^{(k)}}
-\end{aligned}$$
+\end{aligned}
+$$
+
 - 其中第三个等式中 
   $$G_{t_k}(x^{(k)}) =  \frac{x^{(k)} - \text{prox}_{t_k h}[x^{(k)} - t_k \nabla \phi(x^{(k)})]}{t_k}$$ 
   被称为**近端梯度映射(proximal gradient mapping)**.
@@ -123,13 +131,18 @@ x^{(k+1)} &= \text{prox}_{t_k h}\left(x^{(k)} - t_k \nabla \phi(x^{(k)})\right) 
 #### ISTA for Lasso Regression
 
 给定 $y\in\mathbb{R}^n$ 和 $X\in\mathbb{R}^{n\times p}$, Lasso 回归的目标函数为:
-$$\min_{\beta\in\mathbb{R}^p} \underbrace{\frac{1}{2} \|y - X\beta\|_2^2}_{\phi(\beta)} + \underbrace{\lambda \|\beta\|_1}_{h(\beta)}$$
+$$
+\min_{\beta\in\mathbb{R}^p} \underbrace{\frac{1}{2} \|y - X\beta\|_2^2}_{\phi(\beta)} + \underbrace{\lambda \|\beta\|_1}_{h(\beta)}
+$$
+
 - 其中 $\phi(\beta) = \frac{1}{2} \|y - X\beta\|_2^2$ 是光滑凸函数, $h(\beta) = \lambda \|\beta\|_1$ 是非光滑凸函数.
 - 利用 proximal gradient descent 方法, 首先分别求解梯度与近端算子:
   - $\nabla \phi(\beta) = X^\top (X\beta - y)$
   - $\text{prox}_{t h}(\beta) = \text{sign}(\beta) \odot \max\{|\beta| - t \lambda, 0\}:= S_{t \lambda}(\beta)$, 其中 $S_{t \lambda}(\cdot)$ 是**软阈值函数**(soft-thresholding function).
 - 因此, proximal gradient descent 的迭代更新步骤为:
-    $$\beta^{(k+1)} = S_{t \lambda}(\beta^{(k)} - t X^\top (X\beta^{(k)} - y))$$    
+    $$
+    \beta^{(k+1)} = S_{t \lambda}(\beta^{(k)} - t X^\top (X\beta^{(k)} - y))
+    $$    
     该步骤也可以化作如下分步进行的形式:
     - 首先计算一个临时变量 $\beta' = \beta^{(k)} - t X^\top (X\beta^{(k)} - y)$, 这相当于对光滑部分 $\phi$ 进行梯度下降的更新.
     - 然后对 $\beta'$ 进行软阈值处理 $\beta^{(k+1)} = S_{t \lambda}(\beta') = \text{sign}(\beta') \odot \max\{|\beta'| - t \lambda, 0\}$, 这相当于对非光滑部分 $h$ 进行近端映射的处理.
@@ -138,14 +151,25 @@ $$\min_{\beta\in\mathbb{R}^p} \underbrace{\frac{1}{2} \|y - X\beta\|_2^2}_{\phi(
 #### Low-rank Matrix Completion
 
 给定一个矩阵 $M \in \mathbb{R}^{m\times n}$ 以及一个索引集合 $\Omega \subseteq \{1, \ldots, m\} \times \{1, \ldots, n\}$ 表示已知的矩阵元素索引, 低秩矩阵补全的目标函数为:
-$$\begin{aligned} &\min_{X\in\mathbb{R}^{m\times n}} && \text{rank}(X) \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega \end{aligned}$$
+$$
+\begin{aligned} 
+&\min_{X\in\mathbb{R}^{m\times n}} && \text{rank}(X) \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega 
+\end{aligned}
+$$
 
 该优化问题进一步可以通过 Nuclear Norm 的松弛来转化为如下形式:
-$$\begin{aligned} &\min_{X\in\mathbb{R}^{m\times n}} && \|X\|_* \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega  \end{aligned}$$
+$$
+\begin{aligned} 
+&\min_{X\in\mathbb{R}^{m\times n}} && \|X\|_* \\ &\text{subject to} && X_{ij} = M_{ij}, \forall (i,j) \in \Omega  
+\end{aligned}
+$$
 - 可以证明该形式是一个凸优化问题. 
 
 若进一步考虑到观测数据中可能存在噪声, 则可以将约束条件松弛为一个正则项, 从而得到如下优化问题:
-$$\min_{X\in\mathbb{R}^{m\times n}} {\mu \|X\|_*} + {\frac{1}{2} \sum_{(i,j)\in\Omega} (X_{ij} - M_{ij})^2}=\min_{X\in\mathbb{R}^{m\times n}} \underbrace{\mu \|X\|_*}_{h(X)} + \underbrace{\frac{1}{2} \|P\odot (X - M)\|_F^2}_{\phi(X)}$$
+$$
+\min_{X\in\mathbb{R}^{m\times n}} {\mu \|X\|_*} + {\frac{1}{2} \sum_{(i,j)\in\Omega} (X_{ij} - M_{ij})^2}=\min_{X\in\mathbb{R}^{m\times n}} \underbrace{\mu \|X\|_*}_{h(X)} + \underbrace{\frac{1}{2} \|P\odot (X - M)\|_F^2}_{\phi(X)}
+$$
+
 - 其中 $\mu>0$ 是一个正则化参数, 用于平衡核范数正则项与数据拟合项之间的权重. $P_{ij} = 1$ 当 $(i,j) \in \Omega$ 时, 否则 $P_{ij} = 0$. $\odot$ 表示元素级乘法. $\|\cdot\|_F$ 是 Frobenius 范数, 定义为 $\|A\|_F = \sqrt{\sum_{i,j} A_{ij}^2}$.
 - 该优化问题同样可以通过 proximal gradient descent 方法来求解:
   - $\nabla \phi(X) = P \odot (X - M)$
@@ -211,52 +235,84 @@ $$x^{(k+1)} = \text{prox}_{t_k h}(x^{(k)} - t_k \nabla \phi(x^{(k)})):= x^{(k)} 
 
 在上述假设条件下, proximal gradient descent 方法的收敛性由以下定理保证:
 ***Theorem* (Proximal Gradient Descent 的收敛率):** 在满足上述条件, 并给定步长 $t_k = t \in (0, 1/L]$ 的情况下, 迭代序列 $\{x^{(k)}\}$ 满足
-$$F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2 t k}$$
+$$
+F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2 t k}
+$$
 即迭代点 $x^{(k)}$ 的函数值以 $\mathcal{O}(1/k)$ 的速率收敛到最优值 $F^*$.
 
 - *Proof*
   - 根据假设中的 $L$-Lipschitz 连续性, 对 $\phi$ 进行二阶泰勒展开的上界估计, 可得对于任意 $x,y \in \mathbb{R}^n$, 都有:
-    $$\phi(y) \leq \phi(x) + \nabla \phi(x)^\top (y-x) + \frac{L}{2} \|y-x\|^2$$
+    $$
+    \phi(y) \leq \phi(x) + \nabla \phi(x)^\top (y-x) + \frac{L}{2} \|y-x\|^2
+    $$
     - 令此处的 $y = x - t G_t(x)$, 则有:
-    $$\phi(x - t G_t(x)) \leq \phi(x) - t \nabla \phi(x)^\top G_t(x) + \frac{L t^2}{2} \|G_t(x)\|^2$$
+    $$
+    \phi(x - t G_t(x)) \leq \phi(x) - t \nabla \phi(x)^\top G_t(x) + \frac{L t^2}{2} \|G_t(x)\|^2
+    $$
     - 根据步长假设 $t \leq 1/L$, 可得 $\frac{L t^2}{2} \|G_t(x)\|^2 \leq \frac{t}{2} \|G_t(x)\|^2$. 从而:
-    $$\phi(x - t G_t(x)) \leq \phi(x) - t \nabla \phi(x)^\top G_t(x) + \frac{t}{2} \|G_t(x)\|^2 ,\quad(1)$$
+    $$
+    \phi(x - t G_t(x)) \leq \phi(x) - t \nabla \phi(x)^\top G_t(x) + \frac{t}{2} \|G_t(x)\|^2 ,\quad(1)
+    $$
   - 另一方面, 根据假设 $\phi(x), h(x)$ 均为凸函数, 对于任意 $z\in\text{dom}(F)$, 都有:
     - $\phi(x) \leq \phi(z)  - \nabla \phi(x)^\top (z-x), \quad (2)$
     - $h(x') \leq h(z) - g^\top (z-x')$ 其中 $g \in \partial h(x')$, $x' = x-t G_t(x)$. 从而若将 $x'$ 代入 $h$ 的不等式中, 则有
-    $$h(x - t G_t(x)) \leq h(z) - (G_t(x) - \nabla \phi(x))^\top (z - x + t G_t(x)),\quad(3)$$
+      $$
+      h(x - t G_t(x)) \leq h(z) - (G_t(x) - \nabla \phi(x))^\top (z - x + t G_t(x)),\quad(3)
+      $$
+
       - 其中 $g = G_t(x) - \nabla \phi(x) \in \partial h(x-t G_t(x))$ 是根据 prox 算子与次梯度的关系得到的结果, 见 $(\dagger)$.
+
   - 将 $(1), (2), (3)$ 三个不等式相加, 并根据 composite objective 的定义 $F(x) = \phi(x) + h(x)$, 经整理化简, 对任意 $z\in\text{dom}(F)$ 都有:
     $$\begin{aligned}
     F(x - t G_t(x)) &\leq F(z) +G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2 \\
     \end{aligned}$$
     若另记 $x^+ = x - t G_t(x)$, 则上式可以化作如下形式:
-  $$F(x^+) \leq F(z) + G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2$$
+    $$
+    F(x^+) \leq F(z) + G_t(x)^\top (x-z) - \frac{t}{2} \|G_t(x)\|^2
+    $$
   - 令 $z=x$, 则有:
-    $$F(x^+) \leq F(x) - \frac{t}{2} \|G_t(x)\|^2$$
+    $$
+    F(x^+) \leq F(x) - \frac{t}{2} \|G_t(x)\|^2
+    $$
      - 这表明每次迭代都会使得函数值至少下降 $\frac{t}{2} \|G_t(x)\|^2$, 从而保证了函数值的单调不增.
   - 特别地, 令 $z = x^*$, 则有:
-    $$\begin{aligned}
+    $$
+    \begin{aligned}
     F(x^+) - F^* &\leq G_t(x)^\top (x-x^*) - \frac{t}{2} \|G_t(x)\|^2 \\
     &= \frac{1}{2t} (\|x-x^*\|^2 - \|x - x^*- t G_t(x)\|^2) \\
     &= \frac{1}{2t} (\|x-x^*\|^2 - \|x^+ - x^*\|^2) 
-    \end{aligned}$$
+    \end{aligned}
+    $$
+
     - 其中第二行的等式是通过单纯的代数整理得到的: $v^\top u - \frac{t}{2} \|v\|^2 = \frac{1}{2t} (\|u\|^2 - \|u - t v\|^2)$.
   - 因此从 $x^{(0)}$ 开始迭代, 可以得到如下递推关系:
-    $$F(x^{(k+1)}) - F^* \leq \frac{1}{2t} (\|x^{(k)}-x^*\|^2 - \|x^{(k+1)} - x^*\|^2)$$
+    $$
+    F(x^{(k+1)}) - F^* \leq \frac{1}{2t} (\|x^{(k)}-x^*\|^2 - \|x^{(k+1)} - x^*\|^2)
+    $$
     将上述不等式两边同时求和, 则有:
-    $$\sum_{i=0}^{k-1} (F(x^{(i+1)}) - F^*) \leq \frac{1}{2t} \|x^{(0)} - x^*\|^2$$
+    $$
+    \sum_{i=0}^{k-1} (F(x^{(i+1)}) - F^*) \leq \frac{1}{2t} \|x^{(0)} - x^*\|^2
+    $$
     从而由于 $F(x^{(i+1)})$ 是单调不增的, 可得:
-    $$k (F(x^{(k)}) - F^*) \leq \sum_{i=0}^{k-1} (F(x^{(i+1)}) - F^*) \leq \frac{1}{2t} \|x^{(0)} - x^*\|^2$$
+    $$
+    k (F(x^{(k)}) - F^*) \leq \sum_{i=0}^{k-1} (F(x^{(i+1)}) - F^*) \leq \frac{1}{2t} \|x^{(0)} - x^*\|^2
+    $$
     从而得到最终的收敛率结果:
-    $$F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2 t k}$$
+    $$
+    F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2 t k}
+    $$
+
 $\square$
 
 如果我们使用 backtracking line search 来选择步长, 我们可以从某个 $t = t_0>0$ 开始, 通过不断缩小 $t \leftarrow \rho t$ 来不断回溯, 直到满足条件:
-$$\phi(x - t G_t(x)) \leq \phi(x) - t \nabla \phi(x)^\top G_t(x) + \frac{t}{2} \|G_t(x)\|^2$$
+$$
+\phi(x - t G_t(x)) \leq \phi(x) - t \nabla \phi(x)^\top G_t(x) + \frac{t}{2} \|G_t(x)\|^2
+$$
 并且每次缩放 $t$ 后都要重新计算 $x^+(t)=\text{prox}_{t h}(x-t\nabla\phi(x))$ 与 $G_t(x)$.
 并且可以由类似的分析过程来证明, 在满足上述条件的情况下, 其收敛情况为:
-$$F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2k\,\underline{t}},\qquad \underline{t}:=\min_{0\le i\le k-1} t_i$$
+$$
+F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2k\,\underline{t}},\qquad \underline{t}:=\min_{0\le i\le k-1} t_i
+$$
 并且在常见 backtracking 设置下, $\underline{t}$ 可由 $\min\{t_0,\rho/L\}$ 给出一个粗下界.
 
 
@@ -268,7 +324,9 @@ $$F(x^{(k)}) - F^* \leq \frac{\|x^{(0)} - x^*\|^2}{2k\,\underline{t}},\qquad \un
 ### Projected Gradient Descent
 
 由 Proximal Gradient Descent 的定义可知, 当非光滑部分 $h$ 是一个指示函数 $\delta_{\mathcal{C}}$ 且 $\mathcal{C}$ 为非空闭凸集时, 其近端算子 $\text{prox}_{t h}$ 就退化为一个投影算子 $\text{Proj}_{\mathcal{C}}$ 且解唯一. 因此, 在这种特殊情况下, Proximal Gradient Descent 就退化为传统的**投影梯度下降**(Projected Gradient Descent) 方法. 其迭代更新步骤为:
-$$x^{(k+1)} = \text{Proj}_{\mathcal{C}}(x^{(k)} - t_k \nabla \phi(x^{(k)}))$$
+$$
+x^{(k+1)} = \text{Proj}_{\mathcal{C}}(x^{(k)} - t_k \nabla \phi(x^{(k)}))
+$$
 - 其中 $\text{Proj}_{\mathcal{C}}(x) = \arg\min_{z\in\mathcal{C}} \|z-x\|$ 是将 $x$ 投影到集合 $\mathcal{C}$ 上的操作.
 - 其含义即为: 在每次迭代中, 首先对光滑部分 $\phi$ 进行梯度下降的更新, 得到一个临时变量 $x' = x^{(k)} - t_k \nabla \phi(x^{(k)})$; 然后将 $x'$ 投影到约束集合 $\mathcal{C}$ 上, 从而得到新的参数 $x^{(k+1)}$.
 
@@ -283,12 +341,16 @@ $$\min_{x\in\mathbb{R}^n} F(x)$$
 - 其中 $F$ 是一个适当的闭凸函数, 并不要求其具有可微性.
 
 对于上述优化问题, Proximal Gradient Descent 的迭代更新步骤退化为:
-$$x^{(k+1)} = \text{prox}_{t_k F}(x^{(k)}) = \arg\min_{z} \left[\frac{1}{2t_k} \|z - x^{(k)}\|^2 + F(z)\right]$$
+$$
+x^{(k+1)} = \text{prox}_{t_k F}(x^{(k)}) = \arg\min_{z} \left[\frac{1}{2t_k} \|z - x^{(k)}\|^2 + F(z)\right]
+$$
 
 ## Acceleration: Nesterov's Accelerated Gradient Method
 
 对于优化问题
-$$\min_{x\in\mathbb{R}^n} F(x) = \phi(x) + h(x)$$
+$$
+\min_{x\in\mathbb{R}^n} F(x) = \phi(x) + h(x)
+$$
 使用 Proximal Gradient Descent, 如果光滑部分的函数 $\phi$ 是 $L$-smooth 的, 则目标函数的收敛速度为 $\mathcal{O}(1/k)$. 但是, 通过一些加速技巧, 可以将收敛速度提升到 $\mathcal{O}(1/k^2)$. Nesterov 在 1983, 1988, 2005 年提出了三种改进的一阶算法. Beck 和 Teboulle 在 2008 年给出了 Nesterov 1983 算法的 Proximal Gradient 版本, 被称为 **FISTA**(Fast Iterative Shrinkage-Thresholding Algorithm).
 
 ### FISTA Algorithm
@@ -314,9 +376,13 @@ FISTA 的算法步骤如下:
 3. $\dfrac{\gamma_k^2}{t_k} = \mathcal{O}(1/k^2)$.
 
 在满足上述假设条件, 并在固定步长 $t_k = t \in (0, 1/L]$ 的情况下, FISTA 迭代序列 $\{x^{(k)}\}$ 满足
-$$F(x^{(k)}) - F^* \leq \frac{2 \|x^{(0)} - x^*\|^2}{t (k+1)^2}$$
+$$
+F(x^{(k)}) - F^* \leq \frac{2 \|x^{(0)} - x^*\|^2}{t (k+1)^2}
+$$
 - 特别地, 当取 $t = 1/L$ 时, 上式退化为常见形式:
-$$F(x^{(k)}) - F^* \leq \frac{2 L \|x^{(0)} - x^*\|^2}{(k+1)^2}$$
+$$
+F(x^{(k)}) - F^* \leq \frac{2 L \|x^{(0)} - x^*\|^2}{(k+1)^2}
+$$
 
 #### Line Search for FISTA
 
