@@ -1,5 +1,18 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { isFolderPath } from "./quartz/util/path"
+import type { QuartzPluginData } from "./quartz/plugins/vfile"
+
+const byNameFolderFirst = (f1: QuartzPluginData, f2: QuartzPluginData) => {
+  const f1IsFolder = isFolderPath(f1.slug ?? "")
+  const f2IsFolder = isFolderPath(f2.slug ?? "")
+  if (f1IsFolder && !f2IsFolder) return -1
+  if (!f1IsFolder && f2IsFolder) return 1
+
+  const f1Title = (f1.frontmatter?.title ?? f1.slug ?? "").toLocaleLowerCase()
+  const f2Title = (f2.frontmatter?.title ?? f2.slug ?? "").toLocaleLowerCase()
+  return f1Title.localeCompare(f2Title, undefined, { numeric: true, sensitivity: "base" })
+}
 
 /**
  * Quartz 4 Configuration
@@ -83,7 +96,9 @@ const config: QuartzConfig = {
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
-      Plugin.FolderPage(),
+      Plugin.FolderPage({
+        sort: byNameFolderFirst,
+      }),
       Plugin.TagPage(),
       Plugin.ContentIndex({
         enableSiteMap: true,

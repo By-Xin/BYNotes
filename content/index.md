@@ -4,4 +4,4 @@ title: Statdiy
 
 # Statdiy
 
-- [Convex Optimization CMU](./CvxOpt)
+- [Convex Optimization CMU](./ConvexOptimization)

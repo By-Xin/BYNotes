@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SRC="/home/byxin/File/Obsidian_BY_ACA/20_StudyNotes/Lectures/ConvexOptimization_CMU"
-DST="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/content/CvxOpt"
+DST="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/content/ConvexOptimization"
 
 mkdir -p "$DST"
 
@@ -37,7 +37,7 @@ title: Statdiy
 
 # Statdiy
 
-- [Convex Optimization CMU](./CvxOpt)
+- [Convex Optimization CMU](./ConvexOptimization)
 EOF
 
 echo "Imported markdown files to: $DST"

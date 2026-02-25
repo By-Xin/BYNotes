@@ -192,6 +192,6 @@ $$
 
 > [!example]
 >
-> ![Ref: CMU Lecture Notes](https://raw.githubusercontent.com/By-Xin/Blog-figs/main/202602202243818.png)
+> <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/202602202243818.png" alt="Ref: CMU Lecture Notes" style="width: 50%;">
 >
 > 如图所示是一个二元场景下的 QP 问题的原问题和对偶问题. 可见, 对偶函数 $d(\mathbf{u}, \mathbf{v})$ 关于 $(\mathbf{u}, \mathbf{v})$ 是凹函数, 且在对偶可行点上都提供了原问题的一个 lower bound.

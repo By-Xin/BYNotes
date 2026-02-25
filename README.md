@@ -9,7 +9,7 @@ This repository publishes notes with Quartz.
 
 ## Content location
 
-- Published notes are under `content/CvxOpt`.
+- Published notes are under `content/ConvexOptimization`.
 
 ## Markdown writing best practices
 
@@ -67,14 +67,14 @@ title: Display Title
 
 ## New note publish workflow
 
-1. Create a new note under `content/CvxOpt`, e.g. `10_Duality.md`.
+1. Create a new note under `content/ConvexOptimization`, e.g. `10_Duality.md`.
 2. Write content following the rules above.
 3. Run quick checks:
 
 ```bash
-rg -n "Lecture Reference|Reading Reference|Book Reference|> Ref:" content/CvxOpt
-rg -n '\$\$\\begin\{aligned\}|\\end\{aligned\}\$\$' content/CvxOpt
-ls -1 content/CvxOpt | rg "——"
+rg -n "Lecture Reference|Reading Reference|Book Reference|> Ref:" content/ConvexOptimization
+rg -n '\$\$\\begin\{aligned\}|\\end\{aligned\}\$\$' content/ConvexOptimization
+ls -1 content/ConvexOptimization | rg "——"
 ```
 
 4. Local preview:
@@ -86,7 +86,7 @@ npx quartz build --serve
 5. Publish:
 
 ```bash
-git add content/CvxOpt README.md
+git add content/ConvexOptimization README.md
 git commit -m "Add note: 10_Duality"
 git push origin main
 ```
