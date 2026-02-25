@@ -2,7 +2,8 @@
 
 ## Linear Programs (LPs)
 
-> *Book Reference: Convex Optimization by Boyd & Vandenberghe, Section 4.3*
+> [!quote] References
+> - Lecture: https://www.stat.cmu.edu/~ryantibs/convexopt-F18/
 
 ***Definition:* (Linear Program, LP)** 目标函数和约束函数都是 affine 时的优化问题称为线性规划 (Linear Program, LP), 其一般形式为:
 

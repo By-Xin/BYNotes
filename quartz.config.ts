@@ -15,7 +15,14 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "en-US",
     baseUrl: "by-xin.github.io/BYNotes",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: [
+      "private",
+      "templates",
+      ".obsidian",
+      "**/archive/**",
+      "**/assets/**",
+      "**/Assets/**",
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
