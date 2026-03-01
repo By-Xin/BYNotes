@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/Users/xinby/Documents/ByAca/20_StudyNotes/Lectures/ConvexOptimization_CMU/**)",
+      "Bash(npm run import:convex)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

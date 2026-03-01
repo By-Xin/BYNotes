@@ -95,13 +95,6 @@ git push origin main
 - Workflow: `.github/workflows/deploy.yml`
 - Site: `https://by-xin.github.io/BYNotes/`
 
-## Optional: sync from external notes
-
-```bash
-cd /Users/xinby/BYNotes
-chmod +x scripts/import_convex_notes.sh scripts/make_directory_routes.sh
-npm run import:convex
-```
 
 ## Local preview (Quartz)
 

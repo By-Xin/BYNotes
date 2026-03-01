@@ -35,6 +35,7 @@ const config: QuartzConfig = {
       "**/archive/**",
       "**/assets/**",
       "**/Assets/**",
+      "CATALOG.md",
     ],
     defaultDateType: "modified",
     theme: {
