@@ -21,7 +21,7 @@ const byNameFolderFirst = (f1: QuartzPluginData, f2: QuartzPluginData) => {
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Statdiy",
+    pageTitle: "OptOpt",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,

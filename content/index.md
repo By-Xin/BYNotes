@@ -1,7 +1,7 @@
 ---
-title: Statdiy
+title: OptOpt
 ---
 
-# Statdiy
+# OptOpt
 
 - [Convex Optimization CMU](./ConvexOptimization)

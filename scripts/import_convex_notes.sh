@@ -32,10 +32,10 @@ EOF
 
 cat > "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/content/index.md" << 'EOF'
 ---
-title: Statdiy
+title: OptOpt
 ---
 
-# Statdiy
+# OptOpt
 
 - [Convex Optimization CMU](./ConvexOptimization)
 EOF
