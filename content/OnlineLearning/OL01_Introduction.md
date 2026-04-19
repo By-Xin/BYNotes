@@ -1,5 +1,5 @@
 ---
-title: Online Learning and Online Convex Optimization: Introduction
+title: "Online Learning and Online Convex Optimization: Introduction"
 ---
 
 # Online Learning and Online Convex Optimization: Introduction
