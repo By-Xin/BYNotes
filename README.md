@@ -9,7 +9,8 @@ This repository publishes notes with Quartz.
 
 ## Content location
 
-- Published notes are under `content/ConvexOptimization`.
+- Published notes are organized by topic under `content/<TopicName>`.
+- Current topics include `content/ConvexOptimization` and `content/OnlineLearning`.
 
 ## Markdown writing best practices
 
@@ -67,31 +68,32 @@ title: Display Title
 
 ## New note publish workflow
 
-1. Create a new note under `content/ConvexOptimization`, e.g. `10_Duality.md`.
-2. Write content following the rules above.
-3. Run quick checks:
+1. Choose the target topic directory under `content/<TopicName>`, or create a new one with its own `index.md`.
+2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10_Duality.md` or `content/OnlineLearning/OL01_Introduction.md`.
+3. Write content following the rules above.
+4. Run quick checks on the target topic directory:
 
 ```bash
-rg -n "Lecture Reference|Reading Reference|Book Reference|> Ref:" content/ConvexOptimization
-rg -n '\$\$\\begin\{aligned\}|\\end\{aligned\}\$\$' content/ConvexOptimization
-ls -1 content/ConvexOptimization | rg "——"
+rg -n "Lecture Reference|Reading Reference|Book Reference|> Ref:" content/<TopicName>
+rg -n '\$\$\\begin\{aligned\}|\\end\{aligned\}\$\$' content/<TopicName>
+ls -1 content/<TopicName> | rg "——"
 ```
 
-4. Local preview:
+5. Local preview:
 
 ```bash
 npx quartz build --serve
 ```
 
-5. Publish:
+6. Publish:
 
 ```bash
-git add content/ConvexOptimization README.md
+git add content/<TopicName> content/index.md README.md
 git commit -m "Add note: 10_Duality"
 git push origin main
 ```
 
-6. Verify deployment:
+7. Verify deployment:
 - Workflow: `.github/workflows/deploy.yml`
 - Site: `https://by-xin.github.io/BYNotes/`
 
