@@ -1,9 +1,9 @@
 ---
-title: Online Learning
+title: Online Learning and Online Convex Optimization
 ---
 
-# Online Learning
+# Online Learning and Online Convex Optimization
 
 Course and reading notes for Online Learning and Online Convex Optimization, currently centered on the notes by Shai Shalev-Shwartz.
 
-- [[OL01_Introduction|OL01 Introduction]]
+- [[01_Introduction|01 Introduction]]

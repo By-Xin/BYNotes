@@ -12,12 +12,20 @@ This repository publishes notes with Quartz.
 - Published notes are organized by topic under `content/<TopicName>`.
 - Current topics include `content/ConvexOptimization` and `content/OnlineLearning`.
 
+## Topic naming rules
+
+- Topic directories use concise PascalCase names under `content/`, e.g. `ConvexOptimization`, `OnlineLearning`.
+- Topic landing pages may use longer display titles in `index.md`.
+- The display title for `content/OnlineLearning` is `Online Learning and Online Convex Optimization`.
+- Do not maintain per-topic `CATALOG.md` files unless explicitly requested.
+
 ## Markdown writing best practices
 
 Follow these rules to maximize one-pass successful rendering.
 
 1. Filename convention
 - Use `NN_Topic.md` style, e.g. `10_Duality.md`.
+- Use the same numeric convention for Online Learning notes, e.g. `01_Introduction.md`, `02_Online_Convex_Optimization.md`.
 - Use only `A-Z a-z 0-9 _ - ( )`.
 - Do not use special punctuation in filenames (for example `——`).
 
@@ -66,10 +74,12 @@ title: Display Title
 ---
 ```
 
+- If the `title` value contains `:`, wrap it in quotes, e.g. `title: "A: B"`.
+
 ## New note publish workflow
 
 1. Choose the target topic directory under `content/<TopicName>`, or create a new one with its own `index.md`.
-2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10_Duality.md` or `content/OnlineLearning/OL01_Introduction.md`.
+2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10_Duality.md` or `content/OnlineLearning/01_Introduction.md`.
 3. Write content following the rules above.
 4. Run quick checks on the target topic directory:
 

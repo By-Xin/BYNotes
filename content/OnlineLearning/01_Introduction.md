@@ -1,8 +1,8 @@
 ---
-title: "Online Learning and Online Convex Optimization: Introduction"
+title: "01 Introduction"
 ---
 
-# Online Learning and Online Convex Optimization: Introduction
+# 01 Introduction
 
 > [!info] References
 > - Reading: Online Learning and Online Convex Optimization, Shai Shalev-Shwartz.

@@ -17,7 +17,7 @@ Manages synchronization of academic notes from external sources to the BYNotes p
 ### Phase 1: Path Resolution & Setup
 - Parse source and target paths from natural language
 - Validate paths and create target directories if needed
-- Check for existing CATALOG.md or create new one for the topic
+- Check the topic `index.md` and current note naming scheme before syncing
 
 ### Phase 2: Content Analysis
 - Scan source files for markdown content
@@ -29,19 +29,19 @@ Manages synchronization of academic notes from external sources to the BYNotes p
 - Calculate file hashes and modification times
 
 ### Phase 3: Change Detection & Reporting  
-- Compare with existing target content and catalog
+- Compare with existing target content
 - Identify new files, modifications, and potential issues
 - Generate comprehensive sync report:
   - Files to be added/updated
   - Format compliance issues found
-  - Version differences from catalog
+  - Naming or structure differences from the target topic
 
 ### Phase 4: Confirmation & Execution
 - Present detailed sync plan for user approval
 - Execute approved operations:
   - Copy/update files to target directory
   - Apply format corrections if needed
-  - Update or create CATALOG.md with new versions
+  - Update topic `index.md` links when needed
 - Follow README.md publish workflow:
   - Run format checks
   - Prepare for local preview
@@ -56,9 +56,8 @@ Ensures all synced content follows:
 - Reference block format
 - Heading hierarchy rules
 
-## Version Tracking
+## Topic Tracking
 
-- Maintains CATALOG.md for each topic directory
-- Tracks SHA256 hashes and modification times
-- Preserves sync status notes and warnings
+- Follows the naming and display-title rules defined in `README.md`
+- Treats `index.md` as the source of truth for topic display names and note entry links
 - Integrates with git workflow for change management

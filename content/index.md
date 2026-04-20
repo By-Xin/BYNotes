@@ -5,4 +5,4 @@ title: OptOpt
 # OptOpt
 
 - [Convex Optimization CMU](./ConvexOptimization)
-- [Online Learning](./OnlineLearning)
+- [Online Learning and Online Convex Optimization](./OnlineLearning)
