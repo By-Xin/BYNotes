@@ -24,9 +24,10 @@ This repository publishes notes with Quartz.
 Follow these rules to maximize one-pass successful rendering.
 
 1. Filename convention
-- Use `NN_Topic.md` style, e.g. `10_Duality.md`.
-- Use the same numeric convention for Online Learning notes, e.g. `01_Introduction.md`, `02_Online_Convex_Optimization.md`.
-- Use only `A-Z a-z 0-9 _ - ( )`.
+- For course notes, use readable blog-style slugs: `N.Title-Words.md`, e.g. `5.Gradient-Descent.md`.
+- For combined chapters, keep the numeric range before the dot, e.g. `10-11.Duality.md`.
+- Use hyphens between words in filenames; avoid camelCase and underscores for title words.
+- Use only `A-Z a-z 0-9 . - ( )`.
 - Do not use special punctuation in filenames (for example `——`).
 
 2. Required top structure
@@ -79,7 +80,7 @@ title: Display Title
 ## New note publish workflow
 
 1. Choose the target topic directory under `content/<TopicName>`, or create a new one with its own `index.md`.
-2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10_Duality.md` or `content/OnlineLearning/01_Introduction.md`.
+2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10-11.Duality.md` or `content/OnlineLearning/1.Introduction.md`.
 3. Write content following the rules above.
 4. Run quick checks on the target topic directory:
 
@@ -99,7 +100,7 @@ npx quartz build --serve
 
 ```bash
 git add content/<TopicName> content/index.md README.md
-git commit -m "Add note: 10_Duality"
+git commit -m "Add note: 10-11 Duality"
 git push origin main
 ```
 
