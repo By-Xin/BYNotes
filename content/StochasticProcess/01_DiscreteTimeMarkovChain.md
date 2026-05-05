@@ -40,9 +40,7 @@ $\quad$
 
 > *抓住当下, 未来就与过去无关.*
 
-## 2. Discrete-Time Markov Chain
-
-### 2.1 Basic Definitions
+## 2. Basic Definitions
 
 ***Definition* (Discrete-Time Markov Chain)** 给定离散时间, 离散过程的随机变量序列 $\{X_n\}$, 若满足
 $$
@@ -74,7 +72,7 @@ $$
 - Markov Chain 是一个 chain, 其可以直观地理解成一个 Directed Graph (即有向图), 其中每一个节点代表一个状态, 每一条有向边代表一个转移概率. 
 - Stationary Markov Chain 则意味着这个 Directed Graph 是一个 *Time-Homogeneous* 的图, 即转移概率不随时间变化. 也就是一旦这个 Directed Graph 确定了, 那么和具体到底什么时刻发生转移无关, 只要知道当前状态, 就可以根据这个 Directed Graph 来计算未来的状态分布.
 
-### 2.2 $n$-step Transition Probability and Chapman-Kolmogorov Equation
+## 3. $n$-step Transition Probability and Chapman-Kolmogorov Equation
  
 Markov Chain 的一个最基本任务是计算转移概率:
 $$
@@ -147,14 +145,14 @@ $$
 - $\sum_{j} P_{ij} = 1, \forall i$. 即矩阵的行和为 $1$. 相当于从状态 $i$ 出发, 转移到所有可能的状态 $j$ 的概率之和为 $1$.
 - 其行类似于一个"输入", 列类似于一个"输出".
 
-### 2.3 Classification of States
+## 4. Classification of States
 
 我们并没有满足于仅仅知道 $n$ 步转移概率的计算方法, 还想知道当 $n$ 趋近于无穷大时, $n$ 步转移概率的极限行为. 特别地, 我们想知道当 $n \to \infty$ 时, $P_{ij}(n)$ 是否可能和一个与 $i$ 无关的常数 $P_j$ 收敛.  此时, 一个随机过程退化成了一个随机变量 (一个分布). 在渐进意义上, 虽然其本身是一个随机过程, 但其在 "in the long run" 上在每个阶段 (状态) 出现的概率是一个常数, 与时间无关.
 
 
 首先对 Markov Chain 的状态进行分类. 对于 Markov Chain $\{X_n\}$, 定义状态 $i$ 和状态 $j$ 之间的关系如下:
 
-#### Reachability and Communication
+### Reachability and Communication
 
 ***Definition* (Reachability):** 状态 $i$ 可以到达状态 $j$ (记为 $i \to j$), 如果存在一个正整数 $n$ 使得 $P_{ij}(n) > 0$. 即存在一个正整数 $n$ 使得从状态 $i$ 出发经过 $n$ 步转移到状态 $j$ 的概率大于零.
 - Reachability 是非对称的关系, 即 $i \to j$ 不一定意味着 $j \to i$.
@@ -164,7 +162,7 @@ $$
 - Communication 是对称的关系, 即如果 $i \leftrightarrow j$, 则 $j \leftrightarrow i$.
 - Communication 是传递的关系, 即如果 $i \leftrightarrow j$ 且 $j \leftrightarrow k$, 则 $i \leftrightarrow k$.
 
-#### Closed Set and Irreducibility
+### Closed Set and Irreducibility
 
 ***Definition* (Closed State Set):**  对于状态集 $C \subseteq \mathcal{S}$, 称 $C$ 是 close 的, 当且仅当 $\forall i \in C, j \notin C$, $P_{ij}(n) = 0, \forall n \geq 0$. 即对于状态集 $C$ 中的任意状态 $i$, 都无法转移到状态集 $C$ 外的任意状态 $j$.
 - Closed 的定义意味着, 一旦进入了 closed 集合中的某个状态, 就无法再离开这个 closed 集合.
@@ -190,7 +188,7 @@ $$
 - 左下角的 $\mathsf{0}$, 则表示从下面的对应的状态集合出发, 无法转移到上面的对应的状态集合. (Recall 一步转移矩阵的行相当于"起点", 列相当于"终点", 因此 $\mathsf{0}$ 的存在意味着从下面的状态集合出发, 无法转移到上面的状态集合.)
 - 若递归地, $\mathsf{P}, \mathsf{Q}$ 仍然是可约的, 则可以继续进行分块, 直到所有的分块都是不可约的. 从而对于一个可约的 Markov Chain, 其一步转移概率矩阵 $\mathbf{P}$ 可以通过适当的行列变换, 呈现出一个阶梯状的分块结构, 其左下角的分块全为 $\mathsf{0}$, 其余的分块都是不可约的.
 
-#### Transient State and Recurrent State
+### Transient State and Recurrent State
 
 常返性 (Recurrence) 是 Markov Chain 中一个非常重要的概念. 其描述了 Markov Chain 中状态的长期行为. 其在数学上有几个等价命题. 对于其中一种叙述方式, 首先引入首达概率之概念:
 
@@ -404,11 +402,11 @@ $$
     - 这事实上是一个更强的结论, 说明 $j$ 是 almost surely 无穷次回到 $i$ 的. 从而 $j$ 也是 recurrent 的.
 
 
-### 2.4 Long-run Properties of Markov Chain
+## 5. Long-run Properties of Markov Chain
 
 接下来我们想要重点考察 Markov Chain 的长期行为. 也即当 $n \to \infty$ 时, $P_{ij}(n)$ 的极限行为. 首先对于其极限值的存在性进行讨论.
 
-#### Existence of Limiting Distribution
+### Existence of Limiting Distribution
 
 考虑转移概率的 Cesaro Sum:
 $$
@@ -601,7 +599,7 @@ $$
 - Markov Chain 在图上的典型应用之一是 PageRank 算法, 其核心思想就是将网页之间的链接关系建模为一个 Graph, 而一个网页的被链接指向数量 (即其度) 就是其重要程度的一个指标. 通过计算该 Graph 上的 stationary distribution, 就可以得到每个网页的重要程度. 这也是 PageRank 算法的一个重要性质.
 
 
-### 2.5 Transient Behavior of Markov Chain
+## 6. Transient Behavior of Markov Chain
 
 对于 Transient State, 其长期行为是趋近于 $0$ 的. 对于非常返的状态, 主要关注如下两个问题:
 
@@ -655,10 +653,10 @@ $$
 
 
 
-### 2.6 Applications of Markov Chain
+## 7. Applications of Markov Chain
 
 
-#### **PageRank Algorithm** (Brin and Page, 1998)
+### **PageRank Algorithm** (Brin and Page, 1998)
 
 - PageRank 算法将网站之间的链接关系建模为一个有向图, 其节点表示网站, 边表示链接关系, 通过每个节点的入度 (即被其他网站链接的数量) 来衡量网站的重要性, 以对搜索结果进行排序等. 
 - 然而单纯的考虑入度是不够的. 更为合理的思路是考虑其极限分布, 即在该有向图上进行一个随机游走 (在网络上进行充分浏览后) 得到的概率分布, 以此来衡量每个节点的重要性. 
@@ -678,7 +676,7 @@ $$
     $\tilde{\mathbf{P}}$ 的 left eigenvector 即可求解 $\boldsymbol{\pi}$ 的值. 从而得到每个节点的重要程度. 
 
 
-#### **Markov Chain Monte Carlo (MCMC)** (Metropolis et al., 1953; Hastings, 1970)
+### **Markov Chain Monte Carlo (MCMC)** (Metropolis et al., 1953; Hastings, 1970)
 
 Monte Carlo 方法或统计模拟方法是一种通过随机采样来近似计算复杂分布性质的数值方法. 而 Markov Chain Monte Carlo (MCMC) 方法则是 Monte Carlo 方法的一种重要实现方式, 其中一个最经典的 MCMC 算法是 Metropolis-Hastings 算法, 由 Metropolis 等人在 1953 年提出, 后由 Hastings 在 1970 年推广.
 
@@ -764,7 +762,7 @@ Monte Carlo 方法或统计模拟方法是一种通过随机采样来近似计�
         \mathbb{P}(O_n \mid S_n, S_{n-1}, O_{n-1}, \cdots, S_0, O_0) = \mathbb{P}(O_n \mid S_n)
         $$ -->
 
-#### **Markov Decision Process (MDP)**
+### **Markov Decision Process (MDP)**
 
 MDP 是强化学习中的一个重要概念. 其本身的构建是基于 Markov Chain 的. 在正式引入 MDP 之前, 首先介绍一个相关的概念, 即 Markov Reward Process (MRP).
 - 一个 Markov Reward Process (MRP) 是一个四元组 $\langle \mathcal{S}, \mathbf{P}, r, \gamma \rangle$
