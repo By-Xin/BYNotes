@@ -31,6 +31,7 @@ const config: QuartzConfig = {
     ignorePatterns: [
       "private",
       "templates",
+      "backup/**",
       ".obsidian",
       "**/archive/**",
       "**/assets/**",
