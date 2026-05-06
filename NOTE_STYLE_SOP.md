@@ -154,10 +154,13 @@ Approved globally introduced callouts:
 
 - `[!proof]` / `[!proof]+`
 - `[!quote] References`
+- `[!note] Note: ...`
 
 Existing callouts in a note, such as `[!note]`, `[!warning]`, or `[!danger]`,
-may remain. Convert `[!example]` blocks to `**Example (Name).**` labels during
-a formatting pass. Do not introduce new non-reference/non-proof callouts.
+may remain. Convert explicit `**Note (...)**` or `> **Note.**` blocks to
+`[!note] Note: ...` callouts. Convert `[!example]` blocks to
+`**Example (Name).**` labels during a formatting pass. Do not introduce new
+non-reference/non-proof/non-note callouts.
 
 Every callout must have an explicit title that identifies the block role. Use a
 type prefix when the callout is not self-evident from the title:
@@ -268,6 +271,8 @@ $$
 
 - Prefer Markdown image syntax.
 - Use raw HTML only when width or layout control is necessary.
+- Raw HTML images must be centered explicitly, e.g. `style="display: block;
+  width: 50%; margin: 1.25rem auto;"`.
 - By default, site CSS centers Markdown images and constrains them to a
   comfortable reading width. Do not add width controls unless a specific figure
   needs to be smaller or larger than the default.
