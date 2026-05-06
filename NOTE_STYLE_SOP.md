@@ -138,6 +138,9 @@ or examples into callouts. Use compact text labels instead:
 > [!proof]+ Proof
 > ...
 > $\square$
+
+> [!proof]+ Solution
+> ...
 ```
 
 Use this label taxonomy:
@@ -172,6 +175,9 @@ type prefix when the callout is not self-evident from the title:
 > [!proof]+ Proof
 > ...
 
+> [!proof]+ Solution
+> ...
+
 > [!note] Note: Boundary behavior
 > ...
 
@@ -201,6 +207,18 @@ block text and order. Only normalize the label syntax.
   appendix-style proof.
 - Short inline explanations may remain as prose only when they are not labeled
   as proofs.
+
+## Solutions
+
+- Formal solution blocks should use the proof callout template with a Solution
+  title: `[!proof]+ Solution`. The `+` makes the solution collapsible while
+  keeping it expanded on first render, and the `proof` type keeps the visual
+  style aligned with proof blocks.
+- If the source text explicitly labels a block as `Solution`, convert that
+  whole worked-solution block into a solution callout.
+- Align solution callout indentation with the problem or example being solved.
+- Keep solution steps, equations, and order unchanged.
+- Do not add `$\square$` to solution blocks unless the source already uses it.
 
 Top-level proof:
 
@@ -314,7 +332,7 @@ For each note:
 2. Normalize frontmatter.
 3. Normalize the top-level title and references block.
 4. Normalize semantic labels without adding definition/theorem/example callouts.
-5. Normalize proof blocks and proof endings.
+5. Normalize proof and solution blocks.
 6. Normalize figure syntax, captions, and links.
 7. Add or clean `Related Notes` only when useful.
 8. Run a Quartz build.

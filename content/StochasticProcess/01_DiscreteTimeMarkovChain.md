@@ -304,34 +304,46 @@ P_{i,i+1} = p, \quad P_{i,i-1} = 1-p, \quad \forall i \in \mathbb{Z}
 $$
 下讨论该随机游走中状态 $0$ 的常返性.
 
-- *Solution*: 考虑 $P_{00}(n)$, 即从状态 $0$ 出发经过 $n$ 步转移回状态 $0$ 的概率. 
-  - 首先若 $n = 2k + 1$ 是奇数, 则 $P_{00}(n) = 0$, 因为在奇数步时, 无论如何转移, 都无法回到状态 $0$.
-  - 其次若 $n = 2k$ 是偶数, 则
-    $$
-    \mathbb{P}_{00}(2k) = \binom{2k}{k} p^k (1-p)^k
-    $$
-    - 故讨论如下级数的敛散性:
-        $$
-        \sum_{k=0}^{\infty} \binom{2k}{k} p^k (1-p)^k
-        $$
-        - 根据 Stirling's approximation, $n! \sim \left(\dfrac{n}{e}\right)^n \sqrt{2 \pi n}$:
-            $$
-            \binom{2k}{k} p^k (1-p)^k \sim \frac{1}{\sqrt{ k}} (4p(1-p))^k
-            $$
-        - 因此当 $p \neq \frac{1}{2}$ 时, $4p(1-p) < 1$, 则级数收敛; 当 $p = \frac{1}{2}$ 时, $4p(1-p) = 1$, 则级数发散. 从而状态 $0$ 在 $p \neq \frac{1}{2}$ 时是 transient 的, 在 $p = \frac{1}{2}$ 时是 recurrent 的.
+> [!proof]+ Solution
+> 考虑 $P_{00}(n)$, 即从状态 $0$ 出发经过 $n$ 步转移回状态 $0$ 的概率.
+> - 首先若 $n = 2k + 1$ 是奇数, 则 $P_{00}(n) = 0$, 因为在奇数步时, 无论如何转移, 都无法回到状态 $0$.
+> - 其次若 $n = 2k$ 是偶数, 则
+>
+>   $$
+>   \mathbb{P}_{00}(2k) = \binom{2k}{k} p^k (1-p)^k
+>   $$
+>
+>   - 故讨论如下级数的敛散性:
+>
+>     $$
+>     \sum_{k=0}^{\infty} \binom{2k}{k} p^k (1-p)^k
+>     $$
+>
+>     - 根据 Stirling's approximation, $n! \sim \left(\dfrac{n}{e}\right)^n \sqrt{2 \pi n}$:
+>
+>       $$
+>       \binom{2k}{k} p^k (1-p)^k \sim \frac{1}{\sqrt{ k}} (4p(1-p))^k
+>       $$
+>
+>     - 因此当 $p \neq \frac{1}{2}$ 时, $4p(1-p) < 1$, 则级数收敛; 当 $p = \frac{1}{2}$ 时, $4p(1-p) = 1$, 则级数发散. 从而状态 $0$ 在 $p \neq \frac{1}{2}$ 时是 transient 的, 在 $p = \frac{1}{2}$ 时是 recurrent 的.
 
-***Example* (Two-Dimensional Random Walk)** 考虑一个二维的随机游走 (Two-Dimensional Random Walk), 其状态空间为 $\mathcal{S} = \mathbb{Z}^2$, 即二维整数集合. 考虑平衡的随机游走, 即在每一个时刻, 以相同的概率 $1/4$ 向四个方向 (上、下、左、右) 转移. 下讨论该随机游走中状态 $(0,0)$ 的常返性. 
-- *Solution*:
-  - 相似地, 考虑偶数 $2n$ 步转移回状态 $(0,0)$ 的概率 $P_{(0,0)(0,0)}(2n)$.
-  - 对于 $P_{(0,0)(0,0)}(2n)$, 其相当于在 $2n$ 步中, 向上转移的步数与向下转移的步数相同, 向左转移的步数与向右转移的步数相同. 因此可以将 $2n$ 步中的 $n$ 步分为两类: 向上或向下转移的步数 (记为 $k$), 向左或向右转移的步数 (记为 $n-k$). 则
-    $$
-    P_{(0,0)(0,0)}(2n) = \sum_{k=0}^n \frac{(2n)!}{k! k! (n-k)! (n-k)!} \left(\frac{1}{4}\right)^{2n}  = \binom{2n}{n}^2 16^{-n} \sim \frac{1}{\pi n}.
-    $$
-  - 因此讨论如下级数的敛散性:
-    $$
-    \sum_{n=0}^{\infty} P_{(0,0)(0,0)}(2n) \sim \sum_{n=0}^{\infty} \frac{1}{\pi n} = \infty
-    $$
-  - 从而状态 $(0,0)$ 是 recurrent 的.
+***Example* (Two-Dimensional Random Walk)** 考虑一个二维的随机游走 (Two-Dimensional Random Walk), 其状态空间为 $\mathcal{S} = \mathbb{Z}^2$, 即二维整数集合. 考虑平衡的随机游走, 即在每一个时刻, 以相同的概率 $1/4$ 向四个方向 (上、下、左、右) 转移. 下讨论该随机游走中状态 $(0,0)$ 的常返性.
+
+> [!proof]+ Solution
+> - 相似地, 考虑偶数 $2n$ 步转移回状态 $(0,0)$ 的概率 $P_{(0,0)(0,0)}(2n)$.
+> - 对于 $P_{(0,0)(0,0)}(2n)$, 其相当于在 $2n$ 步中, 向上转移的步数与向下转移的步数相同, 向左转移的步数与向右转移的步数相同. 因此可以将 $2n$ 步中的 $n$ 步分为两类: 向上或向下转移的步数 (记为 $k$), 向左或向右转移的步数 (记为 $n-k$). 则
+>
+>   $$
+>   P_{(0,0)(0,0)}(2n) = \sum_{k=0}^n \frac{(2n)!}{k! k! (n-k)! (n-k)!} \left(\frac{1}{4}\right)^{2n}  = \binom{2n}{n}^2 16^{-n} \sim \frac{1}{\pi n}.
+>   $$
+>
+> - 因此讨论如下级数的敛散性:
+>
+>   $$
+>   \sum_{n=0}^{\infty} P_{(0,0)(0,0)}(2n) \sim \sum_{n=0}^{\infty} \frac{1}{\pi n} = \infty
+>   $$
+>
+> - 从而状态 $(0,0)$ 是 recurrent 的.
 
 
 ***Example* (Three-Dimensional Random Walk)** 考虑一个三维的随机游走 (Three-Dimensional Random Walk). 事实上, 即使是一个平衡的三维随机游走, 其状态 $(0,0,0)$ 也是 transient 的:
