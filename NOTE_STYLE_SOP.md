@@ -11,9 +11,9 @@ change formatting only unless a content edit is explicitly approved.
   `**/Assets/**`.
 - Do not split articles, reorder mathematical arguments, rename concepts, or
   rewrite prose for style during a formatting pass.
-- Allowed changes: frontmatter, heading normalization, callout conversion,
-  proof formatting, references blocks, links, image markup, captions, and course
-  index organization.
+- Allowed changes: frontmatter, heading normalization, semantic label
+  formatting, proof formatting, references blocks, links, image markup,
+  captions, and course index organization.
 
 ## Frontmatter
 
@@ -59,8 +59,7 @@ Course landing pages should behave as dashboards, not just folders.
 ```md
 # Course Title
 
-> [!abstract] Scope
-> Short description of the course or topic collection.
+Short description of the course or topic collection.
 
 ## Notes
 
@@ -98,8 +97,9 @@ wikilinks may remain inside article bodies.
 > - Lecture: ...
 > - Reading: ...
 
-> [!abstract] Roadmap
-> Short outline if it helps the reader.
+## Roadmap
+
+Short outline if it helps the reader.
 
 ## Section
 
@@ -112,39 +112,42 @@ Main content.
 
 Omit `References`, `Roadmap`, or `Related Notes` when they do not add value.
 
-## Semantic Blocks
+## Semantic Labels
 
-Use Obsidian callouts for mathematical and expository blocks:
+Do not convert definitions, theorems, lemmas, propositions, or corollaries into
+callouts. Use compact text labels instead:
 
 ```md
-> [!definition] Convex function
-> A function $f$ is convex if ...
+**Definition (Convex function).** A function $f$ is convex if ...
 
-> [!theorem] Supporting hyperplane theorem
-> ...
+**Theorem (Supporting hyperplane theorem).** ...
 
 > [!proof] Proof
 > ...
 > $\square$
 ```
 
-Approved callout taxonomy:
+Use this label taxonomy:
 
-- `[!definition]`
-- `[!theorem]`
-- `[!lemma]`
-- `[!proposition]`
-- `[!corollary]`
+- `**Definition (Name).**`
+- `**Theorem (Name).**`
+- `**Lemma (Name).**`
+- `**Proposition (Name).**`
+- `**Corollary (Name).**`
+- `**Example (Name).**` when the original note did not already use an example
+  callout.
+
+Approved globally introduced callouts:
+
 - `[!proof]`
-- `[!example]`
-- `[!remark]`
-- `[!warning]` for pitfalls or common mistakes.
 - `[!quote] References`
-- `[!abstract] Roadmap` or `Summary`
-- `[!info]` for context that is not a reference block.
+
+Existing callouts in a note, such as `[!example]`, `[!note]`, `[!warning]`, or
+`[!danger]`, may remain. Do not introduce new non-reference/non-proof callouts
+during a formatting pass.
 
 When converting legacy markers such as `***Definition* (...)**`, preserve the
-block text and order. Only change the container syntax.
+block text and order. Only normalize the label syntax.
 
 ## Proofs
 
@@ -205,8 +208,9 @@ $$
 Quartz visual polish lives in `quartz/styles/custom.scss`.
 
 - Keep styling restrained and readable.
-- Math callouts should provide semantic hierarchy without changing content.
-- Proof blocks should be quieter than theorem and definition blocks.
+- Proof callouts should be visually quiet.
+- Do not add visual boxes around definitions, theorems, lemmas, propositions,
+  or corollaries.
 - Avoid broad theme rewrites during article cleanup.
 
 ## Per-Article Workflow
@@ -216,7 +220,7 @@ For each note:
 1. Confirm the article path and backup baseline.
 2. Normalize frontmatter.
 3. Normalize the top-level title and references block.
-4. Convert semantic blocks to approved callouts.
+4. Normalize semantic labels without adding definition/theorem callouts.
 5. Normalize proof blocks and proof endings.
 6. Normalize figure syntax, captions, and links.
 7. Add or clean `Related Notes` only when useful.
