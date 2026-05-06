@@ -21,10 +21,23 @@ article thead {
   background: var(--highlight);
 }
 
+article img:not([style]) {
+  display: block;
+  height: auto;
+  margin: 1.25rem auto;
+  max-width: min(72%, 720px);
+}
+
 article p:has(> img) + p em {
   color: var(--darkgray);
   display: block;
   font-size: 0.95rem;
   margin-top: -0.6rem;
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  article img:not([style]) {
+    max-width: 100%;
+  }
 }
