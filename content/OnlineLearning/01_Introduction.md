@@ -4,7 +4,7 @@ title: "01 Introduction"
 
 # 01 Introduction
 
-> [!info] References
+> [!quote] References
 > - Reading: Online Learning and Online Convex Optimization, Shai Shalev-Shwartz.
 
 ## Brief Introduction

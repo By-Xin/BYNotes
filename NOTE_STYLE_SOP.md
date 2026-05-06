@@ -146,6 +146,26 @@ Existing callouts in a note, such as `[!example]`, `[!note]`, `[!warning]`, or
 `[!danger]`, may remain. Do not introduce new non-reference/non-proof callouts
 during a formatting pass.
 
+Every callout must have an explicit title that identifies the block role. Use a
+type prefix when the callout is not self-evident from the title:
+
+```md
+> [!quote] References
+> ...
+
+> [!proof] Proof
+> ...
+
+> [!example] Example: Random walk on $\mathbb{Z}$
+> ...
+
+> [!note] Note: Boundary behavior
+> ...
+
+> [!danger] Danger: Common mistake
+> ...
+```
+
 When converting legacy markers such as `***Definition* (...)**`, preserve the
 block text and order. Only normalize the label syntax.
 
