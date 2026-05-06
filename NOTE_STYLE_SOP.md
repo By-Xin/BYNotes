@@ -23,8 +23,9 @@ Lecture notes should use this shape:
 
 ```yaml
 ---
-title: "2. Convexity I"
+title: "Lecture 02 · Convexity I"
 aliases:
+  - "2. Convexity I"
   - "Convexity I"
   - "Convexity-I"
 course: "Convex Optimization"
@@ -36,8 +37,11 @@ tags:
 ---
 ```
 
-For lecture notes, keep the numeric lecture prefix or range in `title`, e.g.
-`"10-11. Duality"`. Put unnumbered titles in `aliases`, not in `title`.
+For lecture notes, use the `Lecture NN · Title` title format so lecture
+numbers do not visually collide with manually numbered section headings. Use
+zero-padded single lecture numbers, e.g. `"Lecture 02 · Convexity I"`, and
+ranges without padding expansion, e.g. `"Lecture 10-11 · Duality"`. Keep the
+old dotted lecture title and unnumbered title in `aliases`.
 
 Course indexes should use this shape:
 
@@ -132,7 +136,7 @@ or examples into callouts. Use compact text labels instead:
 
 **Example (Random walk on $\mathbb{Z}$).** ...
 
-> [!proof] Proof
+> [!proof]+ Proof
 > ...
 > $\square$
 ```
@@ -149,7 +153,7 @@ Use this label taxonomy:
 
 Approved globally introduced callouts:
 
-- `[!proof]`
+- `[!proof]` / `[!proof]+`
 - `[!quote] References`
 
 Existing callouts in a note, such as `[!note]`, `[!warning]`, or `[!danger]`,
@@ -163,7 +167,7 @@ type prefix when the callout is not self-evident from the title:
 > [!quote] References
 > ...
 
-> [!proof] Proof
+> [!proof]+ Proof
 > ...
 
 > [!note] Note: Boundary behavior
@@ -178,7 +182,8 @@ block text and order. Only normalize the label syntax.
 
 ## Proofs
 
-- Formal proofs should use `[!proof] Proof`.
+- Formal proofs should use `[!proof]+ Proof` by default. The `+` makes the
+  proof collapsible while keeping it expanded on first render.
 - If the source text explicitly labels a block as `Proof`, convert it to a
   proof callout. Do not leave `*Proof*`, `**Proof.**`, or `- Proof` markers in
   polished notes.
@@ -189,7 +194,9 @@ block text and order. Only normalize the label syntax.
     that bullet with matching indentation, and name the target in the title.
 - End formal proofs with `$\square$`.
 - Keep proof text in the original order.
-- Do not collapse proofs by default.
+- Do not use default-collapsed proof callouts (`[!proof]-`) unless the user
+  explicitly asks for collapsed proofs or the article intentionally hides a long
+  appendix-style proof.
 - Short inline explanations may remain as prose only when they are not labeled
   as proofs.
 
@@ -198,7 +205,7 @@ Top-level proof:
 ```md
 **Theorem (Weak Duality).** ...
 
-> [!proof] Proof
+> [!proof]+ Proof
 > ...
 > $\square$
 ```
@@ -208,7 +215,7 @@ Nested proof for a bullet claim:
 ```md
 - **Claim.** Norms are convex.
 
-  > [!proof] Proof of the claim
+  > [!proof]+ Proof of the claim
   > By triangle inequality and homogeneity, ...
   > $\square$
 ```
@@ -219,7 +226,7 @@ Nested proof for a sub-bullet claim:
 - For $\ell_p$ norms:
   - **Claim.** The dual norm is $\ell_q$.
 
-    > [!proof] Proof of the $\ell_p/\ell_q$ duality claim
+    > [!proof]+ Proof of the $\ell_p/\ell_q$ duality claim
     > By Holder's inequality, ...
     > $\square$
 ```
@@ -228,6 +235,10 @@ Nested proof for a sub-bullet claim:
 
 - Use exactly one `#` heading per article, matching the page title.
 - Use ordered heading levels: `#`, `##`, `###`.
+- Use the lecture-title symbol system for the page title: `# Lecture 08 · Topic`.
+- Add visible section numbers manually to article section headings. Do not rely
+  on renderer-generated numbering. Use `## 1. Section`, `### 1.1 Subsection`,
+  `### 1.2 Subsection`, then `## 2. Section`, etc.
 - Do not bold an entire heading unless the bold text is mathematically
   meaningful.
 - Prefer concise, descriptive heading text.
