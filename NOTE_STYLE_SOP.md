@@ -55,6 +55,9 @@ tags:
 ---
 ```
 
+Do not repeat the page title as a body `#` heading. Quartz renders the page
+title from frontmatter.
+
 Use these status values only:
 
 - `draft`: readable but not fully polished.
@@ -67,8 +70,6 @@ Use these status values only:
 Course landing pages should behave as dashboards, not just folders.
 
 ```md
-# Course Title
-
 Short description of the course or topic collection.
 
 ## Notes
@@ -100,8 +101,6 @@ wikilinks may remain inside article bodies.
 ---
 ...
 ---
-
-# Title
 
 > [!quote] References
 > - Lecture: ...
@@ -233,9 +232,15 @@ Nested proof for a sub-bullet claim:
 
 ## Headings
 
-- Use exactly one `#` heading per article, matching the page title.
-- Use ordered heading levels: `#`, `##`, `###`.
-- Use the lecture-title symbol system for the page title: `# Lecture 08 · Topic`.
+- Do not include a body `#` heading in public notes. Quartz already renders the
+  page title from frontmatter, so repeating it in the article body creates a
+  duplicate visual title.
+- Public note bodies should start with references, roadmap text, or `##`
+  sections.
+- Use ordered heading levels after the page title: `##`, `###`, and, only when
+  needed for local subtopics, `####`.
+- Use the lecture-title symbol system in frontmatter titles, e.g.
+  `title: "Lecture 08 · Topic"`.
 - Add visible section numbers manually to article section headings. Do not rely
   on renderer-generated numbering. Use `## 1. Section`, `### 1.1 Subsection`,
   `### 1.2 Subsection`, then `## 2. Section`, etc.

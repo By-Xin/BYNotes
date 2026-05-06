@@ -3,8 +3,6 @@
 title: Discrete Time Markov Chain
 ---
 
-# Discrete Time Markov Chain
-
 ## 1. Introduction: Markov Assumption
 
 - 对于一组随机变量 $X_1, X_2, \cdots, X_n$，其最完整的认知是其联合分布 $\mathbb{P}(X_1, X_2, \cdots, X_n)$. 然而对于大规模的随机变量集合, 其计算和存储都非常困难. 

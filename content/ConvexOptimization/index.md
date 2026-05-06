@@ -4,6 +4,3 @@ aliases:
   - CvxOpt
   - CvxOpt/index
 ---
-
-# Convex Optimization - CMU - Fall18
-

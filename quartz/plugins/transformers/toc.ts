@@ -35,11 +35,18 @@ export const TableOfContents: QuartzTransformerPlugin<Partial<Options>> = (userO
           return async (tree: Root, file) => {
             const display = file.data.frontmatter?.enableToc ?? opts.showByDefault
             if (display) {
+              const frontmatterMaxDepth = file.data.frontmatter?.tocMaxDepth
+              const maxDepth =
+                typeof frontmatterMaxDepth === "number" &&
+                frontmatterMaxDepth >= 1 &&
+                frontmatterMaxDepth <= 6
+                  ? frontmatterMaxDepth
+                  : opts.maxDepth
               slugAnchor.reset()
               const toc: TocEntry[] = []
-              let highestDepth: number = opts.maxDepth
+              let highestDepth: number = maxDepth
               visit(tree, "heading", (node) => {
-                if (node.depth <= opts.maxDepth) {
+                if (node.depth <= maxDepth) {
                   const text = toString(node)
                   highestDepth = Math.min(highestDepth, node.depth)
                   toc.push({
