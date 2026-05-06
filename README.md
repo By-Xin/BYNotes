@@ -21,7 +21,10 @@ This repository publishes notes with Quartz.
 
 ## Markdown writing best practices
 
-Follow these rules to maximize one-pass successful rendering.
+For the current repository-wide note style guide, see
+[`NOTE_STYLE_SOP.md`](./NOTE_STYLE_SOP.md). That SOP is authoritative for the
+Obsidian/Quartz note refresh. Follow these rules to maximize one-pass successful
+rendering.
 
 1. Filename convention
 - For course notes, use readable blog-style slugs: `N.Title-Words.md`, e.g. `5.Gradient-Descent.md`.
@@ -35,7 +38,7 @@ Follow these rules to maximize one-pass successful rendering.
 - Use references in this canonical callout form:
 
 ```md
-> [!info] References
+> [!quote] References
 > - Lecture: ...
 > - Reading: ...
 ```

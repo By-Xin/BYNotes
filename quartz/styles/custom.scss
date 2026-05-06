@@ -1,3 +1,63 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+.callout[data-callout="definition"],
+.callout[data-callout="theorem"],
+.callout[data-callout="lemma"],
+.callout[data-callout="proposition"],
+.callout[data-callout="corollary"],
+.callout[data-callout="proof"],
+.callout[data-callout="remark"] {
+  border-left-width: 4px;
+  border-radius: 6px;
+}
+
+.callout[data-callout="definition"] {
+  --color: #0969a2;
+  --border: #0969a244;
+  --bg: #0969a210;
+  --callout-icon: var(--callout-icon-info);
+}
+
+.callout[data-callout="theorem"],
+.callout[data-callout="lemma"],
+.callout[data-callout="proposition"],
+.callout[data-callout="corollary"] {
+  --color: #8a5a00;
+  --border: #8a5a0044;
+  --bg: #8a5a0010;
+  --callout-icon: var(--callout-icon-abstract);
+}
+
+.callout[data-callout="proof"] {
+  --color: var(--darkgray);
+  --border: var(--lightgray);
+  --bg: transparent;
+  --callout-icon: var(--callout-icon-success);
+}
+
+.callout[data-callout="remark"] {
+  --color: #52796f;
+  --border: #52796f44;
+  --bg: #52796f10;
+  --callout-icon: var(--callout-icon-note);
+}
+
+.callout[data-callout="proof"] > .callout-title {
+  padding-bottom: 0.5rem;
+}
+
+article table {
+  margin: 1.25rem 0;
+}
+
+article thead {
+  background: var(--highlight);
+}
+
+article p:has(> img) + p em {
+  color: var(--darkgray);
+  display: block;
+  font-size: 0.95rem;
+  margin-top: -0.6rem;
+  text-align: center;
+}
