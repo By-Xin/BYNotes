@@ -2,7 +2,7 @@
 
 This file tracks all notes in the ConvexOptimization directory with version information for manual sync management.
 
-**Last updated:** 2026-05-14 18:18:30
+**Last updated:** 2026-05-14 18:32:21
 
 > [!warning] Sync Status Note
 > **Chapters 1-12**: The source materials and these notes are NOT fully synchronized. This is a legacy issue that needs manual comparison and reconciliation in the future.
@@ -25,7 +25,7 @@ This file tracks all notes in the ConvexOptimization directory with version info
 | 12.Optimality-Conditions-for-Constrained-Optimization.md | 2026-05-06 18:48:09 | 45468 | 172730622871440cb4669f8d31e259e835c3c27083c019eae301ba497eeb309a |
 | 13.Duality-Uses-and-Correspondents.md | 2026-05-06 18:48:09 | 24223 | 7561120d9f8c6d08c390b5156e03a36d6500a049116472c731a2b808c1370c47 |
 | 14.Newton-Method.md | 2026-05-06 18:48:09 | 11034 | 121f03066b759f5b8a4c0b0f826cd93046d4309d4cc689855673aa91d7b78bc8 |
-| 19.Numerical-Linear-Algebra.md | 2026-05-14 18:17:13 | 36855 | 5199ef3c689ae647b7a09067cb466e0bcd09dc724044741e3cc69e18b3ec400b |
+| 19.Numerical-Linear-Algebra.md | 2026-05-14 18:31:30 | 36939 | 74f690745d627426cffe81d31a9f29b75b5923cbd7bfd0eaa12d9e4b919d22a3 |
 | index.md | 2026-05-14 18:18:06 | 1550 | 88856733d860a4b69d77765207ad5ccb8f6c3e5378f312fb58b8baf3c1d1c08c |
 
 ## Usage Instructions
