@@ -28,6 +28,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 12 | [Optimality Conditions for Constrained Optimization](./12.Optimality-Conditions-for-Constrained-Optimization.md) | draft |
 | 13 | [Duality Uses and Correspondents](./13.Duality-Uses-and-Correspondents.md) | polished |
 | 14 | [Newton Method](./14.Newton-Method.md) | draft |
+| 15 | [Barrier Method](./15.Barrier-Method.md) | polished |
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
 
 ## Concept Map
@@ -35,7 +36,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 - Convexity and canonical problem forms
 - First-order and proximal methods
 - Duality, conjugates, and optimality conditions
-- Newton methods and numerical linear algebra
+- Newton methods, interior-point methods, and numerical linear algebra
 
 ## References
 
@@ -44,4 +45,4 @@ CMU Fall 2018 Convex Optimization lecture notes.
 ## Planned Notes
 
 - Lecture 01 Introduction
-- Lectures 15-18
+- Lectures 16-18
