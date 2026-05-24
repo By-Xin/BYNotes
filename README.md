@@ -10,7 +10,8 @@ This repository publishes notes with Quartz.
 ## Content location
 
 - Published notes are organized by topic under `content/<TopicName>`.
-- Current topics include `content/ConvexOptimization` and `content/OnlineLearning`.
+- Current topics include `content/ConvexOptimization`, `content/DeepLearning`,
+  `content/OnlineLearning`, and `content/StochasticProcess`.
 
 ## Topic naming rules
 
