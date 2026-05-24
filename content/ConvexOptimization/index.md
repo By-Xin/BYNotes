@@ -1,8 +1,9 @@
 ---
-title: "Convex Optimization"
+title: "Convex Optimization (CMU, 10-725)"
 aliases:
   - CvxOpt
   - CvxOpt/index
+  - "Convex Optimization"
   - "Convex Optimization - CMU - Fall18"
 type: "course-index"
 status: "active"
