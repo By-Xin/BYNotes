@@ -54,6 +54,10 @@ article img:not([style]) {
   max-width: min(72%, 720px);
 }
 
+body[data-slug^="DeepLearning"] article img:not([style]) {
+  max-width: min(60%, 560px);
+}
+
 article p:has(> img) + p em {
   color: var(--darkgray);
   display: block;
@@ -65,5 +69,9 @@ article p:has(> img) + p em {
 @media (max-width: 800px) {
   article img:not([style]) {
     max-width: 100%;
+  }
+
+  body[data-slug^="DeepLearning"] article img:not([style]) {
+    max-width: 92%;
   }
 }
