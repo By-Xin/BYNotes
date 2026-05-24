@@ -24,15 +24,13 @@ Deep learning notes centered on neural network architectures, D2L, 李宏毅's l
 | 6 | [Modern RNNs](./6.Modern-RNNs.md) | draft |
 | 7 | [Attention and Transformer](./7.Attention-and-Transformer.md) | draft |
 | 8 | [Transformer and Variants](./8.Transformer-and-Variants.md) | draft |
-| 9 | [Computer Vision](./9.Computer-Vision.md) | draft |
-| 10 | [Mixture of Experts](./10.Mixture-of-Experts.md) | draft |
 
 ## Concept Map
 
 - Feed-forward networks and basic neural network training
-- CNNs, modern convolutional architectures, and computer vision applications
+- CNNs and modern convolutional architectures
 - RNNs, sequence modeling, attention, and Transformer architectures
-- Transformer variants, state-space-style sequence models, and sparse expert models
+- Transformer variants and state-space-style sequence models
 
 ## References
 
@@ -45,4 +43,6 @@ Deep learning notes centered on neural network architectures, D2L, 李宏毅's l
 
 - Backpropagation details
 - Batch Normalization
+- Computer Vision
 - Diffusion Models
+- Mixture of Experts
