@@ -2,7 +2,7 @@
 
 This file tracks all notes in the ConvexOptimization directory with version information for manual sync management.
 
-**Last updated:** 2026-05-22 22:24:26
+**Last updated:** 2026-05-24 15:16:15
 
 > [!warning] Sync Status Note
 > **Chapters 1-12**: The source materials and these notes are NOT fully synchronized. This is a legacy issue that needs manual comparison and reconciliation in the future.
@@ -26,8 +26,9 @@ This file tracks all notes in the ConvexOptimization directory with version info
 | 13.Duality-Uses-and-Correspondents.md | 2026-05-06 18:48:09 | 24223 | 7561120d9f8c6d08c390b5156e03a36d6500a049116472c731a2b808c1370c47 |
 | 14.Newton-Method.md | 2026-05-06 18:48:09 | 11034 | 121f03066b759f5b8a4c0b0f826cd93046d4309d4cc689855673aa91d7b78bc8 |
 | 15.Barrier-Method.md | 2026-05-22 22:24:26 | 21481 | deaa735b76f566fba7c0fbd4ab14976040eb43113f0da93a0e82d7543403c16b |
+| 16.Primal-Dual-Interior-Point-Methods.md | 2026-05-24 15:16:15 | 18453 | a895db2774739a6ad8fbe96058366d7ec35e0ada950b8f0cb6e25f40893ed92a |
 | 19.Numerical-Linear-Algebra.md | 2026-05-14 18:31:30 | 36939 | 74f690745d627426cffe81d31a9f29b75b5923cbd7bfd0eaa12d9e4b919d22a3 |
-| index.md | 2026-05-22 22:24:26 | 1636 | ebe583aee457363fdc8a62a0dfff1b76b60d0f2848a85c31456cc1ae8cc5ac61 |
+| index.md | 2026-05-24 15:16:15 | 1737 | 3aed1a74bea0ae15cbe54418901091544d5f06b0e3903078face47f966624372 |
 
 ## Usage Instructions
 

@@ -29,6 +29,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 13 | [Duality Uses and Correspondents](./13.Duality-Uses-and-Correspondents.md) | polished |
 | 14 | [Newton Method](./14.Newton-Method.md) | draft |
 | 15 | [Barrier Method](./15.Barrier-Method.md) | polished |
+| 16 | [Primal-Dual Interior-Point Methods](./16.Primal-Dual-Interior-Point-Methods.md) | polished |
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
 
 ## Concept Map
@@ -45,4 +46,4 @@ CMU Fall 2018 Convex Optimization lecture notes.
 ## Planned Notes
 
 - Lecture 01 Introduction
-- Lectures 16-18
+- Lectures 17-18
