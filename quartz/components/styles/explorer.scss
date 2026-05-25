@@ -319,6 +319,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
 }
 
 .explorer-content .explorer-file > a {
+  align-items: baseline;
   display: inline-block;
   color: var(--darkgray);
   font-family: var(--bodyFont);
@@ -327,6 +328,17 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
   line-height: 1.35rem;
   opacity: 0.68;
   padding: 0.02rem 0;
+}
+
+.explorer-content .explorer-file > a::before {
+  background: currentColor;
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 0.16rem;
+  margin: 0 0.46rem 0.16rem 0.08rem;
+  opacity: 0.48;
+  width: 0.16rem;
 }
 
 .explorer-content .explorer-file-depth-1 > a {

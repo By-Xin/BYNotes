@@ -68,6 +68,84 @@ article p:has(> img) + p em {
   text-align: center;
 }
 
+body[data-slug="index"] article {
+  max-width: 100%;
+}
+
+.home-dashboard {
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1.55fr) minmax(18rem, 0.9fr);
+}
+
+.home-dashboard h2 {
+  margin: 0.12rem 0 1.1rem;
+}
+
+.home-kicker {
+  color: var(--darkgray);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.home-guide-grid {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.home-guide-grid section {
+  border-top: 1px solid var(--lightgray);
+  padding-top: 0.95rem;
+}
+
+.home-guide-grid h3,
+.home-updates h3 {
+  font-family: var(--headerFont);
+  font-size: 1rem;
+  line-height: 1.35;
+  margin: 0 0 0.45rem;
+}
+
+.home-guide-grid ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.home-updates {
+  border-left: 1px solid var(--lightgray);
+  padding-left: 1.35rem;
+}
+
+.home-updates ol {
+  display: grid;
+  gap: 1.15rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-updates li {
+  margin: 0;
+}
+
+.home-updates time {
+  color: var(--darkgray);
+  display: block;
+  font-size: 0.86rem;
+  margin-bottom: 0.25rem;
+}
+
+.home-updates p {
+  color: var(--darkgray);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
 @media (max-width: 800px) {
   article img:not([style]) {
     max-width: 100%;
@@ -77,5 +155,17 @@ article p:has(> img) + p em {
   body[data-slug^="NLPAndLLMs"] article img:not([style]),
   body[data-slug^="StatisticalLearningAlgorithms"] article img:not([style]) {
     max-width: 64%;
+  }
+
+  .home-dashboard {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .home-updates {
+    border-left: 0;
+    border-top: 1px solid var(--lightgray);
+    padding-left: 0;
+    padding-top: 1.2rem;
   }
 }

@@ -23,7 +23,7 @@ Lecture notes should use this shape:
 
 ```yaml
 ---
-title: "Lecture 02 · Convexity I"
+title: "Lecture 02 - Convexity I"
 aliases:
   - "2. Convexity I"
   - "Convexity I"
@@ -37,11 +37,16 @@ tags:
 ---
 ```
 
-For lecture notes, use the `Lecture NN · Title` title format so lecture
+For lecture notes, use the `Lecture NN - Title` title format so lecture
 numbers do not visually collide with manually numbered section headings. Use
-zero-padded single lecture numbers, e.g. `"Lecture 02 · Convexity I"`, and
-ranges without padding expansion, e.g. `"Lecture 10-11 · Duality"`. Keep the
+zero-padded single lecture numbers, e.g. `"Lecture 02 - Convexity I"`, and
+ranges without padding expansion, e.g. `"Lecture 10-11 - Duality"`. Keep the
 old dotted lecture title and unnumbered title in `aliases`.
+
+For ordered topic notes that are not lectures, use zero-padded numeric titles
+with the same short-hyphen separator, e.g. `"04 - Modern CNNs"`. Do not prefix
+these titles with `Topic 04`, and avoid middle-dot separators in display
+titles.
 
 Course indexes should use this shape:
 
@@ -74,9 +79,9 @@ Short description of the course or topic collection.
 
 ## Notes
 
-| # | Note | Status |
-|---|------|--------|
-| 1 | [Introduction](./1.Introduction.md) | draft |
+| #   | Note                                | Status |
+| --- | ----------------------------------- | ------ |
+| 1   | [Introduction](./1.Introduction.md) | draft  |
 
 ## Concept Map
 
@@ -95,14 +100,29 @@ Short description of the course or topic collection.
 Use relative Markdown links in course indexes for Quartz reliability. Obsidian
 wikilinks may remain inside article bodies.
 
+## Homepage Recent Updates
+
+The homepage `Recent Updates` section in `content/index.md` is a manually
+curated reader-facing summary of recently published note content.
+
+- Keep exactly three entries, newest first.
+- Use the note publish/update date, a topic title, and a short content summary.
+- Link to the most relevant course/module pages and notes.
+- Describe what the reader can learn from the notes; do not copy git commit
+  subjects, hashes, or changelog-style repository maintenance text.
+- Organization-only changes should appear here only when they create a clearer
+  study path for existing notes.
+
 ## Article Template
 
 ```md
 ---
+
 ...
 ---
 
 > [!quote] References
+>
 > - Lecture: ...
 > - Reading: ...
 
@@ -260,8 +280,8 @@ Nested proof for a sub-bullet claim:
   sections.
 - Use ordered heading levels after the page title: `##`, `###`, and, only when
   needed for local subtopics, `####`.
-- Use the lecture-title symbol system in frontmatter titles, e.g.
-  `title: "Lecture 08 · Topic"`.
+- Use the lecture-title separator system in frontmatter titles, e.g.
+  `title: "Lecture 08 - Topic"`.
 - Add visible section numbers manually to article section headings. Do not rely
   on renderer-generated numbering. Use `## 1. Section`, `### 1.1 Subsection`,
   `### 1.2 Subsection`, then `## 2. Section`, etc.
@@ -290,7 +310,7 @@ $$
 - Prefer Markdown image syntax.
 - Use raw HTML only when width or layout control is necessary.
 - Raw HTML images must be centered explicitly, e.g. `style="display: block;
-  width: 50%; margin: 1.25rem auto;"`.
+width: 50%; margin: 1.25rem auto;"`.
 - By default, site CSS centers Markdown images and constrains them to a
   comfortable reading width. Do not add width controls unless a specific figure
   needs to be smaller or larger than the default.
@@ -301,7 +321,7 @@ $$
 ```md
 ![Alt text](./image.png)
 
-*Figure: Description.*
+_Figure: Description._
 ```
 
 - Remote images may remain during formatting passes. Localizing them is a
