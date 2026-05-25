@@ -39,8 +39,12 @@ Implemented in this branch:
 
 - `qa-api/server.mjs`
 - `qa-api/README.md`
+- `quartz/components/Ask.tsx`
+- `scripts/serve_local.mjs`
 - `npm run qa:serve`
 - `npm run qa:smoke`
+- `npm run build:local`
+- `npm run serve:local`
 
 Behavior:
 
@@ -86,10 +90,10 @@ question -> retrieve -> good score? call LLM with top-k note snippets
 Goal: add a small ask box to the Quartz frontend while keeping normal search
 unchanged.
 
-Suggested scope:
+Implemented scope:
 
 - Add a compact `Ask` button near the existing search entry point.
-- Submit to `QA_BACKEND_URL/api/qa`.
+- Submit to the build-time `QA_BACKEND_URL` endpoint.
 - Show answer, sources, and a clear "not enough context" state.
 - Avoid chat history in the first version.
 - Keep the API URL configurable at build time.

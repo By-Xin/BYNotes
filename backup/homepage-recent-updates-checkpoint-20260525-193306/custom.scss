@@ -1,0 +1,81 @@
+@use "./base.scss";
+
+article {
+  line-height: 1.68;
+}
+
+article p,
+article li {
+  line-height: 1.68;
+}
+
+article p {
+  margin: 0.85rem 0;
+}
+
+article li {
+  margin: 0.28rem 0;
+}
+
+article .katex-display {
+  margin: 1rem 0;
+}
+
+.callout[data-callout="proof"] {
+  border-left-width: 4px;
+  border-radius: 6px;
+  margin: 1rem 0;
+  --color: var(--darkgray);
+  --border: var(--lightgray);
+  --bg: transparent;
+  --callout-icon: var(--callout-icon-success);
+}
+
+.callout[data-callout="proof"] > .callout-title {
+  padding-bottom: 0.5rem;
+}
+
+.callout[data-callout="proof"] > .callout-content {
+  line-height: 1.68;
+}
+
+article table {
+  margin: 1.25rem 0;
+}
+
+article thead {
+  background: var(--highlight);
+}
+
+article img:not([style]) {
+  display: block;
+  height: auto;
+  margin: 1.25rem auto;
+  max-width: min(72%, 720px);
+}
+
+body[data-slug^="DeepLearning"] article img:not([style]),
+body[data-slug^="NLPAndLLMs"] article img:not([style]),
+body[data-slug^="StatisticalLearningAlgorithms"] article img:not([style]) {
+  max-width: min(42%, 392px);
+}
+
+article p:has(> img) + p em {
+  color: var(--darkgray);
+  display: block;
+  font-size: 0.95rem;
+  margin-top: -0.6rem;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  article img:not([style]) {
+    max-width: 100%;
+  }
+
+  body[data-slug^="DeepLearning"] article img:not([style]),
+  body[data-slug^="NLPAndLLMs"] article img:not([style]),
+  body[data-slug^="StatisticalLearningAlgorithms"] article img:not([style]) {
+    max-width: 64%;
+  }
+}

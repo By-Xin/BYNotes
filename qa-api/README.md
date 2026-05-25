@@ -19,7 +19,7 @@ and tested without incurring LLM costs.
 Build the Quartz content index first:
 
 ```bash
-npm run build:plain
+npm run build:local
 ```
 
 Run a smoke search:
@@ -33,6 +33,14 @@ Start the API:
 ```bash
 npm run qa:serve
 ```
+
+Start the local static site and QA API together:
+
+```bash
+npm run serve:local
+```
+
+Then open `http://localhost:8080`.
 
 Health check:
 
@@ -82,6 +90,7 @@ The server uses `POST https://api.openai.com/v1/responses`.
 | `OPENAI_API_KEY`                   | unset                              | OpenAI API key, backend only             |
 | `OPENAI_MODEL` / `QA_OPENAI_MODEL` | `gpt-4.1-mini`                     | OpenAI model name                        |
 | `QA_MAX_OUTPUT_TOKENS`             | `700`                              | LLM output cap                           |
+| `QA_BACKEND_URL`                   | `http://localhost:7860/api/qa`     | Frontend build-time Ask UI endpoint      |
 
 ## Deployment Notes
 

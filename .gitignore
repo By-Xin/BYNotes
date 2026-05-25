@@ -8,6 +8,7 @@ tsconfig.tsbuildinfo
 .obsidian
 .quartz-cache
 quartz-preview.log
+qa-api/*.log
 private/
 .replit
 replit.nix

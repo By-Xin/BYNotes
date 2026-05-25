@@ -299,15 +299,14 @@ async function setupExplorer(currentSlug: FullSlug) {
       window.addCleanup(() => button.removeEventListener("click", toggleExplorer))
     }
 
-    // Set up folder click handlers
-    if (opts.folderClickBehavior === "collapse") {
-      const folderButtons = explorer.getElementsByClassName(
-        "folder-button",
-      ) as HTMLCollectionOf<HTMLElement>
-      for (const button of folderButtons) {
-        button.addEventListener("click", toggleFolder)
-        window.addCleanup(() => button.removeEventListener("click", toggleFolder))
-      }
+    // In "link" mode, folders with pages become links, but virtual folders
+    // such as Explorer groups remain buttons and still need collapse behavior.
+    const folderButtons = explorer.getElementsByClassName(
+      "folder-button",
+    ) as HTMLCollectionOf<HTMLElement>
+    for (const button of folderButtons) {
+      button.addEventListener("click", toggleFolder)
+      window.addCleanup(() => button.removeEventListener("click", toggleFolder))
     }
 
     const folderIcons = explorer.getElementsByClassName(

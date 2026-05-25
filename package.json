@@ -16,6 +16,8 @@
     "import:convex": "./scripts/import_convex_notes.sh",
     "build:plain": "npx quartz build && ./scripts/make_directory_routes.sh public",
     "serve:plain": "npm run build:plain && python3 -m http.server ${PORT:-8080} -d public",
+    "build:local": "npx quartz build && node scripts/make_directory_routes.mjs public",
+    "serve:local": "node scripts/serve_local.mjs",
     "qa:serve": "node qa-api/server.mjs",
     "qa:smoke": "node qa-api/server.mjs --smoke \"central limit theorem\"",
     "docs": "npx quartz build --serve -d docs",
