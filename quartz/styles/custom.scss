@@ -54,7 +54,8 @@ article img:not([style]) {
   max-width: min(72%, 720px);
 }
 
-body[data-slug^="DeepLearning"] article img:not([style]) {
+body[data-slug^="DeepLearning"] article img:not([style]),
+body[data-slug^="StatisticalLearningAlgorithms"] article img:not([style]) {
   max-width: min(42%, 392px);
 }
 
@@ -71,7 +72,8 @@ article p:has(> img) + p em {
     max-width: 100%;
   }
 
-  body[data-slug^="DeepLearning"] article img:not([style]) {
+  body[data-slug^="DeepLearning"] article img:not([style]),
+  body[data-slug^="StatisticalLearningAlgorithms"] article img:not([style]) {
     max-width: 64%;
   }
 }

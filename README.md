@@ -12,7 +12,7 @@ This repository publishes notes with Quartz.
 - Published notes are organized by topic under `content/<TopicName>`.
 - Current topics include `content/ConvexOptimization`, `content/DeepLearning`,
   `content/OnlineLearning`, `content/StatisticalInference`, and
-  `content/StochasticProcess`.
+  `content/StatisticalLearningAlgorithms`, and `content/StochasticProcess`.
 
 ## Topic naming rules
 
@@ -20,6 +20,7 @@ This repository publishes notes with Quartz.
 - Topic landing pages may use longer display titles in `index.md`.
 - The display title for `content/OnlineLearning` is `Online Learning and Online Convex Optimization`.
 - The display title for `content/StatisticalInference` is `Statistical Inference`.
+- The display title for `content/StatisticalLearningAlgorithms` is `Statistical Learning Algorithms`.
 - Do not maintain per-topic `CATALOG.md` files unless explicitly requested.
 
 ## Markdown writing best practices
