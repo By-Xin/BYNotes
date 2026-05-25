@@ -11,11 +11,18 @@ import { concatenateResources } from "../util/resources"
 
 type OrderEntries = "sort" | "filter" | "map"
 
+export interface ExplorerGroup {
+  title: string
+  slug: string
+  children: string[]
+}
+
 export interface Options {
   title?: string
   folderDefaultState: "collapsed" | "open"
   folderClickBehavior: "collapse" | "link"
   useSavedState: boolean
+  groups: ExplorerGroup[]
   sortFn: (a: FileTrieNode, b: FileTrieNode) => number
   filterFn: (node: FileTrieNode) => boolean
   mapFn: (node: FileTrieNode) => void
@@ -26,6 +33,7 @@ const defaultOptions: Options = {
   folderDefaultState: "collapsed",
   folderClickBehavior: "link",
   useSavedState: true,
+  groups: [],
   mapFn: (node) => {
     return node
   },
@@ -69,6 +77,7 @@ export default ((userOpts?: Partial<Options>) => {
         data-behavior={opts.folderClickBehavior}
         data-collapsed={opts.folderDefaultState}
         data-savestate={opts.useSavedState}
+        data-groups={JSON.stringify(opts.groups)}
         data-data-fns={JSON.stringify({
           order: opts.order,
           sortFn: opts.sortFn.toString(),

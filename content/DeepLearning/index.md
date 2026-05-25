@@ -1,7 +1,9 @@
 ---
-title: "Deep Learning"
+title: "(Dive-into) Deep Learning"
 aliases:
   - "Deep Learning"
+  - "Dive into Deep Learning"
+  - "(Dive-into) Deep Learning"
   - "ml.DL DeepLearning"
   - "ml.DL_DeepLearning"
 type: "course-index"
@@ -14,16 +16,16 @@ Deep learning notes centered on neural network architectures, D2L, 李宏毅's l
 
 ## Notes
 
-| # | Note | Status |
-|---|------|--------|
-| 1 | [Feed-forward Neural Networks](./1.Feed-Forward-Neural-Networks.md) | draft |
-| 2 | [Convolutional Neural Networks](./2.Convolutional-Neural-Networks.md) | draft |
-| 3 | [CNN Architecture](./3.CNN-Architecture.md) | draft |
-| 4 | [Modern CNNs](./4.Modern-CNNs.md) | draft |
-| 5 | [Recurrent Neural Networks](./5.Recurrent-Neural-Networks.md) | draft |
-| 6 | [Modern RNNs](./6.Modern-RNNs.md) | draft |
-| 7 | [Attention and Transformer](./7.Attention-and-Transformer.md) | draft |
-| 8 | [Transformer and Variants](./8.Transformer-and-Variants.md) | draft |
+| #   | Note                                                                  | Status |
+| --- | --------------------------------------------------------------------- | ------ |
+| 1   | [Feed-forward Neural Networks](./1.Feed-Forward-Neural-Networks.md)   | draft  |
+| 2   | [Convolutional Neural Networks](./2.Convolutional-Neural-Networks.md) | draft  |
+| 3   | [CNN Architecture](./3.CNN-Architecture.md)                           | draft  |
+| 4   | [Modern CNNs](./4.Modern-CNNs.md)                                     | draft  |
+| 5   | [Recurrent Neural Networks](./5.Recurrent-Neural-Networks.md)         | draft  |
+| 6   | [Modern RNNs](./6.Modern-RNNs.md)                                     | draft  |
+| 7   | [Attention and Transformer](./7.Attention-and-Transformer.md)         | draft  |
+| 8   | [Transformer and Variants](./8.Transformer-and-Variants.md)           | draft  |
 
 ## Concept Map
 

@@ -8,10 +8,17 @@ interface ParsedOptions {
   folderClickBehavior: "collapse" | "link"
   folderDefaultState: "collapsed" | "open"
   useSavedState: boolean
+  groups: ExplorerGroup[]
   sortFn: (a: FileTrieNode, b: FileTrieNode) => number
   filterFn: (node: FileTrieNode) => boolean
   mapFn: (node: FileTrieNode) => void
   order: "sort" | "filter" | "map"[]
+}
+
+interface ExplorerGroup {
+  title: string
+  slug: string
+  children: string[]
 }
 
 type FolderState = {
@@ -79,11 +86,12 @@ function toggleFolder(evt: MouseEvent) {
   localStorage.setItem("fileTree", stringifiedFileTree)
 }
 
-function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElement {
+function createFileNode(currentSlug: FullSlug, node: FileTrieNode, depth: number): HTMLLIElement {
   const template = document.getElementById("template-file") as HTMLTemplateElement
   const clone = template.content.cloneNode(true) as DocumentFragment
   const li = clone.querySelector("li") as HTMLLIElement
   const a = li.querySelector("a") as HTMLAnchorElement
+  li.classList.add("explorer-file", `explorer-file-depth-${depth}`)
   a.href = resolveRelative(currentSlug, node.slug)
   a.dataset.for = node.slug
   a.textContent = node.displayName
@@ -95,10 +103,50 @@ function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElemen
   return li
 }
 
+function groupExplorerRoot(trie: FileTrieNode, groups: ExplorerGroup[]) {
+  if (groups.length === 0) return
+
+  const childBySegment = new Map(trie.children.map((child) => [child.slugSegment, child]))
+  const groupedSegments = new Set<string>()
+  const groupedNodes: FileTrieNode[] = []
+
+  for (const group of groups) {
+    const groupNode = new FileTrieNode([group.slug])
+    groupNode.isFolder = true
+    groupNode.displayName = group.title
+    groupNode.children = group.children
+      .map((segment) => {
+        const child = childBySegment.get(segment)
+        if (child) groupedSegments.add(segment)
+        return child
+      })
+      .filter((child): child is FileTrieNode => child !== undefined)
+
+    if (groupNode.children.length > 0) {
+      groupedNodes.push(groupNode)
+    }
+  }
+
+  const ungroupedNodes = trie.children.filter((child) => !groupedSegments.has(child.slugSegment))
+  trie.children = [...groupedNodes, ...ungroupedNodes]
+}
+
+function nodeContainsCurrentSlug(node: FileTrieNode, currentSlug: FullSlug): boolean {
+  const simpleFolderPath = simplifySlug(node.slug)
+  const folderIsPrefixOfCurrentSlug =
+    simpleFolderPath === currentSlug.slice(0, simpleFolderPath.length)
+
+  return (
+    folderIsPrefixOfCurrentSlug ||
+    node.children.some((child) => nodeContainsCurrentSlug(child, currentSlug))
+  )
+}
+
 function createFolderNode(
   currentSlug: FullSlug,
   node: FileTrieNode,
   opts: ParsedOptions,
+  depth: number,
 ): HTMLLIElement {
   const template = document.getElementById("template-folder") as HTMLTemplateElement
   const clone = template.content.cloneNode(true) as DocumentFragment
@@ -110,12 +158,22 @@ function createFolderNode(
 
   const folderPath = node.slug
   folderContainer.dataset.folderpath = folderPath
+  li.classList.add("explorer-folder", `explorer-folder-depth-${depth}`)
+  folderContainer.classList.add(`explorer-folder-container-depth-${depth}`)
+
+  if (depth === 0 && node.data === null) {
+    li.classList.add("explorer-group")
+  } else if (depth === 1) {
+    li.classList.add("explorer-notebook")
+  } else if (depth >= 2) {
+    li.classList.add("explorer-section")
+  }
 
   if (currentSlug === folderPath) {
     folderContainer.classList.add("active")
   }
 
-  if (opts.folderClickBehavior === "link") {
+  if (opts.folderClickBehavior === "link" && node.data !== null) {
     // Replace button with link for link behavior
     const button = titleContainer.querySelector(".folder-button") as HTMLElement
     const a = document.createElement("a")
@@ -136,9 +194,7 @@ function createFolderNode(
 
   // if this folder is a prefix of the current path we
   // want to open it anyways
-  const simpleFolderPath = simplifySlug(folderPath)
-  const folderIsPrefixOfCurrentSlug =
-    simpleFolderPath === currentSlug.slice(0, simpleFolderPath.length)
+  const folderIsPrefixOfCurrentSlug = nodeContainsCurrentSlug(node, currentSlug)
 
   if (!isCollapsed || folderIsPrefixOfCurrentSlug) {
     folderOuter.classList.add("open")
@@ -146,8 +202,8 @@ function createFolderNode(
 
   for (const child of node.children) {
     const childNode = child.isFolder
-      ? createFolderNode(currentSlug, child, opts)
-      : createFileNode(currentSlug, child)
+      ? createFolderNode(currentSlug, child, opts, depth + 1)
+      : createFileNode(currentSlug, child, depth + 1)
     ul.appendChild(childNode)
   }
 
@@ -163,6 +219,7 @@ async function setupExplorer(currentSlug: FullSlug) {
       folderClickBehavior: (explorer.dataset.behavior || "collapse") as "collapse" | "link",
       folderDefaultState: (explorer.dataset.collapsed || "collapsed") as "collapsed" | "open",
       useSavedState: explorer.dataset.savestate === "true",
+      groups: JSON.parse(explorer.dataset.groups || "[]"),
       order: dataFns.order || ["filter", "map", "sort"],
       sortFn: new Function("return " + (dataFns.sortFn || "undefined"))(),
       filterFn: new Function("return " + (dataFns.filterFn || "undefined"))(),
@@ -194,6 +251,7 @@ async function setupExplorer(currentSlug: FullSlug) {
           break
       }
     }
+    groupExplorerRoot(trie, opts.groups)
 
     // Get folder paths for state management
     const folderPaths = trie.getFolderPaths()
@@ -213,8 +271,8 @@ async function setupExplorer(currentSlug: FullSlug) {
     const fragment = document.createDocumentFragment()
     for (const child of trie.children) {
       const node = child.isFolder
-        ? createFolderNode(currentSlug, child, opts)
-        : createFileNode(currentSlug, child)
+        ? createFolderNode(currentSlug, child, opts, 0)
+        : createFileNode(currentSlug, child, 0)
 
       fragment.appendChild(node)
     }

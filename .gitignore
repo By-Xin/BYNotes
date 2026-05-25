@@ -2,6 +2,7 @@
 .gitignore
 node_modules
 public
+jupyterbook
 prof
 tsconfig.tsbuildinfo
 .obsidian
