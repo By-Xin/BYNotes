@@ -4,6 +4,7 @@ title: OptOpt
 
 - [Convex Optimization CMU](./ConvexOptimization)
 - [Deep Learning](./DeepLearning)
+- [NLP and Large Language Models](./NLPAndLLMs)
 - [Online Learning and Online Convex Optimization](./OnlineLearning)
 - [Probability Theory](./ProbabilityTheory)
 - [Statistical Inference](./StatisticalInference)
