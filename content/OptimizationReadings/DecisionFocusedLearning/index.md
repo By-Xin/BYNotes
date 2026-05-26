@@ -1,0 +1,21 @@
+---
+title: "Decision-Focused Learning"
+aliases:
+  - "Decision Focus Learning"
+  - "Decision Focused Learning"
+  - "PaperReading/DecisionFocusedLearning"
+type: "reading-section"
+status: "active"
+tags:
+  - reading/papers
+  - topic/decision-focused-learning
+  - topic/optimization
+---
+
+Notes on decision-focused learning, smart predict-then-optimize, and end-to-end optimization layers.
+
+## Papers
+
+| Paper                                                                                                                                                                     | Venue / Publisher    | Status | Materials              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------ | ---------------------- |
+| [End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR, Elsevier, 2025)](./E2E-Decision-Based-Cardinality-Constrained-Portfolio-Optimization.md) | EJOR, Elsevier, 2025 | seed   | slides mirrored as PDF |

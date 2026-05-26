@@ -15,12 +15,17 @@ const explorerGroups = [
   {
     title: "OPTIMIZATION",
     slug: "Optimization",
-    children: ["ConvexOptimization", "OnlineLearning", "PaperReading"],
+    children: ["ConvexOptimization", "OnlineLearning"],
   },
   {
     title: "MACHINE LEARNING AND AI",
     slug: "MachineLearningAI",
     children: ["StatisticalLearningAlgorithms", "DeepLearning", "NLPAndLLMs"],
+  },
+  {
+    title: "PAPER READING",
+    slug: "PaperReadingGroup",
+    children: ["OptimizationReadings"],
   },
 ]
 

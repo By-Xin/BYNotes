@@ -1,9 +1,12 @@
 ---
-title: "End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR 2025)"
+title: "End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR, Elsevier, 2025)"
 aliases:
   - "E2E Decision-Based Cardinality-Constrained Portfolio Optimization"
   - "Anis Kwon 2025 cardinality constrained portfolio"
   - "End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization"
+  - "End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR 2025)"
+  - "End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR / Elsevier, 2025)"
+  - "PaperReading/E2E-Decision-Based-Cardinality-Constrained-Portfolio-Optimization"
 type: "paper-note"
 status: "seed"
 tags:

@@ -21,7 +21,6 @@ title: OptOpt
         <ul>
           <li><a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a></li>
           <li><a href="./OnlineLearning/">Online Learning and Online Convex Optimization</a></li>
-          <li><a href="./PaperReading/">Decision-Focused Learning</a></li>
         </ul>
       </section>
       <section>
@@ -30,6 +29,12 @@ title: OptOpt
           <li><a href="./StatisticalLearningAlgorithms/">Statistical Learning Algorithms</a></li>
           <li><a href="./DeepLearning/">(Dive-into) Deep Learning</a></li>
           <li><a href="./NLPAndLLMs/">NLP and Large Language Models</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>PAPER READING</h3>
+        <ul>
+          <li><a href="./OptimizationReadings/">Optimization Readings</a></li>
         </ul>
       </section>
     </div>
@@ -41,13 +46,13 @@ title: OptOpt
     <ol>
       <li>
         <time datetime="2026-05-26">May 26, 2026</time>
-        <h3>Decision-focused learning paper notes</h3>
+        <h3>Optimization readings notebook</h3>
         <p>
-          Added <a href="./PaperReading/">Decision-Focused Learning</a> under optimization,
-          seeded with
-          <a href="./PaperReading/E2E-Decision-Based-Cardinality-Constrained-Portfolio-Optimization.md">Anis and Kwon's
-          decision-based cardinality-constrained portfolio optimization paper</a> and its
-          mirrored Beamer PDF.
+          Added <a href="./OptimizationReadings/">Optimization Readings</a> under paper
+          reading, with a
+          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>
+          section seeded by Anis and Kwon's decision-based cardinality-constrained portfolio
+          optimization paper and its mirrored Beamer PDF.
         </p>
       </li>
       <li>
