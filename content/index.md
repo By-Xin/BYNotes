@@ -31,6 +31,12 @@ title: OptOpt
           <li><a href="./NLPAndLLMs/">NLP and Large Language Models</a></li>
         </ul>
       </section>
+      <section>
+        <h3>PAPER READING</h3>
+        <ul>
+          <li><a href="./PaperReading/">Paper Reading Notes</a></li>
+        </ul>
+      </section>
     </div>
   </section>
 
@@ -38,6 +44,17 @@ title: OptOpt
     <p class="home-kicker">Curated notes</p>
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
+      <li>
+        <time datetime="2026-05-26">May 26, 2026</time>
+        <h3>Paper reading notes workspace</h3>
+        <p>
+          Added <a href="./PaperReading/">Paper Reading Notes</a> as a home for recent
+          literature notes, seeded with
+          <a href="./PaperReading/E2E-Decision-Based-Cardinality-Constrained-Portfolio-Optimization.md">Anis and Kwon's
+          decision-based cardinality-constrained portfolio optimization paper</a> and its
+          mirrored Beamer PDF.
+        </p>
+      </li>
       <li>
         <time datetime="2026-05-25">May 25, 2026</time>
         <h3>Statistical learning and inference study paths</h3>

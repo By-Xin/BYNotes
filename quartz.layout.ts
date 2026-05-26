@@ -22,6 +22,11 @@ const explorerGroups = [
     slug: "MachineLearningAI",
     children: ["StatisticalLearningAlgorithms", "DeepLearning", "NLPAndLLMs"],
   },
+  {
+    title: "PAPER READING",
+    slug: "PaperReadingGroup",
+    children: ["PaperReading"],
+  },
 ]
 
 // components shared across all pages
