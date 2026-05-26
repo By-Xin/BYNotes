@@ -77,16 +77,6 @@ title: OptOpt
           BERT through reasoning, uncertainty, and context engineering.
         </p>
       </li>
-      <li>
-        <time datetime="2026-05-25">May 25, 2026</time>
-        <h3>Probability theory and computational statistics</h3>
-        <p>
-          Added notes for <a href="./ProbabilityTheory/Limit/">Limit Theorems and Convergence</a>,
-          <a href="./ProbabilityTheory/Distribution/">Distribution Theory</a>, and
-          <a href="./ComputationalStatistics/">Computational Statistics</a>, covering CLT,
-          convergence, exponential families, change of variables, and random variable generation.
-        </p>
-      </li>
     </ol>
   </aside>
 </div>

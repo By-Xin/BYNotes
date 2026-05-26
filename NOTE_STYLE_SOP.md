@@ -106,12 +106,50 @@ The homepage `Recent Updates` section in `content/index.md` is a manually
 curated reader-facing summary of recently published note content.
 
 - Keep exactly three entries, newest first.
+- Before every homepage commit, count the `<li>` entries in this section. If a
+  new entry would create a fourth item, remove the oldest entry in the same
+  edit so the published homepage never shows more than three.
 - Use the note publish/update date, a topic title, and a short content summary.
 - Link to the most relevant course/module pages and notes.
 - Describe what the reader can learn from the notes; do not copy git commit
   subjects, hashes, or changelog-style repository maintenance text.
 - Organization-only changes should appear here only when they create a clearer
   study path for existing notes.
+
+## Paper Reading Notebooks
+
+Paper reading content uses a separate Explorer group, not a subfolder under an
+existing course area.
+
+- Keep `PAPER READING` as a top-level Explorer group in `quartz.layout.ts`,
+  parallel to groups such as `STAT FOUNDATIONS AND MORE`, `OPTIMIZATION`, and
+  `MACHINE LEARNING AND AI`.
+- Create each reading notebook as a root folder under `content/`, with an
+  `index.md` landing page. Example: `content/OptimizationReadings/index.md`
+  with display title `Optimization Readings`.
+- Create each notebook section as a child folder with its own `index.md`.
+  Example:
+  `content/OptimizationReadings/DecisionFocusedLearning/index.md` with display
+  title `Decision-Focused Learning`.
+- Put individual paper notes inside the relevant section folder.
+- Include the publication venue or publisher and year in each paper note title,
+  e.g.
+  `End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR, Elsevier, 2025)`.
+- For a lean seed note, use only the useful essentials: citation, abstract, and
+  local reading assets such as slides or PDFs. Add deeper method notes only when
+  the user asks for that level of reading.
+- Summarize or paraphrase abstracts unless the abstract text is explicitly
+  provided for verbatim use.
+- Store mirrored reading assets next to the note in a local asset folder such
+  as `slides/`, and link them with relative paths, e.g.
+  `[Open the mirrored PDF](slides/example.pdf)` and `![[slides/example.pdf]]`.
+- Preserve old URLs with `aliases` when moving or renaming paper notes.
+- Update the homepage `PAPER READING` Quick Guide when adding a new notebook.
+- Add a `Recent Updates` entry only when the paper reading change creates a new
+  notebook, section, or useful reader-facing path, and still keep exactly three
+  homepage updates.
+- Run `node quartz\bootstrap-cli.mjs build` and verify the generated `public/`
+  output contains the expected group, notebook, section, and paper title text.
 
 ## Article Template
 
