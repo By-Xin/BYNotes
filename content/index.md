@@ -45,6 +45,17 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-05-31">May 31, 2026</time>
+        <h3>Convex optimization quasi-Newton methods</h3>
+        <p>
+          Added <a href="./ConvexOptimization/17.Quasi-Newton-Methods">Lecture 17 -
+          Quasi-Newton Methods</a> to
+          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
+          the secant equation, SR1, DFP, BFGS, convergence ideas, and L-BFGS two-loop
+          recursion.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-05-26">May 26, 2026</time>
         <h3>Optimization readings notebook</h3>
         <p>

@@ -21,10 +21,6 @@ article .katex-display {
   margin: 1rem 0;
 }
 
-article.compact-aligned-math .katex-display:has(.mtable) > .katex {
-  font-size: 1.02em;
-}
-
 .callout[data-callout="proof"] {
   border-left-width: 4px;
   border-radius: 6px;

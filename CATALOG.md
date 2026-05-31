@@ -2,7 +2,7 @@
 
 This file tracks all notes in the ConvexOptimization directory with version information for manual sync management.
 
-**Last updated:** 2026-05-31 17:28:17
+**Last updated:** 2026-05-31 19:15:47
 
 > [!warning] Sync Status Note
 > **Chapters 1-12**: The source materials and these notes are NOT fully synchronized. This is a legacy issue that needs manual comparison and reconciliation in the future.
@@ -27,7 +27,7 @@ This file tracks all notes in the ConvexOptimization directory with version info
 | 14.Newton-Method.md | 2026-05-25 21:55:39 | 11033 | 49be87c90cceb2d1c68327dbb5009fda1a3a9f5e8fcfb344fd09fbccee7e50f0 |
 | 15.Barrier-Method.md | 2026-05-25 21:55:39 | 21480 | 7ac5b50929823e605e35ac483b68c11168562803b97eeb480830b89e5a3d87d1 |
 | 16.Primal-Dual-Interior-Point-Methods.md | 2026-05-25 21:55:39 | 18452 | 781b35986aa6742acc32cbd4c4a0166e2f9a8e7a8d30d9f1984d3b0c3f3ad2ef |
-| 17.Quasi-Newton-Methods.md | 2026-05-31 17:28:17 | 38649 | f183eda662d16c84e2b76b1a85575a84fc0957d94ccfa53e1fe680c80812bd5b |
+| 17.Quasi-Newton-Methods.md | 2026-05-31 19:15:47 | 38612 | e561c7fa7e994cb1ed61f1eb38f617c56cbe82750aab460315f5e02aec8c6076 |
 | 19.Numerical-Linear-Algebra.md | 2026-05-25 21:55:39 | 36543 | a8695ebca8bfeeea5c4ae19f9fdb824c468a552841e8dd5096a50244590a6293 |
 | index.md | 2026-05-31 16:55:35 | 1868 | 691566ca79780fbe5b5643be889e06bdfa21d99b29c38e089bc605c84754b679 |
 
