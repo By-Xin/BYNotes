@@ -17,6 +17,50 @@ change formatting only unless a content edit is explicitly approved.
   formatting, proof formatting, references blocks, links, image markup,
   captions, and course index organization.
 
+## Source Fidelity and Minimal Adaptation
+
+When a user provides an Obsidian source note, the source note is authoritative.
+The publishing task is a faithful formatting and parsing pass, not a rewrite.
+
+Default workflow for imported notes:
+
+1. Copy the source note into the target `content/` path first.
+2. Apply only the smallest changes required for Quartz publication.
+3. Preserve the original order, section structure, derivations, equations,
+   examples, algorithm semantics, and prose unless the user explicitly approves
+   a content edit.
+4. Review the final diff as a source-fidelity check before publishing.
+
+Allowed without separate approval:
+
+- Add or normalize frontmatter.
+- Remove a duplicate body `#` title when Quartz already renders the
+  frontmatter title.
+- Convert references, notes, proofs, solutions, and algorithms into approved
+  callout syntax.
+- Fix Markdown indentation, list structure, blank lines, trailing whitespace,
+  and line wrapping needed for correct parsing.
+- Fix KaTeX parsing issues only when the mathematical expression is preserved.
+- Normalize internal links, aliases, course index rows, and `CATALOG.md`.
+
+Not allowed without explicit user approval:
+
+- Reorder major sections or change the argument flow.
+- Rewrite derivations, explanations, definitions, examples, or conclusions for
+  style.
+- Add, delete, merge, or split mathematical claims or equations for content
+  reasons.
+- Change an algorithm's logic, loop bounds, variables, outputs, step order, or
+  convergence conditions.
+- Replace the user's wording with a newly synthesized summary.
+- Apply visual changes that alter readability tradeoffs, such as shrinking
+  formulas to avoid horizontal scrolling, unless the user asks for that exact
+  treatment.
+
+If the formatter finds a likely mathematical, algorithmic, or structural
+problem in the source, do not silently fix it. Leave the source content intact,
+report the issue, and ask the user to approve the substantive change.
+
 ## Frontmatter
 
 Lecture notes should use this shape:
@@ -105,16 +149,22 @@ wikilinks may remain inside article bodies.
 The homepage `Recent Updates` section in `content/index.md` is a manually
 curated reader-facing summary of recently published note content.
 
-- Keep exactly three entries, newest first.
+- Keep exactly three entries, newest first. This is a fixed-size reader-facing
+  window, not an append-only changelog.
 - Before every homepage commit, count the `<li>` entries in this section. If a
   new entry would create a fourth item, remove the oldest entry in the same
   edit so the published homepage never shows more than three.
+- When adding one new `Recent Updates` item, delete exactly one oldest item in
+  the same commit.
 - Use the note publish/update date, a topic title, and a short content summary.
 - Link to the most relevant course/module pages and notes.
 - Describe what the reader can learn from the notes; do not copy git commit
   subjects, hashes, or changelog-style repository maintenance text.
 - Organization-only changes should appear here only when they create a clearer
   study path for existing notes.
+- Verification requirement: after building, inspect the generated homepage and
+  confirm the `home-updates` section has exactly three `<li>` entries and that
+  the newest entry appears first.
 
 ## Paper Reading Notebooks
 
@@ -442,6 +492,21 @@ Use `[!algorithm]` callouts for pseudocode, algorithms, iterative procedures,
 sampling procedures, or optimization routines. Do not use algorithm callouts for
 definitions, theorems, examples, proofs, or ordinary code snippets.
 
+Algorithm normalization is a rendering pass only. The source algorithm remains
+authoritative.
+
+- Preserve the original algorithm meaning, step order, loop ranges, variables,
+  inputs, outputs, and stopping conditions.
+- Do not add missing algorithm steps, delete steps, combine steps, or change the
+  algorithm to a more standard textbook version.
+- Do not translate or rewrite prose inside pseudocode except for the minimum
+  keyword and Markdown syntax needed for rendering.
+- If an algorithm appears mathematically wrong, incomplete, or ambiguous, do
+  not fix it silently. Report the concern and ask for review.
+- If the source has no explicit output and the output is not mechanically clear
+  from the source block, do not invent one. Ask the user or omit `OUTPUT` only
+  when the surrounding prose already supplies it.
+
 Default authoring pattern:
 
 ```md
@@ -472,7 +537,8 @@ Use uppercase pseudocode labels and control keywords consistently:
 Default rule for `INPUT` and `OUTPUT`:
 
 - Include both `**INPUT:**` and `**OUTPUT:**` for standalone algorithms and
-  named procedures.
+  named procedures when the source provides them or they are mechanically
+  determined by the source block.
 - Put a blank quoted line, `>`, between `INPUT` and `OUTPUT`; otherwise
   Markdown will merge them into the same paragraph.
 - Use `**INPUT:** none` or `**OUTPUT:** none` only when that is genuinely the
@@ -521,8 +587,12 @@ Checklist for imported or legacy Markdown:
   `WHILE`, `return` -> `RETURN`, etc.
 - Convert code-fenced pseudocode to ordered-list pseudocode when it contains
   math or conceptual algorithm steps.
-- Preserve the algorithm's meaning and step order. Do not optimize, rewrite, or
-  invent missing steps during a formatting pass.
+- When a renderer fails to recognize keywords, manually normalize only the
+  keyword surface, such as changing a line from "calculate ..." to
+  `**COMPUTE** ...`, or "update ..." to `**UPDATE** ...`, while keeping the
+  original mathematical action unchanged.
+- Preserve the algorithm's meaning and step order. Do not optimize, rewrite,
+  translate, or invent missing steps during a formatting pass.
 - After normalization, preview the page and check that line numbers, nested
   indentation, math rendering, and callout spacing are readable on desktop and
   mobile widths.
@@ -549,18 +619,23 @@ Quartz visual polish lives in `quartz/styles/custom.scss`.
 For each note:
 
 1. Confirm the article path and backup baseline.
-2. Normalize frontmatter.
-3. Normalize the top-level title and references block.
-4. Normalize semantic labels without adding definition/theorem/example callouts.
-5. Normalize proof and solution blocks.
-6. Normalize algorithm and pseudocode blocks, including uppercase pseudocode
+2. Copy the source note first, then treat it as authoritative.
+3. Normalize frontmatter.
+4. Normalize the top-level title and references block.
+5. Normalize semantic labels without adding definition/theorem/example callouts.
+6. Normalize proof and solution blocks.
+7. Normalize algorithm and pseudocode blocks, including uppercase pseudocode
    labels and ordered-list structure.
-7. Normalize notebook-style code cells when code/result pairs are present.
-8. Normalize figure syntax, captions, and links.
-9. Add or clean `Related Notes` only when useful.
-10. Run a Quartz build.
-11. Pause for preview and reviewer approval.
-12. Commit the single-article change only after approval.
+8. Normalize notebook-style code cells when code/result pairs are present.
+9. Normalize figure syntax, captions, and links.
+10. Add or clean `Related Notes` only when useful.
+11. Perform a source-fidelity diff check; substantive content changes require
+    explicit user approval.
+12. If the homepage `Recent Updates` section is changed, verify it has exactly
+    three entries.
+13. Run a Quartz build.
+14. Pause for preview and reviewer approval.
+15. Commit the single-article change only after approval.
 
 The commit should be narrow enough that one article can be reviewed or reverted
 without affecting unrelated notes.
