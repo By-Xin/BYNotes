@@ -213,6 +213,7 @@ Use this label taxonomy:
 
 Approved globally introduced callouts:
 
+- `[!algorithm] ALGORITHM: ...`
 - `[!proof]` / `[!proof]+`
 - `[!quote] References`
 - `[!note] Note: ...`
@@ -220,8 +221,10 @@ Approved globally introduced callouts:
 Existing callouts in a note, such as `[!note]`, `[!warning]`, or `[!danger]`,
 may remain. Convert explicit `**Note (...)**` or `> **Note.**` blocks to
 `[!note] Note: ...` callouts. Convert `[!example]` blocks to
-`**Example (Name).**` labels during a formatting pass. Do not introduce new
-non-reference/non-proof/non-note callouts.
+`**Example (Name).**` labels during a formatting pass. Use `[!algorithm]` only
+for actual algorithms or procedures, not for examples, definitions, theorems,
+or informal implementation notes. Do not introduce other new callout types
+without updating this SOP first.
 
 Every callout must have an explicit title that identifies the block role. Use a
 type prefix when the callout is not self-evident from the title:
@@ -237,6 +240,9 @@ type prefix when the callout is not self-evident from the title:
 > ...
 
 > [!note] Note: Boundary behavior
+> ...
+
+> [!algorithm] ALGORITHM: Projected Gradient Descent
 > ...
 
 > [!danger] Danger: Common mistake
@@ -430,6 +436,97 @@ During formatting passes:
   affected page to confirm the prompts, wrapping, code highlighting, and mobile
   layout are readable.
 
+## Algorithm and Pseudocode Blocks
+
+Use `[!algorithm]` callouts for pseudocode, algorithms, iterative procedures,
+sampling procedures, or optimization routines. Do not use algorithm callouts for
+definitions, theorems, examples, proofs, or ordinary code snippets.
+
+Default authoring pattern:
+
+```md
+> [!algorithm] ALGORITHM: Projected Gradient Descent
+> **INPUT:** objective $f$, feasible set $C$, initial point $x_0$, stepsizes $\eta_t$
+>
+> **OUTPUT:** final iterate $x_T$
+>
+> 1. **FOR** $t = 0, 1, \ldots, T - 1$ **DO**
+>    1. **SET** $y_{t+1} \leftarrow x_t - \eta_t \nabla f(x_t)$
+>    2. **SET** $x_{t+1} \leftarrow \Pi_C(y_{t+1})$
+> 2. **RETURN** $x_T$
+```
+
+Use Markdown ordered lists for pseudocode lines. Do not use fenced code blocks
+for pseudocode when the block contains mathematical notation, because code
+fences prevent KaTeX rendering and make the result look like executable code
+rather than a mathematical algorithm.
+
+Use uppercase pseudocode labels and control keywords consistently:
+
+- Metadata labels: `INPUT`, `OUTPUT`, `REQUIRE`, `INITIALIZE`.
+- Control flow: `FOR`, `WHILE`, `IF`, `ELSE IF`, `ELSE`, `REPEAT`, `UNTIL`.
+- Control suffixes: `DO`, `THEN`.
+- Actions: `SET`, `UPDATE`, `COMPUTE`, `DRAW`, `SAMPLE`, `PROJECT`.
+- Exits: `RETURN`, `BREAK`, `CONTINUE`.
+
+Default rule for `INPUT` and `OUTPUT`:
+
+- Include both `**INPUT:**` and `**OUTPUT:**` for standalone algorithms and
+  named procedures.
+- Put a blank quoted line, `>`, between `INPUT` and `OUTPUT`; otherwise
+  Markdown will merge them into the same paragraph.
+- Use `**INPUT:** none` or `**OUTPUT:** none` only when that is genuinely the
+  most accurate description.
+- Omit `INPUT` and `OUTPUT` only for a very short local procedure where the
+  surrounding sentence already supplies them. This should be rare.
+
+Pseudocode syntax conventions:
+
+- Use `**SET** $x \leftarrow y$` for assignment.
+- Use `**UPDATE** $x \leftarrow x + \Delta x$` when emphasizing an iterative
+  state update.
+- Use `**DRAW** $Y \sim q$` or `**SAMPLE** $Y \sim q$` for random sampling;
+  choose one verb within a single algorithm and keep it consistent.
+- Use `**FOR** ... **DO**`, `**WHILE** ... **DO**`, and `**IF** ... **THEN**`.
+- Use nested ordered lists for indentation and block structure.
+- Keep mathematical notation inside `$...$`; use `\leftarrow`, `\nabla`,
+  `\Pi_C`, `\operatorname{Uniform}`, and similar LaTeX notation instead of
+  ASCII approximations like `<-`, `grad`, or `projection_C`.
+- Keep punctuation light. End prose-like lines with periods only when the line
+  is a sentence; do not force periods after every pseudocode instruction.
+
+Formatting and normalization rules:
+
+- The callout title must be explicit and use the form
+  `[!algorithm] ALGORITHM: Name`.
+- For long algorithms that should be collapsible but initially expanded, use
+  `[!algorithm]+ ALGORITHM: Name`.
+- Do not use `[!algorithm]-` unless the user explicitly asks for default
+  collapsed algorithms.
+- Do not number algorithms manually in the title unless the source material
+  already requires a stable visible number.
+- Do not convert short Python/R/Julia code examples into algorithm callouts;
+  use notebook-style code cells when code and output matter.
+- Do not convert semantic statements such as definitions, claims, or examples
+  into algorithm callouts.
+
+Checklist for imported or legacy Markdown:
+
+- Search for likely pseudocode markers: `Algorithm`, `Input`, `Output`, `for`,
+  `while`, `repeat`, `until`, `return`, `<-`, `Require`, and `Initialize`.
+- If a block is an algorithm/procedure, convert it to `[!algorithm]` with an
+  explicit `ALGORITHM: Name` title.
+- Convert lowercase or title-case pseudocode keywords to uppercase labels:
+  `Input` -> `INPUT`, `Output` -> `OUTPUT`, `for` -> `FOR`, `while` ->
+  `WHILE`, `return` -> `RETURN`, etc.
+- Convert code-fenced pseudocode to ordered-list pseudocode when it contains
+  math or conceptual algorithm steps.
+- Preserve the algorithm's meaning and step order. Do not optimize, rewrite, or
+  invent missing steps during a formatting pass.
+- After normalization, preview the page and check that line numbers, nested
+  indentation, math rendering, and callout spacing are readable on desktop and
+  mobile widths.
+
 ## Links
 
 - Course indexes should use relative Markdown links.
@@ -456,12 +553,14 @@ For each note:
 3. Normalize the top-level title and references block.
 4. Normalize semantic labels without adding definition/theorem/example callouts.
 5. Normalize proof and solution blocks.
-6. Normalize notebook-style code cells when code/result pairs are present.
-7. Normalize figure syntax, captions, and links.
-8. Add or clean `Related Notes` only when useful.
-9. Run a Quartz build.
-10. Pause for preview and reviewer approval.
-11. Commit the single-article change only after approval.
+6. Normalize algorithm and pseudocode blocks, including uppercase pseudocode
+   labels and ordered-list structure.
+7. Normalize notebook-style code cells when code/result pairs are present.
+8. Normalize figure syntax, captions, and links.
+9. Add or clean `Related Notes` only when useful.
+10. Run a Quartz build.
+11. Pause for preview and reviewer approval.
+12. Commit the single-article change only after approval.
 
 The commit should be narrow enough that one article can be reviewed or reverted
 without affecting unrelated notes.

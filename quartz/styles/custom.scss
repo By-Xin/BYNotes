@@ -21,6 +21,10 @@ article .katex-display {
   margin: 1rem 0;
 }
 
+article.compact-aligned-math .katex-display:has(.mtable) > .katex {
+  font-size: 1.02em;
+}
+
 .callout[data-callout="proof"] {
   border-left-width: 4px;
   border-radius: 6px;
@@ -37,6 +41,67 @@ article .katex-display {
 
 .callout[data-callout="proof"] > .callout-content {
   line-height: 1.68;
+}
+
+.callout[data-callout="algorithm"] {
+  border-left-width: 4px;
+  border-radius: 6px;
+  margin: 1rem 0;
+  --color: var(--secondary);
+  --border: color-mix(in srgb, var(--secondary) 28%, var(--lightgray));
+  --bg: color-mix(in srgb, var(--highlight) 64%, transparent);
+  --callout-icon: var(--callout-icon-example);
+}
+
+.callout[data-callout="algorithm"] > .callout-title {
+  padding-bottom: 0.55rem;
+}
+
+.callout[data-callout="algorithm"] > .callout-content {
+  line-height: 1.62;
+}
+
+.callout[data-callout="algorithm"] > .callout-content p {
+  margin: 0.55rem 0;
+}
+
+.callout[data-callout="algorithm"] .callout-content-inner > ol {
+  counter-reset: algorithm-line;
+  margin: 0.75rem 0 0.95rem;
+  padding-left: 0;
+}
+
+.callout[data-callout="algorithm"] ol {
+  list-style: none;
+  margin: 0;
+  padding-left: 1.35rem;
+}
+
+.callout[data-callout="algorithm"] li {
+  counter-increment: algorithm-line;
+  line-height: 1.7;
+  margin: 0.16rem 0;
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.callout[data-callout="algorithm"] li::before {
+  color: color-mix(in srgb, var(--secondary) 62%, var(--gray));
+  content: counter(algorithm-line);
+  font-family: var(--codeFont);
+  font-size: 0.78rem;
+  left: 0;
+  position: absolute;
+  text-align: right;
+  top: 0.06rem;
+  width: 1.25rem;
+}
+
+.callout[data-callout="algorithm"] li > strong:first-child {
+  color: var(--secondary);
+  font-family: var(--codeFont);
+  font-size: 0.9em;
+  font-weight: 600;
 }
 
 article table {

@@ -31,6 +31,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 14 | [Newton Method](./14.Newton-Method.md) | draft |
 | 15 | [Barrier Method](./15.Barrier-Method.md) | polished |
 | 16 | [Primal-Dual Interior-Point Methods](./16.Primal-Dual-Interior-Point-Methods.md) | polished |
+| 17 | [Quasi-Newton Methods](./17.Quasi-Newton-Methods.md) | polished |
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
 
 ## Concept Map
@@ -38,7 +39,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 - Convexity and canonical problem forms
 - First-order and proximal methods
 - Duality, conjugates, and optimality conditions
-- Newton methods, interior-point methods, and numerical linear algebra
+- Newton methods, quasi-Newton methods, interior-point methods, and numerical linear algebra
 
 ## References
 
@@ -47,4 +48,4 @@ CMU Fall 2018 Convex Optimization lecture notes.
 ## Planned Notes
 
 - Lecture 01 Introduction
-- Lectures 17-18
+- Lecture 18
