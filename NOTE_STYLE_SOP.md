@@ -365,6 +365,71 @@ _Figure: Description._
 - Remote images may remain during formatting passes. Localizing them is a
   separate asset-cleanup task.
 
+## Notebook-Style Code Cells
+
+Use notebook-style cells for small Python examples whose value comes from seeing
+both the code and its result inline, such as matrix calculations, random
+sampling, toy model outputs, or short numerical checks.
+
+Author notebook cells with fenced code metadata. Do not hand-write visible
+`In [1]` or `Out [1]` labels in Markdown; Quartz renders those labels from the
+metadata.
+
+````md
+```python nb-in=1
+import numpy as np
+
+x = np.arange(5)
+x.mean()
+```
+
+```text nb-out=1
+2.0
+```
+````
+
+Use these cell metadata forms:
+
+- `nb-in=N` for Python input cells.
+- `nb-out=N` for normal text output.
+- `nb-error=N` for traceback or error output.
+
+The execution number `N` should match between an input cell and its related
+output cell. Renumber cells locally within the note or example section. If a
+cell is intentionally unexecuted, omit the number, e.g. `nb-in`, so the renderer
+can show an empty prompt.
+
+Keep notebook-style examples compact:
+
+- Use them for explanatory examples inside ordinary notes, not for long
+  experiments or training logs.
+- Prefer 1-3 nearby input/output pairs inside a standard article section.
+- If an example becomes long enough to dominate the article, move it to a
+  dedicated note and link to it from the main explanation.
+- Keep code output static. Do not add client-side Python execution to ordinary
+  notes.
+
+Represent output by type:
+
+- Plain stdout or scalar results: use `text nb-out=N`.
+- Tracebacks: use `traceback nb-error=N`.
+- Tables: prefer Markdown tables or HTML tables after the relevant input cell
+  when the output is naturally tabular.
+- Plots and arrays rendered as figures: save the image locally and use normal
+  figure syntax after the relevant input cell, following the [[#Figures]] rules.
+
+During formatting passes:
+
+- Convert legacy hand-written `**In [N].**` / `**Out [N].**` labels to notebook
+  cell metadata when the surrounding blocks clearly form a code/result pair.
+- Do not invent outputs that are not present in the source note.
+- Do not run or rewrite code unless the task explicitly asks for execution or
+  correction.
+- Preserve the original code and output text unless a content edit is approved.
+- After adding or changing notebook cells, run a Quartz build and preview the
+  affected page to confirm the prompts, wrapping, code highlighting, and mobile
+  layout are readable.
+
 ## Links
 
 - Course indexes should use relative Markdown links.
@@ -391,11 +456,12 @@ For each note:
 3. Normalize the top-level title and references block.
 4. Normalize semantic labels without adding definition/theorem/example callouts.
 5. Normalize proof and solution blocks.
-6. Normalize figure syntax, captions, and links.
-7. Add or clean `Related Notes` only when useful.
-8. Run a Quartz build.
-9. Pause for preview and reviewer approval.
-10. Commit the single-article change only after approval.
+6. Normalize notebook-style code cells when code/result pairs are present.
+7. Normalize figure syntax, captions, and links.
+8. Add or clean `Related Notes` only when useful.
+9. Run a Quartz build.
+10. Pause for preview and reviewer approval.
+11. Commit the single-article change only after approval.
 
 The commit should be narrow enough that one article can be reviewed or reverted
 without affecting unrelated notes.

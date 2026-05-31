@@ -86,6 +86,7 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
+      Plugin.NotebookCells(),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),

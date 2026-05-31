@@ -47,6 +47,77 @@ article thead {
   background: var(--highlight);
 }
 
+.notebook-cell {
+  align-items: start;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 4.6rem minmax(0, 1fr);
+  margin: 1rem 0;
+}
+
+.notebook-prompt {
+  color: var(--gray);
+  font-family: var(--codeFont);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  padding-top: 0.58rem;
+  text-align: right;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.notebook-body {
+  min-width: 0;
+}
+
+.notebook-body figure[data-rehype-pretty-code-figure] {
+  margin: 0;
+}
+
+.notebook-body pre {
+  margin: 0;
+}
+
+.notebook-cell pre > code > [data-line] {
+  padding-left: 0.35rem;
+}
+
+.notebook-cell pre > code > [data-line]::before {
+  content: none;
+  margin: 0;
+  width: 0;
+}
+
+.notebook-input pre {
+  background: color-mix(in srgb, var(--lightgray) 42%, transparent);
+}
+
+.notebook-output pre {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--lightgray) 72%, transparent);
+}
+
+.notebook-output .notebook-prompt {
+  color: var(--secondary);
+}
+
+.notebook-error pre {
+  background: color-mix(in srgb, #c73636 9%, transparent);
+  border-color: color-mix(in srgb, #c73636 42%, var(--lightgray));
+}
+
+.notebook-error .notebook-prompt {
+  color: #c73636;
+}
+
+.notebook-body table {
+  margin-top: 0;
+}
+
+.notebook-body img {
+  margin-top: 0;
+}
+
 article img:not([style]) {
   display: block;
   height: auto;
@@ -160,6 +231,16 @@ body[data-slug="index"] article {
   .home-dashboard {
     gap: 1.5rem;
     grid-template-columns: 1fr;
+  }
+
+  .notebook-cell {
+    gap: 0.35rem;
+    grid-template-columns: 1fr;
+  }
+
+  .notebook-prompt {
+    padding-top: 0;
+    text-align: left;
   }
 
   .home-updates {
