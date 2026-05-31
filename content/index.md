@@ -77,17 +77,6 @@ title: OptOpt
           nonparametric tests.
         </p>
       </li>
-      <li>
-        <time datetime="2026-05-25">May 25, 2026</time>
-        <h3>NLP and large language model foundations</h3>
-        <p>
-          Added notes on <a href="./NLPAndLLMs/Embeddings/">Embeddings</a>,
-          <a href="./NLPAndLLMs/Models/">Language Models and Pretrained Models</a>,
-          <a href="./NLPAndLLMs/Training/">LLM Training and Alignment</a>, and
-          <a href="./NLPAndLLMs/Inference/">LLM Inference and Analysis</a>, from Word2Vec and
-          BERT through reasoning, uncertainty, and context engineering.
-        </p>
-      </li>
     </ol>
   </aside>
 </div>
