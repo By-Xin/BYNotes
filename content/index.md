@@ -45,6 +45,16 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-06-07">June 7, 2026</time>
+        <h3>Stochastic process Poisson process notes</h3>
+        <p>
+          Added <a href="./StochasticProcess/02_PoissonProcess">Poisson Process</a> to
+          <a href="./StochasticProcess/">Stochastic Process</a>, covering Poisson process
+          construction, increment properties, interarrival times, Gamma arrival times,
+          superposition, and compound Poisson processes.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-05-31">May 31, 2026</time>
         <h3>Convex optimization quasi-Newton methods</h3>
         <p>
@@ -64,17 +74,6 @@ title: OptOpt
           <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>
           section seeded by Anis and Kwon's decision-based cardinality-constrained portfolio
           optimization paper and its mirrored Beamer PDF.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-05-25">May 25, 2026</time>
-        <h3>Statistical learning and inference study paths</h3>
-        <p>
-          Added structured reading paths for
-          <a href="./StatisticalLearningAlgorithms/">Statistical Learning Algorithms</a> and
-          <a href="./StatisticalInference/">Statistical Inference</a>, including linear models,
-          classification, nonparametric methods, estimation theory, asymptotic tools, and
-          nonparametric tests.
         </p>
       </li>
     </ol>
