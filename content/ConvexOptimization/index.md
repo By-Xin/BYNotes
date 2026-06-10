@@ -33,6 +33,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 16 | [Primal-Dual Interior-Point Methods](./16.Primal-Dual-Interior-Point-Methods.md) | polished |
 | 17 | [Quasi-Newton Methods](./17.Quasi-Newton-Methods.md) | polished |
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
+| 20 | [Coordinate Descent](./20.Coordinate-Descent.md) | draft |
 
 ## Concept Map
 

@@ -45,6 +45,16 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-06-09">June 9, 2026</time>
+        <h3>Convex optimization coordinate descent</h3>
+        <p>
+          Added <a href="./ConvexOptimization/20.Coordinate-Descent">Lecture 20 -
+          Coordinate Descent</a> to
+          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
+          coordinatewise minima, block coordinate descent algorithm, and proximal update variants.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-06-07">June 7, 2026</time>
         <h3>Stochastic process Poisson process notes</h3>
         <p>
@@ -63,17 +73,6 @@ title: OptOpt
           <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
           the secant equation, SR1, DFP, BFGS, convergence ideas, and L-BFGS two-loop
           recursion.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-05-26">May 26, 2026</time>
-        <h3>Optimization readings notebook</h3>
-        <p>
-          Added <a href="./OptimizationReadings/">Optimization Readings</a> under paper
-          reading, with a
-          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>
-          section seeded by Anis and Kwon's decision-based cardinality-constrained portfolio
-          optimization paper and its mirrored Beamer PDF.
         </p>
       </li>
     </ol>
