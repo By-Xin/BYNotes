@@ -18,4 +18,5 @@ Notes on decision-focused learning, smart predict-then-optimize, and end-to-end 
 
 | Paper                                                                                                                                                                     | Venue / Publisher    | Status | Materials              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------ | ---------------------- |
+| [IPMO: Integrated Prediction and Multi-period Portfolio Optimization (arXiv, 2025)](./IPMO-Integrated-Prediction-and-Multi-period-Portfolio-Optimization.md)              | arXiv, 2025          | draft  | note only              |
 | [End-to-End Decision-Based Cardinality-Constrained Portfolio Optimization (EJOR, Elsevier, 2025)](./E2E-Decision-Based-Cardinality-Constrained-Portfolio-Optimization.md) | EJOR, Elsevier, 2025 | seed   | slides mirrored as PDF |
