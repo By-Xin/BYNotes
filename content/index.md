@@ -45,6 +45,17 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-06-16">June 16, 2026</time>
+        <h3>Convex optimization dual decomposition and ADMM</h3>
+        <p>
+          Added <a href="./ConvexOptimization/21.Dual-Decomposition">Lecture 21 -
+          Dual Decomposition</a> to
+          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
+          Fenchel conjugates, dual gradient ascent, distributed dual decomposition,
+          augmented Lagrangian methods, ADMM, and alternating projections.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-06-13">June 13, 2026</time>
         <h3>IPMO decision-focused portfolio reading</h3>
         <p>
@@ -67,16 +78,6 @@ title: OptOpt
           Coordinate Descent</a> to
           <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
           coordinatewise minima, block coordinate descent algorithm, and proximal update variants.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-06-07">June 7, 2026</time>
-        <h3>Stochastic process Poisson process notes</h3>
-        <p>
-          Added <a href="./StochasticProcess/02_PoissonProcess">Poisson Process</a> to
-          <a href="./StochasticProcess/">Stochastic Process</a>, covering Poisson process
-          construction, increment properties, interarrival times, Gamma arrival times,
-          superposition, and compound Poisson processes.
         </p>
       </li>
     </ol>

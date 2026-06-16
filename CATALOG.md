@@ -2,7 +2,7 @@
 
 This file tracks all notes in the ConvexOptimization directory with version information for manual sync management.
 
-**Last updated:** 2026-06-10 14:39:08
+**Last updated:** 2026-06-16 22:12:19
 
 > [!warning] Sync Status Note
 > **Chapters 1-12**: The source materials and these notes are NOT fully synchronized. This is a legacy issue that needs manual comparison and reconciliation in the future.
@@ -30,7 +30,8 @@ This file tracks all notes in the ConvexOptimization directory with version info
 | 17.Quasi-Newton-Methods.md | 2026-05-31 19:15:47 | 38612 | e561c7fa7e994cb1ed61f1eb38f617c56cbe82750aab460315f5e02aec8c6076 |
 | 19.Numerical-Linear-Algebra.md | 2026-05-25 21:55:39 | 36543 | a8695ebca8bfeeea5c4ae19f9fdb824c468a552841e8dd5096a50244590a6293 |
 | 20.Coordinate-Descent.md | 2026-06-10 14:39:08 | 14383 | 6d0e90191a65807a1772a759cd12b9305228bca1a1c04dfdda2ed80caa9eaff0 |
-| index.md | 2026-05-31 16:55:35 | 1868 | 691566ca79780fbe5b5643be889e06bdfa21d99b29c38e089bc605c84754b679 |
+| 21.Dual-Decomposition.md | 2026-06-16 22:11:34 | 37059 | a7e0459a5999a38b890b6b86d3938d55e790e577bb36671d128eefe5ea5c47bc |
+| index.md | 2026-06-16 22:12:19 | 2067 | 1cbe36c1e624317d8c782fcf4ebd522c5d6daa5390c26d1d957db0aea1b97fe4 |
 
 ## Usage Instructions
 

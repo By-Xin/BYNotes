@@ -34,6 +34,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 17 | [Quasi-Newton Methods](./17.Quasi-Newton-Methods.md) | polished |
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
 | 20 | [Coordinate Descent](./20.Coordinate-Descent.md) | polished |
+| 21 | [Dual Decomposition](./21.Dual-Decomposition.md) | polished |
 
 ## Concept Map
 
@@ -41,6 +42,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 - First-order and proximal methods
 - Duality, conjugates, and optimality conditions
 - Newton methods, quasi-Newton methods, interior-point methods, and numerical linear algebra
+- Dual decomposition, augmented Lagrangian methods, and ADMM
 
 ## References
 
