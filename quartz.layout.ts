@@ -54,7 +54,13 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TagList(),
   ],
   left: [
-    Component.PageTitle(),
+    Component.Flex({
+      components: [
+        { Component: Component.PageTitle(), grow: true, justify: "start" },
+        { Component: Component.HomeBackLink(), shrink: false },
+      ],
+      gap: "0.8rem",
+    }),
     Component.MobileOnly(Component.Spacer()),
     Component.Flex({
       components: [
