@@ -56,8 +56,8 @@ title: OptOpt
           to
           <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>,
           covering entropy-regularized linear projection, smooth dual reformulation,
-          accelerated primal-dual optimization, and implicit differentiation. The note is
-          published while experiments and implementation details continue to be expanded.
+          accelerated primal-dual optimization, conjugate-gradient differentiation, and
+          constrained portfolio allocation.
         </p>
       </li>
       <li>

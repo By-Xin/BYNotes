@@ -5,7 +5,7 @@ aliases:
   - "GLinSAT: The General Linear Satisfiability Neural Network Layer By Accelerated Gradient Descent"
   - "GLinSAT General Linear Satisfiability Neural Network Layer"
 type: "paper-note"
-status: "draft"
+status: "polished"
 tags:
   - reading/papers
   - topic/decision-focused-learning
@@ -13,9 +13,6 @@ tags:
   - topic/constraint-satisfaction
   - topic/accelerated-gradient
 ---
-
-> [!note] Note: 持续更新中
-> 本文已完成 GLinSAT 核心建模、对偶推导、前向算法和隐式反向传播部分的整理。实验结果、实现细节与最终校订仍在持续补充。
 
 ## Citation
 
@@ -31,7 +28,7 @@ GLinSAT is a differentiable neural-network layer that maps model outputs to solu
 
 GLinSAT 是一个可以将任意神经网络输出 $\mathbf{c} \in \mathbb{R}^{n'}$ 映射到满足线性约束的可行解 $\mathbf{x} \in \mathbb{R}^{n'}$ 的可微映射. 其核心是将原始的线性规划问题 (LP) 转化为一个对偶问题, 并使用 Nesterov 加速梯度下降法求解对偶问题, 从而得到原始问题的最优解.
 
-![GLinSAT maps neural network outputs to solutions satisfying general linear constraints](https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20260623200941.png)
+![GLinSAT maps neural network outputs to solutions satisfying general linear constraints](https://arxiv.org/html/2409.17500v2/x1.png)
 
 _Figure: GLinSAT as a differentiable feasibility layer between a neural network and the downstream loss._
 
@@ -504,6 +501,7 @@ $$
   若想还原回原始的 $\mathbf{y}$ 不参与损失函数的情况, 则只需要令 $\frac{\partial l}{\partial\mathbf y} = 0$ 即可.
 
 - 在得到理论的梯度传播公式后, 我们还需要考虑如何高效地计算这个 VJP. 故我们可以将其转化为一个线性方程组求解问题, 其形式为
+
   $$
   \left(
   \frac{\partial l}{\partial\mathbf x}
@@ -523,11 +521,13 @@ $$
   \frac{\partial\mathbf x}{\partial\mathbf y}
   +
   \frac{\partial l}{\partial\mathbf y}
-  \right)^\top \iff \mathbf{H}\mathbf{v} = \mathbf{r}^\top
+  \right)^\top =: \mathbf{r}, \qquad \mathbf{H}\mathbf{v} = \mathbf{r}
   $$
-  从上述线性系统中求解出 $\mathbf{v}$.
+
+  从上述线性系统中求解出 $\mathbf{v}$. 其中 $\mathbf{H} := \frac{\partial\mathbf h}{\partial\mathbf y}$, 而列向量 $\mathbf{r}$ 已在上式定义.
   - 由于 $h(\mathbf{y}) = \mathbf{A} \mathbf{x}(\mathbf{y}) - \mathbf{b}$, 故将具体的表达式代入整理, 则上述线性系统 LHS 的系数为
     $$
+    \mathbf{H} =
     \frac{\partial\mathbf h}{\partial\mathbf y}
     =
     \mathbf A
@@ -535,10 +535,63 @@ $$
     \left(
     \theta\mathbf x\odot(\mathbf u-\mathbf x)
     \right)
-    \mathbf A^\top.
+    \mathbf A^\top := \mathbf{A} \mathbf{D} \mathbf{A}^\top.
     $$
-  - 且 $\frac{\partial\mathbf h}{\partial\mathbf y}$ 是对称半正定的. 若进一步 $\mathbf{A}$ 是行满秩, 则是对称正定的. 因此可以使用 CG 方法高效求解该线性系统, 以得到 $\mathbf{v}$. 这是因为, 上面我们展示了, $\mathbf{H} = \mathbf{A} \operatorname{Diag} \mathbf{A}^\top$ 是对称正定的, 因此求解 $\mathbf{H}\mathbf{v} = \mathbf{r}^\top$ 就等价于求解 QP
+  - 且 $\frac{\partial\mathbf h}{\partial\mathbf y}$ 是对称半正定的. 若进一步 $\mathbf{A}$ 是行满秩, 则是对称正定的. 因此可以使用 CG 方法高效求解该线性系统, 以得到 $\mathbf{v}$. 这是因为, 上面我们展示了, $\mathbf{H} = \mathbf{A} \mathbf{D} \mathbf{A}^\top$ 是对称正定的, 因此求解 $\mathbf{H}\mathbf{v} = \mathbf{r}$ 就等价于求解 QP
+
     $$
     \min_{\mathbf{v}} \frac{1}{2} \mathbf{v}^\top \mathbf{H} \mathbf{v} - \mathbf{r}^\top \mathbf{v}
     $$
+
     而这样的方法就很适合使用 CG 方法.
+
+  - Conjugate Gradient (CG) 方法是求解对称正定线性系统的经典方法. 其基本思想就是沿着共轭方向去进行搜索迭代, 而共轭方向可以简单理解为由 $\mathbf{H}$ 诱导的正交方向. 其具体迭代过程如下:
+    - 初始化 $\mathbf{v}^0 = 0$, 初始化残差 $\mathbf{s}^0 = \mathbf{r} - \mathbf{H} \mathbf{v}^0 = \mathbf{r}$, 初始化搜索方向 $\mathbf{p}^0 = \mathbf{s}^0$. 即第一步沿着负梯度方向进行搜索.
+    - 在第 $k$ 步迭代中, 当前迭代点为 $\mathbf{v}^k$, 搜索方向为 $\mathbf{p}^k$, 步长为 $\gamma^k$, 我们希望沿着直线 $\mathbf{v}^{k+1} = \mathbf{v}^k + \gamma^k \mathbf{p}^k$ 进行搜索, 使得 $\mathbf{v}^{k+1}$ 最小化二次函数 $\min_\gamma Q(\mathbf{v}) = \frac{1}{2} \mathbf{v}^\top \mathbf{H} \mathbf{v} - \mathbf{r}^\top \mathbf{v}$. 故可以求得第 $k$ 步的步长为
+      $$
+      \gamma^k = \frac{(\mathbf{s}^k)^\top \mathbf{s}^k}{(\mathbf{p}^k)^\top \mathbf{H} \mathbf{p}^k}.
+      $$
+      进而以此更新迭代点
+      $$
+      \mathbf{v}^{k+1} = \mathbf{v}^k + \gamma^k \mathbf{p}^k.
+      $$
+      更新残差
+      $$
+      \mathbf{s}^{k+1} = \mathbf{s}^k - \gamma^k \mathbf{H} \mathbf{p}^k.
+      $$
+    - 检查迭代停止条件
+      $$
+      \frac{\|\mathbf{s}^{k+1}\|}{\|\mathbf{r}\|} \leq \epsilon
+      $$
+      若满足, 则停止迭代, 否则继续迭代, 更新搜索方向:
+      $$
+      \mathbf{p}^{k+1} = \mathbf{s}^{k+1} + \frac{(\mathbf{s}^{k+1})^\top \mathbf{s}^{k+1}}{(\mathbf{s}^k)^\top \mathbf{s}^k} \mathbf{p}^k.
+      $$
+      - 这里 $\frac{(\mathbf{s}^{k+1})^\top \mathbf{s}^{k+1}}{(\mathbf{s}^k)^\top \mathbf{s}^k}$ 是 CG 方法中用于构造共轭搜索方向的系数; 在精确算术下, 新方向与此前搜索方向在 $\mathbf{H}$ 诱导的内积下保持共轭.
+  - 可以看到, 通过引入 CG 方法, 我们完全摒弃了矩阵求逆, 而是化成了一系列的矩阵乘法. 而且中间的 $\mathbf{D}$ 还是对角矩阵, 其实质上进一步被简化为标量乘法. 计算量被大幅简化.
+
+## Experiments
+
+### Predictive Portfolio Allocation
+
+对于 predictive portfolio allocation 问题, 模型的目标是最大化 Sharpe ratio, 同时保证输出满足线性的资产配置约束. 其总体 pipeline 如下:
+
+$$
+\text{Market Data}
+\longrightarrow
+\text{NN}
+\longrightarrow
+\mathbf c
+\longrightarrow
+\text{GLinSAT}
+\longrightarrow
+\mathbf x
+\longrightarrow
+\text{Portfolio Performance}
+$$
+
+其中 $\mathbf{x} \in [0, 1]^n$ 是投资组合的权重向量, 并假定如下约束:
+
+- 资金全部投入, 即 $\sum_{j=1}^n x_j = 1$.
+- 给定偏好资产集合 $\mathcal{S} \subseteq \{1, 2, \ldots, n\}$, 以及配置权重下限 $q \in [0, 1]$, 要求偏好资产配置份额不低于 $q$, 即 $\sum_{j \in \mathcal{S}} x_j \geq q$. 文中取 $q = 0.5$.
+- 不允许做空或杠杆, 即 $0 \leq x_j \leq 1, \forall j$.
