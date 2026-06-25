@@ -19,4 +19,4 @@ Paper reading notes for optimization, decision-making, and adjacent machine lear
 
 | Section                                                 | Scope                                                                                    | Notes |
 | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----- |
-| [Decision-Focused Learning](./DecisionFocusedLearning/) | Predict-then-optimize, decision-focused learning, and differentiable optimization layers | 2     |
+| [Decision-Focused Learning](./DecisionFocusedLearning/) | Predict-then-optimize, decision-focused learning, and differentiable optimization layers | 3     |

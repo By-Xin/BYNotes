@@ -45,6 +45,22 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-06-25">June 25, 2026</time>
+        <h3>GLinSAT differentiable constraint layer reading</h3>
+        <p>
+          Added
+          <a
+            href="./OptimizationReadings/DecisionFocusedLearning/GLinSAT-General-Linear-Satisfiability-Neural-Network-Layer"
+            >GLinSAT</a
+          >
+          to
+          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>,
+          covering entropy-regularized linear projection, smooth dual reformulation,
+          accelerated primal-dual optimization, and implicit differentiation. The note is
+          published while experiments and implementation details continue to be expanded.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-06-16">June 16, 2026</time>
         <h3>Convex optimization dual decomposition and ADMM</h3>
         <p>
@@ -70,16 +86,8 @@ title: OptOpt
           differentiation, and decision-focused training.
         </p>
       </li>
-      <li>
-        <time datetime="2026-06-09">June 9, 2026</time>
-        <h3>Convex optimization coordinate descent</h3>
-        <p>
-          Added <a href="./ConvexOptimization/20.Coordinate-Descent">Lecture 20 -
-          Coordinate Descent</a> to
-          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
-          coordinatewise minima, block coordinate descent algorithm, and proximal update variants.
-        </p>
-      </li>
+
     </ol>
+
   </aside>
 </div>
