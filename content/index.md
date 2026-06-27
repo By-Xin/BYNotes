@@ -27,6 +27,7 @@ title: OptOpt
         <h3>MACHINE LEARNING AND AI</h3>
         <ul>
           <li><a href="./StatisticalLearningAlgorithms/">Statistical Learning Algorithms</a></li>
+          <li><a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a></li>
           <li><a href="./DeepLearning/">(Dive-into) Deep Learning</a></li>
           <li><a href="./NLPAndLLMs/">NLP and Large Language Models</a></li>
         </ul>
@@ -44,6 +45,19 @@ title: OptOpt
     <p class="home-kicker">Curated notes</p>
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
+      <li>
+        <time datetime="2026-06-27">June 27, 2026</time>
+        <h3>Understanding machine learning generalization notes</h3>
+        <p>
+          Added
+          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>
+          with
+          <a href="./UnderstandingMachineLearning/01.Introduction-to-Generalization"
+            >Introduction to Generalization</a
+          >, covering the statistical learning framework, ERM, inductive bias,
+          finite hypothesis classes, realizability, and sample complexity.
+        </p>
+      </li>
       <li>
         <time datetime="2026-06-25">June 25, 2026</time>
         <h3>GLinSAT differentiable constraint layer reading</h3>
@@ -69,21 +83,6 @@ title: OptOpt
           <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
           Fenchel conjugates, dual gradient ascent, distributed dual decomposition,
           augmented Lagrangian methods, ADMM, and alternating projections.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-06-13">June 13, 2026</time>
-        <h3>IPMO decision-focused portfolio reading</h3>
-        <p>
-          Added
-          <a
-            href="./OptimizationReadings/DecisionFocusedLearning/IPMO-Integrated-Prediction-and-Multi-period-Portfolio-Optimization"
-            >IPMO: Integrated Prediction and Multi-period Portfolio Optimization</a
-          >
-          to
-          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>,
-          covering multi-period portfolio optimization, MPC, mirror-descent fixed-point
-          differentiation, and decision-focused training.
         </p>
       </li>
 

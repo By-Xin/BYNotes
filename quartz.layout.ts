@@ -20,7 +20,12 @@ const explorerGroups = [
   {
     title: "MACHINE LEARNING AND AI",
     slug: "MachineLearningAI",
-    children: ["StatisticalLearningAlgorithms", "DeepLearning", "NLPAndLLMs"],
+    children: [
+      "StatisticalLearningAlgorithms",
+      "UnderstandingMachineLearning",
+      "DeepLearning",
+      "NLPAndLLMs",
+    ],
   },
   {
     title: "PAPER READING",
