@@ -46,6 +46,19 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-06-30">June 30, 2026</time>
+        <h3>Convex optimization dual decomposition and ADMM</h3>
+        <p>
+          Updated
+          <a href="./ConvexOptimization/21.Dual-Decomposition">Lecture 21-22 -
+          Dual Decomposition and ADMM</a> in
+          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>,
+          adding augmented Lagrangian methods, ADMM, scaled ADMM, alternating
+          projections, group lasso, sparse-plus-low-rank decomposition,
+          consensus ADMM, and decomposition design notes.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-06-27">June 27, 2026</time>
         <h3>Understanding machine learning generalization notes</h3>
         <p>
@@ -74,18 +87,6 @@ title: OptOpt
           constrained portfolio allocation.
         </p>
       </li>
-      <li>
-        <time datetime="2026-06-16">June 16, 2026</time>
-        <h3>Convex optimization dual decomposition and ADMM</h3>
-        <p>
-          Added <a href="./ConvexOptimization/21.Dual-Decomposition">Lecture 21 -
-          Dual Decomposition</a> to
-          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>, covering
-          Fenchel conjugates, dual gradient ascent, distributed dual decomposition,
-          augmented Lagrangian methods, ADMM, and alternating projections.
-        </p>
-      </li>
-
     </ol>
 
   </aside>
