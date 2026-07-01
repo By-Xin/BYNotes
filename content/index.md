@@ -46,6 +46,21 @@ title: OptOpt
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-01">July 1, 2026</time>
+        <h3>Convex optimization Frank-Wolfe method notes</h3>
+        <p>
+          Added
+          <a href="./ConvexOptimization/23.Frank-Wolfe-Method">Lecture 23 -
+          Frank-Wolfe Method</a> in
+          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>,
+          covering the projection-free conditional gradient update, the
+          Frank-Wolfe duality gap, norm-constraint and trace-norm closed forms,
+          the curvature-based convergence rate, affine invariance, inexact
+          updates, line search, fully corrective and away-step variants, and
+          path following.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-06-30">June 30, 2026</time>
         <h3>Convex optimization dual decomposition and ADMM</h3>
         <p>
@@ -69,22 +84,6 @@ title: OptOpt
             >Introduction to Generalization</a
           >, covering the statistical learning framework, ERM, inductive bias,
           finite hypothesis classes, realizability, and sample complexity.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-06-25">June 25, 2026</time>
-        <h3>GLinSAT differentiable constraint layer reading</h3>
-        <p>
-          Added
-          <a
-            href="./OptimizationReadings/DecisionFocusedLearning/GLinSAT-General-Linear-Satisfiability-Neural-Network-Layer"
-            >GLinSAT</a
-          >
-          to
-          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>,
-          covering entropy-regularized linear projection, smooth dual reformulation,
-          accelerated primal-dual optimization, conjugate-gradient differentiation, and
-          constrained portfolio allocation.
         </p>
       </li>
     </ol>

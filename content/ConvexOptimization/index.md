@@ -35,6 +35,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
 | 20 | [Coordinate Descent](./20.Coordinate-Descent.md) | polished |
 | 21-22 | [Dual Decomposition and ADMM](./21.Dual-Decomposition.md) | polished |
+| 23 | [Frank-Wolfe Method](./23.Frank-Wolfe-Method.md) | polished |
 
 ## Concept Map
 
@@ -43,6 +44,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 - Duality, conjugates, and optimality conditions
 - Newton methods, quasi-Newton methods, interior-point methods, and numerical linear algebra
 - Dual decomposition, augmented Lagrangian methods, and ADMM
+- Projection-free methods: Frank-Wolfe (conditional gradient)
 
 ## References
 
