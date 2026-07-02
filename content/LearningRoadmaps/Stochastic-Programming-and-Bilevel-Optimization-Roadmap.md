@@ -36,17 +36,7 @@ tags:
 7. Stochastic Bilevel / Conditional Stochastic Optimization
 8. 交叉前沿：CSBO、MCCO 与 MLMC-based stochastic methods
 
-最重要的逻辑是：
-
-[
-\text{stochastic programming}
-\quad+\quad
-\text{bilevel optimization}
-\quad+\quad
-\text{MLMC estimator}
-\quad\Rightarrow\quad
-\text{conditional stochastic / bilevel / MLMC 的技术交界处}.
-]
+最重要的逻辑是：stochastic programming、bilevel optimization 和 MLMC estimator 共同指向 conditional stochastic / bilevel / MLMC 的技术交界处。
 
 ---
 
@@ -76,11 +66,11 @@ Duchi 这套 PCMI 讲义专门讲 stochastic convex optimization 的分析工具
 
 学习目标：能够解释：
 
-[
+$$
 \min_x \mathbb E_\xi[f(x,\xi)]
-]
+$$
 
-为什么通常会出现 (\epsilon^{-2}) 这种 sampling scale。
+为什么通常会出现 $\epsilon^{-2}$ 这种 sampling scale。
 
 ---
 
@@ -152,21 +142,22 @@ Springer 页面明确说明这本书适合作为 stochastic programming 的 firs
 
 核心公式是：
 
-[
+$$
 \min_{x\in X}
 c^\top x+\mathbb E_\xi[Q(x,\xi)]
-]
+$$
 
 其中
 
-[
-Q(x,\xi)=
-\min_y
-{
+$$
+\begin{aligned}
+Q(x,\xi)
+&= \min_y \left\{
 q(\xi)^\top y:
 W(\xi)y=h(\xi)-T(\xi)x,\ y\ge 0
-}.
-]
+\right\}.
+\end{aligned}
+$$
 
 这就是 recourse value function。后面 bilevel 和 multistage 都会围绕这种“外层依赖内层优化对象”的结构展开。
 
@@ -222,11 +213,11 @@ URL: [https://people.orie.cornell.edu/shane/pubs/SAAGuide.pdf](https://people.or
 
 学习目标：能够解释：
 
-[
+$$
 \mathbb E[f(x,\xi)]
 \quad\longrightarrow\quad
 \frac1N\sum_{i=1}^N f(x,\xi_i).
-]
+$$
 
 ---
 
@@ -270,11 +261,7 @@ URL: [https://www.sciencedirect.com/science/article/abs/pii/S0167637705000325](h
 * Main theorem
 * 证明部分先略读
 
-读这篇时只抓一个问题：
-
-[
-\text{为什么每增加一层 conditional expectation，就好像多乘一个 sampling factor？}
-]
+读这篇时只抓一个问题：为什么每增加一层 conditional expectation，就好像多乘一个 sampling factor？
 
 这也是后续 CSO / MLMC-based multistage work 试图重新分析的 common belief。
 
@@ -396,7 +383,7 @@ URL: [https://arxiv.org/abs/1707.03324](https://arxiv.org/abs/1707.03324)
 PDF:
 URL: [https://optimization-online.org/wp-content/uploads/2017/07/6125.pdf](https://optimization-online.org/wp-content/uploads/2017/07/6125.pdf)
 
-这篇文章提出 DSA，用 stochastic first-order method 处理 convex multistage stochastic optimization；对于 three-stage 问题给出 (\mathcal O(1/\epsilon^4)) 的 scenario complexity。([Springer][12])
+这篇文章提出 DSA，用 stochastic first-order method 处理 convex multistage stochastic optimization；对于 three-stage 问题给出 $\mathcal O(1/\epsilon^4)$ 的 scenario complexity。([Springer][12])
 
 建议读：
 
@@ -434,15 +421,13 @@ Cambridge 摘要说得很清楚：MLMC 通过大量 low-accuracy / low-cost simu
 
 需要掌握这个分解：
 
-[
+$$
+\begin{aligned}
 \mathbb E[P_L]
-==============
-
-\mathbb E[P_0]
-+
-\sum_{\ell=1}^{L}
-\mathbb E[P_\ell-P_{\ell-1}].
-]
+&= \mathbb E[P_0]
++ \sum_{\ell=1}^{L}\mathbb E[P_\ell-P_{\ell-1}].
+\end{aligned}
+$$
 
 这是 neighboring-level difference 思想的基础版本。
 
@@ -467,24 +452,21 @@ Rhee–Glynn 用一串 approximation 构造 unbiased estimator，这正是 rando
 
 需要理解：
 
-[
-Y
-=
+$$
+Y = Y_0+\sum_{k=1}^{\infty}(Y_k-Y_{k-1})
+$$
 
-Y_0+\sum_{k=1}^{\infty}(Y_k-Y_{k-1})
-]
+然后随机抽 $K$，构造类似：
 
-然后随机抽 (K)，构造类似：
-
-[
+$$
 Y_0+\frac{Y_K-Y_{K-1}}{p_K}.
-]
+$$
 
 这和 MLMC gradient / randomized level estimator 里的
 
-[
+$$
 \frac{\widehat Q_k-\widehat Q_{k-1}}{p_k}
-]
+$$
 
 是同一个思想家族。
 
@@ -520,19 +502,19 @@ URL: [https://www.lamsade.dauphine.fr/poc/sites/default/files/bilevel-optimizati
 
 需要掌握：
 
-[
+$$
 \min_{x,y} F(x,y)
 \quad
-\text{s.t.}
+\operatorname{s.t.}
 \quad
 y\in S(x),
-]
+$$
 
 其中
 
-[
+$$
 S(x)=\arg\min_z f(x,z).
-]
+$$
 
 关键点是：
 **lower-level optimality 不是普通 constraint，而是一个 solution set mapping。**
@@ -614,19 +596,19 @@ URL: [https://arxiv.org/abs/1705.06270](https://arxiv.org/abs/1705.06270)
 
 如果 lower-level 是凸优化，并且满足适当 constraint qualification，那么
 
-[
+$$
 y\in\arg\min_y f(x,y)
-]
+$$
 
 可以用 KKT 条件替换：
 
-[
+$$
 \nabla_y f(x,y)+A^\top \lambda=0,
-]
+$$
 
-[
+$$
 Ay\le b,\quad \lambda\ge 0,\quad \lambda_i(Ay-b)_i=0.
-]
+$$
 
 于是 bilevel 变成 single-level problem with complementarity constraints，也就是 MPEC / MPCC。
 
@@ -708,36 +690,34 @@ URL: [https://arxiv.org/abs/1602.02355](https://arxiv.org/abs/1602.02355)
 
 lower level：
 
-[
+$$
 w^*(\lambda)=
 \arg\min_w L_{\mathrm{train}}(w,\lambda).
-]
+$$
 
 first-order condition：
 
-[
+$$
 \nabla_w L_{\mathrm{train}}(w^*(\lambda),\lambda)=0.
-]
+$$
 
 implicit differentiation：
 
-[
+$$
+\begin{aligned}
 \frac{dw^*}{d\lambda}
-=====================
-
-*
-
-\left[
+&= -\left[
 \nabla^2_{ww}L_{\mathrm{train}}
 \right]^{-1}
 \nabla^2_{\lambda w}L_{\mathrm{train}}.
-]
+\end{aligned}
+$$
 
 upper gradient：
 
-[
+$$
 \nabla_\lambda L_{\mathrm{val}}(w^*(\lambda),\lambda).
-]
+$$
 
 ---
 
@@ -854,7 +834,7 @@ URL: [https://proceedings.neurips.cc/paper_files/paper/2023/file/f77d9409647c096
 
 类型：核心论文
 优先级：高
-用途：理解 CSO 和 (\epsilon^{-4}) 的来源。
+用途：理解 CSO 和 $\epsilon^{-4}$ 的来源。
 
 arXiv:
 URL: [https://arxiv.org/abs/1905.11957](https://arxiv.org/abs/1905.11957)
@@ -864,16 +844,16 @@ URL: [https://epubs.siam.org/doi/10.1137/19M1284865](https://epubs.siam.org/doi/
 
 这篇论文研究 CSO：
 
-[
+$$
 \min_{x\in\mathcal X}
 \mathbb E_\xi
 f_\xi
 \left(
 \mathbb E_{\eta|\xi}[g_\eta(x,\xi)]
 \right).
-]
+$$
 
-arXiv 摘要里明确说，它在不同结构假设下分析 SAA sample complexity，一般情况有 (\mathcal O(d/\epsilon^4)) 类型复杂度，smoothness 和 quadratic growth 可以改善复杂度。([arXiv][25])
+arXiv 摘要里明确说，它在不同结构假设下分析 SAA sample complexity，一般情况有 $\mathcal O(d/\epsilon^4)$ 类型复杂度，smoothness 和 quadratic growth 可以改善复杂度。([arXiv][25])
 
 建议读：
 
@@ -921,17 +901,7 @@ URL: [https://proceedings.neurips.cc/paper/2021/file/b986700c627db479a4d9460b75d
 
 这是后半段最值得精读的一篇。
 
-需要读懂：
-
-[
-\text{bias}
-\quad+\quad
-\text{variance}
-\quad+\quad
-\text{cost}
-]
-
-为什么是三维 tradeoff，而不是普通统计里的 bias–variance tradeoff。
+需要读懂 bias、variance、cost 为什么构成三维 tradeoff，而不是普通统计里的 bias–variance tradeoff。
 
 ---
 
@@ -1089,17 +1059,11 @@ URL: [https://optimization-online.org/wp-content/uploads/2026/04/mcco-1.pdf](htt
 
 这个最小清单覆盖了：
 
-[
-\text{stochastic optimization}
-+
-\text{stochastic programming}
-+
-\text{bilevel}
-+
-\text{MLMC}
-+
-\text{biased oracle}.
-]
+* stochastic optimization
+* stochastic programming
+* bilevel
+* MLMC
+* biased oracle
 
 ---
 
@@ -1107,17 +1071,13 @@ URL: [https://optimization-online.org/wp-content/uploads/2026/04/mcco-1.pdf](htt
 
 最后应能把这些内容放进同一张图里：
 
-[
-\boxed{
-\text{Stochastic Optimization}
-}
-]
+## Stochastic Optimization
 
 解决：
 
-[
+$$
 \min_x \mathbb E[f(x,\xi)].
-]
+$$
 
 主要工具：
 
@@ -1128,17 +1088,13 @@ URL: [https://optimization-online.org/wp-content/uploads/2026/04/mcco-1.pdf](htt
 
 ---
 
-[
-\boxed{
-\text{Stochastic Programming}
-}
-]
+## Stochastic Programming
 
 解决：
 
-[
+$$
 \min_x c^\top x+\mathbb E[Q(x,\xi)].
-]
+$$
 
 主要对象：
 
@@ -1149,24 +1105,20 @@ URL: [https://optimization-online.org/wp-content/uploads/2026/04/mcco-1.pdf](htt
 
 ---
 
-[
-\boxed{
-\text{Multistage Stochastic Programming}
-}
-]
+## Multistage Stochastic Programming
 
 解决：
 
-[
+$$
+\begin{aligned}
 Q_t(x_{t-1},\xi_t)
-==================
-
-\min_{x_t}
-\left{
+&= \min_{x_t}
+\left\{
 c_t^\top x_t+
 \mathbb E[Q_{t+1}(x_t,\xi_{t+1})\mid \xi_t]
-\right}.
-]
+\right\}.
+\end{aligned}
+$$
 
 主要困难：
 
@@ -1178,21 +1130,17 @@ c_t^\top x_t+
 
 ---
 
-[
-\boxed{
-\text{Bilevel Optimization}
-}
-]
+## Bilevel Optimization
 
 解决：
 
-[
+$$
 \min_{x,y} F(x,y)
 \quad
-\text{s.t.}
+\operatorname{s.t.}
 \quad
 y\in\arg\min_z f(x,z).
-]
+$$
 
 主要困难：
 
@@ -1204,19 +1152,15 @@ y\in\arg\min_z f(x,z).
 
 ---
 
-[
-\boxed{
-\text{Gradient-based Bilevel}
-}
-]
+## Gradient-based Bilevel
 
 解决：
 
-[
+$$
 \min_\lambda L_{\mathrm{val}}(w^*(\lambda),\lambda),
 \quad
 w^*(\lambda)=\arg\min_w L_{\mathrm{train}}(w,\lambda).
-]
+$$
 
 主要工具：
 
@@ -1227,46 +1171,27 @@ w^*(\lambda)=\arg\min_w L_{\mathrm{train}}(w,\lambda).
 
 ---
 
-[
-\boxed{
-\text{MLMC / Randomized Telescoping}
-}
-]
+## MLMC / Randomized Telescoping
 
-解决：
-
-[
-\text{high-accuracy estimator 太贵}
-]
+解决：high-accuracy estimator 太贵。
 
 主要思想：
 
-[
-Y_L
-===
-
-Y_0+\sum_{\ell=1}^L(Y_\ell-Y_{\ell-1}),
-]
+$$
+Y_L = Y_0+\sum_{\ell=1}^L(Y_\ell-Y_{\ell-1}),
+$$
 
 用 level randomization 降低 expected cost。
 
 ---
 
-[
-\boxed{
-\text{CSO / bilevel / MLMC 的交叉点}
-}
-]
+## CSO / bilevel / MLMC 的交叉点
 
-核心是：
+核心是三类结构的叠加：
 
-[
-\text{conditional stochastic structure}
-+
-\text{inner optimization / bilevel structure}
-+
-\text{multilevel estimator}.
-]
+* conditional stochastic structure
+* inner optimization / bilevel structure
+* multilevel estimator
 
 也就是说，这份 roadmap 不是围绕某一篇论文，而是在搭建一个研究交叉区的基础：**随机优化、随机规划、bilevel、MLMC、oracle complexity 的交叉地带**。这条线技术上较深，但对后续理解 optimization theory、decision-focused learning、stochastic bilevel 和 biased oracle methods 都有帮助。
 
