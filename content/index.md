@@ -38,6 +38,12 @@ title: OptOpt
           <li><a href="./OptimizationReadings/">Optimization Readings</a></li>
         </ul>
       </section>
+      <section>
+        <h3>ODDS &amp; ENDS</h3>
+        <ul>
+          <li><a href="./LearningRoadmaps/">Learning Roadmaps</a></li>
+        </ul>
+      </section>
     </div>
   </section>
 
@@ -45,6 +51,20 @@ title: OptOpt
     <p class="home-kicker">Curated notes</p>
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
+      <li>
+        <time datetime="2026-07-02">July 2, 2026</time>
+        <h3>Learning roadmap notebook and stochastic bilevel syllabus</h3>
+        <p>
+          Added
+          <a href="./LearningRoadmaps/">Learning Roadmaps</a> in
+          <a href="./LearningRoadmaps/">Odds &amp; Ends</a>, with a
+          <a href="./LearningRoadmaps/Stochastic-Programming-and-Bilevel-Optimization-Roadmap"
+            >Stochastic Programming and Bilevel Optimization Roadmap</a
+          > covering stochastic programming, multistage stochastic programming,
+          bilevel optimization, conditional stochastic optimization, MLMC, and
+          biased stochastic oracle methods.
+        </p>
+      </li>
       <li>
         <time datetime="2026-07-01">July 1, 2026</time>
         <h3>Convex optimization Frank-Wolfe method notes</h3>
@@ -71,19 +91,6 @@ title: OptOpt
           adding augmented Lagrangian methods, ADMM, scaled ADMM, alternating
           projections, group lasso, sparse-plus-low-rank decomposition,
           consensus ADMM, and decomposition design notes.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-06-27">June 27, 2026</time>
-        <h3>Understanding machine learning generalization notes</h3>
-        <p>
-          Added
-          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>
-          with
-          <a href="./UnderstandingMachineLearning/01.Introduction-to-Generalization"
-            >Introduction to Generalization</a
-          >, covering the statistical learning framework, ERM, inductive bias,
-          finite hypothesis classes, realizability, and sample complexity.
         </p>
       </li>
     </ol>

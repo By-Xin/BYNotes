@@ -32,6 +32,11 @@ const explorerGroups = [
     slug: "PaperReadingGroup",
     children: ["OptimizationReadings"],
   },
+  {
+    title: "ODDS & ENDS",
+    slug: "OddsEnds",
+    children: ["LearningRoadmaps"],
+  },
 ]
 
 // components shared across all pages
