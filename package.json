@@ -13,7 +13,8 @@
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
-    "import:convex": "./scripts/import_convex_notes.sh",
+    "catalog": "node scripts/update-catalog.mjs",
+    "recent-updates": "node scripts/generate-recent-updates.mjs",
     "build:plain": "npx quartz build && ./scripts/make_directory_routes.sh public",
     "serve:plain": "npm run build:plain && python3 -m http.server ${PORT:-8080} -d public",
     "docs": "npx quartz build --serve -d docs",

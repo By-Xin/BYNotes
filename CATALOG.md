@@ -2,7 +2,7 @@
 
 This file tracks all notes in the ConvexOptimization directory with version information for manual sync management.
 
-**Last updated:** 2026-06-16 22:12:19
+**Last updated:** 2026-07-06 00:18:28
 
 > [!warning] Sync Status Note
 > **Chapters 1-12**: The source materials and these notes are NOT fully synchronized. This is a legacy issue that needs manual comparison and reconciliation in the future.
@@ -30,8 +30,9 @@ This file tracks all notes in the ConvexOptimization directory with version info
 | 17.Quasi-Newton-Methods.md | 2026-05-31 19:15:47 | 38612 | e561c7fa7e994cb1ed61f1eb38f617c56cbe82750aab460315f5e02aec8c6076 |
 | 19.Numerical-Linear-Algebra.md | 2026-05-25 21:55:39 | 36543 | a8695ebca8bfeeea5c4ae19f9fdb824c468a552841e8dd5096a50244590a6293 |
 | 20.Coordinate-Descent.md | 2026-06-10 14:39:08 | 14383 | 6d0e90191a65807a1772a759cd12b9305228bca1a1c04dfdda2ed80caa9eaff0 |
-| 21.Dual-Decomposition.md | 2026-06-16 22:11:34 | 37059 | a7e0459a5999a38b890b6b86d3938d55e790e577bb36671d128eefe5ea5c47bc |
-| index.md | 2026-06-16 22:12:19 | 2067 | 1cbe36c1e624317d8c782fcf4ebd522c5d6daa5390c26d1d957db0aea1b97fe4 |
+| 21-22.Dual-Decomposition.md | 2026-07-06 00:16:45 | 47204 | 7fe466f194743d91a279b6fb77c84dbc2cd54ad80ee7b8c3f80b50a02f94587a |
+| 23.Frank-Wolfe-Method.md | 2026-07-01 15:00:39 | 18467 | b01737a3fb2ce772f1dc2233c45f359bd46330c3d57c9a3413e1ad87a65ecfe0 |
+| index.md | 2026-07-06 00:16:49 | 2213 | 6ae4f95872b3431e4c0ee446c1ee59dad4dcc716f988b4ed6bac36c1adc19ae9 |
 
 ## Usage Instructions
 
@@ -41,4 +42,4 @@ This file tracks all notes in the ConvexOptimization directory with version info
 3. Compare hashes to detect content changes.
 
 ### Update Catalog
-Run a PowerShell inventory over `content/ConvexOptimization`, excluding `Assets` and `archive`, and update the table above with file name, last modified time, size, and SHA256 hash.
+Run `npm run catalog` (i.e. `node scripts/update-catalog.mjs`). It re-inventories the top-level `*.md` files in `content/ConvexOptimization` (thus excluding `Assets` and `archive`) and rewrites the table above plus the **Last updated** stamp.

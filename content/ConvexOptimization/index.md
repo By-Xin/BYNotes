@@ -34,7 +34,7 @@ CMU Fall 2018 Convex Optimization lecture notes.
 | 17 | [Quasi-Newton Methods](./17.Quasi-Newton-Methods.md) | polished |
 | 19 | [Numerical Linear Algebra](./19.Numerical-Linear-Algebra.md) | polished |
 | 20 | [Coordinate Descent](./20.Coordinate-Descent.md) | polished |
-| 21-22 | [Dual Decomposition and ADMM](./21.Dual-Decomposition.md) | polished |
+| 21-22 | [Dual Decomposition and ADMM](./21-22.Dual-Decomposition.md) | polished |
 | 23 | [Frank-Wolfe Method](./23.Frank-Wolfe-Method.md) | polished |
 
 ## Concept Map

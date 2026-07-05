@@ -1,5 +1,4 @@
-# OptOpt README
-
+# BYNotes
 
 - GitHub: https://github.com/By-Xin/BYNotes
 
@@ -10,20 +9,14 @@ This repository publishes notes with Quartz.
 ## Content location
 
 - Published notes are organized by topic under `content/<TopicName>`.
-- Current topics include `content/ConvexOptimization`, `content/DeepLearning`,
-  `content/NLPAndLLMs`, `content/OnlineLearning`,
-  `content/ProbabilityTheory`, `content/StatisticalInference`,
-  `content/StatisticalLearningAlgorithms`, and `content/StochasticProcess`.
+- The authoritative topic list lives in `content/index.md` (homepage Quick Guide)
+  and `quartz.layout.ts` (sidebar explorer groups). This README intentionally
+  does not duplicate it.
 
 ## Topic naming rules
 
 - Topic directories use concise PascalCase names under `content/`, e.g. `ConvexOptimization`, `OnlineLearning`.
-- Topic landing pages may use longer display titles in `index.md`.
-- The display title for `content/NLPAndLLMs` is `NLP and Large Language Models`.
-- The display title for `content/OnlineLearning` is `Online Learning and Online Convex Optimization`.
-- The display title for `content/ProbabilityTheory` is `Probability Theory`.
-- The display title for `content/StatisticalInference` is `Statistical Inference`.
-- The display title for `content/StatisticalLearningAlgorithms` is `Statistical Learning Algorithms`.
+- Topic landing pages may use longer display titles via `title:` frontmatter in their `index.md`.
 - Do not maintain per-topic `CATALOG.md` files unless explicitly requested.
 
 ## Markdown writing best practices
@@ -89,10 +82,17 @@ title: Display Title
 
 ## New note publish workflow
 
-1. Choose the target topic directory under `content/<TopicName>`, or create a new one with its own `index.md`.
+1. Choose the target topic directory under `content/<TopicName>`, or create a new one with its own `index.md`. A new topic must also be added to the homepage Quick Guide (`content/index.md`) and the sidebar groups (`quartz.layout.ts`).
 2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10-11.Duality.md` or `content/OnlineLearning/1.Introduction.md`.
 3. Write content following the rules above.
-4. Run quick checks on the target topic directory:
+4. Add an entry to the "Recent Updates" aside in `content/index.md`. CI turns this aside into `recent-updates.json`, which the homepage (By-Xin.github.io) consumes.
+5. If the note is under `content/ConvexOptimization`, refresh the catalog:
+
+```bash
+npm run catalog
+```
+
+6. Run quick checks on the target topic directory:
 
 ```bash
 rg -n "Lecture Reference|Reading Reference|Book Reference|> Ref:" content/<TopicName>
@@ -100,29 +100,29 @@ rg -n '\$\$\\begin\{aligned\}|\\end\{aligned\}\$\$' content/<TopicName>
 ls -1 content/<TopicName> | rg "——"
 ```
 
-5. Local preview:
+7. Local preview:
 
 ```bash
 npx quartz build --serve
 ```
 
-6. Publish:
+8. Publish:
 
 ```bash
-git add content/<TopicName> content/index.md README.md
+git add content/<TopicName> content/index.md CATALOG.md
 git commit -m "Add note: 10-11 Duality"
 git push origin main
 ```
 
-7. Verify deployment:
-- Workflow: `.github/workflows/deploy.yml`
-- Site: `https://by-xin.github.io/BYNotes/`
-
+9. Verify deployment:
+- Workflow: `.github/workflows/deploy.yml` — builds the site, generates `recent-updates.json` (`scripts/generate-recent-updates.mjs`), deploys to GitHub Pages, then notifies the homepage repo `By-Xin/By-Xin.github.io` via `repository_dispatch` (`bynotes-updated`) so its Recent Updates section rebuilds immediately.
+- The dispatch step needs a `HOMEPAGE_DISPATCH_TOKEN` repository secret (a fine-grained PAT with Contents read/write on `By-Xin.github.io`). Without the secret the step is skipped gracefully and the homepage falls back to its weekly scheduled rebuild.
+- Site: https://by-xin.github.io/BYNotes/
 
 ## Local preview (Quartz)
 
 ```bash
-cd /Users/xinby/BYNotes
+cd BYNotes
 npm install
 npx quartz build --serve
 ```

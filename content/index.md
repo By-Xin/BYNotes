@@ -1,5 +1,5 @@
 ---
-title: OptOpt
+title: BYNotes
 ---
 
 <div class="home-dashboard">
@@ -85,7 +85,7 @@ title: OptOpt
         <h3>Convex optimization dual decomposition and ADMM</h3>
         <p>
           Updated
-          <a href="./ConvexOptimization/21.Dual-Decomposition">Lecture 21-22 -
+          <a href="./ConvexOptimization/21-22.Dual-Decomposition">Lecture 21-22 -
           Dual Decomposition and ADMM</a> in
           <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>,
           adding augmented Lagrangian methods, ADMM, scaled ADMM, alternating

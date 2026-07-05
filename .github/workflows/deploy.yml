@@ -29,6 +29,8 @@ jobs:
         run: npm ci
       - name: Build Quartz
         run: npx quartz build
+      - name: Generate recent-updates.json
+        run: node scripts/generate-recent-updates.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -44,3 +46,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify homepage to rebuild
+        env:
+          DISPATCH_TOKEN: ${{ secrets.HOMEPAGE_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$DISPATCH_TOKEN" ]; then
+            echo "HOMEPAGE_DISPATCH_TOKEN not set; skipping homepage rebuild dispatch."
+            exit 0
+          fi
+          curl -sS --fail-with-body -X POST \
+            -H "Authorization: Bearer $DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/By-Xin/By-Xin.github.io/dispatches \
+            -d '{"event_type":"bynotes-updated"}'
