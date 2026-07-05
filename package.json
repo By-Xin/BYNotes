@@ -15,6 +15,7 @@
     "quartz": "./quartz/bootstrap-cli.mjs",
     "catalog": "node scripts/update-catalog.mjs",
     "recent-updates": "node scripts/generate-recent-updates.mjs",
+    "vendor-assets": "node scripts/vendor-assets.mjs",
     "build:plain": "npx quartz build && ./scripts/make_directory_routes.sh public",
     "serve:plain": "npm run build:plain && python3 -m http.server ${PORT:-8080} -d public",
     "docs": "npx quartz build --serve -d docs",
@@ -102,6 +103,9 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/schibsted-grotesk": "^5.2.8",
+    "@fontsource/source-sans-pro": "^5.2.5",
     "@types/d3": "^7.4.3",
     "@types/hast": "^3.0.4",
     "@types/js-yaml": "^4.0.9",

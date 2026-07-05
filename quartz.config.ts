@@ -40,7 +40,9 @@ const config: QuartzConfig = {
     ],
     defaultDateType: "modified",
     theme: {
-      fontOrigin: "googleFonts",
+      // fonts are self-hosted (quartz/styles/fonts.css via scripts/vendor-assets.mjs);
+      // Google Fonts is blocked in mainland China
+      fontOrigin: "local",
       cdnCaching: true,
       typography: {
         header: "Schibsted Grotesk",

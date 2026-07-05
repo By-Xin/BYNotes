@@ -119,6 +119,20 @@ git push origin main
 - The dispatch step needs a `HOMEPAGE_DISPATCH_TOKEN` repository secret (a fine-grained PAT with Contents read/write on `By-Xin.github.io`). Without the secret the step is skipped gracefully and the homepage falls back to its weekly scheduled rebuild.
 - Site: https://by-xin.github.io/BYNotes/
 
+## Self-hosted fonts and KaTeX
+
+- Site fonts (Schibsted Grotesk / Source Sans Pro / IBM Plex Mono) and KaTeX
+  CSS + fonts are vendored into the repo — the published site makes no requests
+  to Google Fonts or jsDelivr (blocked/unreliable in mainland China).
+- After bumping `@fontsource/*` or `katex`, regenerate with:
+
+```bash
+npm run vendor-assets
+```
+
+This rewrites `quartz/styles/fonts.css`, `quartz/styles/katex.css`,
+`quartz/static/fonts/`, and `quartz/static/katex-fonts/`.
+
 ## Local preview (Quartz)
 
 ```bash
