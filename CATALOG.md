@@ -2,7 +2,7 @@
 
 This file tracks all notes in the ConvexOptimization directory with version information for manual sync management.
 
-**Last updated:** 2026-07-06 00:18:28
+**Last updated:** 2026-07-07 00:08:59
 
 > [!warning] Sync Status Note
 > **Chapters 1-12**: The source materials and these notes are NOT fully synchronized. This is a legacy issue that needs manual comparison and reconciliation in the future.
@@ -13,25 +13,25 @@ This file tracks all notes in the ConvexOptimization directory with version info
 
 | File | Last Modified | Size (bytes) | SHA256 Hash |
 |------|---------------|--------------|-------------|
-| 2.Convexity-I.md | 2026-05-25 21:55:39 | 25702 | dd3289017b68b0dfaef125177d505abe6d9b7cbf3f2093fefc93f3c2e589e43f |
-| 3.Convexity-II.md | 2026-05-25 21:55:39 | 18413 | 9fdce52b636c14d640ff9fc60919a1884a4884aecf12d4ff38279fd23d5b1888 |
-| 4.Canonical-Problem-Forms.md | 2026-05-25 21:55:39 | 12417 | b4b3dd7ec58545b4be3ccfc7ccb244e7736cd9be0ffad805a2259ad359fe6808 |
-| 5.Gradient-Descent.md | 2026-05-25 21:55:39 | 21292 | 625189ce692addfc02f779dbbe2a6396668a1f75a275240bfde0e0241a855548 |
-| 6.Subgradient.md | 2026-05-25 21:55:39 | 16906 | 74835ce7ab59eff87cf1c6ad5a4b8df69731343621aef9e8fc323685c185f80e |
-| 7.Subgradient-Methods.md | 2026-05-25 21:55:39 | 16781 | d79c84fe8bca8520919f80d252d2d32ae66fc0519dab4fdc6b6defb74dbb35a2 |
-| 8.Proximal-Gradient-Descent.md | 2026-05-25 21:55:39 | 26268 | b36bbb1d427ea75a7d1d1f77173db38c56ee4df49b5f82171e4e936633e3544a |
-| 9.Stochastic-Gradient-Descent.md | 2026-05-25 21:55:39 | 25416 | c992595886c5c34294ef9e8fdc7b671ecd4b98cbf3a620ad5c83bed578e286ee |
-| 10-11.Duality.md | 2026-05-25 21:55:39 | 12026 | 526ec519f9254770ef67b634b0e3e67c38b532344e859d332d454b08c8edc08c |
-| 12.Optimality-Conditions-for-Constrained-Optimization.md | 2026-05-25 21:55:39 | 45467 | eafe5b27b7c13d683d3680cf2dd0d03a6c3a935a5e399536f4f4871bc01c03b5 |
-| 13.Duality-Uses-and-Correspondents.md | 2026-05-25 21:55:39 | 24222 | 465b927b218fd435d62cf2a99cae90b8ad1816483f719f2463ba085e23fcdea6 |
-| 14.Newton-Method.md | 2026-05-25 21:55:39 | 11033 | 49be87c90cceb2d1c68327dbb5009fda1a3a9f5e8fcfb344fd09fbccee7e50f0 |
-| 15.Barrier-Method.md | 2026-05-25 21:55:39 | 21480 | 7ac5b50929823e605e35ac483b68c11168562803b97eeb480830b89e5a3d87d1 |
-| 16.Primal-Dual-Interior-Point-Methods.md | 2026-05-25 21:55:39 | 18452 | 781b35986aa6742acc32cbd4c4a0166e2f9a8e7a8d30d9f1984d3b0c3f3ad2ef |
-| 17.Quasi-Newton-Methods.md | 2026-05-31 19:15:47 | 38612 | e561c7fa7e994cb1ed61f1eb38f617c56cbe82750aab460315f5e02aec8c6076 |
-| 19.Numerical-Linear-Algebra.md | 2026-05-25 21:55:39 | 36543 | a8695ebca8bfeeea5c4ae19f9fdb824c468a552841e8dd5096a50244590a6293 |
-| 20.Coordinate-Descent.md | 2026-06-10 14:39:08 | 14383 | 6d0e90191a65807a1772a759cd12b9305228bca1a1c04dfdda2ed80caa9eaff0 |
-| 21-22.Dual-Decomposition.md | 2026-07-06 00:16:45 | 47204 | 7fe466f194743d91a279b6fb77c84dbc2cd54ad80ee7b8c3f80b50a02f94587a |
-| 23.Frank-Wolfe-Method.md | 2026-07-01 15:00:39 | 18467 | b01737a3fb2ce772f1dc2233c45f359bd46330c3d57c9a3413e1ad87a65ecfe0 |
+| 2.Convexity-I.md | 2026-07-07 00:06:15 | 25866 | c2df134f53735c756108903ce76feec8ab9b52560ea2afe6fb2a9e65d8361286 |
+| 3.Convexity-II.md | 2026-07-07 00:06:15 | 18434 | 4b45ba7ddf7d7bcfe4ba1043519dcfedfd547803f67a902871e47c2358c8c4a0 |
+| 4.Canonical-Problem-Forms.md | 2026-07-07 00:06:15 | 12522 | 82b9e0407f3fdf512a04afd84bfcc9908acacdfffe57f8e53710ee1be16c97b7 |
+| 5.Gradient-Descent.md | 2026-07-07 00:06:15 | 21313 | 9a7a12b777a10a5ab66d48c9a5dc864f4cb44aa47ef2d343f04a966f81f5355b |
+| 6.Subgradient.md | 2026-07-07 00:06:15 | 16941 | a52a7204d5d09c5aa9696eabedb9b8e854b902bf1e6ca42a6dd5748eee6507c7 |
+| 7.Subgradient-Methods.md | 2026-07-07 00:06:15 | 16833 | 9e5b279d53aa06f4344bbfc06af51cec84c0a5200d510e6ae5d9ddae4d37f2a4 |
+| 8.Proximal-Gradient-Descent.md | 2026-07-07 00:06:15 | 26317 | 55a5491e3b4db33f9970198b6ef0ec0d96f4ba5b4a72a54123bb1d35e9ecfb54 |
+| 9.Stochastic-Gradient-Descent.md | 2026-07-07 00:06:15 | 25457 | 18957194529c80b30c30d715556ca4a6f287d36d931d9ce7291a7266e4c3d0ca |
+| 10-11.Duality.md | 2026-07-07 00:06:15 | 12056 | 2641219d76230bbf9c8ac8039cbb1391bb666a4142dce9429f6446d33b415afb |
+| 12.Optimality-Conditions-for-Constrained-Optimization.md | 2026-07-07 00:06:15 | 45662 | 919ef85e8df5cdec6527bdf7ece960c9b87852552341f73ea54e20ef8f5e800d |
+| 13.Duality-Uses-and-Correspondents.md | 2026-07-07 00:06:15 | 24300 | 5e13d05f0af42393a12c71ce887e5f60e9f95c3bff5e3e14e3e06b1f7018a41a |
+| 14.Newton-Method.md | 2026-07-07 00:06:15 | 11173 | b7d92f800c0d34175760bb018cf5d627bcd77daa4d07703e486b50da51afc0f8 |
+| 15.Barrier-Method.md | 2026-07-07 00:06:15 | 21577 | c23f750ad89af2a3007d602e3b04894926d76cb0ea864fa142c30bae178ee6e1 |
+| 16.Primal-Dual-Interior-Point-Methods.md | 2026-07-07 00:06:15 | 18532 | fa8ca5ea9706b491f38bd678a953b7ea4b410d8174668cc271fcad4b8fe061fb |
+| 17.Quasi-Newton-Methods.md | 2026-07-07 00:06:15 | 38065 | 9a49b0febb681ac1cbac3e00380b0648601503407c1e332322552fee735a8829 |
+| 19.Numerical-Linear-Algebra.md | 2026-07-07 00:06:15 | 36568 | f82321a56b7e2d3573cc9aa6286e42a6da246ec1ce4517801e9e2a76525a77be |
+| 20.Coordinate-Descent.md | 2026-07-07 00:06:15 | 14335 | eefcf1c977bba3306523f3b6666771b71ac246d062c2f58d5956687abdecfb78 |
+| 21-22.Dual-Decomposition.md | 2026-07-07 00:06:15 | 46640 | 3187faa8e55163af04d5048906296909f2ad586a69e4aeae7cb583369a536661 |
+| 23.Frank-Wolfe-Method.md | 2026-07-07 00:06:15 | 18573 | b9068a1d3cf50d83c4b6acab1e62c973a0e01047fc719a4b2740f43cbc5e337a |
 | index.md | 2026-07-06 00:16:49 | 2213 | 6ae4f95872b3431e4c0ee446c1ee59dad4dcc716f988b4ed6bac36c1adc19ae9 |
 
 ## Usage Instructions
