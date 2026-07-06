@@ -52,7 +52,7 @@ Given sentence *"the quick brown **fox** jumps over the lazy dog"*:
 Notation:
 
 - Text position $t = 1, 2, \ldots, T$.
-- Word vector $w_t \in \mathbb{R}^d$, where $d$ is often $100$ to $300$.
+- Word (token) $w_t$ at position $t$, where the word vector is introduced separately below as $v_w$ (center) / $u_w$ (context), each in $\mathbb{R}^d$ with $d$ often $100$ to $300$.
 - Context window size $m$, usually $2$ to $4$.
 
 Likelihood:

@@ -62,7 +62,7 @@ g_s(\boldsymbol{z}_s, \mathcal{F}_t) = \frac{\delta}{2} \boldsymbol{z}_s^\top \w
 $$
 
 - $\widehat{\mathbf{y}}_s \in \mathbb{R}^N$ 是时刻 $t$ 对未来时刻 $s$ 的资产 return $\mathbf{y}_s$ 的预测.
-- $\widehat{\mathbf{V}}_s \in \mathbb{S}_{++}^N$ 是时刻 $t$ 对未来时刻 $s$ 的资产 return covariance matrix $\mathbf{V}_s = \operatorname{Var}(\boldsymbol{z}_s^\top \mathbf{y}_s \mid \mathcal{F}_t)$ 的预测. 其作为 covariance matrix 是 symmetric positive definite 的. 注意到, 由于 $\widehat{\mathbf{V}}_s \succ 0$, 因此 $g_s$ 是一个 strongly convex function.
+- $\widehat{\mathbf{V}}_s \in \mathbb{S}_{++}^N$ 是时刻 $t$ 对未来时刻 $s$ 的资产 return covariance matrix $\mathbf{V}_s = \operatorname{Cov}(\mathbf{y}_s \mid \mathcal{F}_t)$ 的预测. 其作为 covariance matrix 是 symmetric positive definite 的. 注意到, 由于 $\widehat{\mathbf{V}}_s \succ 0$, 因此 $g_s$ 是一个 strongly convex function.
 - $\delta > 0$ 是 risk aversion parameter, 其取值越大, 投资者对于 portfolio risk 的 aversion 越强.
 
 对应的, 将 $h_s$ 定义为对于 turnover 的 smoothed $\ell_1$ penalty, 即
@@ -160,7 +160,7 @@ $$
 
 来衡量最后决策的表现.
 
-因此, 总的而言, 其可以形式化写作如下 bi-level optimization problem:
+因此, 总的而言, 其可以形式化写作如下 [[Stochastic-Programming-and-Bilevel-Optimization-Roadmap|bi-level optimization problem]]:
 
 $$
 \begin{aligned}
@@ -250,11 +250,11 @@ $$
 \nabla_\theta \mathcal{L}(\theta) = \frac{\partial \ell_\text{d}(\mathbf{z}_s^*(\theta), \mathbf{Y}_s)}{\partial \mathbf{z}_s^*(\theta)} \cdot \frac{\partial \text{S}(\widetilde{\mathbf{Y}}_s(\theta))}{\partial \widetilde{\mathbf{Y}}_s(\theta)} \cdot \frac{\partial \phi_\theta(\mathbf{X}_s)}{\partial \theta}.
 $$
 
-对于传统的 Bi-level 优化方法, 通常通过对 lower-level optimization problem 的 KKT condition 来求解 $\frac{\partial \text{S}(\widetilde{\mathbf{Y}}_s(\theta))}{\partial \widetilde{\mathbf{Y}}_s(\theta)}$, 从而得到整个 loss function 的 gradient. 然而这对于一般的矩阵形式是非常复杂的.
+对于传统的 Bi-level 优化方法, 通常通过对 lower-level optimization problem 的 [[12.Optimality-Conditions-for-Constrained-Optimization|KKT condition]] 来求解 $\frac{\partial \text{S}(\widetilde{\mathbf{Y}}_s(\theta))}{\partial \widetilde{\mathbf{Y}}_s(\theta)}$, 从而得到整个 loss function 的 gradient. 然而这对于一般的矩阵形式是非常复杂的.
 
 ### Mirror Descent
 
-在本文的 framework 中, 由于需要求解 $\mathbb{z}_s^*(\theta) = \arg\min_{\mathbf{z}_s \in \Omega} \widetilde{F}(\mathbf{z}_s, \widetilde{\mathbf{Y}}_s(\theta))$, 其需要限制 $\mathbf{z}_s \in \Omega = \Omega_{t+1} \times \cdots \times \Omega_{t+H}$, 其中 $\Omega_{t+h} = \{\boldsymbol{z} \in \mathbb{R}^N: \sum_{i=1}^N z_i = 1, z_i \geq 0, i=1,2,\ldots,N\}$ 是 simplex.
+在本文的 framework 中, 由于需要求解 $\mathbf{z}_s^*(\theta) = \arg\min_{\mathbf{z}_s \in \Omega} \widetilde{F}(\mathbf{z}_s, \widetilde{\mathbf{Y}}_s(\theta))$, 其需要限制 $\mathbf{z}_s \in \Omega = \Omega_{t+1} \times \cdots \times \Omega_{t+H}$, 其中 $\Omega_{t+h} = \{\boldsymbol{z} \in \mathbb{R}^N: \sum_{i=1}^N z_i = 1, z_i \geq 0, i=1,2,\ldots,N\}$ 是 simplex.
 
 故对于这样的有约束 optimization problem, 可以通过 mirror descent 来求解. 下简要对 MD 进行介绍. 这里暂时不考虑 MPC 的复杂优化函数, 而只单纯考虑一个 general 的含 simplex 约束的 optimization problem, 即
 
@@ -262,7 +262,7 @@ $$
 \min_{\mathbf{z} \in \Omega} f(\mathbf{z}).
 $$
 
-回顾一般的 Gradient Descent $\mathbf{z}^{(k+1)} = \mathbf{z}^{(k)} - \eta \nabla f(\mathbf{z}^{(k)})$, 其事实上等价于
+[[5.Gradient-Descent|回顾一般的 Gradient Descent]] $\mathbf{z}^{(k+1)} = \mathbf{z}^{(k)} - \eta \nabla f(\mathbf{z}^{(k)})$, 其事实上等价于
 
 $$
 \mathbf{z}^{(k+1)} = \arg\min_{\mathbf{w}} \left\{ \langle \nabla f(\mathbf{z}^{(k)}), \mathbf{w} - \mathbf{z}^{(k)} \rangle + \frac{1}{2\eta} \|\mathbf{w} - \mathbf{z}^{(k)}\|_2^2 \right\}.
@@ -445,7 +445,7 @@ $$
 下面完整的在开发视角落实 IPMO 的框架.
 
 - 数据集构建
-  - 给定 $N=7$ 支 ETF 资产的日度收益率 $\mathbf{R}\in \mathbb{R}^{T \times N}$, 时间范围为 2011~2024 年. 这里取 2011~2018 年为 in-sample, 用于参数训练与超参数选择. 给定 2018~2024 作为 out-of-sample, 用于模型评估.
+  - 给定 $N=7$ 支 ETF 资产的日度收益率 $\mathbf{R}\in \mathbb{R}^{T \times N}$, 时间范围为 2011~2024 年. 这里取 2011~2018 年为 in-sample, 用于参数训练与超参数选择. 给定 2019~2024 作为 out-of-sample, 用于模型评估.
   - 对于每个训练日期 $s = 1, 2, \ldots, T$, 构建一个输入输出对 $(\mathbf{X}_s, \mathbf{Y}_s)$, 其中 $\mathbf{X}_s \in \mathbb{R}^{L \times N}$ 是过去 $L$ 天的日度收益率, $\mathbf{Y}_s \in \mathbb{R}^{H \times N}$ 是未来 $H$ 天的日度收益率. 其中 $L=120$, $H=20$, $T = 250$ 为训练集大小. 因此一个完整的训练集即为
     $$
     \mathcal{D}_t^{(i)} = \{(\mathbf{X}_s, \mathbf{Y}_s)\}_{s = 1}^T,

@@ -91,7 +91,7 @@ $$
 以均值汇总为例:
 
 $$
-F(C) = \frac{1}{n} \sum_{i=1}^{n} C_i = \frac{1}{n} \sum_{i=1}^{n} f(p(y_i \mid x, y_{\lt i})).
+F(C) = \frac{1}{n} \sum_{i=1}^{n} C_i = \frac{1}{n} \sum_{i=1}^{n} f(p(\cdot \mid x, y_{\lt i})).
 $$
 
 根据 $f(\cdot)$ 不同, 可以得到不同的 distributional confidence 方法. 不过整理可见, 其本质上都是 $\sum^{V}_{j=1} p(j \mid x, y_{\lt i})$ 的某种函数.
@@ -115,7 +115,7 @@ $$
 C_i^{\text{Gini}} = \sum_{j=1}^{V} p(j \mid x, y_{\lt i})^2.
 $$
 
-- 表示两次随机采样取到不同 token 的概率.
+- 表示两次随机采样取到相同 token 的概率.
 - 越集中, Gini 值越高, 置信度越高.
 
 #### 3.2.3 Entropy
@@ -134,7 +134,7 @@ C_i^{\text{DP}} = -\exp\left( -\sum_{j=1}^{V} p(j \mid x, y_{\lt i}) \log p(j \m
 $$
 
 - 实际上是将熵指数化后的反向量.
-- 越小表示模型更 confident.
+- 越大表示模型更 confident.
 - 本质上与负熵类似, 只是数值缩放不同.
 
 ## 4. Related Work

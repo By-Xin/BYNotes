@@ -24,7 +24,7 @@ tags:
 
 作为 generative model, 我们要通过 Bayes 公式计算 $P(y|x)$, 而为了计算它就需要得到 $P(x|y)$ 和 $P(y)$.
 
-其中 $P(x|y)$ 由于是离散的, 假设 $x\in R^k$, 会有 $2^{k}-1$ 种可能的结果, 这会造成维度爆炸.
+其中 $P(x|y)$ 由于是离散的, 假设 $x\in R^k$, 完全刻画其联合分布需要 $2^{k}-1$ 个参数, 这会造成维度爆炸.
 
 为简化模型, Naive Bayes 做了一个强假设, 称为 Naive Bayes Assumption, 而由此得到的模型就称为 Naive Bayes Classifier.
 

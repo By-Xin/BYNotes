@@ -86,11 +86,11 @@ $$
 
 若与 OLS 的 SGD 比较, 会发现二者的公式完全相同. 唯一变化的是这里的 $h_\theta(x^{(i)})$, 即预测值经过非线性的 sigmoid 函数映射, 而 OLS 中的 $h_\theta(x^{(i)})$ 为 $\theta^Tx^{(i)}$.
 
-这也揭示二者都属于同一类算法, 即线性回归和逻辑回归都属于广义线性模型 (GLM).
+这也揭示二者都属于同一类算法, 即线性回归和逻辑回归都属于[[Generalized-Linear-Models|广义线性模型 (GLM)]].
 
 ### 1.3 Newton Method
 
-Newton 法本身是用来求解函数零点的, 其具体形式为:
+[[14.Newton-Method|Newton 法]]本身是用来求解函数零点的, 其具体形式为:
 
 $$
 \theta := \theta - \frac{f(\theta)}{f'(\theta)}.

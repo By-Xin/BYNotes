@@ -244,8 +244,8 @@ $$
     g_{ii}(n) & = \mathbb{P}(\tau_i \geq n) = \sum_{m=1}^\infty f_{ii}(m) \cdot \mathbb{P}(\tau_i \geq n-1) = f_{ii} \cdot g_{ii}(n-1) \\
     \end{aligned}
     $$
-    - 即从状态 $i$ 出发回到 $i$, 至少经过 $n$ 步的概率, 可以表示为从状态 $i$ 出发, somehow ever 第一次回到 $i$ 之后, 再至少用 $n-1$ 步回到 $i$ 的概率. 因此 $g_{ii}(n)$ 满足一个递归关系, 其解为 $g_{ii}(n) = f_{ii}^n$. 从而可以得到 $\mathbb{P}(\tau_i \geq n) = f_{ii}^n$. 这也说明了 $\tau_i$ 的分布是一个几何分布.
-    - 进一步, 令 $n \to \infty$, 则 $\mathbb{P}(\tau_i = \infty) = \lim_{n \to \infty} \mathbb{P}(\tau_i \geq n) = \lim_{n \to \infty} f_{ii}^n$. 因此当 $f_{ii} < 1$ 时, $\mathbb{P}(\tau_i = \infty) = 0$, 即从状态 $i$ 出发, 最终回到状态 $i$ 的概率为 $1$; 当 $f_{ii} = 1$ 时, $\mathbb{P}(\tau_i = \infty) = 1$, 即从状态 $i$ 出发, 最终回到状态 $i$ 的概率为 $0$. 从而可以得到如下结论:
+    - 即从状态 $i$ 出发至少返回 $i$ 共 $n$ 次的概率, 可以表示为先发生第一次返回 (概率为 $f_{ii}$), 之后再至少返回 $n-1$ 次的概率. 因此 $g_{ii}(n)$ 满足一个递归关系, 其解为 $g_{ii}(n) = f_{ii}^n$. 从而可以得到 $\mathbb{P}(\tau_i \geq n) = f_{ii}^n$. 这也说明了 $\tau_i$ 的分布是一个几何分布.
+    - 进一步, 令 $n \to \infty$, 则 $\mathbb{P}(\tau_i = \infty) = \lim_{n \to \infty} \mathbb{P}(\tau_i \geq n) = \lim_{n \to \infty} f_{ii}^n$. 因此当 $f_{ii} < 1$ 时, $\mathbb{P}(\tau_i = \infty) = 0$, 即返回次数几乎必然有限 (transient); 当 $f_{ii} = 1$ 时, $\mathbb{P}(\tau_i = \infty) = 1$, 即几乎必然返回无穷多次 (recurrent). 从而可以得到如下结论:
         $$
         \mathbb{P}(\tau_i = \infty) = \begin{cases}
         0, & \text{if } f_{ii} < 1 \iff i \text{ is transient} \\
@@ -310,7 +310,7 @@ $$
 > - 其次若 $n = 2k$ 是偶数, 则
 >
 >   $$
->   \mathbb{P}_{00}(2k) = \binom{2k}{k} p^k (1-p)^k
+>   P_{00}(2k) = \binom{2k}{k} p^k (1-p)^k
 >   $$
 >
 >   - 故讨论如下级数的敛散性:
@@ -425,7 +425,7 @@ $$
 
 ***Theorem* (Weak Ergodic Theorem):** 对于 Markov Chain $\{X_n\}$, 若其是 **irreducible 且 recurrent** 的, 则对于任意状态 $i, j$, 转移概率的 Cesaro Sum 的极限存在, 且与 $i$ 无关. 即
 $$
-\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n P_{ij}(k) := \frac{1}{\mu_j} := \tilde{\pi_j} > 0
+\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n P_{ij}(k) := \frac{1}{\mu_j} := \tilde{\pi_j} \geq 0
 $$
 
 - 其中 $\mu_j = \sum_{n=1}^{\infty} n f_{jj}(n)$ 表示从状态 $j$ 出发, 首次回到状态 $j$ 的期望时间. 
@@ -439,7 +439,7 @@ $$
 
 ***Proposition*:** 对于 Markov Chain $\{X_n\}$, 若其是 **irreducible 且 aperiodic** 的, 则对于任意状态 $i, j$, 转移概率的极限存在, 且与 $i$ 无关. 
 $$
-\lim_{n \to \infty} P_{ij}(n) = \pi_j > 0
+\lim_{n \to \infty} P_{ij}(n) = \pi_j \geq 0
 $$
 或者用矩阵的形式表示为
 $$
@@ -511,7 +511,7 @@ $$
 
 对于该方程, 有如下说明:
 1. 这是一个 Left-hand Equation, 即 $\boldsymbol{\pi}$ 是一个行向量, 其左乘 $\mathbf{P}$ 得到 $\boldsymbol{\pi}$ 本身 ($\boldsymbol{\pi} \cdot \mathbf{P} = \boldsymbol{\pi}$). 这与我们在 Linear Algebra 中常见的 Right-hand Equation 略有差异.
-2. Stationary Distribution 还以为这, 若 $X_0\sim \boldsymbol{\pi}$, 则对于任意 $n \geq 0$, $X_n \sim \boldsymbol{\pi}$. 即如果初始状态 $X_0$ 的分布是 $\boldsymbol{\pi}$, 则在经过任意步转移后, 状态 $X_n$ 的分布仍然是 $\boldsymbol{\pi}$. 
+2. Stationary Distribution 还意味着, 若 $X_0\sim \boldsymbol{\pi}$, 则对于任意 $n \geq 0$, $X_n \sim \boldsymbol{\pi}$. 即如果初始状态 $X_0$ 的分布是 $\boldsymbol{\pi}$, 则在经过任意步转移后, 状态 $X_n$ 的分布仍然是 $\boldsymbol{\pi}$. 
 3. 对于有限状态 Markov Chain, 该方程总有非零解, 而和对应的 Markov Chain 的具体性质, 如 recurrence, periodicity 等无关. 甚至对于没有极限的 Markov Chain 也同样适用. 只不过此时求得的是 Markov Chain 的一个 stationary distribution, 而非 limiting distribution. 这也是该方程的一个重要性质.
 
 
@@ -694,7 +694,7 @@ Monte Carlo 方法或统计模拟方法是一种通过随机采样来近似计�
 
 - Monte Carlo 方法常需要应对一个复杂分布 $\mathcal{F}$, 其解析性质难以获得. 但是可以通过近似伪随机采样的方式获得足够多的样本 $\{X_1, X_2, \cdots, X_n\}$ 来近似计算 $\mathcal{F}$ 的一些性质 (例如其均值, 方差等). 从而将解析结构转为对样本的统计分析. 因此 MC 的重点变为如何获得服从 $\mathcal{F}$ 的足够样本, 并且我们期望这样的方法是 universal 的, 即对于任意分布 $\mathcal{F}$ 都适用的. 
 
-- 一个经典的方法是 *Acceptance-Rejection Sampling*. 
+- 一个经典的方法是 *[[Generating-Continuous-Random-Variables|Acceptance-Rejection Sampling]]*. 
   - 给定随机变量 $X \in \mathcal{X}$, 其概率密度为 $f$, 目标是生成一系列服从该分布的样本, 但直接从 $f(x)$ 进行采样可能是困难的. 因此引入一个 proposal distribution 其概率密度为 $g(x)$ 且通常较为简单易采样. 通过引入一个常数 $M > 0$ 确保 $f(x) \leq M g(x)$ 对于所有 $x \in \mathcal{X}$ 都成立, 即
     $$
     0 \leq \frac{f(x)}{M g(x)} \leq 1, \qquad \forall x \in \mathcal{X}

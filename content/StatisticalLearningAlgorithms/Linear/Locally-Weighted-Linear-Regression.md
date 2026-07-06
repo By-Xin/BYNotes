@@ -31,7 +31,7 @@ $$
 J(\theta) = \sum_i \omega^{(i)}(y^{(i)} - \theta^T x^{(i)})^2.
 $$
 
-$\omega^{(i)}$ 是人为设计的一个参数, 其中一种比较成熟的设计为高斯核:
+$\omega^{(i)}$ 是人为设计的一个参数, 其中一种比较成熟的设计为[[Kernel-Methods|高斯核]]:
 
 $$
 \omega^{(i)} = \exp \left( - \frac{ (x^{(i)} - x) ^2}{2 \tau^2} \right).
@@ -69,7 +69,7 @@ def getw(x0, x, k):
     """
     w = np.zeros([m, m])
     for i in range(m):
-        w[i, i] = exp((np.linalg.norm(x0 - x[i])) / (-2 * k ** 2))
+        w[i, i] = exp((np.linalg.norm(x0 - x[i]) ** 2) / (-2 * k ** 2))
     return w
 
 def getyvalue(x1, x, y, k):

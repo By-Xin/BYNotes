@@ -25,7 +25,7 @@ $$
 Then the Fisher Information of $\theta$ is defined as
 
 $$
-\mathcal{I}(\theta) = \mathbb{E}_{\theta}\left[\left(\frac{\partial}{\partial\theta}\log l(\mathbf{X}|\theta)\right)^2\right] = -\mathbb{E}_{\theta}\left[\frac{\partial^2}{\partial\theta^2}\log l(\mathbf{X}|\theta)\right].
+\mathcal{I}(\theta) = \mathbb{E}_{\theta}\left[\left(\frac{\partial}{\partial\theta} l(\theta)\right)^2\right] = -\mathbb{E}_{\theta}\left[\frac{\partial^2}{\partial\theta^2} l(\theta)\right].
 $$
 
 ## 2. Identity Between the Two Forms

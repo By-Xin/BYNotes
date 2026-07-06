@@ -27,10 +27,10 @@ Here, we first give a simple version of Cramér-Rao Lower Bound, where we only f
 **Theorem (Cramér-Rao Lower Bound, simple version).** Given a random sample $\mathbf{X} = (X_1, \cdots, X_n)^T$ from a distribution with pdf $f(\mathbf{x}|\theta)$. Then for any unbiased estimator $\hat{\theta}(\mathbf{X})$,
 
 $$
-\text{Var}(\hat{\theta}(\mathbf{X})) \geq \frac{1}{nI(\theta)},
+\text{Var}(\hat{\theta}(\mathbf{X})) \geq \frac{1}{I(\theta)},
 $$
 
-where $I(\theta)$ is the Fisher Information of $\theta$:
+where $I(\theta)$ is the [[Fisher-Information|Fisher Information]] of $\theta$:
 
 $$
 I(\theta) = \mathbb{E}_{\theta}\left[\left(\frac{\partial}{\partial\theta}\log f(\mathbf{X}|\theta)\right)^2\right] = -\mathbb{E}_{\theta}\left[\frac{\partial^2}{\partial\theta^2}\log f(\mathbf{X}|\theta)\right].
@@ -112,10 +112,10 @@ $$
 >
 > $\square$
 
-**Theorem (Cramér-Rao Lower Bound, general version).** If we generalize the estimator from $\mathbb{E}(\hat{\theta}) = \theta$ to a function of the parameter $\mathbb{E}(\hat{g}(\theta)) = g(\theta) = \int_\mathbb{R} \hat g(\theta) f(\mathbf{x}; \theta) \,  \mathrm{d}\mathbf{x}$, then its derivative with respect to $\theta$ is
+**Theorem (Cramér-Rao Lower Bound, general version).** If we generalize the estimator from $\mathbb{E}(\hat{\theta}) = \theta$ to a function of the parameter $\mathbb{E}(\hat{g}(\mathbf{X})) = g(\theta) = \int_\mathbb{R} \hat g(\mathbf{x}) f(\mathbf{x}; \theta) \,  \mathrm{d}\mathbf{x}$, then its derivative with respect to $\theta$ is
 
 $$
-g'(\theta) = \int_\mathbb{R} \hat g(\theta) \frac{\partial}{\partial\theta} f(\mathbf{x}; \theta) \,  \mathrm{d}\mathbf{x}.
+g'(\theta) = \int_\mathbb{R} \hat g(\mathbf{x}) \frac{\partial}{\partial\theta} f(\mathbf{x}; \theta) \,  \mathrm{d}\mathbf{x}.
 $$
 
 Following the same procedure of the proof,
@@ -156,7 +156,7 @@ Here, $\mathcal{I}(\theta)$ is the Fisher Information defined from the joint dis
    $$
    \begin{aligned}
    I(\mu) & = -\mathbb{E}_{\mu}\left[\frac{\partial^2}{\partial\mu^2}\log f(\mathbf{X}; \mu)\right] = \frac{n}{\sigma^2} \quad \small \text{or equivalently} \\
-   I(\mu) & = \mathbb{E}_{\mu}\left[\left(\frac{\partial}{\partial\mu}\log f(\mathbf{X}; \mu)\right)^2\right] = \mathbb{E}_{\mu}\left[ \frac{n}{\sigma^2}\left(\sum_{i=1}^n \frac{X_i}{n} - \mu\right)\right]= \frac{n}{\sigma^2}.
+   I(\mu) & = \mathbb{E}_{\mu}\left[\left(\frac{\partial}{\partial\mu}\log f(\mathbf{X}; \mu)\right)^2\right] = \mathbb{E}_{\mu}\left[ \frac{n^2}{\sigma^4}\left(\sum_{i=1}^n \frac{X_i}{n} - \mu\right)^2\right]= \frac{n}{\sigma^2}.
    \end{aligned}
    $$
 

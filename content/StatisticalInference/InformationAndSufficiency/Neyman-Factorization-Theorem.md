@@ -66,7 +66,7 @@ $$
 \begin{aligned}
 L(\mu)
 &= \underbrace{\left(\sqrt{2\pi\sigma^2}\right)^{-n} \cdot \exp\left\{-\frac{n\mu^2}{2\sigma^2}\right\} \cdot \exp \left\{ \frac{\mu\sum_{i=1}^n x_i}{\sigma^2} \right\}}_{g(\sum \textbf{X},\mu) ~(\text{with } \sigma,n \text{ known})} \\
-&\quad \cdot \underbrace{\exp\left\{\frac{\sum_{i=1}^n x_i^2}{2\sigma^2}\right\}}_{h(\mathbf{X}) ~(\text{function of } \mathbf{X})} \\
+&\quad \cdot \underbrace{\exp\left\{-\frac{\sum_{i=1}^n x_i^2}{2\sigma^2}\right\}}_{h(\mathbf{X}) ~(\text{function of } \mathbf{X})} \\
 &= g(S(\mathbf{X}), \mu) \cdot h(\mathbf{X}).
 \end{aligned}
 $$
@@ -84,7 +84,7 @@ Let $S(\mathbf{X}) = \left(\sum_{i=1}^n x_i, \sum_{i=1}^n x_i^2\right)$. Then th
 $$
 \begin{aligned}
 L(\mu)
-&= \underbrace{\left(\sqrt{2\pi\sigma^2}\right)^{-n} \cdot \exp\left\{-\frac{n\mu^2}{2\sigma^2}\right\} \cdot \exp \left\{ \frac{\mu\sum_{i=1}^n x_i}{\sigma^2} \right\}\cdot \exp\left\{\frac{\sum_{i=1}^n x_i^2}{2\sigma^2}\right\}}_{g(\sum x_i,\sum x_i^2\mu)} \\
+&= \underbrace{\left(\sqrt{2\pi\sigma^2}\right)^{-n} \cdot \exp\left\{-\frac{n\mu^2}{2\sigma^2}\right\} \cdot \exp \left\{ \frac{\mu\sum_{i=1}^n x_i}{\sigma^2} \right\}\cdot \exp\left\{-\frac{\sum_{i=1}^n x_i^2}{2\sigma^2}\right\}}_{g(\sum x_i,\sum x_i^2,\mu)} \\
 &= g(S(\mathbf{X}), \mu) \cdot 1.
 \end{aligned}
 $$

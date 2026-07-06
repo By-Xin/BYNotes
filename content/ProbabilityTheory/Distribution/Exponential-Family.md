@@ -25,7 +25,7 @@ $$
 其中:
 
 - $\eta$ 是 natural parameter 或者 canonical parameter, 是决定分布的一个参数.
-- $T(y)$ 是标签 $y$ 的充分统计量 (sufficient statistic), 有时会取 $T(y) = y$.
+- $T(y)$ 是标签 $y$ 的[[Sufficiency|充分统计量 (sufficient statistic)]], 有时会取 $T(y) = y$.
 - $a(\eta)$ 是 log partition function, 是一个归一化因子, 使得指数分布族中的分布 pdf 积分为 $1$.
 
 当固定 $T$ 的选择后, 不同的 $a,b$ 就会确定不同的分布族, 这些分布族都是指数分布族, 其分布的参数由 $\eta$ 决定.
@@ -45,7 +45,7 @@ p(y;\phi)
 \end{aligned}
 $$
 
-参照 GLM 的定义, 可以发现 Bernoulli 的分布是令 GLM 中:
+[[Generalized-Linear-Models|参照 GLM 的定义]], 可以发现 Bernoulli 的分布是令 GLM 中:
 
 - $T(y) = y$
 - $\eta = \log(\frac{\phi}{1-\phi})$; 其等价于 $\phi = \frac{1}{1+e^{-\eta}}$, 即 logistic function.

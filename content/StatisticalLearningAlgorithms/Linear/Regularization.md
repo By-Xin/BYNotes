@@ -56,7 +56,7 @@ $$
 \end{aligned}
 $$
 
-再次引入 Lagrange 乘子, 得到:
+[[10-11.Duality|再次引入 Lagrange 乘子]], 得到:
 
 $$
 \begin{aligned}
@@ -86,10 +86,10 @@ $$
 - 对于 normal 矩阵 $A^TA=AA^T$:
 
   $$
-  A = U^{-1}\Lambda U,
+  A = U\Lambda U^H,
   $$
 
-  其中 $\Lambda=\text{diag}(\lambda_1,\ldots,\lambda_n)$, $UU^{-1}=I$.
+  其中 $\Lambda=\text{diag}(\lambda_1,\ldots,\lambda_n)$, $U$ 为 unitary 矩阵, $UU^H=I$.
 
 - 对于一般方阵:
 
@@ -146,7 +146,7 @@ $$
 \begin{aligned}
 \theta_{\text{Ridge}}
 &= (X^TX + \lambda I)^{-1}X^Ty \\
-&= V {(\Lambda^2 + \lambda I)} ^{-1}V^T V \Sigma U^T y \\
+&= V {(\Lambda^2 + \lambda I)} ^{-1}V^T V \Sigma^T U^T y \\
 &= V \left({(\Lambda^2 + \lambda I)} ^{-1} \Sigma \right)\left( U^T y \right) \\
 &= V
 \begin{bmatrix}
@@ -220,7 +220,7 @@ $$
 其约束形式为
 
 $$
-\alpha \|\theta\|_1 + (1-\alpha) \|\theta\|_2 \leq r.
+\alpha \|\theta\|_1 + (1-\alpha) \|\theta\|_2^2 \leq r.
 $$
 
 ## 4. Regularization Theory

@@ -23,7 +23,7 @@ tags:
 
 ## 1. Basic Idea
 
-Kernel Method 的核心思想是通过**非线性映射 (Non-linear Mapping)** 将原始数据映射到一个更高维的特征空间 (Feature Space), 使得在该空间中, 原本线性不可分的问题变得线性可分. 然后, 我们可以在这个高维空间中应用线性模型, 例如线性分类器或线性回归, 来处理数据.
+Kernel Method 的核心思想是通过**非线性映射 (Non-linear Mapping)** 将原始数据映射到一个更高维的特征空间 (Feature Space), 使得在该空间中, 原本线性不可分的问题变得线性可分. 然后, 我们可以在这个高维空间中应用线性模型, [[Support-Vector-Machine|例如线性分类器]]或线性回归, 来处理数据.
 
 具体地, 对于这样的线性不可分数据 $x$, 定义一个映射函数 $\phi: \mathbb{R}^d \to \mathcal{H}$, 将数据点 $x$ 映射到高维 Hilbert 空间 $\mathcal{H}$ 中. 此外定义一个核函数 $\kappa: \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}$, 用于衡量输入数据点之间的相似性, 即映射后空间中对应点的内积:
 

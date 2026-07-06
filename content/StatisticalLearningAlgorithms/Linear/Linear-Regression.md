@@ -30,7 +30,7 @@ $$
 
 ### 1.2 Gradient Descent
 
-Gradient descent 的一般形式:
+[[5.Gradient-Descent|Gradient descent 的一般形式]]:
 
 $$
 \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta).

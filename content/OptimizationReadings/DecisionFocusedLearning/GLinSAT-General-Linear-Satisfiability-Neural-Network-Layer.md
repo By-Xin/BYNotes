@@ -26,7 +26,7 @@ GLinSAT is a differentiable neural-network layer that maps model outputs to solu
 
 ## Introduction
 
-GLinSAT 是一个可以将任意神经网络输出 $\mathbf{c} \in \mathbb{R}^{n'}$ 映射到满足线性约束的可行解 $\mathbf{x} \in \mathbb{R}^{n'}$ 的可微映射. 其核心是将原始的线性规划问题 (LP) 转化为一个对偶问题, 并使用 Nesterov 加速梯度下降法求解对偶问题, 从而得到原始问题的最优解.
+GLinSAT 是一个可以将任意神经网络输出 $\mathbf{c} \in \mathbb{R}^{n'}$ 映射到满足线性约束的可行解 $\mathbf{x} \in \mathbb{R}^{n'}$ 的可微映射. 其核心是将原始的线性规划问题 (LP) [[10-11.Duality|转化为一个对偶问题]], 并[[5.Gradient-Descent|使用 Nesterov 加速梯度下降法求解对偶问题]], 从而得到原始问题的最优解.
 
 ![GLinSAT maps neural network outputs to solutions satisfying general linear constraints](https://arxiv.org/html/2409.17500v2/x1.png)
 
@@ -79,7 +79,7 @@ $$
   $$
   即一个分段线性函数. 故这样的映射 $\mathbf{c} \mapsto \mathbf{x}^\star(\mathbf{c})$ 是一个几乎处处梯度为 0, 在分段点处不可微的函数, 这对于神经网络的反向传播是一个很大的障碍.
 
-因此, 作者在这里提出了 **entropy regulation** 进行光滑化处理, 得到的正则后的目标函数为:
+因此, 作者在这里提出了 **entropy regularization** 进行光滑化处理, 得到的正则后的目标函数为:
 
 $$
 \begin{aligned}
@@ -545,7 +545,7 @@ $$
 
     而这样的方法就很适合使用 CG 方法.
 
-  - Conjugate Gradient (CG) 方法是求解对称正定线性系统的经典方法. 其基本思想就是沿着共轭方向去进行搜索迭代, 而共轭方向可以简单理解为由 $\mathbf{H}$ 诱导的正交方向. 其具体迭代过程如下:
+  - [[19.Numerical-Linear-Algebra|Conjugate Gradient (CG) 方法是求解对称正定线性系统的经典方法]]. 其基本思想就是沿着共轭方向去进行搜索迭代, 而共轭方向可以简单理解为由 $\mathbf{H}$ 诱导的正交方向. 其具体迭代过程如下:
     - 初始化 $\mathbf{v}^0 = 0$, 初始化残差 $\mathbf{s}^0 = \mathbf{r} - \mathbf{H} \mathbf{v}^0 = \mathbf{r}$, 初始化搜索方向 $\mathbf{p}^0 = \mathbf{s}^0$. 即第一步沿着负梯度方向进行搜索.
     - 在第 $k$ 步迭代中, 当前迭代点为 $\mathbf{v}^k$, 搜索方向为 $\mathbf{p}^k$, 步长为 $\gamma^k$, 我们希望沿着直线 $\mathbf{v}^{k+1} = \mathbf{v}^k + \gamma^k \mathbf{p}^k$ 进行搜索, 使得 $\mathbf{v}^{k+1}$ 最小化二次函数 $\min_\gamma Q(\mathbf{v}) = \frac{1}{2} \mathbf{v}^\top \mathbf{H} \mathbf{v} - \mathbf{r}^\top \mathbf{v}$. 故可以求得第 $k$ 步的步长为
       $$

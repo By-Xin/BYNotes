@@ -22,7 +22,7 @@ Online Learning 的信息是序列式的, 逐渐到达的. 在第 $t$ 轮, learn
   $$
   h^\star : \mathcal{X} \to \mathcal{Y}, \quad h^\star \in \mathcal{H}.
   $$
-  其中 $\mathcal{H}$ 是一个 fix 的 hypothesis class, 并且是对 learner 已知的. 称符合这种设置的情况为 realizable case, 因为存在一个假设 $h^\star$ 能够完美地拟合数据:
+  其中 $\mathcal{H}$ 是一个 fix 的 hypothesis class, 并且是对 learner 已知的. [[01.Introduction-to-Generalization|称符合这种设置的情况为 realizable case]], 因为存在一个假设 $h^\star$ 能够完美地拟合数据:
   $$
   \exists h^\star \in \mathcal{H}, \quad \text{s.t.} \quad h^\star(\mathrm{x}_t) = y_t, \forall t.
   $$
@@ -62,7 +62,7 @@ Online Learning 的信息是序列式的, 逐渐到达的. 在第 $t$ 轮, learn
     $$
     \mathcal{H} = \{h_w : h_w(\mathbf{x}) = \mathbf{w}^\top \mathbf{x}, \mathbf{w} \in \mathbb{R}^d\}.
     $$
-    其整体的设定和一般的 OLS 无异.
+    [[Linear-Regression|其整体的设定和一般的 OLS 无异]].
 
 - **Prediction with Expert Advice**:
   - 这是一个非常经典的 online learning 的例子. 设 $\mathbf{x}_t \in \mathcal{X} \subset \mathbb{R}^d$ 是每一轮的输入, 其第 $i$ 个分量 $\mathbf{x}_t[i]$ 可以被看成是第 $i$ 个专家 (expert) 在第 $t$ 轮的建议. 在每一轮 learner 需要从中选择一个专家的建议来进行预测. 在进行选择后, learner 会收到 label $\mathbf{y}_t \in \mathcal{Y} = [0,1]^d$, 一个 $d$ 维的 $[0,1]$ 区间内的向量, 其第 $i$ 个分量 $\mathbf{y}_t[i]$ 可以被看成是如果选择了第 $i$ 个专家的建议, 则后验的真实 cost. 因此, 在每轮决策中, 我们的实际决策损失也可以直接通过 $\mathbf{y}_t$ 来计算:

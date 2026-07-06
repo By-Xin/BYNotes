@@ -54,7 +54,7 @@ BERT 能够完成许多下游 NLP 任务, 如文本分类、问答、命名实�
 
 BERT 模型的输入是一串序列, 常为一串 token, 输出也是一串序列, 每个 token 对应一个向量表示, 且二者之间是一一对应的. 输入序列有多长, 输出序列也有多长.
 
-具体而言, BERT 的模型结构是一个基于 Transformer 的深度神经网络. Generally, Transformer 可以分为 Encoder 和 Decoder 两部分, 而 BERT 只使用 Transformer 的 Encoder 部分.
+具体而言, BERT 的模型结构是一个基于 Transformer 的深度神经网络. [[7.Attention-and-Transformer|Generally, Transformer 可以分为 Encoder 和 Decoder 两部分]], 而 BERT 只使用 Transformer 的 Encoder 部分.
 
 BERT 相当于将多个 Transformer Encoder 串联在一起, 通过多层 Transformer Encoder 来学习文本的深层语义信息.
 
@@ -84,7 +84,7 @@ Random token masking 是指面对一串文本序列时, 随机将其中一些 to
 也有一些质疑认为 Next Sentence Prediction 对模型训练效果不大. 例如:
 
 - Robustly optimized BERT approach (RoBERTa): <https://arxiv.org/abs/1907.11692>
-- Sentence Order Prediction (SOP): <https://arxiv.org/abs/1902.00751>
+- ALBERT (introduces Sentence Order Prediction, SOP): <https://arxiv.org/abs/1902.00751>
 
 SOP 会将两个相邻句子随机打乱顺序, 让模型判断两个句子的顺序.
 
@@ -112,7 +112,7 @@ Two-sequences to classification 的输入是两个文本序列, 输出是一个�
 
 Extractive question answering 的输入是一个文本序列 $D$ 和一个基于该文本的问题 $Q$. 模型输出两个 token 索引 $(s,e)$, 表示针对问题 $Q$ 在文本 $D$ 中答案的起始和结束位置.
 
-例如文本 "The capital of France is Paris." 和问题 "What is the capital of France?" 的答案是 $(4,5)$, 即 "Paris".
+例如文本 "The capital of France is Paris." 和问题 "What is the capital of France?" 的答案是 $(6,6)$, 即 "Paris".
 
 ## 4. Initial Use of BERT in Hugging Face
 

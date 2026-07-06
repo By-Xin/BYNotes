@@ -152,7 +152,7 @@ $$
 X_n \xrightarrow{a.s.} X \nLeftrightarrow X_n \xrightarrow{ms} X.
 $$
 
-**Theorem (Strong law of large numbers).** Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with $\mathbb{E}[X_i]=\mu$ and $\operatorname{Var}[X_i]=\sigma^2 < \infty$. Denote $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$. Then, for any $\epsilon > 0$,
+**[[Law-of-Large-Numbers|Theorem (Strong law of large numbers)]].** Let $X_1, X_2, \ldots, X_n$ be i.i.d. random variables with $\mathbb{E}[X_i]=\mu$ and $\operatorname{Var}[X_i]=\sigma^2 < \infty$. Denote $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$. Then, for any $\epsilon > 0$,
 
 $$
 \mathbb{P}\left(\lim_{n \to \infty} |\bar{X}_n - \mu| < \epsilon\right) = 1.

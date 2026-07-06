@@ -52,7 +52,7 @@ These PCMI lecture notes by John Duchi provide a compact introduction to stochas
 Suggested reading plan:
 
 - Sections 1–2: basic setup and convex analysis background
-- Section 3: subgradient and stochastic subgradient methods
+- Section 3: [[7.Subgradient-Methods|subgradient and stochastic subgradient methods]]
 - Section 4: mirror descent and adaptive metrics
 - Section 5: optimality guarantees and sample complexity
 - Technical appendices: keep as references and return to them when needed
@@ -68,7 +68,7 @@ Use: background for black-box optimization, oracle complexity, first-order metho
 arXiv: [Convex Optimization: Algorithms and Complexity](https://arxiv.org/abs/1405.4980)
 PDF: [Author-hosted PDF](https://sbubeck.com/Bubeck15.pdf)
 
-This monograph by Sébastien Bubeck gives a systematic introduction to convex optimization from the viewpoint of algorithms and complexity. It starts with the black-box model and then develops the main ideas behind cutting-plane methods, gradient descent, accelerated gradient methods, mirror descent, Frank-Wolfe, and stochastic optimization.
+This monograph by Sébastien Bubeck gives a systematic introduction to convex optimization from the viewpoint of algorithms and complexity. It starts with the black-box model and then develops the main ideas behind cutting-plane methods, [[5.Gradient-Descent|gradient descent, accelerated gradient methods]], mirror descent, [[23.Frank-Wolfe-Method|Frank-Wolfe]], and stochastic optimization.
 
 For my purpose, this book is especially useful for building the right conceptual framework: lower bounds are not abstract barriers floating outside the problem. They are meaningful only after the oracle model, the function class, and the allowed type of information have been specified. This perspective is important before reading more specialized work on stochastic gradients, biased oracles, and conditional stochastic optimization.
 
@@ -88,7 +88,7 @@ This module is the basis of the first regime around stochastic programming, topi
 
 ---
 
-## 1.1 Shapiro & Philpott, A Tutorial on Stochastic Programming
+## 1.1 Römisch, A Tutorial on Stochastic Programming
 
 Type: tutorial slides / workshop notes
 Priority: very high

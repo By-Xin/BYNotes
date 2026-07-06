@@ -43,7 +43,7 @@ d(x,f) = \frac{1}{\|w\|} |w^Tx + b|.
 $$
 
 > [!proof]+ Proof of point-to-hyperplane distance
-> 已知 $w$ 是平面上的法向量, $x$ 是平面上的一点, $x_0$ 是 $x$ 向平面做垂线的垂足, 则有
+> 已知 $w$ 是平面上的法向量, $x$ 是平面外的一点, $x_0$ 是 $x$ 向平面做垂线的垂足, 则有
 >
 > $$
 > x-x_0 \perp f \Rightarrow x-x_0 \mathop{//} w.
@@ -132,7 +132,7 @@ $$
 \end{aligned}
 $$
 
-为解决这一优化问题, 引入 Lagrange multiplier, 希望优化目标 Lagrange 函数为:
+为解决这一优化问题, 引入 [[10-11.Duality|Lagrange multiplier]], 希望优化目标 Lagrange 函数为:
 
 $$
 \begin{aligned}
@@ -287,7 +287,7 @@ $$
 说明:
 
 - 在满足一定条件下, (4) 中的不等号将严格取等, 即对于 Lagrange Function 的 minimax 策略最终完全逼近其 sup.
-- 我们称该条件为 Slater's Condition.
+- 我们称该条件为 [[12.Optimality-Conditions-for-Constrained-Optimization|Slater's Condition]].
 - 对于能够严格取等的情况, 称为 strong duality; 反之则为 weak duality.
 
 进一步处理, 首先恒有如下不等式:
@@ -379,7 +379,7 @@ $$
 \begin{cases}
 \nabla_w L(w,b,z,\lambda,c) = w+ \sum_{i=1}^n \lambda_i y_i x_i = 0, \\
 \nabla_b L(w,b,z,\lambda,c) = \sum_{i=1}^n \lambda_i y_i = 0, \\
-\lambda_z L(w,b,z,\lambda,c) = 1+c_i+\lambda_i = 0, \quad i=1,\cdots,n.
+\nabla_z L(w,b,z,\lambda,c) = 1+c_i+\lambda_i = 0, \quad i=1,\cdots,n.
 \end{cases}
 \end{aligned}
 $$
@@ -414,7 +414,7 @@ $$
 \end{aligned}
 $$
 
-这一对偶问题是一个非常典型的二次规划问题 (Quadratic Programming Problem), 具有成熟算法可以解决. 因此可以认为已经得到了最优解 $\lambda^*$, 进而得到最优的 $w^*$ 和 $b^*$.
+这一对偶问题是一个非常典型的[[4.Canonical-Problem-Forms|二次规划问题 (Quadratic Programming Problem)]], 具有成熟算法可以解决. 因此可以认为已经得到了最优解 $\lambda^*$, 进而得到最优的 $w^*$ 和 $b^*$.
 
 **Definition (Support Vector Machine).** 上述约束优化问题称为支持向量机.
 

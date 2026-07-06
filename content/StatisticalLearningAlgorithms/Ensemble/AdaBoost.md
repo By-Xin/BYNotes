@@ -31,7 +31,7 @@ tags:
 2. Train a base classifier on the dataset, and compute the weighted error rate:
 
    $$
-   \epsilon_j = \frac{\sum_{i=1}^{m} w^{(j)}_i \times 1_\text{missclassified}}{\sum_{i=1}^{m} w^{(j)}_i}.
+   \epsilon_j = \frac{\sum_{i=1}^{m} w^{(j)}_i \times 1_\text{misclassified}}{\sum_{i=1}^{m} w^{(j)}_i}.
    $$
 
 3. Compute the predictor's weight:

@@ -93,10 +93,10 @@ Here, we first give a simple version of Cramér-Rao Lower Bound, where we only f
 **Theorem (Cramér-Rao Lower Bound, simple version).** Given a random sample $\mathbf{X} = (X_1, \cdots, X_n)^T$ from a distribution with pdf $f(\mathbf{x}|\theta)$. Then for any unbiased estimator $\hat{\theta}(\mathbf{X})$,
 
 $$
-\text{Var}(\hat{\theta}(\mathbf{X})) \geq \frac{1}{nI(\theta)},
+\text{Var}(\hat{\theta}(\mathbf{X})) \geq \frac{1}{I(\theta)},
 $$
 
-where $I(\theta)$ is the Fisher Information of $\theta$:
+where $I(\theta)$ is the [[Fisher-Information|Fisher Information]] of $\theta$:
 
 $$
 I(\theta) = \mathbb{E}_{\theta}\left[\left(\frac{\partial}{\partial\theta}\log f(\mathbf{X}|\theta)\right)^2\right] = -\mathbb{E}_{\theta}\left[\frac{\partial^2}{\partial\theta^2}\log f(\mathbf{X}|\theta)\right].

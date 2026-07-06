@@ -104,7 +104,7 @@ Logistic regression 假设:
 
 由上可知, GDA 的假设更强, $GDA \Rightarrow LR$, 但反之不然. 对于一组符合假设分布的数据, GDA 可能会有更好的效果.
 
-事实上, 假设两组数据都服从同一类型的指数分布族, 且只有 natural parameters 不同时, 都可类似推出如上的 sigmoid function 形式.
+事实上, 假设两组数据都服从同一类型的[[Exponential-Family|指数分布族]], 且只有 natural parameters 不同时, 都可类似推出如上的 sigmoid function 形式.
 
 ## Related Notes
 

@@ -40,7 +40,7 @@ $$
 y_i = \beta_0 + \beta_1C_1(X_i) + \cdots + \beta_KC_K(X_i) + \epsilon_i,
 $$
 
-where $C_0(X)$ is excluded given that $\sum_{i=0}^k C_i(X) = 1$, for the same reason as dummy variable traps.
+where $C_0(X)$ is excluded given that $\sum_{i=0}^K C_i(X) = 1$, for the same reason as dummy variable traps.
 
 Note that, for a given $X$, at most one of the $C_i(X)$ can be nonzero. Moreover, if $X<c_1$, then $\forall C_i = 0$, thus $\beta_0$ is the mean value of $Y$ for $X<c_1$.
 

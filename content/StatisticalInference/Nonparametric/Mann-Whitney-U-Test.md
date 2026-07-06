@@ -31,7 +31,7 @@ U_2 &= n_1 n_2 + \frac{n_2(n_2+1)}{2} - W_2.
 \end{aligned}
 $$
 
-Define the test statistic $U$ to be the one with smaller sample size:
+Define the test statistic $U$ to be the smaller of the two values:
 
 $$
 U = \min(U_1, U_2).
@@ -43,7 +43,7 @@ $$
 \mathcal{RR} = \left\{ U \leq u_{\alpha/2}\right\},
 $$
 
-where $u_{\alpha/2}$ should be determined from the Mann-Whitney U Table. Since we have chosen the smaller sample size, the rejection region is always on the left side. The one-tailed test is $\mathcal{RR} = \left\{ U \leq u_{\alpha}\right\}$, only changing the significance level.
+where $u_{\alpha/2}$ should be determined from the Mann-Whitney U Table. Since we have chosen the smaller of the two values, the rejection region is always on the left side. The one-tailed test is $\mathcal{RR} = \left\{ U \leq u_{\alpha}\right\}$, only changing the significance level.
 
 For large sample tests, the asymptotic normality of $U$ is the same as in the Wilcoxon Rank Sum Test.
 

@@ -42,7 +42,7 @@ $$
 Define the test statistic $H$ as
 
 $$
-H = \frac{12}{n(n+1)}\left(\sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3(n+1)\right) \stackrel{H_0}{\longrightarrow} \chi^2(k-1).
+H = \frac{12}{n(n+1)}\sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3(n+1) \stackrel{H_0}{\longrightarrow} \chi^2(k-1).
 $$
 
 As a chi-square test, the rejection region is always right-tailed:

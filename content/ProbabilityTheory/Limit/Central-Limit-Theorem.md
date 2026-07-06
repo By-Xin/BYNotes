@@ -207,7 +207,7 @@ $$
 S_n^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X}_{(n)})^2
 $$
 
-to estimate $\sigma^2$. Then, Slutsky's theorem can guarantee that:
+to estimate $\sigma^2$. Then, [[Convergence-of-Random-Variables|Slutsky's theorem can guarantee that]]:
 
 $$
 \frac{\sqrt{n}(\bar{X}_{(n)} - \mu)}{S_n} \xrightarrow{d} \mathcal{N}(0,1).
@@ -219,7 +219,7 @@ Assume $X_1, X_2, \ldots, X_n$ are i.i.d. $\operatorname{NegBin}(r,p)$. Then $\m
 
 $$
 \frac{\sum_{i=1}^n X_i - n\frac{r(1-p)}{p}}{\sqrt{n\frac{r(1-p)}{p^2}}}
-= \frac{\sqrt{n}(\bar{X}_{n} - \frac{r(1-p)}{p})}{\sqrt{\frac{r(1-p)}{p}}}
+= \frac{\sqrt{n}(\bar{X}_{n} - \frac{r(1-p)}{p})}{\sqrt{\frac{r(1-p)}{p^2}}}
 \xrightarrow{d} \mathcal{N}(0,1).
 $$
 

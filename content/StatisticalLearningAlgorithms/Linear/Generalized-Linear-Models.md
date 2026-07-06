@@ -375,7 +375,7 @@ $$
 **Definition (Partial Residual).**
 
 $$
-r_{\partial j} = \text{Working Residual} + \hat{\beta}_j X_j = g(y) - g(\hat y) = \sum_{k \neq j} \hat{\beta}_k X_k.
+r_{\partial j} = \text{Working Residual} + \hat{\beta}_j X_j.
 $$
 
 Partial Residual Plot 的纵坐标是 partial residual, 横坐标是对应的解释变量. 这个图的分布趋势指示这个解释变量是否需要进行变换. 若其分布是线性的, 则说明模型拟合效果较好, 可以直接以线性形式加入模型. 若其分布是非线性的, 例如呈现出对数分布, 则说明该变量可能需要变换.
@@ -491,7 +491,7 @@ $$
 - 若 $\beta\in\mathbb{R}^p$, 则有:
 
   $$
-  \text{Var}(g(\beta)) \approx \nabla g(\beta) \text{Var}(\beta) \nabla g(\beta)^\top,
+  \text{Var}(g(\beta)) \approx \nabla g(\beta)^\top \text{Var}(\beta) \nabla g(\beta),
   $$
 
   其中 $\nabla g(\beta) = \left(\frac{\partial g}{\partial \beta_1}, \cdots, \frac{\partial g}{\partial \beta_p}\right)^\top$.

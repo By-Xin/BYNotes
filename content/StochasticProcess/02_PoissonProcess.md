@@ -26,11 +26,11 @@ Poisson Process 是一个连续时间, 离散状态的随机过程, 用来描述
     即在短时间间隔内, 发生两个及以上事件的概率相对于发生一个事件的概率是一个高阶小量.
 
 下面我们希望能够根据上述的定性描述来描述清楚 $N(t)$ 的统计分布规律.
-- 引入随机变量 $X$ 的矩母函数 $G_X(z) = \mathbb{E}[z^{X}]$. 则计算 $N(t)$ 的矩母函数如下:
+- 引入随机变量 $X$ 的概率母函数 $G_X(z) = \mathbb{E}[z^{X}]$. 则计算 $N(t)$ 的概率母函数如下:
     $$
     G_{N(t)}(z) = \mathbb{E}[z^{N(t)}] = \sum_{k=0}^{\infty} \mathbb{P}(N(t) = k) z^k
     $$
-- 构建增量在短时间隔内的矩母函数:
+- 构建增量在短时间隔内的概率母函数:
     $$
     \begin{align*}
     G_{N(t+\Delta t)}(z) - G_{N(t)}(z)
@@ -54,7 +54,7 @@ Poisson Process 是一个连续时间, 离散状态的随机过程, 用来描述
       $$
       P(t) = P(s) \cdot P(t-s) \iff P(t+s) = P(t) \cdot P(s), ~\forall s < t
       $$
-      其中 $P(t) := \mathbb{P}(N(t) = 0)$. 即 $P$ 是满足线性性的. 而根据分析性质, 符合该关系的唯一函数为指数函数, 即存在参数 $\lambda > 0$, 使得:
+      其中 $P(t) := \mathbb{P}(N(t) = 0)$. 即 $P$ 是满足乘性 (指数型 Cauchy 方程) 的. 而根据分析性质, 符合该关系的唯一函数为指数函数, 即存在参数 $\lambda > 0$, 使得:
       $$
       P(t) = \exp(-\lambda t) \implies \mathbb{P}(N(\Delta t) = 0) = \exp(-\lambda \Delta t)
       $$
@@ -122,7 +122,7 @@ Poisson Process 是一个连续时间, 离散状态的随机过程, 用来描述
     - **Example.** 考虑一个加油站, 每小时平均有 $10$ 辆车来加油 (即 $\lambda = 10$). 车辆的到达服从 Poisson 过程. 考虑如下概率.
         - 假定第二辆车在 $t=0$ 时刻到达, 则在 $t = 1/3$ (即 $20$ 分钟) 内, 第四辆车到达的概率为:
             $$
-            \mathbb{P}(N(1/3) - N(0) \geq 2) =1 - \mathbb{P}(N(1/3) = 0) - \mathbb{P}(N(1/3) = 1) = 1 - \exp(-\frac{10}{3}) - \frac{10}{3} \exp(-\frac{10}{3}) \approx 0.26
+            \mathbb{P}(N(1/3) - N(0) \geq 2) =1 - \mathbb{P}(N(1/3) = 0) - \mathbb{P}(N(1/3) = 1) = 1 - \exp(-\frac{10}{3}) - \frac{10}{3} \exp(-\frac{10}{3}) \approx 0.85
             $$
       - 若在前 $20$ 分钟内已经到达了 $10$ 辆车, 在此条件下, 第 $20~40$ 分钟内到达车的数量的条件分布.
           $$
@@ -163,7 +163,7 @@ Poisson Process 是一个连续时间, 离散状态的随机过程, 用来描述
 
 4. **有限个独立 Poisson 过程的和仍然是一个 Poisson 过程, 且参数为各个 Poisson 过程参数的和:** 给定两个 Poisson Process, $\{N_1(t), t \geq 0\}$ 和 $\{N_2(t), t \geq 0\}$, 且它们相互独立. 则 $N(t) := N_1(t) + N_2(t)$ 也是一个 Poisson Process, 其参数为 $\lambda_1 + \lambda_2$.
    > [!proof]+ Proof
-   > 设 $N_1(t)$ 和 $N_2(t)$ 的参数分别为 $\lambda_1$ 和 $\lambda_2$. 则 $N(t)$ 的矩母函数为:
+   > 设 $N_1(t)$ 和 $N_2(t)$ 的参数分别为 $\lambda_1$ 和 $\lambda_2$. 则 $N(t)$ 的概率母函数为:
    > $$
    > G_{N(t)}(z) = G_{N_1(t)}(z) \cdot G_{N_2(t)}(z) = \exp(\lambda_1 t (z-1)) \cdot \exp(\lambda_2 t (z-1)) = \exp((\lambda_1 + \lambda_2) t (z-1)).
    > $$
@@ -179,7 +179,7 @@ Y(t) := \sum_{k=1}^{N(t)} X_k.
 $$
 则称 $\{Y(t), t \geq 0\}$ 为参数为 $\lambda$ 的 Compound Poisson Process.
 
-- 下推导其分布. 同理, 考虑 $Y(t)$ 的矩母函数:
+- 下推导其分布. 同理, 考虑 $Y(t)$ 的概率母函数:
     $$
     \begin{align*}
     G_{Y(t)}(z)
@@ -188,14 +188,14 @@ $$
     \end{align*}
     $$
 
-- 因此有推论, 若考虑 $X_t \sim \text{Bernoulli}(p)$, 则对应的 Compound Poisson Process $Y(t) = \sum_{k=1}^{N(t)} X_k$ 的矩母函数为
+- 因此有推论, 若考虑 $X_t \sim \text{Bernoulli}(p)$, 则对应的 Compound Poisson Process $Y(t) = \sum_{k=1}^{N(t)} X_k$ 的概率母函数为
     $$
     G_{Y(t)}(z) = \exp(\lambda t (p z + 1 - p - 1)) = \exp(\lambda t p (z-1)),
     $$
     故 $Y(t)$ 服从参数为 $\lambda p$ 的 Poisson 分布.
 
 
-**Example.** 给定两个 Poisson Process $\{N_1(t), t \geq 0\}$ 和 $\{N_2(t), t \geq 0\}$, 若它们相互独立. 则在第一个 Poisson Process 的两次事件发生之间, 第二个 Poisson Process 的事件发生的数量服从参数为 $\lambda_2 / (\lambda_1 + \lambda_2)$ 的 Geometric 分布.
+**Example.** 给定两个 Poisson Process $\{N_1(t), t \geq 0\}$ 和 $\{N_2(t), t \geq 0\}$, 若它们相互独立. 则在第一个 Poisson Process 的两次事件发生之间, 第二个 Poisson Process 的事件发生的数量服从参数为 $\lambda_1 / (\lambda_1 + \lambda_2)$ 的 Geometric 分布.
 
 > [!proof]+ Proof
 > 假设 $T \sim \text{Exp}(\lambda_1)$ 是第一个 Poisson Process 的两次事件发生之间的时间间隔, 故 $f_T(t) = \lambda_1 \exp(-\lambda_1 t)$.  此时第二个 Poisson Process 在时间 $T$ 内发生的事件数量 $N_2(T)$ 的概率分布为:

@@ -57,7 +57,7 @@ Algorithm:
 function x = cspoirnd(lam, n)
 x = zeros(1, n);
 j = 1;
-while j < n
+while j <= n
   flag = 1;
 
   % initialize quantities

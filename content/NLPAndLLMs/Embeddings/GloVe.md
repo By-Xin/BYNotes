@@ -171,7 +171,7 @@ $$
 - $f(X_{ik})$: 权重函数, 抑制高频词影响.
 - $\mathbf{w}_i, \tilde{\mathbf{w}}_k$: 词向量.
 - $b_i, \tilde{b}_k$: bias 项.
-- 本质是**加权最小二乘法**.
+- 本质是**[[Linear-Regression|加权最小二乘法]]**.
 
 ### 4.4 Weight Function $f(x)$
 

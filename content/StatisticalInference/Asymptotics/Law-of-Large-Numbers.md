@@ -50,7 +50,7 @@ $$
 \lim_{n \to \infty} \mathbb{P}(|\bar{X}_n - \mu| < \epsilon) = 1.
 $$
 
-**Lemma (Chebyshev inequality).** For all $\epsilon > 0$,
+**Lemma ([[Chebyshev-Inequality|Chebyshev inequality]]).** For all $\epsilon > 0$,
 
 $$
 \mathbb{P}(|X| \geq \epsilon) \leq \frac{\mathbb{E}[X^2]}{\epsilon^2}.
@@ -76,7 +76,7 @@ $$
 > \begin{aligned}
 > \mathbb{P}(|\bar{X}_n - \mu| \geq \epsilon)
 > &\leq \frac{\operatorname{Var}[\bar{X}_n]}{\epsilon^2} \\
-> &= \frac{1}{n\epsilon^2} \operatorname{Var}\left[\sum_{i=1}^n X_i\right] \\
+> &= \frac{1}{n^2\epsilon^2} \operatorname{Var}\left[\sum_{i=1}^n X_i\right] \\
 > &\xrightarrow{n \to \infty} 0.
 > \end{aligned}
 > $$
@@ -188,7 +188,6 @@ $$
 > \mathbb{P}(A_\delta)
 > &\leq \mathbb{P} \left( \bigcup_{k=n}^\infty \{ \omega: |\bar{X}_k(\omega) - \mu| > \delta \} \right) \\
 > &\leq \sum_{k=n}^\infty \mathbb{P} \left( |\bar{X}_k - \mu| > \delta \right) \\
-> &= \sum_{k=1}^\infty \mathbb{P} \left( |\bar{X}_1 - \mu| > \delta \right)\\
 > &\le 2\sum_{k=n}^\infty c_k, \qquad 0 < c_k <1.
 > \end{aligned}
 > $$
