@@ -43,7 +43,41 @@ const explorerGroups = [
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    // Giscus comments (GitHub Discussions on By-Xin/BYNotes). Runtime requests
+    // to giscus.app are a deliberate, notes-only exception to the no-third-party
+    // policy; readers need a GitHub login and mainland access may be flaky.
+    // Rendered on real note pages only — not on the home, folder/topic index,
+    // tag, or 404 pages.
+    Component.ConditionalRender({
+      component: Component.Comments({
+        provider: "giscus",
+        options: {
+          repo: "By-Xin/BYNotes",
+          repoId: "R_kgDORP_CQQ",
+          category: "Announcements",
+          categoryId: "DIC_kwDORP_CQc4DAv1F",
+          mapping: "pathname",
+          strict: true,
+          reactionsEnabled: true,
+          inputPosition: "bottom",
+          themeUrl: "https://giscus.app/themes",
+          lightTheme: "light",
+          darkTheme: "dark",
+          lang: "zh-CN",
+        },
+      }),
+      condition: (page) => {
+        const slug = page.fileData.slug ?? ""
+        return (
+          slug !== "index" &&
+          slug !== "404" &&
+          !slug.endsWith("/index") &&
+          !slug.startsWith("tags/")
+        )
+      },
+    }),
+  ],
   footer: Component.Footer({
     links: {
       Homepage: "https://by-xin.github.io",
