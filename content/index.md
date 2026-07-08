@@ -21,6 +21,7 @@ title: BYNotes
         <ul>
           <li><a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a></li>
           <li><a href="./OnlineLearning/">Online Learning and Online Convex Optimization</a></li>
+          <li><a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer School)</a></li>
         </ul>
       </section>
       <section>
@@ -52,6 +53,22 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-08">July 8, 2026</time>
+        <h3>Bilevel optimization summer-school notes open</h3>
+        <p>
+          Started
+          <a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer
+          School)</a> in
+          <a href="./BilevelOptimization/">Optimization</a>, opening with
+          <a href="./BilevelOptimization/1.Optimality-Conditions-for-MPEC-via-Variational-Analysis">Session 01 -
+          Optimality Conditions for MPECs via Variational Analysis</a>: Fritz
+          John conditions and constraint qualifications, MPCC and its
+          game-theoretic origins, regular / limiting / Clarke normal cones and
+          the Clarke generalized gradient, and S- / M- / C-stationarity for
+          MPCC and MPEC.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-02">July 2, 2026</time>
         <h3>Learning roadmap notebook and stochastic bilevel syllabus</h3>
         <p>
@@ -78,19 +95,6 @@ title: BYNotes
           the curvature-based convergence rate, affine invariance, inexact
           updates, line search, fully corrective and away-step variants, and
           path following.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-06-30">June 30, 2026</time>
-        <h3>Convex optimization dual decomposition and ADMM</h3>
-        <p>
-          Updated
-          <a href="./ConvexOptimization/21-22.Dual-Decomposition">Lecture 21-22 -
-          Dual Decomposition and ADMM</a> in
-          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>,
-          adding augmented Lagrangian methods, ADMM, scaled ADMM, alternating
-          projections, group lasso, sparse-plus-low-rank decomposition,
-          consensus ADMM, and decomposition design notes.
         </p>
       </li>
     </ol>
