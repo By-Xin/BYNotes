@@ -53,6 +53,22 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-09">July 9, 2026</time>
+        <h3>Bilevel programs: reformulations and partial calmness</h3>
+        <p>
+          Added
+          <a href="./BilevelOptimization/2.Bilevel-Programs-Reformulation-and-Partial-Calmness">Session 02 -
+          Bilevel Programs: Introduction, Reformulation and Partial Calmness</a>
+          to
+          <a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer
+          School)</a>: optimistic vs. pessimistic BP, the first-order /
+          implicit-function approach and Mirrlees' counterexample, the
+          value-function reformulation and why MFCQ degenerates, combined and
+          second-order reformulations, the MPEC route for constrained lower
+          levels, value-function sensitivity analysis, and partial calmness.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-08">July 8, 2026</time>
         <h3>Bilevel optimization summer-school notes open</h3>
         <p>
@@ -80,21 +96,6 @@ title: BYNotes
           > covering stochastic programming, multistage stochastic programming,
           bilevel optimization, conditional stochastic optimization, MLMC, and
           biased stochastic oracle methods.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-01">July 1, 2026</time>
-        <h3>Convex optimization Frank-Wolfe method notes</h3>
-        <p>
-          Added
-          <a href="./ConvexOptimization/23.Frank-Wolfe-Method">Lecture 23 -
-          Frank-Wolfe Method</a> in
-          <a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a>,
-          covering the projection-free conditional gradient update, the
-          Frank-Wolfe duality gap, norm-constraint and trace-norm closed forms,
-          the curvature-based convergence rate, affine invariance, inexact
-          updates, line search, fully corrective and away-step variants, and
-          path following.
         </p>
       </li>
     </ol>

@@ -13,6 +13,7 @@ Notes from the 2026 summer school *Bilevel Optimization: Theory, Algorithms and 
 | # | Note | Status |
 |---|------|--------|
 | 1 | [Optimality Conditions for MPECs via Variational Analysis](./1.Optimality-Conditions-for-MPEC-via-Variational-Analysis.md) | draft |
+| 2 | [Bilevel Programs: Introduction, Reformulation and Partial Calmness](./2.Bilevel-Programs-Reformulation-and-Partial-Calmness.md) | draft |
 
 ## Concept Map
 
@@ -28,6 +29,5 @@ Notes from the 2026 summer school *Bilevel Optimization: Theory, Algorithms and 
 
 ## Planned Notes
 
-- Bilevel programs: value-function approach and partial calmness (Day 2)
 - Gradient-based algorithms for bilevel optimization (hypergradients, implicit / iterative differentiation)
 - Applications in machine learning (hyperparameter optimization, meta-learning, pruning)
