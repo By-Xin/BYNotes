@@ -231,8 +231,15 @@ Omit `References`, `Roadmap`, or `Related Notes` when they do not add value.
 
 ## Semantic Labels
 
-Do not convert definitions, theorems, lemmas, propositions, corollaries, claims,
-or examples into callouts. Use compact text labels instead:
+Statement formatting has two approved generations:
+
+- Notes published before July 2026 use compact text labels (below); keep them
+  as-is and do not retro-convert existing notes.
+- New notes set theorem-like statements in the statement callout family
+  ([[#Statement Callouts]]).
+- Examples use the `**Example (Name).**` text label in both generations.
+
+Compact text labels:
 
 ```md
 **Definition (Convex function).** A function $f$ is convex if ...
@@ -267,6 +274,7 @@ Approved globally introduced callouts:
 - `[!proof]` / `[!proof]+`
 - `[!quote] References`
 - `[!note] Note: ...`
+- the statement callout family, new notes only ([[#Statement Callouts]])
 
 Existing callouts in a note, such as `[!note]`, `[!warning]`, or `[!danger]`,
 may remain. Convert explicit `**Note (...)**` or `> **Note.**` blocks to
@@ -301,6 +309,35 @@ type prefix when the callout is not self-evident from the title:
 
 When converting legacy markers such as `***Definition* (...)**`, preserve the
 block text and order. Only normalize the label syntax.
+
+## Statement Callouts
+
+New notes set theorem-like statements in a single shared quiet-box style
+(defined in `quartz/styles/custom.scss`, "Statement callouts"). All of these
+type tokens render identically — the callout title, not the type token,
+differentiates statements:
+
+`theorem` · `lemma` · `proposition` · `corollary` · `definition` ·
+`assumption` · `claim` · `remark` · `construction`
+
+```md
+> [!lemma] Lemma 4 (迭代点封锁的充分条件)
+>
+> 设 $\mathbf{A}, \mathbf{b}$ 如 Lemma 1. 若实例 (Q) 满足 ...
+```
+
+- The title must carry the full semantic label (`Lemma 4 (Name)`), since the
+  box itself displays no type. Pick the matching token for readability; a
+  uniform token within a note is equally valid.
+- Statement callouts are never collapsible: do not write `+` or `-` fold
+  suffixes on them.
+- `[!example]` is deliberately NOT in the family (Quartz ships a colored
+  built-in of that name); examples keep the `**Example (Name).**` text label.
+- Proofs and algorithms keep their dedicated callouts ([[#Proofs]],
+  [[#Algorithm and Pseudocode Blocks]]).
+- Publish passes on new notes convert hand-written statement blocks — flat
+  `***Lemma 4* (Name)**:` labels or blockquote-wrapped ones — into the
+  matching statement callout, preserving body text and order.
 
 ## Proofs
 
@@ -610,8 +647,9 @@ Quartz visual polish lives in `quartz/styles/custom.scss`.
 
 - Keep styling restrained and readable.
 - Proof callouts should be visually quiet.
-- Do not add visual boxes around definitions, theorems, lemmas, propositions,
-  or corollaries.
+- Statement boxes come only from the statement callout family in new notes
+  ([[#Statement Callouts]]); do not add boxes around statements in
+  pre-July-2026 notes or invent other box styles.
 - Avoid broad theme rewrites during article cleanup.
 
 ## Per-Article Workflow
@@ -622,7 +660,9 @@ For each note:
 2. Copy the source note first, then treat it as authoritative.
 3. Normalize frontmatter.
 4. Normalize the top-level title and references block.
-5. Normalize semantic labels without adding definition/theorem/example callouts.
+5. Normalize semantic labels: text labels in existing notes (never retrofit
+   statement callouts); the statement callout family for theorem-like blocks
+   in new notes.
 6. Normalize proof and solution blocks.
 7. Normalize algorithm and pseudocode blocks, including uppercase pseudocode
    labels and ordered-list structure.

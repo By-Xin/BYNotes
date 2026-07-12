@@ -103,6 +103,39 @@ article .katex-display {
   font-weight: 600;
 }
 
+/* Statement callouts: quiet formal boxes for theorem-family blocks in new notes.
+   Old notes keep their inline text labels; this family is opt-in per note. */
+.callout:is(
+    [data-callout="theorem"],
+    [data-callout="lemma"],
+    [data-callout="proposition"],
+    [data-callout="corollary"],
+    [data-callout="definition"],
+    [data-callout="assumption"],
+    [data-callout="claim"],
+    [data-callout="remark"],
+    [data-callout="construction"]
+  ) {
+  border-left-width: 4px;
+  border-radius: 6px;
+  margin: 1.15rem 0;
+  --color: var(--dark);
+  --border: color-mix(in srgb, var(--gray) 42%, var(--lightgray));
+  --bg: color-mix(in srgb, var(--lightgray) 26%, transparent);
+
+  > .callout-title {
+    padding-bottom: 0.45rem;
+
+    > .callout-icon {
+      display: none;
+    }
+  }
+
+  > .callout-content {
+    line-height: 1.68;
+  }
+}
+
 article table {
   margin: 1.25rem 0;
 }
