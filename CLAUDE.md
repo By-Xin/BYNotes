@@ -6,11 +6,18 @@ deploy chain); `NOTE_STYLE_SOP.md` is the authoritative style guide for note
 content. Follow both exactly. The homepage repo (`By-Xin.github.io`) has its
 own CLAUDE.md.
 
+For ANY note-publishing task, `docs/publishing-runbook.md` is the mandatory
+step-by-step procedure — exact commands, expected outputs, STOP gates.
+Follow it literally; if a gate fails, stop and report instead of improvising.
+
 ## Publishing a note (checklist)
 
 1. Write under `content/<Topic>/` per NOTE_STYLE_SOP.md. Filenames:
    `N.Title-Words.md`; combined lectures use ranges (`10-11.Duality.md`,
-   `21-22.Dual-Decomposition.md`).
+   `21-22.Dual-Decomposition.md`). New notes set theorem-like statements in
+   the statement-callout family (one shared quiet box; the callout title
+   carries the label; never foldable) — see SOP "Statement Callouts". Never
+   retrofit statement callouts into already-published notes.
 2. Update the topic's `index.md` (notes table / status column where present).
 3. Add a "Recent Updates" entry to the aside in `content/index.md` — CI
    parses it into `recent-updates.json` for the homepage.

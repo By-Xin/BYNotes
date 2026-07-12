@@ -82,6 +82,11 @@ title: Display Title
 
 ## New note publish workflow
 
+> Agents: the mandatory detailed procedure (exact commands, expected
+> outputs, verification gates, failure playbook) is
+> [`docs/publishing-runbook.md`](./docs/publishing-runbook.md). The steps
+> below are the human-readable summary.
+
 1. Choose the target topic directory under `content/<TopicName>`, or create a new one with its own `index.md`. A new topic must also be added to the homepage Quick Guide (`content/index.md`) and the sidebar groups (`quartz.layout.ts`).
 2. Create a new note under that topic directory, e.g. `content/ConvexOptimization/10-11.Duality.md` or `content/OnlineLearning/1.Introduction.md`.
 3. Write content following the rules above.
