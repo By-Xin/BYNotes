@@ -53,6 +53,21 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-16">July 16, 2026</time>
+        <h3>Contextual optimization under model misspecification</h3>
+        <p>
+          Added
+          <a href="./OptimizationReadings/DecisionFocusedLearning/Contextual-Optimization-Under-Model-Misspecification"
+            >Contextual Optimization Under Model Misspecification</a
+          > to
+          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>
+          in <a href="./OptimizationReadings/">Optimization Readings</a>, covering
+          prediction versus decision misspecification, CILO surrogate consistency,
+          generalization and stronger consistency guarantees, and the Moreau-smoothed
+          and log-CILO optimization constructions.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-09">July 9, 2026</time>
         <h3>Bilevel programs: reformulations and partial calmness</h3>
         <p>
@@ -82,20 +97,6 @@ title: BYNotes
           game-theoretic origins, regular / limiting / Clarke normal cones and
           the Clarke generalized gradient, and S- / M- / C-stationarity for
           MPCC and MPEC.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-02">July 2, 2026</time>
-        <h3>Learning roadmap notebook and stochastic bilevel syllabus</h3>
-        <p>
-          Added
-          <a href="./LearningRoadmaps/">Learning Roadmaps</a> in
-          <a href="./LearningRoadmaps/">Odds &amp; Ends</a>, with a
-          <a href="./LearningRoadmaps/Stochastic-Programming-and-Bilevel-Optimization-Roadmap"
-            >Stochastic Programming and Bilevel Optimization Roadmap</a
-          > covering stochastic programming, multistage stochastic programming,
-          bilevel optimization, conditional stochastic optimization, MLMC, and
-          biased stochastic oracle methods.
         </p>
       </li>
     </ol>
