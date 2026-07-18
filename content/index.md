@@ -54,6 +54,20 @@ title: BYNotes
     <ol>
       <li>
         <time datetime="2026-07-18">July 18, 2026</time>
+        <h3>A formal learning model</h3>
+        <p>
+          Added
+          <a href="./UnderstandingMachineLearning/03.A-Formal-Learning-Model"
+            >A Formal Learning Model</a
+          > to
+          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>,
+          covering PAC and agnostic PAC learning, realizability and sample
+          complexity, Bayes optimal prediction and Bayes error, and the general
+          loss-based framework for supervised and unsupervised learning.
+        </p>
+      </li>
+      <li>
+        <time datetime="2026-07-18">July 18, 2026</time>
         <h3>Lower complexity bounds for bilinear saddle-point problems</h3>
         <p>
           Added
@@ -82,22 +96,6 @@ title: BYNotes
           prediction versus decision misspecification, CILO surrogate consistency,
           generalization and stronger consistency guarantees, and the Moreau-smoothed
           and log-CILO optimization constructions.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-09">July 9, 2026</time>
-        <h3>Bilevel programs: reformulations and partial calmness</h3>
-        <p>
-          Added
-          <a href="./BilevelOptimization/2.Bilevel-Programs-Reformulation-and-Partial-Calmness">Session 02 -
-          Bilevel Programs: Introduction, Reformulation and Partial Calmness</a>
-          to
-          <a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer
-          School)</a>: optimistic vs. pessimistic BP, the first-order /
-          implicit-function approach and Mirrlees' counterexample, the
-          value-function reformulation and why MFCQ degenerates, combined and
-          second-order reformulations, the MPEC route for constrained lower
-          levels, value-function sensitivity analysis, and partial calmness.
         </p>
       </li>
     </ol>

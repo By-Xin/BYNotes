@@ -18,6 +18,7 @@ Study notes for Shai Shalev-Shwartz and Shai Ben-David's _Understanding Machine 
 | # | Note | Status |
 |---|------|--------|
 | 1 | [Introduction to Generalization](./01.Introduction-to-Generalization.md) | polished |
+| 3 | [A Formal Learning Model](./03.A-Formal-Learning-Model.md) | draft |
 
 ## Concept Map
 
