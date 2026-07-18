@@ -53,6 +53,22 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-18">July 18, 2026</time>
+        <h3>Lower complexity bounds for bilinear saddle-point problems</h3>
+        <p>
+          Added
+          <a href="./OptimizationReadings/Lower-Complexity-Bounds-Bilinear-SPP"
+            >Lower Complexity Bounds of First-Order Methods for Convex-Concave
+            Bilinear Saddle-Point Problems</a
+          > to
+          <a href="./OptimizationReadings/">Optimization Readings</a>, covering
+          the linear span assumption framework, Krylov subspace hard-instance
+          constructions, lower bounds for positive and nonnegative operator norms,
+          the strongly convex case, and the rotation-invariance extension to
+          general first-order methods (partial, under construction).
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-16">July 16, 2026</time>
         <h3>Contextual optimization under model misspecification</h3>
         <p>
@@ -81,22 +97,6 @@ title: BYNotes
           value-function reformulation and why MFCQ degenerates, combined and
           second-order reformulations, the MPEC route for constrained lower
           levels, value-function sensitivity analysis, and partial calmness.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-08">July 8, 2026</time>
-        <h3>Bilevel optimization summer-school notes open</h3>
-        <p>
-          Started
-          <a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer
-          School)</a> in
-          <a href="./BilevelOptimization/">Optimization</a>, opening with
-          <a href="./BilevelOptimization/1.Optimality-Conditions-for-MPEC-via-Variational-Analysis">Session 01 -
-          Optimality Conditions for MPECs via Variational Analysis</a>: Fritz
-          John conditions and constraint qualifications, MPCC and its
-          game-theoretic origins, regular / limiting / Clarke normal cones and
-          the Clarke generalized gradient, and S- / M- / C-stationarity for
-          MPCC and MPEC.
         </p>
       </li>
     </ol>

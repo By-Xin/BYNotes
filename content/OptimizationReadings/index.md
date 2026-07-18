@@ -20,3 +20,7 @@ Paper reading notes for optimization, decision-making, and adjacent machine lear
 | Section                                                 | Scope                                                                                    | Notes |
 | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----- |
 | [Decision-Focused Learning](./DecisionFocusedLearning/) | Predict-then-optimize, decision-focused learning, and differentiable optimization layers | 3     |
+
+## Standalone Notes
+
+- [Lower Complexity Bounds of First-Order Methods for Convex-Concave Bilinear Saddle-Point Problems](./Lower-Complexity-Bounds-Bilinear-SPP)
