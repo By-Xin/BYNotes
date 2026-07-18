@@ -57,11 +57,12 @@ title: BYNotes
         <h3>Lower complexity bounds for bilinear saddle-point problems</h3>
         <p>
           Added
-          <a href="./OptimizationReadings/Lower-Complexity-Bounds-Bilinear-SPP"
+          <a href="./OptimizationReadings/ComplexityTheory/Lower-Complexity-Bounds-Bilinear-SPP"
             >Lower Complexity Bounds of First-Order Methods for Convex-Concave
             Bilinear Saddle-Point Problems</a
           > to
-          <a href="./OptimizationReadings/">Optimization Readings</a>, covering
+          <a href="./OptimizationReadings/ComplexityTheory/">Complexity Theory</a>
+          in <a href="./OptimizationReadings/">Optimization Readings</a>, covering
           the linear span assumption framework, Krylov subspace hard-instance
           constructions, lower bounds for positive and nonnegative operator norms,
           the strongly convex case, and the rotation-invariance extension to
