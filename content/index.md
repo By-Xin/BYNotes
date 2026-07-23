@@ -53,6 +53,20 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-23">July 23, 2026</time>
+        <h3>Understanding machine learning uniform convergence notes</h3>
+        <p>
+          Added
+          <a href="./UnderstandingMachineLearning/04.Learning-via-Uniform-Convergence"
+            >04 - Learning via Uniform Convergence</a
+          > in
+          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>,
+          covering representative samples, uniform convergence as a sufficient
+          condition for agnostic PAC learning, Hoeffding's lemma and inequality,
+          and sample-complexity bounds for finite hypothesis classes.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-18">July 18, 2026</time>
         <h3>A formal learning model</h3>
         <p>
@@ -81,21 +95,6 @@ title: BYNotes
           constructions, lower bounds for positive and nonnegative operator norms,
           the strongly convex case, and the rotation-invariance extension to
           general first-order methods (partial, under construction).
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-16">July 16, 2026</time>
-        <h3>Contextual optimization under model misspecification</h3>
-        <p>
-          Added
-          <a href="./OptimizationReadings/DecisionFocusedLearning/Contextual-Optimization-Under-Model-Misspecification"
-            >Contextual Optimization Under Model Misspecification</a
-          > to
-          <a href="./OptimizationReadings/DecisionFocusedLearning/">Decision-Focused Learning</a>
-          in <a href="./OptimizationReadings/">Optimization Readings</a>, covering
-          prediction versus decision misspecification, CILO surrogate consistency,
-          generalization and stronger consistency guarantees, and the Moreau-smoothed
-          and log-CILO optimization constructions.
         </p>
       </li>
     </ol>
