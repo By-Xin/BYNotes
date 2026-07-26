@@ -24,6 +24,29 @@ article .katex-display {
   margin: 1rem 0;
 }
 
+/* Wide content inside callouts must scroll, never be clipped.
+   `.callout-content` is a CSS grid (Quartz uses grid-template-rows for the fold
+   animation) and grid items default to `min-width: auto`, so they refuse to
+   shrink below their min-content width. A display equation carries
+   `white-space: nowrap`, so its min-content width is the whole formula: the
+   implicit track grows past the callout, and `.callout-content`'s
+   `overflow: hidden` clips the right-hand side with no scrollbar.
+   Capping the track and zeroing the items' automatic minimum size hands the
+   overflow down to `.katex-display` / `.table-container` / `pre`, each of which
+   already has its own `overflow-x: auto`. */
+.callout > .callout-content {
+  grid-template-columns: minmax(0, 1fr);
+
+  > * {
+    min-width: 0;
+  }
+}
+
+.callout .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 .callout[data-callout="proof"] {
   border-left-width: 4px;
   border-radius: 6px;
