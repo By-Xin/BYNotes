@@ -101,11 +101,34 @@ Ordered checklist (details in the SOP sections named):
 5. Proofs (SOP "Proofs"): `*Proof*.` blocks → `> [!proof]+ Proof`, body
    lines prefixed `> `, end `$\square$`. Nested proofs get matching
    indentation and a named title.
-6. Algorithms (SOP "Algorithm and Pseudocode Blocks") when present.
-7. Math fences: `$$` on standalone lines; never same-line with
+6. End-of-block markers (SOP "End-of-Block Markers"). The draft uses two, and
+   they get OPPOSITE treatment — do not confuse them:
+   - `$\square$` (QED, ends a proof) → **KEEP every one**.
+   - `$\diamond$` (ends a statement block) → **DELETE every one**. Remove the
+     whole line, `>` prefix and all; if that leaves two consecutive blank
+     lines, delete the spacer line above it too.
+
+   ```bash
+   grep -n '\\diamond' "content/<TOPIC>/<FILENAME>.md"
+   ```
+
+   EXPECTED: no output. STOP if a hit remains (unless it is a genuine
+   `\diamond` binary operator inside an equation — those stay).
+7. Algorithms (SOP "Algorithm and Pseudocode Blocks") when present.
+8. Math fences: `$$` on standalone lines; never same-line with
    `\begin{aligned}` / `\end{aligned}`.
-8. Figures (SOP "Figures"): remote images may remain; captions as italic
+9. Figures (SOP "Figures"): remote images may remain; captions as italic
    text after the image.
+10. Proofreading pass (SOP "Pre-Publication Proofreading"). Read the PROSE
+    line by line and fix only these five classes: A wrong character
+    (这一章**讲**考虑 → 这一章**将**考虑), B missing character (下给出 →
+    下面给出), C duplicated word (缺点是在于 → 缺点在于), D English
+    misspelling (excees → excess), E stray editing artifact (若即 → 若记).
+    NEVER "fix" ASCII punctuation in Chinese prose, untranslated English
+    terms, Chinese/Latin spacing, terse phrasing, or anything inside `$...$`
+    — all of those are house style. Every fix is a class 3 change and MUST be
+    listed line by line in the conversion report. A suspected MATH or FACTUAL
+    error is not a proofreading fix: report it, do not change it.
 
 Editing gotchas (these cause most failures):
 
@@ -147,6 +170,31 @@ echo "callouts rendered:"; grep -o 'data-callout="[a-z]*"' "$P" | sort | uniq -c
 EXPECTED: rendered counts per type match what you converted in phase 2.
 Display-equation spot check: pick 2–3 equations from the source at random
 and confirm they appear in `$P` (grep a distinctive substring).
+
+Marker gate (SOP "End-of-Block Markers"):
+
+```bash
+grep -c 'square' "$P"; grep -co 'diamond' "$P"
+```
+
+EXPECTED: the square count matches the number of proofs you converted; the
+diamond count is `0`. STOP on any diamond.
+
+Clipped-content gate (SOP "Wide Content Must Scroll, Never Clip"). Open the
+built page in the browser at desktop width AND at a 375px viewport, then run
+in the console:
+
+```js
+[...document.querySelectorAll('article, article *')].filter(el => {
+  const o = getComputedStyle(el).overflowX
+  return (o === 'hidden' || o === 'clip') && el.scrollWidth - el.clientWidth > 2
+})
+```
+
+EXPECTED: `[]` at both widths. A non-empty result means a container is hiding
+content the reader cannot scroll to — most often a wide display equation
+inside a callout. Fix it in `quartz/styles/custom.scss`, never by shrinking or
+rewrapping the equation. STOP and report rather than editing the math.
 
 Fidelity diff (the contract check):
 
@@ -254,17 +302,22 @@ Report the live URL to the user.
 ```
 ## Conversion report — <FILENAME>
 Class 1 (syntax-mandatory): frontmatter added; H1 removed; N statement
-  callouts; N proof callouts; references callout.
+  callouts; N proof callouts; references callout; N $\diamond$ markers
+  removed, N $\square$ kept.
 Class 2 (KaTeX-mandatory): <each math syntax change, with line refs, or NONE>
-Class 3 (typo fixes — veto any): <line N: "before" → "after", ..., or NONE>
+Class 3 (typo fixes — veto any): <line N: "before" → "after" [class A-E], ...,
+  or NONE>
+Flagged, NOT changed (needs your call): <suspected math/factual issues, or NONE>
 Out-of-contract changes: NONE            <- must literally be NONE
-Gates: build ✓ · katex-error 0 ✓ · census ✓ · fidelity diff walked ✓ ·
-  Recent Updates = 3 ✓
+Gates: build ✓ · katex-error 0 ✓ · census ✓ · diamonds 0 ✓ · no clipped
+  content @1280 and @375 ✓ · fidelity diff walked ✓ · Recent Updates = 3 ✓
 ```
 
 ## Definition of done
 
 - [ ] Phase 0–5 executed in order, all EXPECTED outputs matched
+- [ ] `$\diamond$` count is 0; every `$\square$` preserved
+- [ ] Proofreading pass run; no clipped content at desktop or 375px
 - [ ] Conversion report written; every diff hunk classified 1/2/3
 - [ ] User approved (or had pre-authorized publishing)
 - [ ] Deploy `success`; live URL 200; live katex-error 0; homepage dispatch

@@ -53,6 +53,20 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-07-26">July 26, 2026</time>
+        <h3>The bias-complexity tradeoff</h3>
+        <p>
+          Added
+          <a href="./UnderstandingMachineLearning/05.The-Bias-Complexity-Tradeoff"
+            >05 - The Bias-Complexity Tradeoff</a
+          > to
+          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>,
+          covering the No-Free-Lunch theorem and its proof, why prior knowledge
+          must enter through the choice of hypothesis class, and the
+          decomposition of error into approximation and estimation terms.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-23">July 23, 2026</time>
         <h3>Understanding machine learning uniform convergence notes</h3>
         <p>
@@ -78,23 +92,6 @@ title: BYNotes
           covering PAC and agnostic PAC learning, realizability and sample
           complexity, Bayes optimal prediction and Bayes error, and the general
           loss-based framework for supervised and unsupervised learning.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-18">July 18, 2026</time>
-        <h3>Lower complexity bounds for bilinear saddle-point problems</h3>
-        <p>
-          Added
-          <a href="./OptimizationReadings/ComplexityTheory/Lower-Complexity-Bounds-Bilinear-SPP"
-            >Lower Complexity Bounds of First-Order Methods for Convex-Concave
-            Bilinear Saddle-Point Problems</a
-          > to
-          <a href="./OptimizationReadings/ComplexityTheory/">Complexity Theory</a>
-          in <a href="./OptimizationReadings/">Optimization Readings</a>, covering
-          the linear span assumption framework, Krylov subspace hard-instance
-          constructions, lower bounds for positive and nonnegative operator norms,
-          the strongly convex case, and the rotation-invariance extension to
-          general first-order methods (partial, under construction).
         </p>
       </li>
     </ol>

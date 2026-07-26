@@ -61,6 +61,51 @@ If the formatter finds a likely mathematical, algorithmic, or structural
 problem in the source, do not silently fix it. Leave the source content intact,
 report the issue, and ask the user to approve the substantive change.
 
+## Pre-Publication Proofreading
+
+Every note gets a proofreading pass before it is published. This is the one
+prose edit the fidelity contract allows, and it is deliberately narrow: fix
+objective surface errors, change nothing else.
+
+Fix these five classes, and only these:
+
+- **A. Wrong character (错别字).** A homophone or near-homophone written in
+  place of the correct character, where the written character makes the sentence
+  ungrammatical or nonsensical. Canonical case: 这一章**讲**考虑 → 这一章**将**考虑.
+  Recurring pairs in this repo: 讲/将, 取/去, 显式/显示, 渐近/渐进, 之间/直接,
+  首先/首选, 连接/链接, 欧氏/欧式, and 的/地 when the word is plainly adverbial
+  (准确**地**预测, 有效**地**分析).
+- **B. Missing character.** 下给出 → 下面给出; 则定存在 → 则一定存在;
+  其概率上由 → 其概率上界由.
+- **C. Duplicated character or word.** 这是事实上就是 → 这事实上就是;
+  缺点是在于 → 缺点在于.
+- **D. English misspelling** in prose, headings, labels, or callout titles:
+  excees → excess, Cliping → Clipping, feasiblity → feasibility,
+  decision focus learning → decision-focused learning.
+- **E. Stray editing artifact.** A leftover character or half-finished word from
+  an earlier revision: 尝试将放宽这个条件 → 尝试放宽这个条件; 若即 → 若记.
+
+Never "fix" these — they are house style, not errors:
+
+- ASCII punctuation in Chinese prose (`, ` and `. ` instead of `，` and `。`).
+  This is intentional site-wide.
+- English technical terms left untranslated inside Chinese sentences.
+- Spacing between Chinese and Latin characters.
+- Terse, elliptical note-style phrasing. Awkward-but-parseable prose stays as
+  written.
+- Anything inside `$...$` or `$$...$$`. Math is content, not spelling.
+
+Procedure and reporting:
+
+- Read the prose line by line; skip math blocks and code fences.
+- For each candidate, re-check it once against the surrounding sentences before
+  accepting it. A false positive is more costly than a miss — when unsure, leave
+  the text alone and mention it instead.
+- Every accepted fix is a class 3 change and MUST be listed individually in the
+  conversion report (file:line, before → after) so the user can veto it.
+- A suspected mathematical or factual error is NOT a proofreading fix. Report it
+  and wait for approval, even when the note contradicts itself.
+
 ## Frontmatter
 
 Lecture notes should use this shape:
@@ -339,6 +384,49 @@ differentiates statements:
   `***Lemma 4* (Name)**:` labels or blockquote-wrapped ones — into the
   matching statement callout, preserving body text and order.
 
+## End-of-Block Markers
+
+Obsidian drafts use two end-of-block markers. They are NOT interchangeable, and
+they get opposite treatment at publish time.
+
+| Marker      | Role in the draft                                | At publish |
+| ----------- | ------------------------------------------------ | ---------- |
+| `$\square$` | QED — ends a formal proof or solution            | **KEEP**   |
+| `$\diamond$`| ends a statement block (definition, theorem, ...) | **DELETE** |
+
+Why they differ: a proof callout has no visual closing delimiter, so `$\square$`
+still carries meaning for the reader. A statement is already drawn as a box by
+the statement callout family ([[#Statement Callouts]]), so `$\diamond$` is
+redundant on the published page and renders as a stray floating glyph.
+
+Removal mechanics:
+
+- Delete the entire marker line, including its `>` blockquote prefix and any
+  indentation.
+- The marker is usually preceded by a spacer line (an empty `>` inside a
+  callout, or a blank line at top level). If deleting the marker would leave two
+  consecutive blank lines, delete that spacer in the same edit.
+- Delete nothing else. The marker never carries content.
+
+Hard rules:
+
+- Never convert a `$\diamond$` into a `$\square$`, and never add either marker to
+  a block that did not already have one.
+- Never delete a `$\square$`. Removing diamonds is publish hygiene; removing
+  squares would destroy proof structure.
+- `\diamond` used as a genuine binary operator inside an equation (e.g.
+  $a \diamond b$) is mathematical content and must be preserved. Only delete a
+  marker that is alone on its line.
+
+Verification gate, before every commit:
+
+```bash
+grep -rn '\\diamond' content --include=*.md | grep -v '/backup/'
+```
+
+EXPECTED: no output. Any hit is an unremoved marker (or a real operator you must
+confirm by eye).
+
 ## Proofs
 
 - Formal proofs should use `[!proof]+ Proof` by default. The `+` makes the
@@ -435,6 +523,48 @@ $$
 
 - Do not place `$$` on the same line as `\begin{aligned}` or `\end{aligned}`.
 - Do not alter equations during formatting passes.
+
+## Wide Content Must Scroll, Never Clip
+
+Content wider than its container — a long display equation, a wide table, a long
+code line — must stay reachable by horizontal scrolling. Silently cutting off
+the right-hand side is a rendering bug, never an acceptable outcome.
+
+The fix belongs in CSS, not in the note. Do NOT shrink a formula, insert line
+breaks, or restructure an equation to dodge a truncation; that trades away
+readability to hide a styling defect (see [[#Source Fidelity and Minimal
+Adaptation]]).
+
+Known trap — callouts. `.callout-content` is a CSS grid (Quartz animates
+`grid-template-rows` for the fold), and grid items default to `min-width: auto`,
+so they refuse to shrink below their min-content width. A display equation
+carries `white-space: nowrap`, so its min-content width is the whole formula:
+the track grows past the callout and `.callout-content`'s `overflow: hidden`
+clips it with no scrollbar. `quartz/styles/custom.scss` neutralizes this with
+
+```scss
+.callout > .callout-content {
+  grid-template-columns: minmax(0, 1fr);
+  > * { min-width: 0; }
+}
+```
+
+Keep that rule. Any future container that wraps article content in a grid or
+flex layout needs the same `min-width: 0` treatment, and must let its inner
+`.katex-display` / `.table-container` / `pre` own the scrolling.
+
+Verification gate, after building and before commit — in the browser console on
+any page with wide math in a callout:
+
+```js
+[...document.querySelectorAll('article, article *')].filter(el => {
+  const o = getComputedStyle(el).overflowX
+  return (o === 'hidden' || o === 'clip') && el.scrollWidth - el.clientWidth > 2
+})
+```
+
+EXPECTED: an empty array. A non-empty result names a container that is hiding
+content the reader cannot scroll to. Check at desktop and at a 375px viewport.
 
 ## Figures
 
@@ -664,18 +794,24 @@ For each note:
    statement callouts); the statement callout family for theorem-like blocks
    in new notes.
 6. Normalize proof and solution blocks.
-7. Normalize algorithm and pseudocode blocks, including uppercase pseudocode
+7. Delete every `$\diamond$` end-of-statement marker; keep every `$\square$`
+   ([[#End-of-Block Markers]]).
+8. Normalize algorithm and pseudocode blocks, including uppercase pseudocode
    labels and ordered-list structure.
-8. Normalize notebook-style code cells when code/result pairs are present.
-9. Normalize figure syntax, captions, and links.
-10. Add or clean `Related Notes` only when useful.
-11. Perform a source-fidelity diff check; substantive content changes require
+9. Normalize notebook-style code cells when code/result pairs are present.
+10. Normalize figure syntax, captions, and links.
+11. Run the proofreading pass and record every fix as a class 3 change
+    ([[#Pre-Publication Proofreading]]).
+12. Add or clean `Related Notes` only when useful.
+13. Perform a source-fidelity diff check; substantive content changes require
     explicit user approval.
-12. If the homepage `Recent Updates` section is changed, verify it has exactly
+14. If the homepage `Recent Updates` section is changed, verify it has exactly
     three entries.
-13. Run a Quartz build.
-14. Pause for preview and reviewer approval.
-15. Commit the single-article change only after approval.
+15. Run a Quartz build.
+16. Check the built page for clipped wide content at desktop and 375px widths
+    ([[#Wide Content Must Scroll, Never Clip]]).
+17. Pause for preview and reviewer approval.
+18. Commit the single-article change only after approval.
 
 The commit should be narrow enough that one article can be reviewed or reverted
 without affecting unrelated notes.

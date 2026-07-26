@@ -18,12 +18,20 @@ Follow it literally; if a gate fails, stop and report instead of improvising.
    the statement-callout family (one shared quiet box; the callout title
    carries the label; never foldable) — see SOP "Statement Callouts". Never
    retrofit statement callouts into already-published notes.
-2. Update the topic's `index.md` (notes table / status column where present).
-3. Add a "Recent Updates" entry to the aside in `content/index.md` — CI
+2. End-of-block markers get OPPOSITE treatment at publish: DELETE every
+   `$\diamond$` (statement-end; the callout box already delimits it), KEEP
+   every `$\square$` (QED). `grep -rn '\\diamond' content` must be empty —
+   see SOP "End-of-Block Markers".
+3. Proofread the prose: wrong characters (讲/将), missing characters, doubled
+   words, English misspellings, stray edit artifacts. Never "fix" the ASCII
+   punctuation, untranslated English terms, or terse phrasing — those are
+   house style. See SOP "Pre-Publication Proofreading".
+4. Update the topic's `index.md` (notes table / status column where present).
+5. Add a "Recent Updates" entry to the aside in `content/index.md` — CI
    parses it into `recent-updates.json` for the homepage.
-4. ConvexOptimization notes only: run `npm run catalog` to regenerate
+6. ConvexOptimization notes only: run `npm run catalog` to regenerate
    CATALOG.md.
-5. Push to `main`. CI builds, deploys, then notifies the homepage repo via
+7. Push to `main`. CI builds, deploys, then notifies the homepage repo via
    `repository_dispatch: bynotes-updated` (secret `HOMEPAGE_DISPATCH_TOKEN`;
    the step skips gracefully if the secret is absent).
 
@@ -54,6 +62,15 @@ Fonts and KaTeX are vendored into the repo:
 - Keep `fontOrigin: "local"`. Do NOT switch to `cdnCaching: false`
   build-time font downloads — Node's fetch ignores the system proxy on this
   machine, so local builds would break.
+
+## Wide content must scroll, never clip
+
+`.callout-content` is a CSS grid, and grid items default to `min-width: auto`,
+so a `white-space: nowrap` display equation forces the track wider than the
+callout and `overflow: hidden` clips it with no scrollbar. `custom.scss` fixes
+this with `grid-template-columns: minmax(0, 1fr)` + `> * { min-width: 0 }` —
+keep it, and give any future grid/flex wrapper the same treatment. Never
+shrink or rewrap an equation to dodge a truncation.
 
 ## Known issues / quirks
 
