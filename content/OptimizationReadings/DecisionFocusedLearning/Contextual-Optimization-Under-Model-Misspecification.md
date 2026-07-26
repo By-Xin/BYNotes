@@ -136,8 +136,6 @@ $$
 
 - 最小化 CILO loss $\ell_\mathcal{P}^\beta$ 等价于找出所有在真实 cost 下 performance 不超过 $\beta$ 的 predictor $\mathbf{\hat{c}}_\theta$.
 
-$\diamond$
-
 接着定义 
 $$
 \beta^\star_{\mathcal{H}, \mathcal{P}} := \min_{\hat{c}_\theta \in \mathcal{H}} \ell_\mathcal{P}(\mathbf{\hat{c}}_\theta) = \min_{\hat{c}_\theta \in \mathcal{H}} \mathbb{E}_{(\mathbf{x}, \mathbf{c}) \sim \mathcal{P}} \left[ \max_{\mathbf{w} \in \mathcal{W}^\star(\mathbf{\hat{c}}_\theta(\mathbf{x}))} \mathbf{c}^\top \mathbf{w} \right]
@@ -186,8 +184,6 @@ $$
     \|\nabla_\theta \mathbf{\hat{c}}_\theta(\mathbf{x})\|_2 \leq B_\Phi, \quad \forall \mathbf{x} \in \mathbb{R}^k, \forall \theta \in \mathbb{R}^m
     $$
     此外要求梯度 $\nabla_\theta \mathbf{\hat{c}}_\theta(\mathbf{x})$ 是 piecewise continuous 的 (只在有限个点不连续) 以便后续的积分操作. 
-
-    $\diamond$
 
     根据上述假设, 由积分放缩, 可以得到如下不等式:
     $$

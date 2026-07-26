@@ -932,8 +932,6 @@ $$
 $$
 - 说明: 这样的定义是 general 的, 其包含了 Section 2 中的形式, 只需令 $R_X = R_Y = \infty, \lambda = 0$ 即可.
 
-$\diamond$
-
 下面正式给出 rotation 的相关性质. 
 
 > [!proposition] Proposition 1 (Rotated Instance Properties)
@@ -1015,4 +1013,3 @@ $\diamond$
 > $$
 > \|\mathbf{\bar{x}}^{(t)} - \mathbf{\hat{x}}\|^2 \geq \frac{5 L_A^2 \|\mathbf{\hat{y}}\|^2}{256 \mu^2 (2t+5)^2}.
 > $$
-
