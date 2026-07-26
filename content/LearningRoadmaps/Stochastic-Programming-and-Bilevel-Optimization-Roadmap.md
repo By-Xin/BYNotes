@@ -84,7 +84,7 @@ Suggested reading plan:
 
 # Module 1. Stochastic Programming Introduction
 
-This module is the basis of the first regime around stochastic programming, topics including recourse, SAA, scenario tree, nonparticipativity, value function, etc.
+This module is the basis of the first regime around stochastic programming, topics including recourse, SAA, scenario tree, nonanticipativity, value function, etc.
 
 ---
 

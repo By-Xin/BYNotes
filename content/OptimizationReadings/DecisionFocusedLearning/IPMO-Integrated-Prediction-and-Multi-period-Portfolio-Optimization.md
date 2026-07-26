@@ -123,7 +123,7 @@ $$
   - 在日期 $t$, 一次性预测出未来 $H$ 期的 return matrix $\widehat{\mathbf{Y}}_t  = \phi_\theta^*(\mathbf{X}_t)$, 其中 $\theta^* = \arg\min_{\theta \in \Theta} L_p(\theta)$ 是通过上述 prediction loss 训练得到的模型参数. 并估计出 covariance matrix $\widehat{\mathbf{V}}_t$ (例如通过 sample covariance estimator, factor model 等方法).
   - 之后将预测结果 $\widehat{\mathbf{Y}}_t$ 以及 covariance matrix 的预测 $\widehat{\mathbf{V}}_t$ 作为输入, 来求解 MPC 的优化问题 $(\text{P})$, 从而得到未来 $H$ 期的 portfolio 权重路径 $\mathbf{z}^*_t = (\boldsymbol{z}^*_{t+1}, \ldots, \boldsymbol{z}^*_{t+H})$. 之后在时刻 $t$ 进行交易, 只执行 $\boldsymbol{z}^*_{t+1}$.
 
-这是非常典型的在 decision focus learning 中讨论的两阶段的预测与优化的解耦失配问题.
+这是非常典型的在 decision-focused learning 中讨论的两阶段的预测与优化的解耦失配问题.
 
 ## IPMO Learning Framework
 
@@ -140,7 +140,7 @@ $$
 \widetilde{\mathbf{y}}_{s+H}^\top \end{bmatrix} \in \mathbb{R}^{H \times N}
 $$
 
-虽然形状和传统的预测模型 $\widehat{\mathbf{Y}}_s$ 一样, 但其并不追求最小化与真实未来 return matrix $\mathbf{Y}_s$ 的 prediction loss. 该预测值不会被直接被评价, 而是进入一个 multi-period portfolio optimization 的优化问题中 (即上述 $(\text{P})$), 从而得到一个关于权重路径 $\mathbf{z}_s$ 和预测 $\widetilde{\mathbf{Y}}_s(\theta)$ 的目标函数 $\widetilde{F}(\mathbf{z}_s, \widetilde{\mathbf{Y}}_s(\theta))$, 得到对应输出:
+虽然形状和传统的预测模型 $\widehat{\mathbf{Y}}_s$ 一样, 但其并不追求最小化与真实未来 return matrix $\mathbf{Y}_s$ 的 prediction loss. 该预测值不会被直接评价, 而是进入一个 multi-period portfolio optimization 的优化问题中 (即上述 $(\text{P})$), 从而得到一个关于权重路径 $\mathbf{z}_s$ 和预测 $\widetilde{\mathbf{Y}}_s(\theta)$ 的目标函数 $\widetilde{F}(\mathbf{z}_s, \widetilde{\mathbf{Y}}_s(\theta))$, 得到对应输出:
 
 $$
 \mathbf{z}_s^*(\theta) = \arg\min_{\mathbf{z}_s \in \Omega} \widetilde{F}(\mathbf{z}_s, \widetilde{\mathbf{Y}}_s(\theta)) = \arg\min_{\mathbf{z}_s \in \Omega} \widetilde{F}(\mathbf{z}_s, \phi_\theta(\mathbf{X}_s)).
@@ -416,7 +416,7 @@ $$
 \frac{\partial \mathbf{Z}_t^*(\theta)}{\partial \theta} = \left( \mathbf{I} - \frac{\partial \Phi_\text{MD}(\mathbf{Z}_t^*(\theta), \theta)}{\partial \mathbf{Z}_t^*} \right)^{-1} \cdot \frac{\partial \Phi_\text{MD}(\mathbf{Z}_t^*(\theta), \theta)}{\partial \theta}.
 $$
 
-进一步, 在实践中, 注意到这里需要求解一个 $HN \times HN$ 的矩阵的 inverse. 若即 $\mathbf{J} := \frac{\partial \Phi_\text{MD}(\mathbf{Z}_t^*(\theta), \theta)}{\partial \mathbf{Z}_t^*}$, 则其 Neumann series expansion 为
+进一步, 在实践中, 注意到这里需要求解一个 $HN \times HN$ 的矩阵的 inverse. 若记 $\mathbf{J} := \frac{\partial \Phi_\text{MD}(\mathbf{Z}_t^*(\theta), \theta)}{\partial \mathbf{Z}_t^*}$, 则其 Neumann series expansion 为
 
 $$
 \left( \mathbf{I} - \mathbf{J} \right)^{-1} = \mathbf{I} + \mathbf{J} + \mathbf{J}^2 + \cdots.

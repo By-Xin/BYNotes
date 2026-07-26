@@ -61,7 +61,7 @@ $$
 $$
 
 - 这里, 作者使用内积 $\langle \mathbf{c}, \mathbf{x}\rangle$ 衡量 GLinSAT 的输出 $\mathbf{x}$ 与输入 $\mathbf{c}$ 的相似性.
-- 注意, 文中同时将这个内积叫作 **projection**, 但是其有别于欧式投影 ($\|\mathbf{c} - \mathbf{x}\|^2 = \|\mathbf{c}\|^2 + \|\mathbf{x}\|^2 - 2\langle \mathbf{c}, \mathbf{x}\rangle$). 因此内积的核心是让输出 $\mathbf{x}$ 尽量遵循 $\mathbf{c}$ 给出的各个分量的分数排序偏好, 但不要求输出 $\mathbf{x}$ 与输入 $\mathbf{c}$ 在数值上尽量接近.
+- 注意, 文中同时将这个内积叫作 **projection**, 但是其有别于欧氏投影 ($\|\mathbf{c} - \mathbf{x}\|^2 = \|\mathbf{c}\|^2 + \|\mathbf{x}\|^2 - 2\langle \mathbf{c}, \mathbf{x}\rangle$). 因此内积的核心是让输出 $\mathbf{x}$ 尽量遵循 $\mathbf{c}$ 给出的各个分量的分数排序偏好, 但不要求输出 $\mathbf{x}$ 与输入 $\mathbf{c}$ 在数值上尽量接近.
 
 因此理论上, 我们可以直接考虑如下的 LP 问题:
 
@@ -240,7 +240,7 @@ $$
 
 - 给定 $F$ 的 convex & Lipschitz 光滑性质, 因此可以使用 Nesterov 型的 primal-dual 梯度加速方法 (**A**daptive**P**rimal**D**ual**A**ccelerated**G**radient**D**escent) 对这个目标函数进行优化, 以得到 $\mathcal{O}(1/k^2)$ 的收敛率.
   - 之所以不使用 vanilla NAG, 是因为我们的本质期待还是高效的求解 primal 问题 $\mathbf{x}^\star$. 因此我们在对 $F(\mathbf{y})$ 进行优化的过程中, 同时要维护一个 $\mathbf{x}^k$ 的优化序列, 使得对于对偶问题的加速求解能够有效转化为 primal 问题的加速求解. 此外 Adaptive 这里是说我们在每次迭代中, 通过某种 linesearch 方法, 得到一个更为适配的符合当前迭代函数的 Lipschitz 常数 (记为 $M^k$), 以便更快地收敛 (而不是使用全局保守的 Lipschitz 下界).
-  - 下具体讨论一下 GLinSAT 的 Nesterov 加速算法. 其主体同样采用三阶段的 Nesterov 加速方法:
+  - 下面具体讨论一下 GLinSAT 的 Nesterov 加速算法. 其主体同样采用三阶段的 Nesterov 加速方法:
 
     $$
     \begin{aligned}

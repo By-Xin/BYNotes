@@ -239,7 +239,7 @@ $$
     \end{bmatrix} \in \mathbb{R}^{2k\times 2k},
     $$
 
-- 对应的 $\mathbf{G} \in \mathbb{R}^{(m-2k)\times (n-2k)}$ 是任意 full row rank 矩阵, 且 $\|\mathbf{G}\| = 2$.  其用于进行提高问题维度, 不过对应的是 $\mathbf{c}$ 中的零块, 不会影响到后续的分析, 故具体形式并不重要. (full row rank 这一要求的真正用处在后面对偶解唯一性的推导中体现.)
+- 对应的 $\mathbf{G} \in \mathbb{R}^{(m-2k)\times (n-2k)}$ 是任意 full row rank 矩阵, 且 $\|\mathbf{G}\| = 2$.  其用于提高问题维度, 不过对应的是 $\mathbf{c}$ 中的零块, 不会影响到后续的分析, 故具体形式并不重要. (full row rank 这一要求的真正用处在后面对偶解唯一性的推导中体现.)
 
 在此基础上给出 hard instance 的约束部分.
 
@@ -633,7 +633,7 @@ $$
         $$
         而向仿射集 $\{\mathbf{A}\mathbf{x} = \mathbf{b}\}$ 的投影在 $\mathbf{A}$ 满秩的前提下有 closed-form solution: $\text{Proj}_{\{\mathbf{A}\mathbf{x} = \mathbf{b}\}}(\mathbf{z}) = \mathbf{z} - \mathbf{A}^\top (\mathbf{A}\mathbf{A}^\top)^{-1} (\mathbf{A}\mathbf{z} - \mathbf{b})$. 该迭代由于需要 $(\mathbf{A}\mathbf{A}^\top)^{-1}$ 的矩阵求逆, 因此相当于 $\mathbf{A}$ 无穷次的级数求和, 故并不属于当前的 oracle 类算法. 并且这样的投影也是十分昂贵的. 
 
-3. 之所以需要引入对偶变量 $\mathbf{y}$, 是因为在约束优化问题中, $f(\mathbf{x}) - f^\star \geq 0$ 只在可行域 $\{\mathbf{x} : \mathbf{A}\mathbf{x} = \mathbf{b}\}$ 内成立, 而在不可行域中, $f(\mathbf{x}) - f^\star$ 可能为负数. 但由于我们希望同时衡量 Optimality gap 和 feasiblity gap, 因此需要引入对偶变量 $\mathbf{y}$ 来将两者联系起来. 具体来说, 对于任意 $\mathbf{x} \in \mathbb{R}^n$, 设 $(\mathbf{x}^\star, \mathbf{y}^\star)$ 为 primal-dual 最优解, 则有
+3. 之所以需要引入对偶变量 $\mathbf{y}$, 是因为在约束优化问题中, $f(\mathbf{x}) - f^\star \geq 0$ 只在可行域 $\{\mathbf{x} : \mathbf{A}\mathbf{x} = \mathbf{b}\}$ 内成立, 而在不可行域中, $f(\mathbf{x}) - f^\star$ 可能为负数. 但由于我们希望同时衡量 Optimality gap 和 feasibility gap, 因此需要引入对偶变量 $\mathbf{y}$ 来将两者联系起来. 具体来说, 对于任意 $\mathbf{x} \in \mathbb{R}^n$, 设 $(\mathbf{x}^\star, \mathbf{y}^\star)$ 为 primal-dual 最优解, 则有
     $$
     f(\mathbf{x}) - f^\star \geq \langle \mathbf{y}^\star, \mathbf{A}\mathbf{x} - \mathbf{b} \rangle \geq -\|\mathbf{y}^\star\| \cdot \|\mathbf{A}\mathbf{x} - \mathbf{b}\|,
     $$
@@ -770,7 +770,7 @@ $$
 
 > [!proof]+ Proof
 > 由于本小节的约束条件 $\mathbf{A}\mathbf{x} = \mathbf{b}$ 与上一小节相同, 因此 feasibility gap 的下界与上一小节相同.
-> 对于 objective gap,  由于 $\mathbf{x}^{(t)} \in \mathcal{K}_{t-1}$, 故不放记 $\mathbf{x}^{(t)} = (\mathbf{0}_k^\top, \mathbf{z}^\top, \mathbf{0}_{n-2k}^\top)^\top$, 其中非零部分为 $\mathbf{z} \in \mathbb{R}^{k}$, 且有对应关系 $x_{k+i} = z_i$, $i = 1, \ldots, k$.
+> 对于 objective gap,  由于 $\mathbf{x}^{(t)} \in \mathcal{K}_{t-1}$, 故不妨记 $\mathbf{x}^{(t)} = (\mathbf{0}_k^\top, \mathbf{z}^\top, \mathbf{0}_{n-2k}^\top)^\top$, 其中非零部分为 $\mathbf{z} \in \mathbb{R}^{k}$, 且有对应关系 $x_{k+i} = z_i$, $i = 1, \ldots, k$.
 > 代入 $f(\mathbf{x}) = \frac{1}{2} \mathbf{x}^\top \mathbf{H} \mathbf{x} - \mathbf{h}^\top \mathbf{x}$ 以及具体 $\mathbf{H}, \mathbf{h}$ 的构造, 得
 > $$
 > \begin{aligned}
@@ -934,7 +934,7 @@ $$
 
 $\diamond$
 
-下正式给出 rotation 的相关性质. 
+下面正式给出 rotation 的相关性质. 
 
 > [!proposition] Proposition 1 (Rotated Instance Properties)
 >
@@ -971,7 +971,7 @@ $\diamond$
 这里首先明确一下我们黑盒优化的世界观. 
 - 首先会给定一个确定但 arbitrary 的一阶方法 $\mathcal{M}$, 这个方法是固定的, 然而具体利用的信息是任意的(只要是一阶的).  这会导致一个特点: 尽管算法可能很强大, 然而只要在第 $s$ 步查询点 $\mathbf{x}^{(s)}, \mathbf{y}^{(s)}$ 是历史 oracle 回答的一个固定函数, 那么算法便无法区分具体的 instance 是什么. (换言之, 类似插值函数的比喻, 只要每次 instance 给出的查询点所需的信息是相同的, 我们可以任意的调整 instance 的构造, 使得算法无法区分, 从而构造一个困难的优化问题.)
 
-- 因此, 我们可以以博弈的方式针对 $\mathcal{M}$ 每个 iteration 时的查询去调整 instance, 构造出一条 instance 序列 $\mathrm{P}_0, \mathrm{P}_1, \ldots$, 只要保证在在第 $s$ 次迭代时, $\mathrm{P}_s$ 的历史轨迹和 $\mathrm{P}_{<s}$ 的历史轨迹是相同的, 这样的任意构造都是合理的. 
+- 因此, 我们可以以博弈的方式针对 $\mathcal{M}$ 每个 iteration 时的查询去调整 instance, 构造出一条 instance 序列 $\mathrm{P}_0, \mathrm{P}_1, \ldots$, 只要保证在第 $s$ 次迭代时, $\mathrm{P}_s$ 的历史轨迹和 $\mathrm{P}_{<s}$ 的历史轨迹是相同的, 这样的任意构造都是合理的. 
 
 
 > [!theorem] Theorem 6 (Lower Complexity Bound (I) of General First-Order Methods)

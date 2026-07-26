@@ -145,7 +145,7 @@ $$
 
 ## 4. Classification of States
 
-我们并没有满足于仅仅知道 $n$ 步转移概率的计算方法, 还想知道当 $n$ 趋近于无穷大时, $n$ 步转移概率的极限行为. 特别地, 我们想知道当 $n \to \infty$ 时, $P_{ij}(n)$ 是否可能和一个与 $i$ 无关的常数 $P_j$ 收敛.  此时, 一个随机过程退化成了一个随机变量 (一个分布). 在渐进意义上, 虽然其本身是一个随机过程, 但其在 "in the long run" 上在每个阶段 (状态) 出现的概率是一个常数, 与时间无关.
+我们并没有满足于仅仅知道 $n$ 步转移概率的计算方法, 还想知道当 $n$ 趋近于无穷大时, $n$ 步转移概率的极限行为. 特别地, 我们想知道当 $n \to \infty$ 时, $P_{ij}(n)$ 是否可能和一个与 $i$ 无关的常数 $P_j$ 收敛.  此时, 一个随机过程退化成了一个随机变量 (一个分布). 在渐近意义上, 虽然其本身是一个随机过程, 但其在 "in the long run" 上在每个阶段 (状态) 出现的概率是一个常数, 与时间无关.
 
 
 首先对 Markov Chain 的状态进行分类. 对于 Markov Chain $\{X_n\}$, 定义状态 $i$ 和状态 $j$ 之间的关系如下:
@@ -162,7 +162,7 @@ $$
 
 ### Closed Set and Irreducibility
 
-***Definition* (Closed State Set):**  对于状态集 $C \subseteq \mathcal{S}$, 称 $C$ 是 close 的, 当且仅当 $\forall i \in C, j \notin C$, $P_{ij}(n) = 0, \forall n \geq 0$. 即对于状态集 $C$ 中的任意状态 $i$, 都无法转移到状态集 $C$ 外的任意状态 $j$.
+***Definition* (Closed State Set):**  对于状态集 $C \subseteq \mathcal{S}$, 称 $C$ 是 closed 的, 当且仅当 $\forall i \in C, j \notin C$, $P_{ij}(n) = 0, \forall n \geq 0$. 即对于状态集 $C$ 中的任意状态 $i$, 都无法转移到状态集 $C$ 外的任意状态 $j$.
 - Closed 的定义意味着, 一旦进入了 closed 集合中的某个状态, 就无法再离开这个 closed 集合.
 - Closed 集合提供了一个 Markov Chain 的子集, 在这个子集中, Markov Chain 的行为是独立于外部状态, 且还是一个完整的 Markov Chain.
 
@@ -430,7 +430,7 @@ $$
 
 - 其中 $\mu_j = \sum_{n=1}^{\infty} n f_{jj}(n)$ 表示从状态 $j$ 出发, 首次回到状态 $j$ 的期望时间. 
   - 若 $\mu_j < \infty \iff \tilde{\pi_j} > 0$, 则称状态 $j$ 是*正常返 (Positive Recurrent)* 的
-  - 若 $\mu_j = \infty \iff \tilde{\pi_j} = 0$, 则称状态 $j$ 是*零返 (Null Recurrent)* 的
+  - 若 $\mu_j = \infty \iff \tilde{\pi_j} = 0$, 则称状态 $j$ 是*零常返 (Null Recurrent)* 的
 
 ***Definition* (Periodicity):** Markov Chain $\{X_n\}$ 中的状态 $i$ 的周期 (period) 定义为 $d_i := \operatorname{gcd}\{n \geq 1 | P_{ii}(n) > 0\}$, 即从状态 $i$ 出发, 转移回状态 $i$ 的步数的最大公约数.
 - 若 $d_i = 1$, 则称状态 $i$ 是 aperiodic 的. 即从状态 $i$ 出发, 转移回状态 $i$ 的步数没有周期性.
@@ -742,7 +742,7 @@ Monte Carlo 方法或统计模拟方法是一种通过随机采样来近似计�
 - 在实作当中, 当我们求得了一个满足 Detailed Balance Condition 的 $\mathbf{\tilde{P}}$, 我们整体的算法过程如下. 其中假设状态空间为 $\mathcal{S} = \{1, 2, \cdots, K\}$. 则每一步 $\boldsymbol{\pi} = (\pi_1, \pi_2, \cdots, \pi_K) \in \mathbb{R}^{1\times K}$, 对应的 $\mathbf{X} \in \mathcal{S}$.
   - 首先任取一个初始状态, 例如 $X_0 \in \mathcal{S}$. 
   - 随后对于每一步 $n \geq 1$,  取其前一步的状态 $X_{n-1}$, 根据 $\mathbf{\tilde{P}}$ 的第 $X_{n-1}$ 行的转移概率进行随机游走 (即以 $\mathbf{\tilde{P}}$ 的第 $X_{n-1}$ 的概率分布进行随机抽样), 得到 $X_n$.
-  - 通过上述过程, 就可以得到一个样本序列 $\{X_0, X_1, \cdots, X_n\}$, 丢弃前面的一部分 (成为 burn-in period), 就可以得到一个服从 $\boldsymbol{\pi}$ 的样本序列 $\{X_{n_0}, X_{n_0+1}, \cdots, X_n\}$.
+  - 通过上述过程, 就可以得到一个样本序列 $\{X_0, X_1, \cdots, X_n\}$, 丢弃前面的一部分 (称为 burn-in period), 就可以得到一个服从 $\boldsymbol{\pi}$ 的样本序列 $\{X_{n_0}, X_{n_0+1}, \cdots, X_n\}$.
 
 另外还可以从统计计算的角度来理解 MCMC, 并且扩展到连续时间 Markov Chain 的情形. 
 - 考虑目标的概率分布 $\boldsymbol{\pi}(x)$, 定义连续状态下的转移核 (即状态转移的概率密度) 为
@@ -791,7 +791,7 @@ MDP 是强化学习中的一个重要概念. 其本身的构建是基于 Markov 
     - 由于 $\gamma < 1$, 因此该级数是收敛的, 从而 $G_t$ 是一个 well-defined 的随机变量. 
 
 
-- 对于一个状态的期望汇报, 即 $G_t$ 在给定当前状态 $S_t = s$ 的条件期望, 为 value function:
+- 对于一个状态的期望回报, 即 $G_t$ 在给定当前状态 $S_t = s$ 的条件期望, 为 value function:
     $$
     V(s) = \mathbb{E}[G_t \mid S_t = s]
     $$
@@ -835,7 +835,7 @@ MDP 是强化学习中的一个重要概念. 其本身的构建是基于 Markov 
         然而解析计算本身的复杂度为 $\mathcal{O}(n^3)$, 这在往往较大规模的状态空间下是不可行的. 因此在实践中， 通常使用诸如动态规划、蒙特卡洛或时序差分等方法具体求解 Bellman Equation 的数值解.
 
 
-对 MRP 进一步扩展, 就可以得到 Markov Decision Process (MDP). 在 MRP 中, 状态的转移时随机的, 智能体没有任何的控制权. 而在 MDP 中, 智能体可以通过选择不同的 action 来影响状态的转移. 因此 MDP 是一个五元组 $\langle \mathcal{S}, \mathcal{A}, \mathbf{P}, r, \gamma \rangle$:
+对 MRP 进一步扩展, 就可以得到 Markov Decision Process (MDP). 在 MRP 中, 状态的转移是随机的, 智能体没有任何的控制权. 而在 MDP 中, 智能体可以通过选择不同的 action 来影响状态的转移. 因此 MDP 是一个五元组 $\langle \mathcal{S}, \mathcal{A}, \mathbf{P}, r, \gamma \rangle$:
 - $\mathcal{S}$ 是有限状态集合, $\mathcal{A}$ 是有限 action 集合. ${P}$ 是一个转移概率, 其中 $P(s' \mid s, a)$ 表示在状态 $s$ 下采取 action $a$ 后转移到状态 $s'$ 的概率:
     $$
     P(s' \mid s, a) = \mathbb{P}(S_{t+1} = s' \mid S_t = s, A_t = a)

@@ -441,7 +441,7 @@ Beetles 数据集包含 $n=8$ 个观测, 包含变量 `dose` (剂量), `death` (
 
 - 通过 `summary(fm1)` 可以得到模型拟合结果. 其 `Deviance = 11.23, df = 6`. 通过 `pchisq(11.23, 6, lower.tail = FALSE)` 可以得到 $P=0.08 > 0.05$, 因此这个模型是 adequate.
 - 通过残差检验以及 `Dose` 的 Partial Residual Plot, 发现残差图具有二次型趋势, partial residual plot 也具有二次型趋势. 因此认为 `Dose` 需要引入更高阶项.
-- 记引入直到 2 阶、3 阶的模型为 `fm2`, `fm3`. 通过 `pchiq()` 分别检验各自拟合是否 adequate. 结果展示这两个模型都是 adequate.
+- 记引入直到 2 阶、3 阶的模型为 `fm2`, `fm3`. 通过 `pchisq()` 分别检验各自拟合是否 adequate. 结果展示这两个模型都是 adequate.
 - 通过 `anova(fm1, fm2, fm3, test = "Chisq")` 进行 Drop-in-Deviance 检验. 发现二次项显著, 但三次项不显著. 因此认为直到二次项的 `fm2` 是一个最优模型.
 - 经过残差检验, 发现残差图基本都是随机分布, 且没有明显趋势. Partial Residual Plot 也基本线性. 因此认为模型拟合效果较好.
 

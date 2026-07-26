@@ -22,7 +22,7 @@ Online Learning 的信息是序列式的, 逐渐到达的. 在第 $t$ 轮, learn
   $$
   h^\star : \mathcal{X} \to \mathcal{Y}, \quad h^\star \in \mathcal{H}.
   $$
-  其中 $\mathcal{H}$ 是一个 fix 的 hypothesis class, 并且是对 learner 已知的. [[01.Introduction-to-Generalization|称符合这种设置的情况为 realizable case]], 因为存在一个假设 $h^\star$ 能够完美地拟合数据:
+  其中 $\mathcal{H}$ 是一个 fixed 的 hypothesis class, 并且是对 learner 已知的. [[01.Introduction-to-Generalization|称符合这种设置的情况为 realizable case]], 因为存在一个假设 $h^\star$ 能够完美地拟合数据:
   $$
   \exists h^\star \in \mathcal{H}, \quad \text{s.t.} \quad h^\star(\mathrm{x}_t) = y_t, \forall t.
   $$

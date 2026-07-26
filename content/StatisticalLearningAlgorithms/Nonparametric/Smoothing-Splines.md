@@ -65,7 +65,7 @@ $$
 
 where $\lambda$ is a nonnegative tuning parameter.
 
-Note the optimal $g(\cdot)$ given a certain $\lambda$ as $g_{\lambda}(\cdot)$, and accordingly the predicted value as $\hat g_{\lambda} \in \mathbb{R}^N$.
+Denote the optimal $g(\cdot)$ given a certain $\lambda$ as $g_{\lambda}(\cdot)$, and accordingly the predicted value as $\hat g_{\lambda} \in \mathbb{R}^N$.
 
 It can be proved that
 

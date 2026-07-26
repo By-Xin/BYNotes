@@ -310,7 +310,7 @@ $$
 
 ### 4.3 Example of Lagrange Duality
 
-**Example (Minimum distance hyperplane).** 考虑如下优化问题: 寻找一个经过 $x$ 的平面使得经过原点的距离最小, 即
+**Example (Minimum distance hyperplane).** 考虑如下优化问题: 寻找一个经过 $x$ 的平面使得到原点的距离最小, 即
 
 $$
 \begin{aligned}

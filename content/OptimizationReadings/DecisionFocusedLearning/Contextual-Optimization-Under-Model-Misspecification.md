@@ -56,7 +56,7 @@ Omar Bennouna, Jiawei Zhang, Saurabh Amin, and Asuman E. Ozdaglar, "Contextual O
   - **Decision misspecification**: 即 $\mathcal{H}$ 不存在一个 predictor $\mathbf{\hat{c}}_\theta(\mathbf{x})$, 使其能够诱导的决策 $\mathbf{\widehat{w}}$ 与真实 cost 所诱导的最优决策 $\mathbf{w}^\star$ 几乎处处相同. 
   
   
-- 类似 SPO 当时的论述, 预测的好坏并不能决定性的影响最终决策的好坏. 
+- 类似 SPO 当时的论述, 预测的好坏并不能决定性地影响最终决策的好坏. 
   - 最重要的不是 prediction, 而是 decision misspecification, 即当前的 $\mathbf{\widehat{c}}$ 能否导出 $\mathcal{H}$ 内最好的 decision.
   - 然而文中指出, 即使是 SPO 尽管已经是 decision awareness 的算法, 但仍没有给出在 misspecification 下的 consistency guarantee. 
     <!-- - *Counter-example*: 
