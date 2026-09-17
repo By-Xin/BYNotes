@@ -20,4 +20,5 @@ Paper reading notes for optimization, decision-making, and adjacent machine lear
 | Section                                                 | Scope                                                                                    | Notes |
 | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ----- |
 | [Decision-Focused Learning](./DecisionFocusedLearning/) | Predict-then-optimize, decision-focused learning, and differentiable optimization layers | 3     |
-| [Complexity Theory](./ComplexityTheory/)                 | Oracle lower bounds, information-theoretic limits, and convergence rate tightness         | 1     |
+| [Complexity Theory](./ComplexityTheory/)                | Oracle lower bounds, information-theoretic limits, and convergence rate tightness        | 1     |
+| [Linear Programming](./LinearProgramming/)              | First-order, barrier, and large-scale linear programming methods                         | 1     |

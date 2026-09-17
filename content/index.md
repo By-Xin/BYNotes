@@ -53,6 +53,19 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-09-17">September 17, 2026</time>
+        <h3>Barrier PDLP algorithm slides</h3>
+        <p>
+          Added
+          <a href="./OptimizationReadings/LinearProgramming/Barrier-PDLP"
+            >Barrier PDLP</a
+          > to the new
+          <a href="./OptimizationReadings/LinearProgramming/">Linear Programming</a>
+          reading section, covering the logarithmic-barrier PDHG update, the
+          perturbed KKT system, adaptive restarts, and barrier-stage updates.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-07-26">July 26, 2026</time>
         <h3>The bias-complexity tradeoff</h3>
         <p>
@@ -78,20 +91,6 @@ title: BYNotes
           covering representative samples, uniform convergence as a sufficient
           condition for agnostic PAC learning, Hoeffding's lemma and inequality,
           and sample-complexity bounds for finite hypothesis classes.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-18">July 18, 2026</time>
-        <h3>A formal learning model</h3>
-        <p>
-          Added
-          <a href="./UnderstandingMachineLearning/03.A-Formal-Learning-Model"
-            >A Formal Learning Model</a
-          > to
-          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>,
-          covering PAC and agnostic PAC learning, realizability and sample
-          complexity, Bayes optimal prediction and Bayes error, and the general
-          loss-based framework for supervised and unsupervised learning.
         </p>
       </li>
     </ol>
