@@ -22,6 +22,7 @@ title: BYNotes
           <li><a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a></li>
           <li><a href="./OnlineLearning/">Online Learning and Online Convex Optimization</a></li>
           <li><a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer School)</a></li>
+          <li><a href="./ShortNotes/">Short Notes</a></li>
         </ul>
       </section>
       <section>
