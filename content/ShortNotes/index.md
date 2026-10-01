@@ -6,4 +6,6 @@ Small proofs, quick derivations, and other optimization things I want to remembe
 
 ## Notes
 
-Notes will show up here as I add them.
+| # | Note | Status |
+|---|------|--------|
+| 1 | [Proximal three-point identity](./1.Proximal-Three-Point-Identity.md) | draft |

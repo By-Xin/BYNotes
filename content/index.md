@@ -54,6 +54,17 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-10-01">October 1, 2026</time>
+        <h3>Proximal three-point identity</h3>
+        <p>
+          Added
+          <a href="./ShortNotes/1.Proximal-Three-Point-Identity"
+            >Proximal three-point identity</a
+          > to <a href="./ShortNotes/">Short Notes</a>, deriving the proximal
+          three-point bound and its mirror descent and composite versions.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-09-17">September 17, 2026</time>
         <h3>Barrier PDLP algorithm slides</h3>
         <p>
@@ -78,20 +89,6 @@ title: BYNotes
           covering the No-Free-Lunch theorem and its proof, why prior knowledge
           must enter through the choice of hypothesis class, and the
           decomposition of error into approximation and estimation terms.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-23">July 23, 2026</time>
-        <h3>Understanding machine learning uniform convergence notes</h3>
-        <p>
-          Added
-          <a href="./UnderstandingMachineLearning/04.Learning-via-Uniform-Convergence"
-            >04 - Learning via Uniform Convergence</a
-          > in
-          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>,
-          covering representative samples, uniform convergence as a sufficient
-          condition for agnostic PAC learning, Hoeffding's lemma and inequality,
-          and sample-complexity bounds for finite hypothesis classes.
         </p>
       </li>
     </ol>
