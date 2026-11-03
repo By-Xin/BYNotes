@@ -26,6 +26,10 @@ For the current repository-wide note style guide, see
 Obsidian/Quartz note refresh. Follow these rules to maximize one-pass successful
 rendering.
 
+For LaTeX-authored notes, use the tested
+[LaTeX publishing SOP](docs/latex-publishing-sop.md) and
+[`bynotes-latex-publish` skill](skills/bynotes-latex-publish/SKILL.md).
+
 1. Filename convention
 - For course notes, use readable blog-style slugs: `N.Title-Words.md`, e.g. `5.Gradient-Descent.md`.
 - For combined chapters, keep the numeric range before the dot, e.g. `10-11.Duality.md`.

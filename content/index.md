@@ -35,6 +35,12 @@ title: BYNotes
         </ul>
       </section>
       <section>
+        <h3>ECONOMICS</h3>
+        <ul>
+          <li><a href="./Microeconomics/">Advanced Microeconomics</a></li>
+        </ul>
+      </section>
+      <section>
         <h3>PAPER READING</h3>
         <ul>
           <li><a href="./OptimizationReadings/">Optimization Readings</a></li>
@@ -53,6 +59,16 @@ title: BYNotes
     <p class="home-kicker">Curated notes</p>
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
+      <li>
+        <time datetime="2026-11-04">November 4, 2026</time>
+        <h3>Decision theory</h3>
+        <p>
+          Added <a href="./Microeconomics/Decision-Theory">Decision Theory</a>
+          to <a href="./Microeconomics/">Advanced Microeconomics</a>, covering
+          revealed preference, expected utility, risk attitudes, and stochastic
+          choice, with proofs, diagrams, and a downloadable PDF.
+        </p>
+      </li>
       <li>
         <time datetime="2026-10-01">October 1, 2026</time>
         <h3>Proximal three-point identity</h3>
@@ -75,20 +91,6 @@ title: BYNotes
           <a href="./OptimizationReadings/LinearProgramming/">Linear Programming</a>
           reading section, covering the logarithmic-barrier PDHG update, the
           perturbed KKT system, adaptive restarts, and barrier-stage updates.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-07-26">July 26, 2026</time>
-        <h3>The bias-complexity tradeoff</h3>
-        <p>
-          Added
-          <a href="./UnderstandingMachineLearning/05.The-Bias-Complexity-Tradeoff"
-            >05 - The Bias-Complexity Tradeoff</a
-          > to
-          <a href="./UnderstandingMachineLearning/">Understanding Machine Learning</a>,
-          covering the No-Free-Lunch theorem and its proof, why prior knowledge
-          must enter through the choice of hypothesis class, and the
-          decomposition of error into approximation and estimation terms.
         </p>
       </li>
     </ol>

@@ -11,9 +11,11 @@ Authority order: explicit user instruction > this runbook >
 `NOTE_STYLE_SOP.md` (style authority) > `README.md` (background). Read
 `NOTE_STYLE_SOP.md` in full before phase 2.
 
-Scope: markdown source notes handed over by the user. Out of scope: `.tex`
-sources (a pipeline design exists but its pilot has not run — ASK THE USER,
-do not improvise) and the homepage repo `By-Xin.github.io` (own CLAUDE.md).
+Scope: Markdown source notes handed over by the user. For `.tex` sources,
+use [LaTeX publishing SOP](latex-publishing-sop.md) in place of phases 1–3;
+its template-specific pilot was validated on 2026-11-03. The remaining
+integration and release checks still apply. The homepage repo
+`By-Xin.github.io` has its own CLAUDE.md.
 
 ---
 

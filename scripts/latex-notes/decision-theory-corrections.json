@@ -1,0 +1,134 @@
+{
+  "source_sha256": "b587980e8fde0642cf3baaa9779d510280fead2bbc927f1919b8e89be495b547",
+  "authorization": "2026-11-04: 用户明确授权公式问题的最小限度修改并发布；此授权仅用于本次笔记。",
+  "changes": [
+    {
+      "id": "transitivity-menu",
+      "line": 354,
+      "before": "根据 WARP, 有 $x \\in c(\\{x,y\\})$. 但 $x \\notin c(\\{x,y\\})$, 矛盾.",
+      "after": "根据 WARP, 有 $x \\in c(\\{x,z\\})$. 但 $x \\notin c(\\{x,z\\})$, 矛盾.",
+      "reason": "反设针对 {x,z}；此步应用 WARP 的两个菜单也包含 {x,z}。",
+      "count": 1
+    },
+    {
+      "id": "utility-order-symbol",
+      "line": 550,
+      "before": "U(\\vp) \\succ U(\\vq) \\succ U(\\vr)",
+      "after": "U(\\vp) > U(\\vq) > U(\\vr)",
+      "reason": "U 的值是实数，用 >；偏好符号用于 lottery。",
+      "count": 1
+    },
+    {
+      "id": "expected-utility-example",
+      "line": 774,
+      "before": "    注意, 在令 $Z = \\R$ 后, 可能会突然有些混淆效用的期望 EU 与 $Z$ 的期望. 如在本例中, $\\E[\\vp] = 27.5$, 而 $\\E[\\vq] = 15$.  然而这并不能代表 $\\vp$ 的期望效用更高, 因为这将与 $u$ 的具体性质有关. 例如, 若 $u(z) = z$, 则 $\\E[U(\\vp)] = 27.5 > \\E[U(\\vq)] = 15$; 而若 $u(z) = \\sqrt{z}$, 则 $\\E[U(\\vp)] \\approx 3.817$, 而 $\\E[U(\\vq)] \\approx 5.477$, 则 $\\vp$ 的期望效用反而更低. 因此, 不能简单地认为 $\\E[\\vp] > \\E[\\vq]$ 就意味着 $\\vp \\succ \\vq$. 例如, 对于一些 `赌徒', 反而风险是一个其追求的刺激的目标.",
+      "after": "    注意, 在令 $Z = \\R$ 后, 可能会突然有些混淆效用的期望 EU 与 $Z$ 的期望. 如在本例中, $\\E[\\vp] = 27.5$, 而 $\\E[\\vq] = 15$.  仅比较两个 lottery 的均值一般并不能判断期望效用的大小, 因为这还与 $u$ 的具体性质有关. 例如, 若 $u(z) = z$, 则 $U(\\vp) = 27.5 > U(\\vq) = 15$; 而若 $u(z) = \\sqrt{z}$, 则 $U(\\vp) \\approx 5.071$, 而 $U(\\vq) \\approx 3.817$, 则 $\\vp$ 的期望效用仍然更高. 本例中 $\\vp$ 将概率移向更高的结果, 因此只要 $u$ 严格递增就有 $\\vp \\succ \\vq$. 一般而言, 不能简单地认为 $\\E[\\vp] > \\E[\\vq]$ 就意味着 $\\vp \\succ \\vq$. 例如, 对于一些 `赌徒', 反而风险是一个其追求的刺激的目标.",
+      "reason": "按给定概率重新计算 sqrt 的期望；保留原例，不再把这个 FOSD 例子当成均值排序失效的反例。U 已是期望效用，删除多余外层 E。",
+      "count": 1
+    },
+    {
+      "id": "fosd-cdf-direction",
+      "line": 788,
+      "before": "累积分布函数 (CDF) 在任意点上都不低于",
+      "after": "累积分布函数 (CDF) 在任意点上都不高于",
+      "reason": "生存函数更高对应 CDF 更低。",
+      "count": 1
+    },
+    {
+      "id": "risk-aversion-direction",
+      "line": 1158,
+      "before": "$\\delta_z \\succeq_1 \\vp$ 总能推出 $\\delta_z \\succeq_2 \\vp$",
+      "after": "$\\delta_z \\succeq_2 \\vp$ 总能推出 $\\delta_z \\succeq_1 \\vp$",
+      "reason": "更风险厌恶的决策者 1 接受的确定性替代集合更大，与 CE_1 <= CE_2 一致。",
+      "count": 1
+    },
+    {
+      "id": "weak-concavity",
+      "line": 1168,
+      "before": "严格递增且严格 concave 的函数",
+      "after": "严格递增且 concave 的函数",
+      "reason": "命题使用弱风险厌恶比较和 >=，必须允许线性的 phi（相同风险态度）。",
+      "count": 2
+    },
+    {
+      "id": "cara-sign-and-domain",
+      "line": 1223,
+      "before": "\\text{CE}(\\vp, \\succeq) =  \\frac{1}{a} \\ln \\left( \\sum_{z} p(z) e^{-az} \\right).",
+      "after": "\\text{CE}(\\vp, \\succeq) =  -\\frac{1}{a} \\ln \\left( \\sum_{z} p(z) e^{-az} \\right), \\quad a > 0.",
+      "reason": "由 exp(-a CE)=E exp(-a Z) 解出，负号必要；对数表达式只适用于 a>0。",
+      "count": 1
+    },
+    {
+      "id": "crra-quantifier",
+      "line": 1250,
+      "before": "若令 $R_u(z) = \\gamma$ 对所有 $\\gamma > 0$ 成立",
+      "after": "若对某个固定的 $\\gamma > 0$, 令 $R_u(z) = \\gamma$ 对所有 $z > 0$ 成立",
+      "reason": "CRRA 固定风险参数 gamma，对所有正财富 z 要求系数恒定。",
+      "count": 1
+    },
+    {
+      "id": "typo-wuyi",
+      "line": 1178,
+      "before": "判断凹性无意识较为麻烦的",
+      "after": "判断凹性无疑是较为麻烦的",
+      "reason": "明显错字。",
+      "count": 1
+    },
+    {
+      "id": "typo-shitu",
+      "line": 1178,
+      "before": "视图通过",
+      "after": "试图通过",
+      "reason": "明显错字。",
+      "count": 2
+    },
+    {
+      "id": "typo-yanwu",
+      "line": 1234,
+      "before": "对风险的延误程度",
+      "after": "对风险的厌恶程度",
+      "reason": "明显错字。",
+      "count": 1
+    },
+    {
+      "id": "typo-regularity",
+      "line": 1499,
+      "before": "retularity",
+      "after": "regularity",
+      "reason": "英文拼写。",
+      "count": 1
+    },
+    {
+      "id": "axiom-equivalence-label",
+      "line": 415,
+      "before": "(2) $c$ 满足 utility representation theorem $\\iff$ (3)",
+      "after": "(2) $c$ 满足 $\\alpha+\\beta$ $\\iff$ (3)",
+      "reason": "本命题的证明逐项证明 WARP 与 alpha+beta 等价；原第 (2) 项重复效用表示。",
+      "count": 1
+    },
+    {
+      "id": "counterexample-direction",
+      "line": 432,
+      "before": "Counter-example to WARP $\\nRightarrow$ $\\alpha+\\beta$",
+      "after": "Counter-example to $\\alpha+\\beta$ $\\nRightarrow$ WARP",
+      "reason": "正文反例满足 alpha+beta 却不满足 WARP，标题的蕴含方向反了。",
+      "count": 1
+    },
+    {
+      "id": "rum-smaller-menu",
+      "line": 1308,
+      "before": "而若考虑菜单 $B = \\{x,y\\}$, 相当于我们只关注 $U_1, U_2, U_3$ 在 $x,y$ 上的排序, 则有 $\\rho(x, A) = \\mu(U_1) + \\mu(U_3) = 0.3 + 0.6 = 0.9$, $\\rho(y, A) = \\mu(U_2) = 0.1$. 当菜单从 $A$ 缩小到 $B$, 原先最喜欢的某一个元素 ($z$) 无法 `下单' 了, 因此只得被迫在余下菜单有的项目中选择相对最偏好的. ",
+      "after": "而若考虑菜单 $B = \\{x,y\\}$, 相当于我们只关注 $U_1, U_2, U_3$ 在 $x,y$ 上的排序, 则有 $\\rho(x, B) = \\mu(U_1) + \\mu(U_3) = 0.3 + 0.6 = 0.9$, $\\rho(y, B) = \\mu(U_2) = 0.1$. 当菜单从 $A$ 缩小到 $B$, 原先最喜欢的某一个元素 ($z$) 无法 `下单' 了, 因此只得被迫在余下菜单有的项目中选择相对最偏好的. ",
+      "reason": "本段已把菜单缩为 B，0.9 和 0.1 对应 B 上的选择概率。",
+      "count": 1
+    },
+    {
+      "id": "lottery-normalization",
+      "line": 504,
+      "before": "p_1 = (0.3, 0.4, 0.4)",
+      "after": "p_1 = (0.3, 0.4, 0.3)",
+      "reason": "示例概率和为 1.1；保留前两个数，将末项改为剩余概率 0.3。",
+      "count": 1
+    }
+  ]
+}

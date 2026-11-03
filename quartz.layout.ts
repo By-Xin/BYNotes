@@ -28,6 +28,11 @@ const explorerGroups = [
     ],
   },
   {
+    title: "ECONOMICS",
+    slug: "Economics",
+    children: ["Microeconomics"],
+  },
+  {
     title: "PAPER READING",
     slug: "PaperReadingGroup",
     children: ["OptimizationReadings"],

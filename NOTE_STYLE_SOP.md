@@ -1,5 +1,11 @@
 # Note Style SOP
 
+LaTeX-authored notes use the opt-in `latex-note` profile described in
+[LaTeX publishing SOP](docs/latex-publishing-sop.md). Its source-matching
+colors, typography, HTML proof blocks and generated editions are explicit
+exceptions to the Markdown representation rules below; the source-fidelity
+contract remains in force. Existing Markdown notes are unaffected.
+
 This SOP is the source of truth for future Obsidian/Quartz note cleanup in this
 repository. It is intentionally conservative: preserve mathematical content and
 change formatting only unless a content edit is explicitly approved.

@@ -1,0 +1,304 @@
+/* Opt-in LaTeX template profile. Existing Markdown notes are unaffected. */
+@font-face {
+  font-family: "BY Termes";
+  src: url("static/latex-fonts/termes-regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "BY Termes";
+  src: url("static/latex-fonts/termes-italic.woff2") format("woff2");
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BY Termes";
+  src: url("static/latex-fonts/termes-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BY Pagella";
+  src: url("static/latex-fonts/pagella-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BY Song";
+  src: url("static/latex-fonts/song.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "BY Kai";
+  src: url("static/latex-fonts/kai.woff2") format("woff2");
+  font-style: italic;
+  font-display: swap;
+}
+
+article.latex-note {
+  --definition-bg: #f0f9f8;
+  --theorem-bg: #fff5f6;
+  --example-bg: #f2f2f4;
+  --definition-title: #473993;
+  font-family: "BY Termes", "BY Song", "Songti SC", "Noto Serif CJK SC", serif;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+  min-width: 0;
+  .latex-inline-math {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: middle;
+  }
+  > p,
+  li {
+    line-height: 1.85;
+  }
+  p {
+    margin: 0.9em 0;
+  }
+  h2,
+  h3,
+  h4 {
+    font-family: "BY Pagella", "BY Song", serif;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  h2 {
+    font-size: 1.65rem;
+    border-bottom: 1px solid var(--lightgray);
+    padding-bottom: 0.6rem;
+    margin-top: 3rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+  .katex {
+    font-size: 1.02em;
+  }
+  .katex-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0;
+    margin: 0.6rem 0;
+  }
+  .katex-display > .katex {
+    white-space: nowrap;
+  }
+  a {
+    background: none;
+  }
+  .latex-byline {
+    font-size: 0.94rem;
+    color: var(--darkgray);
+    line-height: 1.6;
+  }
+  .latex-editions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    border-bottom: 1px solid var(--lightgray);
+    padding: 1rem 0 1.4rem;
+    margin-bottom: 2rem;
+    font-family: var(--bodyFont);
+    font-size: 0.85rem;
+  }
+  .latex-editions span {
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    font-size: 0.72rem;
+  }
+  .latex-block {
+    background: var(--theorem-bg);
+    border-radius: 6px;
+    padding: 1rem 1.3rem;
+    margin: 1.5rem 0;
+    min-width: 0;
+    font-family: "BY Termes", "BY Kai", "Kaiti SC", serif;
+    font-style: italic;
+  }
+  .latex-definition {
+    background: var(--definition-bg);
+  }
+  .latex-example,
+  .latex-exercise {
+    background: var(--example-bg);
+  }
+  .latex-remark {
+    background: transparent;
+    border-left: 2px solid var(--lightgray);
+    border-radius: 0;
+  }
+  .latex-block-title {
+    font-family: "BY Pagella", "BY Song", serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.55;
+    margin-bottom: 0.65rem;
+  }
+  .latex-definition > .latex-block-title {
+    color: var(--definition-title);
+  }
+  .latex-block > p:last-child {
+    margin-bottom: 0;
+  }
+  .latex-proof {
+    border: 0;
+    margin: 1rem 0 0;
+    min-width: 0;
+    font-family: "BY Termes", "BY Song", serif;
+    font-style: normal;
+  }
+  .latex-proof summary {
+    cursor: pointer;
+    font-style: italic;
+    color: var(--darkgray);
+    padding: 0.35rem 0;
+  }
+  .latex-proof-body {
+    min-width: 0;
+  }
+  .latex-proof-body > p:first-child {
+    margin-top: 0.4rem;
+  }
+  .latex-qed {
+    display: block;
+    text-align: right;
+    line-height: 1;
+  }
+  .latex-footnotes {
+    border-top: 1px solid color-mix(in srgb, var(--gray) 35%, transparent);
+    margin-top: 1rem;
+    padding-top: 0.6rem;
+    font-size: 0.87em;
+    line-height: 1.7;
+  }
+  .latex-footnotes > div {
+    margin: 0.6rem 0;
+  }
+  .latex-footnotes p {
+    display: inline;
+  }
+  .footnote-number {
+    margin-right: 0.35em;
+  }
+  sup {
+    font-size: 0.7em;
+    line-height: 0;
+  }
+  [id] {
+    scroll-margin-top: 2rem;
+  }
+  :target {
+    outline: 2px solid color-mix(in srgb, var(--secondary) 35%, transparent);
+    outline-offset: 4px;
+  }
+  .latex-figures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.3rem;
+    margin: 1.7rem 0;
+    min-width: 0;
+  }
+  .latex-figures figure {
+    flex: 1 1 240px;
+    margin: 0;
+    min-width: 0;
+  }
+  .latex-figure-link {
+    display: block;
+    background: white;
+    border-radius: 4px;
+    width: 100%;
+  }
+  .latex-figures img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  figcaption {
+    color: var(--darkgray);
+    font-size: 0.85em;
+    text-align: center;
+    line-height: 1.55;
+    width: 100%;
+    margin-top: 0.7rem;
+  }
+  .latex-table {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+  }
+  table {
+    display: table;
+    margin: 0 auto;
+    width: max-content;
+    min-width: 80%;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    border: none;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
+  }
+  tr:first-child {
+    border-top: 1.5px solid var(--darkgray);
+    border-bottom: 1px solid var(--gray);
+  }
+  tr:last-child {
+    border-bottom: 1.5px solid var(--darkgray);
+  }
+}
+
+body:has(article.latex-note) .article-title {
+  font-family: "BY Pagella", "BY Song", serif;
+  line-height: 1.25;
+  font-size: 2.5rem;
+}
+body:has(article.latex-note) #quartz-body > .center {
+  min-width: 0;
+  width: 100%;
+}
+@media (max-width: 800px) {
+  body:has(article.latex-note) #quartz-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body:has(article.latex-note) .page-header {
+    min-width: 0;
+  }
+  // Open folder children otherwise override their hidden parent's visibility.
+  body:has(article.latex-note) .explorer.collapsed .explorer-content {
+    display: none;
+  }
+}
+:root[saved-theme="dark"] article.latex-note {
+  --definition-bg: #172c2b;
+  --theorem-bg: #302327;
+  --example-bg: #25262c;
+  --definition-title: #c7bcf6;
+}
+@media (max-width: 600px) {
+  article.latex-note {
+    font-size: 1rem;
+  }
+  article.latex-note .latex-block {
+    padding: 0.8rem 0.85rem;
+    margin: 1.2rem 0;
+  }
+  article.latex-note h2 {
+    font-size: 1.4rem;
+  }
+  article.latex-note .latex-editions {
+    flex-wrap: wrap;
+  }
+  body:has(article.latex-note) .article-title {
+    font-size: 2rem;
+  }
+}

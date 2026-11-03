@@ -114,7 +114,9 @@ const config: QuartzConfig = {
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
       // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
+      // Local, offline previews do not need social images (their generator
+      // fetches fonts even when the site's reading fonts are self-hosted).
+      ...(process.env.BYNOTES_OFFLINE_PREVIEW === "1" ? [] : [Plugin.CustomOgImages()]),
     ],
   },
 }
