@@ -42,8 +42,10 @@ def audit(work):
     raw = uncomment(edition)
     body = raw.split(r"\begin{document}", 1)[1].split(r"\end{document}", 1)[0]
     expected = Counter(re.findall(r"\\begin\{([^}]+)\}", body))
-    structural = set(BLOCKS) | {"proof", "solution", "figure", "tikzpicture", "tabular", "enumerate", "itemize"}
+    structural = set(BLOCKS) | {"proof", "proof*", "quote", "solution", "figure", "tikzpicture", "tabular", "enumerate", "itemize"}
     errors = []
+    if len(re.findall(r'\\includegraphics\[', body)) != data['census'].get('includegraphics', 0):
+        errors.append('Raster image count mismatch')
     for kind in structural:
         if expected[kind] != data["census"].get(kind, 0):
             errors.append(f"Structure mismatch: {kind}")

@@ -1,0 +1,56 @@
+{
+  "source_md_sha256": "8464144490b01b27dd3baebbf30d99c9a4aca9f9dc9d5bafc397b4e1c0156fb0",
+  "revised_md_sha256": "78d3e3e87117c9ecfe8dd58716c227eb993de4a23d2f6b958590e3d71f909c29",
+  "main_tex_sha256": "a2e9554238d94ceb9267203fc8a6c53aaa46718be2471478170efda686a63acf",
+  "import": {
+    "passed": true,
+    "math_preserved_in_order": 1409,
+    "qed_preserved_as_proof_endings": 15,
+    "prose_fragments_checked": 534,
+    "semantic_blocks": 98,
+    "image_occurrences": 18
+  },
+  "tex_to_html": {
+    "passed": true,
+    "structure_counts": {
+      "colblock": 6,
+      "defblock": 37,
+      "enumerate": 8,
+      "exampleblock": 6,
+      "itemize": 89,
+      "lemmablock": 1,
+      "proof": 15,
+      "proof*": 4,
+      "propositionblock": 12,
+      "quote": 6,
+      "remarkblock": 2,
+      "thmblock": 15
+    },
+    "prose_chunks_checked": 595,
+    "footnotes": 0,
+    "pdf_web_labels_matched": 0,
+    "anchor_links_checked": 82,
+    "images": 18,
+    "errors": [],
+    "limitations": "Structural and retained-prose checks; not a mathematical correctness audit or a substitute for visual comparison."
+  },
+  "pdf": {
+    "pages": 44,
+    "outside_page_text": [],
+    "embedded_image_occurrences": 18
+  },
+  "web": {
+    "desktop_width": 1280,
+    "mobile_width": 375,
+    "operational_research_katex_errors": 0,
+    "decision_theory_katex_errors": 0,
+    "visible_clipped_article_elements": 0,
+    "tested": [
+      "light/dark",
+      "proof collapse/expand",
+      "formula keyboard horizontal scrolling",
+      "Decision Theory footnote and backlink",
+      "standalone TOC"
+    ]
+  }
+}

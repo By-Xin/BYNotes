@@ -20,6 +20,7 @@ title: BYNotes
         <h3>OPTIMIZATION</h3>
         <ul>
           <li><a href="./ConvexOptimization/">Convex Optimization (CMU, 10-725)</a></li>
+          <li><a href="./DeterministicOperationalResearch/">Deterministic Operational Research (SJTU, 2026)</a></li>
           <li><a href="./OnlineLearning/">Online Learning and Online Convex Optimization</a></li>
           <li><a href="./BilevelOptimization/">Bilevel Optimization (2026 Summer School)</a></li>
           <li><a href="./ShortNotes/">Short Notes</a></li>
@@ -60,6 +61,15 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
+        <time datetime="2026-11-06">November 6, 2026</time>
+        <h3>Deterministic Operational Research</h3>
+        <p>
+          Added <a href="./DeterministicOperationalResearch/Convex-Geometry-and-Optimization">convex geometry and optimization foundations</a>
+          to <a href="./DeterministicOperationalResearch/">Deterministic Operational Research (SJTU, 2026)</a>,
+          covering projections, separation, Farkas lemma, and the geometry of linear programming, with PDF and LaTeX editions.
+        </p>
+      </li>
+      <li>
         <time datetime="2026-11-04">November 4, 2026</time>
         <h3>Decision theory</h3>
         <p>
@@ -78,19 +88,6 @@ title: BYNotes
             >Proximal three-point identity</a
           > to <a href="./ShortNotes/">Short Notes</a>, deriving the proximal
           three-point bound and its mirror descent and composite versions.
-        </p>
-      </li>
-      <li>
-        <time datetime="2026-09-17">September 17, 2026</time>
-        <h3>Barrier PDLP algorithm slides</h3>
-        <p>
-          Added
-          <a href="./OptimizationReadings/LinearProgramming/Barrier-PDLP"
-            >Barrier PDLP</a
-          > to the new
-          <a href="./OptimizationReadings/LinearProgramming/">Linear Programming</a>
-          reading section, covering the logarithmic-barrier PDHG update, the
-          perturbed KKT system, adaptive restarts, and barrier-stage updates.
         </p>
       </li>
     </ol>

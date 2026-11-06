@@ -24,3 +24,11 @@ to the corpus union before regenerating.
 
 The 2026-11-04 release subset also includes the authorized corrected edition
 `fae60c82d8ac5326cd33808d5d31a36e3fbccdf13798d8cb9b15fdddd5ef786b`.
+
+The 2026-11-06 union additionally includes the revised Operational Research
+sources under `sources/deterministic-operational-research/`, including the imported
+main/body/template TeX and shared TeX dependencies. The underlying revised Markdown
+SHA-256 is `78d3e3e87117c9ecfe8dd58716c227eb993de4a23d2f6b958590e3d71f909c29`.
+The Decision Theory corrected edition remains in the corpus. Ordinary body
+text now uses the site's locally hosted sans-serif family; these fonts remain
+in use for headings, statement environments and proofs.

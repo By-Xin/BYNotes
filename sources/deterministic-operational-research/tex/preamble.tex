@@ -1,0 +1,40 @@
+%% ===================================================================
+%%  NOTATION AND NAMING CONVENTIONS
+%%
+%%  Two bold-math font families, separated by semantic role
+%%  (all \v* and \m* macros are \bm{...}, defined in math_commands.tex):
+%%
+%%  1. Vectors (\v... macros)
+%%     \vu, \vu_0    : generic optimization variable / initial point
+%%     \vx, \vy, \vz : sequence variables (e.g. Nesterov triples)
+%%     \vg           : gradient / surrogate gradient
+%%     \vb           : RHS / data vector
+%%     \vzero, \vone : zero / all-ones vectors
+%%     \vxi, \vnu, \vbeta, \vtheta, \vlambda, \vmu : bold Greek vectors
+%%
+%%  2. Matrices (\m... macros, uppercase)
+%%     \mA, \mB, \mC : design / system matrices
+%%     \mI           : identity
+%%     \mX, \mY, ... : general bold matrices
+%%
+%%  3. Common operators (math_commands.tex + macros.tex)
+%%     \R, \E, \Ls, \argmax, \argmin, \sign, \Tr, \prox, \Lip, \dom, \dist, \rank
+%%     \abs{...}, \norm{...}   (mathtools paired delimiters; \abs* / \norm* auto-size)
+%%     \ip{x}{y}               inner product
+%%     \oracle                 matrix--vector oracle
+%%
+%%  4. Theorem / note environments (main.tex)
+%%     Standard: definition, theorem, lemma, proposition, corollary,
+%%               remark, example, proof, solution
+%%     Styled:   defblock, thmblock, axiomblock, lemmablock, propositionblock, colblock,
+%%               exampleblock, exerciseblock, remarkblock
+%%
+%%  Project-specific experiment labels or paper-only macros belong in a
+%%  local file (e.g. paper_macros.tex), not in this shared preamble.
+%% ===================================================================
+
+% Official optional notation definitions.
+\input{tex/math_commands.tex}
+
+% Shared helpers: paired delimiters, operators, algorithm2e, tables.
+\input{tex/macros.tex}

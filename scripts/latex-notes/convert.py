@@ -12,6 +12,7 @@ import html
 import json
 from pathlib import Path
 import re
+import struct
 import xml.etree.ElementTree as ET
 
 
@@ -115,6 +116,9 @@ class Parser:
                     out.append(Node(name, children=Parser(self.group()).parse()))
                 elif name in ("label", "ref", "eqref", "url"):
                     out.append(Node(name, self.group()))
+                elif name == "includegraphics":
+                    opt = self.group("[", "]", True)
+                    out.append(Node(name, self.group(), option=opt))
                 elif name == "href":
                     target = self.group()
                     out.append(Node(name, target, Parser(self.group()).parse()))
@@ -297,11 +301,12 @@ class Renderer:
             body = self.flow(n.children)
             notes = self.notes_html(self.footnotes.pop())
             return f'<section class="latex-block latex-{role}" id="{n.anchor}" aria-label="{BLOCKS[k]} {n.number}"><div class="latex-block-title">{title}</div>{body}{notes}</section>'
-        if k in ("proof", "solution"):
+        if k in ("proof", "proof*", "solution"):
             self.census[k] += 1
-            title = self.inline(Parser(n.option).parse()) if n.option else k.capitalize()
+            title = self.inline(Parser(n.option).parse()) if n.option else k.rstrip("*").capitalize()
             body = self.flow(n.children)
-            return f'<details class="latex-proof" open><summary>{title}.</summary><div class="latex-proof-body">{body}<span class="latex-qed" aria-label="End of proof">□</span></div></details>'
+            qed = '' if k == 'proof*' else '<span class="latex-qed" aria-label="End of proof">□</span>'
+            return f'<details class="latex-proof" open><summary>{title}.</summary><div class="latex-proof-body">{body}{qed}</div></details>'
         if k in ("itemize", "enumerate"):
             if n.option:
                 raise ValueError("List options require a reviewed adapter")
@@ -347,6 +352,21 @@ class Renderer:
             return f'<a class="latex-figure-link" href="{self.asset_url}/figure-{self.figure_count}.svg"><img src="{self.asset_url}/figure-{self.figure_count}.svg" width="{width}" height="{height}" alt="Diagram {self.figure_count}" loading="lazy" /></a>'
         if k == "caption":
             return f'<figcaption id="{n.anchor}">Figure {n.number}. '+self.inline(n.children)+'</figcaption>'
+        if k == "includegraphics":
+            self.census[k] += 1
+            name = Path(n.value).name
+            if n.value != 'figures/' + name or not re.fullmatch(r'[A-Za-z0-9_-]+\.png', name):
+                raise ValueError('Only reviewed local figures/*.png images are supported')
+            m = re.fullmatch(r'width=(0?\.\d+|1)\\linewidth', n.option)
+            if not m or not 0 < float(m[1]) <= 1 or name not in self.figure_sizes:
+                raise ValueError('Missing image or unsupported image width: ' + n.value)
+            width, height = self.figure_sizes[name]
+            url = html.escape(self.asset_url + '/' + name, quote=True)
+            percent = float(m[1]) * 100
+            return f'<a class="latex-raster-figure" href="{url}" style="--figure-width:{percent:g}%"><img src="{url}" width="{width}" height="{height}" alt="Original lecture diagram" loading="lazy" /></a>'
+        if k == "quote":
+            self.census[k] += 1
+            return '<blockquote class="latex-quote">' + self.flow(n.children) + '</blockquote>'
         if k == "center": return self.flow(n.children)
         if k == "label": return ""
         if k in ("ref", "eqref"):
@@ -377,6 +397,11 @@ def main():
     labels = annotate(nodes)
     sizes = {}
     if args.assets_dir:
+        for f in args.assets_dir.glob('*.png'):
+            raw_png = f.read_bytes()
+            if raw_png[:8] != b'\x89PNG\r\n\x1a\n':
+                raise ValueError('Invalid PNG: ' + str(f))
+            sizes[f.name] = struct.unpack('>II', raw_png[16:24])
         for f in args.assets_dir.glob("figure-*.svg"):
             _, _, width, height = map(float, ET.parse(f).getroot().attrib["viewBox"].split())
             sizes[int(f.stem.split("-")[-1])] = (round(width * 4 / 3), round(height * 4 / 3))

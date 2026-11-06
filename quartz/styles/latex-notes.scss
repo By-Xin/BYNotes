@@ -39,11 +39,13 @@ article.latex-note {
   --theorem-bg: #fff5f6;
   --example-bg: #f2f2f4;
   --definition-title: #473993;
-  font-family: "BY Termes", "BY Song", "Songti SC", "Noto Serif CJK SC", serif;
-  font-size: 1.0625rem;
-  line-height: 1.85;
+  font-family: var(--bodyFont), "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5725;
   overflow-wrap: break-word;
   min-width: 0;
+  // Original nested paragraphs used the site's 1.68 line-height.
+  p { line-height: 1.428; }
   .latex-inline-math {
     display: inline-block;
     max-width: 100%;
@@ -53,7 +55,7 @@ article.latex-note {
   }
   > p,
   li {
-    line-height: 1.85;
+    line-height: 1.5725;
   }
   p {
     margin: 0.9em 0;
@@ -66,13 +68,13 @@ article.latex-note {
     letter-spacing: 0;
   }
   h2 {
-    font-size: 1.65rem;
+    font-size: 1.5875rem;
     border-bottom: 1px solid var(--lightgray);
     padding-bottom: 0.6rem;
     margin-top: 3rem;
   }
   h3 {
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
     margin-top: 2rem;
   }
   .katex {
@@ -92,9 +94,9 @@ article.latex-note {
     background: none;
   }
   .latex-byline {
-    font-size: 0.94rem;
+    font-size: 0.8775rem;
     color: var(--darkgray);
-    line-height: 1.6;
+    line-height: 1.36;
   }
   .latex-editions {
     display: flex;
@@ -105,12 +107,12 @@ article.latex-note {
     padding: 1rem 0 1.4rem;
     margin-bottom: 2rem;
     font-family: var(--bodyFont);
-    font-size: 0.85rem;
+    font-size: 0.7875rem;
   }
   .latex-editions span {
     letter-spacing: 0.12em;
     color: var(--gray);
-    font-size: 0.72rem;
+    font-size: 0.6575rem;
   }
   .latex-block {
     background: var(--theorem-bg);
@@ -137,7 +139,7 @@ article.latex-note {
     font-family: "BY Pagella", "BY Song", serif;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.55;
+    line-height: 1.3175;
     margin-bottom: 0.65rem;
   }
   .latex-definition > .latex-block-title {
@@ -175,7 +177,7 @@ article.latex-note {
     margin-top: 1rem;
     padding-top: 0.6rem;
     font-size: 0.87em;
-    line-height: 1.7;
+    line-height: 1.445;
   }
   .latex-footnotes > div {
     margin: 0.6rem 0;
@@ -227,13 +229,29 @@ article.latex-note {
     color: var(--darkgray);
     font-size: 0.85em;
     text-align: center;
-    line-height: 1.55;
+    line-height: 1.3175;
     width: 100%;
     margin-top: 0.7rem;
   }
   .latex-table {
     overflow-x: auto;
     margin: 1.2rem 0;
+  }
+  h4 { font-size: 0.9375rem; }
+  .latex-quote {
+    font-family: "BY Termes", "BY Song", "Songti SC", serif;
+  }
+  .latex-raster-figure {
+    display: block;
+    width: var(--figure-width);
+    margin: 1.2rem auto;
+    background: white;
+  }
+  .latex-raster-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
   }
   table {
     display: table;
@@ -260,7 +278,7 @@ article.latex-note {
 body:has(article.latex-note) .article-title {
   font-family: "BY Pagella", "BY Song", serif;
   line-height: 1.25;
-  font-size: 2.5rem;
+  font-size: 2.4375rem;
 }
 body:has(article.latex-note) #quartz-body > .center {
   min-width: 0;
@@ -286,19 +304,20 @@ body:has(article.latex-note) #quartz-body > .center {
 }
 @media (max-width: 600px) {
   article.latex-note {
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
   article.latex-note .latex-block {
     padding: 0.8rem 0.85rem;
     margin: 1.2rem 0;
   }
   article.latex-note h2 {
-    font-size: 1.4rem;
+    font-size: 1.3375rem;
   }
   article.latex-note .latex-editions {
     flex-wrap: wrap;
   }
   body:has(article.latex-note) .article-title {
-    font-size: 2rem;
+    font-size: 1.9375rem;
   }
+  article.latex-note .latex-raster-figure { width: 100%; }
 }

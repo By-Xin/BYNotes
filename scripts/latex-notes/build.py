@@ -14,6 +14,7 @@ import re
 import shutil
 import subprocess
 import sys
+import zipfile
 
 from convert import uncomment
 from corrections import apply_corrections
@@ -140,6 +141,15 @@ def main():
     assets = content / meta["topic"] / meta["asset_slug"]
     assets.mkdir(parents=True)
     shutil.copy2(compile_dir / "build/main.pdf", assets / (meta["slug"] + ".pdf"))
+    for graphic in re.findall(r'\\includegraphics\[[^\]]*\]\{(figures/[A-Za-z0-9_-]+\.png)\}', corrected):
+        shutil.copy2(edition / graphic, assets / Path(graphic).name)
+    if meta.get('source_bundle'):
+        # Include the actual compiling source plus local dependencies, never logs.
+        with zipfile.ZipFile(assets / (meta['slug'] + '-LaTeX.zip'), 'w', zipfile.ZIP_DEFLATED) as bundle:
+            for f in sorted(compile_dir.rglob('*')):
+                rel = f.relative_to(compile_dir)
+                if f.is_file() and (str(rel) == 'main.tex' or rel.parts[0] in {'tex', 'figures'}):
+                    bundle.write(f, str(rel))
     clean = uncomment(adapted)
     preamble, body = clean.split(r"\begin{document}", 1)
     figures = re.findall(r"\\begin\{figure\}(.*?)\\end\{figure\}", body, re.S)

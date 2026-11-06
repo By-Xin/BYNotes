@@ -1,0 +1,50 @@
+% Shared notation helpers and package infrastructure for research notes.
+% Generic math alphabets (\R, \argmin, \sign, \vx, \mA, ...) live in
+% math_commands.tex. Theorem-like and colored block environments are defined
+% in main.tex so this file stays free of numbering conflicts.
+%
+% This file is self-contained for its own package needs once the core AMS
+% stack (amsmath/amssymb/bm) is already loaded by main.tex.
+
+\usepackage{mathtools}
+
+% Parenthesized equation references; keep reference numbers upright in
+% italic theorem text (amsmath \eqref already does this; reinforce it).
+\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+\newcommand{\ip}[2]{\left\langle #1,\,#2\right\rangle}
+
+% Paired matrix--vector oracle operator (sans-serif; avoids clashing with
+% the asymptotic-order symbol \mathcal{O}).
+\newcommand{\oracle}{\mathsf{O}}
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\prox}{prox}
+
+% Pseudocode. Ruled caption + vertical scope lines + numbered lines.
+% Allow explicit float placement where needed.
+\usepackage{float}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+% Keep appendix / section floats near the topic that introduces them.
+\usepackage{placeins}
+% Keep algorithm line numbers and algorithm reference numbers at body size.
+% algorithm2e otherwise reduces both by two relative steps.
+\SetAlgoNlRelativeSize{0}
+\SetAlgoRefRelativeSize{0}
+\SetKwInput{KwIn}{Input}
+\SetKwInput{KwInit}{Initialize}
+\SetKwInput{KwOut}{Output}
+\DontPrintSemicolon
+
+% Multi-page tables and fixed-width wrapping columns.
+\usepackage{longtable}
+\usepackage{array}
+
+% Extra glue stretch to reduce underfull box warnings (cosmetic only).
+\emergencystretch=2em

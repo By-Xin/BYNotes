@@ -35,6 +35,16 @@ class FidelityTests(unittest.TestCase):
         self.assertIn('<details class="latex-proof" open>', output)
         self.assertEqual(renderer.census["proof"], 1)
 
+    def test_sketch_preserves_missing_qed_and_local_image_width(self):
+        nodes = Parser(r"\begin{proof*}[Sketch]Argument\end{proof*}\includegraphics[width=0.3\linewidth]{figures/diagram.png}").parse()
+        renderer = Renderer(annotate(nodes), './assets', {'diagram.png': (600, 400)})
+        output = renderer.flow(nodes)
+        self.assertNotIn('latex-qed', output)
+        self.assertIn('--figure-width:30%', output)
+        self.assertIn('width="600" height="400"', output)
+        with self.assertRaises(ValueError):
+            render(r'\includegraphics[width=0.3\linewidth]{../secret.png}')
+
     def test_mathematical_diamond_survives(self):
         renderer, _ = render(r"Let $\diamond$ denote an operation.")
         self.assertEqual(renderer.math[0]["tex"], r"\diamond")

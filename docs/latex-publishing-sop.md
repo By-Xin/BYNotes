@@ -3,6 +3,8 @@
 Validated pilot: **Advanced Microeconomics — Decision Theory**, 2026-11-03.
 Production release: 2026-11-04, with explicitly authorized minimal corrections;
 see [release review](releases/2026-11-04-decision-theory.md).
+Second production profile: **Deterministic Operational Research (SJTU, 2026)**,
+2026-11-06; see [review and source migration](releases/2026-11-06-deterministic-operational-research.md).
 This is a working template-specific publishing path, not a general LaTeX converter.
 The author keeps editing LaTeX; HTML and PDF are generated editions.
 
@@ -101,8 +103,14 @@ builds keep social cards enabled.
 
 - Use the opt-in `cssclasses: [latex-note]` profile. Existing notes keep their
   existing styles. This profile intentionally preserves the source's blue
-  definitions, pink statements, grey examples, Termes/Song body text,
+  definitions, pink statements, grey examples, sans-serif ordinary body text,
   Pagella headings, and italic Latin/Kai Chinese in statement bodies.
+- As requested on 2026-11-06, both published LaTeX notes use web font sizes
+  one CSS step (1px) smaller: ordinary body 16px desktop / 15px mobile.
+  Paragraph line-height multipliers are 85% of the preceding profile; nested
+  paragraphs also override the site's separate paragraph rule. Keep statement
+  and proof font families unchanged. These changes belong only in
+  `quartz/styles/latex-notes.scss`; never shrink the LaTeX/PDF template for them.
 - Preserve the full document and its numbering. Native Markdown headings
   feed Quartz's TOC; stable `latex-*` anchors serve LaTeX references.
 - Proofs remain inside their original parent blocks and are expanded native
@@ -123,6 +131,28 @@ builds keep social cards enabled.
   for adequate bounds. Image dimensions reserve layout space before lazy load.
 - Long formulas/tables scroll in their own containers. Never solve overflow
   by clipping or shrinking the whole document. Mobile figures stack.
+- Reviewed local PNGs are supported as `\includegraphics[width=0.5\linewidth]{figures/name.png}`.
+  Copy the original image bytes, preserve their source hashes and dimensions,
+  and check every image. `proof*` preserves a source proof/sketch without an
+  end marker; do not invent QED markers. Ordinary `quote` is supported.
+- A manifest with `source_bundle: true` publishes a LaTeX ZIP containing the
+  actual compiling `main.tex`, `tex/` and `figures/`, plus a download link.
+  Check its entries against the compiled source; exclude logs and build output.
+
+## A reviewed Markdown-to-LaTeX migration
+
+This is an additional author-authorized path, not a generic Markdown cleanup.
+Keep a byte-identical Markdown snapshot, apply only individually reviewed
+corrections in a hash-bound ledger, and assign explicit semantic ranges to
+definitions/statements/proofs without changing order or adding exposition.
+Reject empty blocks and formulas crossing boundaries. Compare the complete
+Markdown math sequence against the segmented import, preserve every source
+QED, and inspect block beginnings/endings as well as the resulting PDF/web.
+
+The concrete migration and reproducible commands are in
+`sources/deterministic-operational-research/README.md`. Its importer is
+deliberately note-specific. After migration the user may edit `main.tex`;
+never rerun the importer over subsequent manual LaTeX edits.
 
 ## Fonts
 

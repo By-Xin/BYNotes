@@ -1,0 +1,571 @@
+--- original.md
++++ revised.md
+@@ -37,7 +37,7 @@
+ 
+ - 若 $\bm{x}^\star \in \mathcal{S}$，则称 $\bm{x}^\star$ 是可行解.
+ - 令 $\mathcal{B}_\varepsilon(\bm{x}^\star) := \{\bm{x} \in \mathbb{R}^n: \|\bm{x}-\bm{x}^\star\|_2 < \varepsilon\}$ 为 $\bm{x}^\star$ 的 $\varepsilon$-邻域. 
+-  - 若对所有 $\bm{x} \in \mathcal{B}_\varepsilon(\bm{x}^\star) \bigcap \mathcal{S}$，有 $f(\bm{x}) \geq f(\bm{x}^\star)$，则称 $\bm{x}^\star$ 是 local optimizer. 若对所有 $\bm{x} \neq \bm{x}^\star$，有 $f(\bm{x}) > f(\bm{x}^\star)$，则称 $\bm{x}^\star$ 是 strict local optimizer. 若对所有 $\bm{x} \in \mathcal{S}$，$\bm{x}^\star$ 是唯一的局部最优解，则称 $\bm{x}^\star$ 是 isolated / strong local optimizer.
++  - 若存在 $\varepsilon > 0$, 对所有 $\bm{x} \in \mathcal{B}_\varepsilon(\bm{x}^\star) \bigcap \mathcal{S}$，有 $f(\bm{x}) \geq f(\bm{x}^\star)$，则称 $\bm{x}^\star$ 是 local optimizer. 若对该邻域内所有可行的 $\bm{x} \neq \bm{x}^\star$，有 $f(\bm{x}) > f(\bm{x}^\star)$，则称 $\bm{x}^\star$ 是 strict local optimizer. 若 $\bm{x}^\star$ 是某个邻域内唯一的局部最优解，则称 $\bm{x}^\star$ 是 isolated local optimizer.
+   - 若对所有 $\bm{x} \in \mathcal{S}$，有 $f(\bm{x}) \geq f(\bm{x}^\star)$，则称 $\bm{x}^\star$ 是全局最优解.
+ 
+ #### 线性规划与标准型
+@@ -135,7 +135,7 @@
+ $$
+ 是一个 $k$-simplex.
+ 
+-- Affine independent 可以理解为, 给定一个参考点 $\bm{v}_0$，与其余点构成的向量两两是不共线的. 因此这与其所处的空间维度是有密切联系的. 例如在二维平面中, 3 个点不共线, 给定一个参考点, 其余两个点可以 span 整个平面; 然而如果有四个点, 则必定会有一个点是冗余的. **在 $n$ 维空间中, 最多只能有 $n+1$ 个 affinely independent 的点.** (这些点 span 出了一个 $n$-dimensional affine space)
++- Affine independent 可以理解为, 给定一个参考点 $\bm{v}_0$，与其余点构成的向量是线性无关的. 因此这与其所处的空间维度是有密切联系的. 例如在二维平面中, 3 个点不共线, 给定一个参考点, 其余两个点可以 span 整个平面; 然而如果有四个点, 则必定会有一个点是冗余的. **在 $n$ 维空间中, 最多只能有 $n+1$ 个 affinely independent 的点.** (这些点 span 出了一个 $n$-dimensional affine space)
+ - Simplex 是一种特殊的 polytope. 其相当于在对应 affine space 中最小 polytope. 其具有**唯一表出**的性质:
+   $$
+   \bm{x} \in \mathcal{S} \implies \bm{x} = \sum_{i=0}^k \theta_i \bm{v}_i,~ \text{ exists unique } \theta_i \geq 0, \sum_{i=0}^k \theta_i = 1.
+@@ -164,7 +164,7 @@
+         $$
+         \|\bm{A}\bm{x} + \bm{b}\|_2 \leq \bm{c}^\top \bm{x} + d,
+         $$
+-        其中 $\bm{A} \in \mathbb{R}^{m \times n}$, $\bm{b}, \bm{c} \in \mathbb{R}^m$, $d \in \mathbb{R}$. 这就是一个 SOC 约束.
++        其中 $\bm{A} \in \mathbb{R}^{m \times n}$, $\bm{b} \in \mathbb{R}^m$, $\bm{c} \in \mathbb{R}^n$, $d \in \mathbb{R}$. 这就是一个 SOC 约束.
+ 
+ - Positive semidefinite cone (PSD cone) 是一个 convex cone, 定义为:
+     $$
+@@ -190,7 +190,7 @@
+ 实践中往往不会通过定义来验证给定复杂集合的凸性, 而是通过一些基本凸集出发, 通过一些保凸运算来构造新的凸集. 给定指标集合 $\mathcal{I}$，任意 $\mathcal{C}, \mathcal{C}_i \subseteq \mathbb{R}^n$，$i \in \mathcal{I}$ 是凸集, 则有以下保凸运算:
+ - 任意交集: $\bigcap_{i \in \mathcal{I}} \mathcal{C}_i$ 是凸集.
+ - 仿射映射: 若 $\bm{A} \in \mathbb{R}^{m \times n}$ 且 $\bm{b} \in \mathbb{R}^m$，则 $\bm{A}\mathcal{C} + \bm{b} := \{\bm{A}\bm{x} + \bm{b}: \bm{x} \in \mathcal{C}\}$ 是凸集.
+-- 仿射的 preimage: 若 $\bm{A} \in \mathbb{R}^{m \times n}$ 且 $\bm{b} \in \mathbb{R}^m$，则 $\{\bm{x} \in \mathbb{R}^n: \bm{A}\bm{x} + \bm{b} \in \mathcal{C}\}$ 是凸集.
++- 仿射的 preimage: 若 $\bm{A} \in \mathbb{R}^{m \times n}$ 且 $\bm{b} \in \mathbb{R}^m$，且这里 $\mathcal{C} \subseteq \mathbb{R}^m$, 则 $\{\bm{x} \in \mathbb{R}^n: \bm{A}\bm{x} + \bm{b} \in \mathcal{C}\}$ 是凸集.
+ - Minkowski sum: $\mathcal{C}_1 + \mathcal{C}_2 := \{\bm{x}_1 + \bm{x}_2: \bm{x}_1 \in \mathcal{C}_1, \bm{x}_2 \in \mathcal{C}_2\}$ 是凸集.
+ - Cartesian product: $\mathcal{C}_1 \times \mathcal{C}_2 := \{(\bm{x}_1, \bm{x}_2): \bm{x}_1 \in \mathcal{C}_1, \bm{x}_2 \in \mathcal{C}_2\}$ 是凸集.
+ - Projection: 若 $\mathcal{C} \subseteq \mathbb{R}^{n+m}$ 是凸集, 则将 $\mathcal{C}$ 投影到 $\bm{x}$ 上得到 $\Pi_x \mathcal{C} := \{\bm{x} \in \mathbb{R}^n:  \exists \bm{y} \in \mathbb{R}^m, \text{s.t. } (\bm{x}, \bm{y}) \in \mathcal{C}\}$ 是凸集.
+@@ -239,7 +239,7 @@
+   - $\mathcal{B}(\bm{x}, \varepsilon) \cap \mathcal{S} \neq \emptyset$ 且 $\mathcal{B}(\bm{x}, \varepsilon) \cap (\mathbb{R}^n \setminus \mathcal{S}) \neq \emptyset$ 对任意 $\varepsilon > 0$ 成立, 则 $\bm{x}$ 是集合的边界点.
+ - $\mathcal{S}$ 是 bounded set 当且仅当存在 $M > 0$ 使得 $\|\bm{x}\| \leq M$ 对所有 $\bm{x} \in \mathcal{S}$ 成立. 
+ - 有限维欧式空间中, $\mathcal{S}$ 是 compact set 当且仅当 $\mathcal{S}$ 是 closed 且 bounded (Heine-Borel theorem). 
+-  - 在优化视角, **$\mathcal{S}$ 是 compact set 当且仅当 $\mathcal{S}$ 中任何一个序列都存在一个收敛的子序列, 且其极限点仍然在 $\mathcal{S}$ 中.** 这保证了算法迭代点的收敛性. 
++  - 在优化视角, **$\mathcal{S}$ 是 compact set 当且仅当 $\mathcal{S}$ 中任何一个序列都存在一个收敛的子序列, 且其极限点仍然在 $\mathcal{S}$ 中.** 这保证了集合内迭代点列存在收敛子列. 
+     - (Bolzano-Weierstrass theorem 保证任何有界序列都存在收敛子序列. 而 compactness 保证了收敛子序列的极限点仍然在集合中.)
+   - Compactness 在优化中避免了如下两种最优解求解失败之场景:
+     - 集合不闭: 例如 $\min_{x \in (0,1)} x$，其 infimum 为 $0$，但 $0 \notin (0,1)$.
+@@ -277,18 +277,18 @@
+ $$
+ 
+ - Tl;dr: 可行域紧 + 目标函数连续 $\implies$ 存在最优解.
+-- 优化中, 证明最优解存的通常思路:
++- 优化中, 证明最优解存在的通常思路:
+   - 证明 feasible set 是紧的
+-  - 即使 feasible set 是 unbounded, 但存在某个 sublevel set $\{\bm{x} \in \mathcal{S}: f(\bm{x}) \leq \alpha\}$ 是紧的, 则可以将问题限制在这个 sublevel set 上
++  - 即使 feasible set 是 unbounded, 但存在某个非空 sublevel set $\{\bm{x} \in \mathcal{S}: f(\bm{x}) \leq \alpha\}$ 是紧的, 则可以将问题限制在这个 sublevel set 上
+ 
+ *Proof Sketch*: 令 $\alpha := \inf_{\bm{x} \in \mathcal{S}} f(\bm{x})$. 选择一个序列 $\{\bm{x}_k\} \subseteq \mathcal{S}$ 使得 $f(\bm{x}_k) \downarrow \alpha$. 因为 $\mathcal{S}$ 是 compact set, $\{\bm{x}_k\}$ 有一个收敛的子序列 $\{\bm{x}_{k_j}\} \to \bm{x}^\star \in \mathcal{S}$. 由于 $f$ 是连续函数, 则 $f(\bm{x}_{k_j}) \to f(\bm{x}^\star)$. 因此 $f(\bm{x}^\star) = \alpha$, 即 $\bm{x}^\star$ 是最优解.
+ 
+ *Proof* *[Beck, Ch. 2]*:
+ 
+-> *在 Beck 的论述中, 其将 Weierstrass theorem 的条件, 从 $f: S \to \mathbb{R}$ 是连续函数, 放宽为 $f$ 是 proper 且 closed 函数. 这是一个更弱的条件, 但其证明思路是类似的.]*
+-
+-- **先证 $f$ bounded below**. *在 sketch 中我们直接定义 $\alpha := \inf_{\bm{x} \in \mathcal{S}} f(\bm{x})$. 然而这样的 inf 的存在本身也是需要严格证明的.* 即, 要证: 存在 $L \in \mathbb{R}$ 使得 $f(\bm{x}) \geq L$ 对所有 $\bm{x} \in \mathcal{S}$ 成立. 
+-  - 反证法, 假设 $f$ 不存在下界, 则对于每一个 $\bm{x}_k$, 都可以找到 $\bm{x}_k \in \mathcal{S}$ 使得 $f(\bm{x}_k) \leq -k$. 于是我们可以构造一个序列 $\{\bm{x}_k\} \subseteq \mathcal{S}$ 使得 $f(\bm{x}_k) \to -\infty$. 由于 $\mathcal{S}$ 是 compact set, $\{\bm{x}_k\}$ 有一个收敛的子序列 $\{\bm{x}_{k_j}\} \to \bar{\bm{x}} \in \mathcal{S}$. 由于 $f$ 是连续函数且 $\bm{x}_{k_j} \to \bar{\bm{x}}$，则 $f(\bm{x}_{k_j}) \to f(\bar{\bm{x}})$ 是一个有限值. 然而 $f(\bm{x}_{k_j}) \to -\infty$, 这与 $f(\bar{\bm{x}})$ 是有限值矛盾. 
++> *在 Beck 的论述中, 其将 Weierstrass theorem 的条件, 从 $f: S \to \mathbb{R}$ 是连续函数, 放宽为 $f$ 是 proper 且 closed 函数. 这是一个更弱的条件, 但其证明思路是类似的.*
++
++- **先证 $f$ bounded below**. *在 sketch 中我们直接定义 $\alpha := \inf_{\bm{x} \in \mathcal{S}} f(\bm{x})$. 然而这个 inf 是有限实数本身也是需要严格证明的.* 即, 要证: 存在 $L \in \mathbb{R}$ 使得 $f(\bm{x}) \geq L$ 对所有 $\bm{x} \in \mathcal{S}$ 成立. 
++  - 反证法, 假设 $f$ 不存在下界, 则对于每一个正整数 $k$, 都可以找到 $\bm{x}_k \in \mathcal{S}$ 使得 $f(\bm{x}_k) \leq -k$. 于是我们可以构造一个序列 $\{\bm{x}_k\} \subseteq \mathcal{S}$ 使得 $f(\bm{x}_k) \to -\infty$. 由于 $\mathcal{S}$ 是 compact set, $\{\bm{x}_k\}$ 有一个收敛的子序列 $\{\bm{x}_{k_j}\} \to \bar{\bm{x}} \in \mathcal{S}$. 由于 $f$ 是连续函数且 $\bm{x}_{k_j} \to \bar{\bm{x}}$，则 $f(\bm{x}_{k_j}) \to f(\bar{\bm{x}})$ 是一个有限值. 然而 $f(\bm{x}_{k_j}) \to -\infty$, 这与 $f(\bar{\bm{x}})$ 是有限值矛盾. 
+ 
+ - **再证 $f$ 在 $\mathcal{S}$ 上有最小值**. 由实数完备性, $f$ 有下界故有下确界, 记 $\alpha := \inf_{\bm{x} \in \mathcal{S}} f(\bm{x})$. 下证 $\exists \bm{x}^\star \in \mathcal{S}$ 使得 $f(\bm{x}^\star) = \alpha$. 由 inf 的定义, 对于每个 $k \geq 1$, 都存在 $\bm{x}_k \in \mathcal{S}$ 使得 $\alpha \leq f(\bm{x}_k) < \alpha + 1/k$. 由 squeeze theorem 可以给出 $f(\bm{x}_k) \to \alpha$. 再次由于 $\mathcal{S}$ 是 compact set, $\{\bm{x}_k\}$ 有一个收敛的子序列 $\{\bm{x}_{k_j}\} \to \bm{x}^\star \in \mathcal{S}$. 由于 $f$ 是连续函数, 则 $f(\bm{x}_{k_j}) \to f(\bm{x}^\star)$. 因此 $f(\bm{x}^\star) = \alpha$, 即 $\bm{x}^\star$ 是最优解.
+ 
+@@ -319,7 +319,7 @@
+ 
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20260929111038580.png" width="30%">
+ 
+-- 根据 Weistrass theorem, 由于目标函数是连续的, 故只需给出一个紧的可行域即可. Compact = closed + bounded, 而 closed 已经给出, 故只需找到一个 bounded 的可行域即可.
++- 根据 Weierstrass theorem, 由于目标函数是连续的, 故只需给出一个紧的可行域即可. Compact = closed + bounded, 而 closed 已经给出, 故只需找到一个 bounded 的可行域即可.
+ - 由于 $\mathcal{C}$ 是非空闭集, 故任取 $\bm{x}_0 \in \mathcal{C}$, 记 $R:= \|\bm{x}_0 - \bm{y}\|_2$. 则任意 $d(\bm{x}, \bm{y}) > R$ 的点 $\bm{x} \in \mathcal{C}$ 都不可能是最优解. 故可行域为 $\mathcal{C} \cap \mathcal{B}(\bm{y}, R)$，其是一个非空闭集, 且 bounded, 故是 compact set. 因此最优解存在.
+ 
+ 唯一性. 事实上唯一性在证明, 对于凸可行域+强凸目标函数, 其最优解若存在必然唯一. 
+@@ -335,16 +335,16 @@
+     \|\bm{y} - \bm{x}_1^\star - (\bm{y} - \bm{x}_2^\star)\|_2^2 &= \|\bm{x}_1^\star - \bm{x}_2^\star\|_2^2 = \|\bm{x}_1^\star - \bm{y}\|_2^2 + \|\bm{x}_2^\star - \bm{y}\|_2^2 - 2\left\langle \bm{y} - \bm{x}_1^\star , \bm{y} - \bm{x}_2^\star \right\rangle\\
+   \end{aligned}
+   $$
+-  因此两式相减得
+-  $$
+-  \left\langle \bm{y} - \bm{x}_1^\star, \bm{y} - \bm{x}_2^\star \right\rangle = -\frac{1}{2}\|\bm{x}_1^\star - \bm{x}_2^\star\|_2^2 < 0.
++  因此由第二式整理得
++  $$
++  \left\langle \bm{y} - \bm{x}_1^\star, \bm{y} - \bm{x}_2^\star \right\rangle = d(\bm{y}, \mathcal{C})^2 -\frac{1}{2}\|\bm{x}_1^\star - \bm{x}_2^\star\|_2^2 < d(\bm{y}, \mathcal{C})^2.
+   $$
+ - 考虑 $\bm{y}$ 到 $\frac{1}{2}(\bm{x}_1^\star + \bm{x}_2^\star)$ 的距离, 由于 $\mathcal{C}$ 是凸的, 必有 $\frac{1}{2}(\bm{x}_1^\star + \bm{x}_2^\star) \in \mathcal{C}$. 于是
+   $$
+   \begin{aligned}
+     \|\bm{y} - \frac{1}{2}(\bm{x}_1^\star + \bm{x}_2^\star)\|_2^2 &= \left\|\frac{1}{2}(\bm{y}-\bm{x}_1^\star) + \frac{1}{2}(\bm{y}-\bm{x}_2^\star)\right\|_2^2\\
+-    &= \frac{1}{4}\|\bm{y}-\bm{x}_1^\star\|_2^2 + \frac{1}{4}\|\bm{y}-\bm{x}_2^\star\|_2^2 + \frac{1}{4}\left\langle \bm{y}-\bm{x}_1^\star, \bm{y}-\bm{x}_2^\star \right\rangle\\
+-    &< \frac{1}{4}\|\bm{y}-\bm{x}_1^\star\|_2^2 + \frac{1}{4}\|\bm{y}-\bm{x}_2^\star\|_2^2 = d(\bm{y}, \mathcal{C})^2.
++    &= \frac{1}{4}\|\bm{y}-\bm{x}_1^\star\|_2^2 + \frac{1}{4}\|\bm{y}-\bm{x}_2^\star\|_2^2 + \frac{1}{2}\left\langle \bm{y}-\bm{x}_1^\star, \bm{y}-\bm{x}_2^\star \right\rangle\\
++    &< \frac{1}{4}\|\bm{y}-\bm{x}_1^\star\|_2^2 + \frac{1}{4}\|\bm{y}-\bm{x}_2^\star\|_2^2 + \frac12 d(\bm{y}, \mathcal{C})^2 = d(\bm{y}, \mathcal{C})^2.
+   \end{aligned}
+   $$
+   这与 $\bm{x}_1^\star, \bm{x}_2^\star$ 是最优解矛盾. 因此最优解唯一.
+@@ -383,7 +383,7 @@
+ & = \|\bm{y}-\bm{x}^\star\|_2^2 + t^2\|\bm{x}^\star - \bm{x}\|_2^2 + 2t\left\langle \bm{y}-\bm{x}^\star, \bm{x}^\star - \bm{x} \right\rangle.
+ \end{aligned}
+ $$
+-左右两边同时除以 $t > 0$，并令 $t \downarrow 0$，则有
++消去两边共同的平方距离项后, 左右两边同时除以 $t > 0$，并令 $t \downarrow 0$，则有
+ $$
+ \left\langle \bm{y}-\bm{x}^\star, \bm{x}^\star - \bm{x} \right\rangle \geq 0,~ \forall \bm{x} \in \mathcal{C}.
+ $$
+@@ -401,7 +401,7 @@
+ \mathcal{N}_{\mathcal{C}}(\bm{x}) := \{\bm{v} \in \mathbb{R}^n: \left\langle \bm{v}, \bm{y}-\bm{x} \right\rangle \leq 0,~ \forall \bm{y} \in \mathcal{C}\}.
+ $$
+ 
+-- 集合某点的法锥可以理解为从该点出发, 指向集合外部的所有向量的集合.
++- 集合某点的法锥可以理解为从该点出发, 与任意可行位移都呈直角或钝角的向量的集合.
+ - $\langle \bm{v}, \bm{y}-\bm{x} \rangle \leq 0$ 相当于是在寻找所有的直角或钝角向量. 因此每给定一个 $\bm{y} \in \mathcal{C}$，都会排除掉一半的空间. 最终被保留的部分的交集就是法锥. 
+ 
+ 如下是几种典型的法锥示意图:
+@@ -409,9 +409,9 @@
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20260929221224372.png" width="50%">
+ 
+ 
+-- $\bm{x}_a \in \text{int}(\mathcal{C})$ 是集合的内点. 则四周都是集合的点, 因此从 $\bm{x}_a$ 出发, 指向集合外部的向量是不存在的. 因此 $\mathcal{N}_{\mathcal{C}}(\bm{x}_a) = \{\bm{0}\}$.
++- $\bm{x}_a \in \text{int}(\mathcal{C})$ 是集合的内点. 则四周都是集合的点, 因此从 $\bm{x}_a$ 出发, 满足法向不等式的非零向量是不存在的. 因此 $\mathcal{N}_{\mathcal{C}}(\bm{x}_a) = \{\bm{0}\}$.
+ - $\bm{x}_b \in \partial \mathcal{C}$ 是集合的边界点. 则从 $\bm{x}_b$ 出发, 指向集合外部的向量是存在的. 最极端考虑两个切线方向, 则从 $\bm{x}_b$ 出发, 指向集合外部的向量只能在这两个切线方向之间. 因此 $\mathcal{N}_{\mathcal{C}}(\bm{x}_b)$ 是一个射线, 其方向垂直于切线方向.
+-- $\bm{x}_c \in \mathcal{C}$ 是集合的角点. 则法锥是构成角点的法向量的凸组合. 也即, 法锥是一个凸锥, 其包含了所有指向集合外部的向量.
++- $\bm{x}_c \in \mathcal{C}$ 是集合的角点. 则法锥是构成角点的法向量的非负锥组合. 也即, 法锥是一个凸锥, 其包含了所有满足上述法向不等式的向量.
+ 
+ ***法锥与投影***
+ 
+@@ -426,7 +426,7 @@
+ 
+ ***法锥与超平面***
+ 
+-此外, 回顾一个超平面的定义 $\{\bm{x} \in \mathbb{R}^n: \bm{a}^\top \bm{x} = b\}$, 其法向量就是 $\bm{a}$. 因此确定了一个法向量就确定了一个平面的方向, 再加上平面过的一个点, 就确定了一个超平面. 而对于法锥中的法向量, 这样定义的超平面很完美地将集合分为了内外两部分.
++此外, 回顾一个超平面的定义 $\{\bm{x} \in \mathbb{R}^n: \bm{a}^\top \bm{x} = b\}$, 其法向量就是 $\bm{a}$. 因此确定了一个法向量就确定了一个平面的方向, 再加上平面过的一个点, 就确定了一个超平面. 而对于法锥中的法向量, 这样定义的超平面很完美地使集合完全位于超平面的一侧.
+ 
+ ***法锥与最优性条件***
+ 
+@@ -467,7 +467,7 @@
+ 
+ #### Tangent cone
+ 
+-**切锥为指向给定集合内部的所有方向的集合.** 
++**切锥为可行方向及其极限方向构成的集合.** 
+ 
+ 给定非空闭凸集 $\mathcal{C} \subseteq \mathbb{R}^n$，定义 $\bm{x} \in \mathcal{C}$ 处的切锥为:
+ $$
+@@ -475,15 +475,15 @@
+ $$
+ - $\mathcal{C} - \bm{x}$ 表示从 $\bm{x}$ 出发, 指向集合内部的所有点. cone 表示可以在这些方向上进行任意伸缩. 而 closure 则会包含极限点 (如切线方向等)
+   - 例如, 对于单位圆盘 $\mathcal{C} = \{\bm{x} \in \mathbb{R}^2: \|\bm{x}\|_2 \leq 1\}$，在 $\bm{x} = (1,0)$ 处, 方向 $(0,1)$ 是一个切线方向, 我们在定义切锥时希望将其包含在内, 因此需要 closure.
+-- 因此切锥可理解为从 $\bm{x}$ 出发, 在一阶意义下, 指向集合内部的所有方向的集合 (可以认为是可行方向的集合).
++- 因此切锥可理解为从 $\bm{x}$ 出发, 在一阶意义下, 指向集合内部的所有方向的集合 (包括可行方向及其极限).
+ 
+ #### Polar cone and dual cone
+ 
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261010122849338.png" width="40%">
+ 
+-**极锥为指向给定集合外部的所有方向的集合, 即极锥的任意向量与集合中所有向量都呈直角或钝角.**
+-
+-给定非空闭凸集 $\mathcal{C} \subseteq \mathbb{R}^n$，定义 $\bm{x} \in \mathcal{C}$ 处的极锥为:
++**极锥为与给定集合中所有向量内积非正的向量集合, 即极锥的任意向量与集合中所有向量都呈直角或钝角.**
++
++给定非空闭凸集 $\mathcal{C} \subseteq \mathbb{R}^n$，定义 $\mathcal{C}$ 的极锥为:
+ $$
+ \mathcal{C}^\circ := \{\bm{v} \in \mathbb{R}^n: \left\langle \bm{v}, \bm{x} \right\rangle \leq 0,~ \forall \bm{x} \in \mathcal{C}\}.
+ $$
+@@ -508,7 +508,7 @@
+ - **对偶锥一定是闭凸锥, 不论原锥是否闭或凸.** 这是因为根据 $\mathcal{C}^*$ 的定义, 对于每个给定的 $\bm{x} \in \mathcal{C}$，集合 $\{\bm{v}: \left\langle \bm{v}, \bm{x} \right\rangle \geq 0\}$ 是一个包含原点的 closed half-space 是闭凸集; 而任意多个闭凸集的交集仍然是闭凸集, 故 $\mathcal{C}^*$ 是闭凸集. 
+ - **Bipolar theorem**: 对于任意非空闭凸锥 $\mathcal{C}$，有 $(\mathcal{C}^*)^* = \mathcal{C}$. 
+ 
+-### 2.4 Stability of projection: Non-expansiveness and Pythagorean theorem 
++### 2.5 Stability of projection: Non-expansiveness and Pythagorean theorem 
+ 
+ 投影也是一种算子/映射, 即 $\Pi_{\mathcal{C}}: \mathbb{R}^n \to \mathcal{C}$. 投影的稳定性是讨论对于输入 $\bm{y}$ 的微小扰动, 投影结果 $\Pi_{\mathcal{C}}(\bm{y})$ 的变化情况. 
+ 
+@@ -550,7 +550,7 @@
+ $$
+ 若 $\mathcal{C}$ 是 affine space, 则有等号成立.
+ 
+-### 2.5 Projection Distance
++### 2.6 Projection Distance
+ 
+ 前文说到投影是稳定的. 然而, 稳定性是一个零阶条件, 衡量是函数值对于输入扰动的变化幅度. 然而投影算子并不一定是连续可微的. 例如考虑一维空间中 $\mathcal{C} = \mathbb{R}_+$，则 $\Pi_{\mathcal{C}}(x) = \max\{0, x\}$，其在 $x=0$ 处不可微. 
+ 
+@@ -608,15 +608,15 @@
+ > 特别地, 在 Euclidean space 中, 每个线性映射 $L(\bm{d}): \mathbb{R}^n \to \mathbb{R}$ 都可以唯一地表示为内积的形式, 即 $L(\bm{d}) = \langle \bm{g}, \bm{d} \rangle$，我们称 $\bm{g}$ 为 $f$ 在 $\bm{x}_0$ 处的梯度, 记为 $\nabla f(\bm{x}_0) = \bm{g}$. 
+ 
+ 
+-### 2.6 Proximal operator and Moreau envelope
+-
+-Proximal operator 是投影算子的一种推广, 其定义为:
++### 2.7 Proximal operator and Moreau envelope
++
++对于 proper closed convex 函数 $f$, proximal operator 是投影算子的一种推广, 其定义为:
+ $$
+ \text{prox}_{\gamma f}(\bm{y}) := \arg\min_{\bm{x} \in \mathbb{R}^n} \left\{f(\bm{x}) + \frac{1}{2\gamma}\|\bm{x}-\bm{y}\|_2^2\right\},~ \gamma > 0.
+ $$
+ - 粗略地, proximal operator 尝试在输入点 $\bm{y}$ 附近寻找可以相对最小化 $f$ 的点. 因此这里也天然地引入了距离.
+ 
+-Indicator function $\delta_{\mathcal{C}}(\bm{x})$ 是一个特殊的凸函数, 其定义为:
++对于非空闭凸集 $\mathcal{C}$, indicator function $\delta_{\mathcal{C}}(\bm{x})$ 是一个特殊的凸函数, 其定义为:
+ $$
+ \delta_{\mathcal{C}}(\bm{x}) := \begin{cases} 0, & \bm{x} \in \mathcal{C}\\ +\infty, & \bm{x} \notin \mathcal{C}\end{cases}.
+ $$
+@@ -638,16 +638,16 @@
+   $$
+   M_{\gamma \delta_{\mathcal{C}}}(\bm{y}) = \min_{\bm{x} \in \mathbb{R}^n} \left\{\delta_{\mathcal{C}}(\bm{x}) + \frac{1}{2\gamma}\|\bm{x}-\bm{y}\|_2^2\right\} = \min_{\bm{x} \in \mathcal{C}} \frac{1}{2\gamma}\|\bm{x}-\bm{y}\|_2^2 = \frac{1}{2\gamma} d(\bm{y}, \mathcal{C})^2.
+   $$
+-  这也反映了 Moreau envelope 具有光滑化的特性. 对比原始的 $\delta_{\mathcal{C}}(\bm{x})$，其在 $\mathcal{C}$ 内部是平的, 在 $\mathcal{C}$ 外部是无穷大, 其梯度在 $\mathcal{C}$ 内部处处为零, 在 $\mathcal{C}$ 外部处处不存在. 而 Moreau envelope 则是一个光滑的函数, 其梯度恰为 $\nabla M_{\gamma \delta_{\mathcal{C}}}(\bm{y}) = \frac{1}{\gamma}(\bm{y}-\Pi_{\mathcal{C}}(\bm{y}))$.
+-
+-### 2.7 Examples of projections
++  这也反映了 Moreau envelope 具有光滑化的特性. 对比原始的 $\delta_{\mathcal{C}}(\bm{x})$，其在 $\mathcal{C}$ 内部是平的, 在 $\mathcal{C}$ 外部是无穷大, 其梯度在 $\operatorname{int}(\mathcal{C})$ 内处处为零, 在 $\mathcal{C}$ 外部处处不存在. 而 Moreau envelope 则是一个光滑的函数, 其梯度恰为 $\nabla M_{\gamma \delta_{\mathcal{C}}}(\bm{y}) = \frac{1}{\gamma}(\bm{y}-\Pi_{\mathcal{C}}(\bm{y}))$.
++
++### 2.8 Examples of projections
+ 
+ ***Projection onto a halfspace***. 给定半空间 $\mathcal{H} := \{\bm{x} \in \mathbb{R}^n: \bm{a}^\top \bm{x} \leq b\}$，$\bm{a} \neq \bm{0}$，则 $\forall \bm{y} \in \mathbb{R}^n$，有
+ $$
+ \Pi_{\mathcal{H}}(\bm{y}) = \begin{cases} \bm{y}, & \text{if } \bm{y} \in \mathcal{H}\\ \bm{y} - \frac{(\bm{a}^\top \bm{y}-b)_+}{\|\bm{a}\|_2^2}\bm{a}, & \text{if } \bm{y} \notin \mathcal{H}\end{cases}.
+ $$
+ 
+-*Proof*. $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$，实际上这是解析几何的经典公式. 这里作为复习. 最短距离定出现在点到边界的垂线段上, 因此若记投影点为 $\bm{x}_0$ (即垂足), 则 $\bm{y}$ 在其法方向上, 即 $\bm{y} = \bm{x}_0 + \lambda \bm{a}$, $\lambda \in \mathbb{R}$. 此外又知 $\bm{x}_0 \in \mathcal{H}$，即 $\bm{a}^\top \bm{x}_0 = b$. 二者联立, 得 $\lambda = \frac{\bm{a}^\top \bm{y}-b}{\|\bm{a}\|_2^2}$，从而代入可知 $\bm{x}_0 = \bm{y} - \frac{\bm{a}^\top \bm{y}-b}{\|\bm{a}\|_2^2}\bm{a}$.
++*Proof*. $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$，实际上这是解析几何的经典公式. 这里作为复习. 最短距离定出现在点到边界的垂线段上, 因此若记投影点为 $\bm{x}_0$ (即垂足), 则 $\bm{y}$ 在其法方向上, 即 $\bm{y} = \bm{x}_0 + \lambda \bm{a}$, $\lambda \in \mathbb{R}$. 此外又知 $\bm{x}_0 \in \partial \mathcal{H}$，即 $\bm{a}^\top \bm{x}_0 = b$. 二者联立, 得 $\lambda = \frac{\bm{a}^\top \bm{y}-b}{\|\bm{a}\|_2^2}$，从而代入可知 $\bm{x}_0 = \bm{y} - \frac{\bm{a}^\top \bm{y}-b}{\|\bm{a}\|_2^2}\bm{a}$.
+ 
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261002220459514.png" width="30%">
+ 
+@@ -667,9 +667,9 @@
+ 
+ $\square$
+ 
+-## 3. Seperation theorem and supporting hyperplane theorem
+-
+-### 3.1 Seperations
++## 3. Separation theorem and supporting hyperplane theorem
++
++### 3.1 Separations
+ 
+ 首先给出 separation 的定义. 
+ 
+@@ -679,7 +679,7 @@
+ $$
+ 则称 $\mathcal{S}$ 和 $\mathcal{T}$ 是可弱分离的 (weakly separable). 若可以严格取到 $<$，则称 $\mathcal{S}$ 和 $\mathcal{T}$ 是强可分离的 (strongly separable). 
+ - 也即, 存在一个超平面 $\mathcal{H}:=\{\bm{z} \in \mathbb{R}^n: \bm{a}^\top \bm{z} = b\}$，使得 $\mathcal{S}$ 和 $\mathcal{T}$ 分别位于该超平面的两侧 (弱分离允许集合接触超平面, 强分离则不允许), 其中 $\sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} \leq b \leq \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y}$.
+-- 这里再复习/提供一下几何直觉. 给定一个方向 $\bm{a}$，则 $\langle \bm{a}, \bm{x} \rangle$ 可以理解为 $\bm{x}$ 在 $\bm{a}$ 方向上的投影 (这里最好把 $\bm{x}$ 理解为点而不是向量), 也就是 $\bm{x}$ 在 $\bm{a}$ 方向上的坐标. 而固定一个方向 $\bm{a}$，对应超平面就只能在 $\bm{a}$ 方向上下移动. 因此只要两个集合在 $\bm{a}$ 方向上的投影不重叠, 则再二者的 gap 区域取的点都可以确定一个超平面, 使得二者被分开. 
++- 这里再复习/提供一下几何直觉. 给定一个方向 $\bm{a}$，则 $\langle \bm{a}, \bm{x} \rangle$ 可以理解为 $\bm{x}$ 在 $\bm{a}$ 方向上的投影 (这里最好把 $\bm{x}$ 理解为点而不是向量), 也就是 $\bm{x}$ 在 $\bm{a}$ 方向上的坐标. 而固定一个方向 $\bm{a}$，对应超平面就只能在 $\bm{a}$ 方向上下移动. 因此只要两个集合在 $\bm{a}$ 方向上的投影不重叠, 则在二者的 gap 区域取的点都可以确定一个超平面, 使得二者被分开. 
+ 
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261003153442526.png" width="60%">
+ 
+@@ -692,7 +692,7 @@
+ 
+ 
+ 
+-### 3.2 Seperation theorem
++### 3.2 Separation theorem
+ 
+ ***Theorem* (Point-set separation)** [Bertsimas, § 4.7, Theorem 4.11]: 给定 $\mathcal{C} \subseteq \mathbb{R}^n$ 是非空闭凸集, 给定 $\bm{x}^\star \notin \mathcal{C}$，则定存在向量 $\bm{c} \in \mathbb{R}^n$ 使得对于任意 $\bm{x} \in \mathcal{C}$，有
+ $$
+@@ -742,7 +742,7 @@
+ 
+ 
+ > *Note*.
+-> 在凸分析中, 常用的一个 trick 是将两个集合的分离问题转化为一个集合和一个点的分离问题. 也即, 考虑 $\mathcal{S}$ 与 $\mathcal{T}$ 的差集 $\mathcal{D} := \mathcal{S}-\mathcal{T} := \{\bm{x}-\bm{y}: \bm{x} \in \mathcal{S}, \bm{y} \in \mathcal{T}\}$，则 $\mathcal{D}$ 是非空闭凸集, 且 $0 \in \mathcal{D} \iff \mathcal{S} \cap \mathcal{T} \neq \emptyset$. 且回顾, 若 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的, 则存在 $\bm{a} \in \mathbb{R}^n$ 使得
++> 在凸分析中, 常用的一个 trick 是将两个集合的分离问题转化为一个集合和一个点的分离问题. 也即, 考虑 $\mathcal{S}$ 与 $\mathcal{T}$ 的差集 $\mathcal{D} := \mathcal{S}-\mathcal{T} := \{\bm{x}-\bm{y}: \bm{x} \in \mathcal{S}, \bm{y} \in \mathcal{T}\}$，则 $\mathcal{D}$ 是非空凸集, 但不一定闭, 且 $0 \in \mathcal{D} \iff \mathcal{S} \cap \mathcal{T} \neq \emptyset$. 且回顾, 若 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的, 则存在 $\bm{a} \in \mathbb{R}^n$ 使得
+ > $$
+ > \bm{a}^\top \bm{x} \leq \bm{a}^\top \bm{y},~ \forall \bm{x} \in \mathcal{S},~ \forall \bm{y} \in \mathcal{T} 
+ > \iff
+@@ -756,7 +756,7 @@
+ $$
+ \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} \leq \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y} \quad \land \quad \inf_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} < \sup_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y}.
+ $$
+-则不可能存在 $\bm{z} \in \text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T})$. 由反证法, 若不然, 则由于 $\bm{z} \in \text{ri}(\mathcal{S})$，且 $\bm{z} \in \text{ri}(\mathcal{T})$，故有 $\bm{a}^\top \bm{z} \leq \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} \leq \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y} \leq \bm{a}^\top \bm{z}$，从而 $\bm{a}^\top \bm{z} = \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} = \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y}$. 然而有引理: *若线性目标函数 $\bm{a}^\top \bm{x}$ 在凸集 $\mathcal{C}$ 的内部 $\text{ri}(\mathcal{C})$ 上取得最优值, 则该目标函数必为常函数.* 而这与 proper 的定义矛盾, 因此 $\text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T}) = \emptyset$.
++则不可能存在 $\bm{z} \in \text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T})$. 由反证法, 若不然, 则由于 $\bm{z} \in \text{ri}(\mathcal{S})$，且 $\bm{z} \in \text{ri}(\mathcal{T})$，故有 $\bm{a}^\top \bm{z} \leq \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} \leq \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y} \leq \bm{a}^\top \bm{z}$，从而 $\bm{a}^\top \bm{z} = \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x} = \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y}$. 然而有引理: *若线性目标函数 $\bm{a}^\top \bm{x}$ 在凸集 $\mathcal{C}$ 的内部 $\text{ri}(\mathcal{C})$ 上取得最优值, 则该目标函数在 $\mathcal{C}$ 上必为常函数.* 而这与 proper 的定义矛盾, 因此 $\text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T}) = \emptyset$.
+ 
+ **(Sufficiency)**. 即假设 $\text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T}) = \emptyset$，则 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的. 这里有两个事实: *对于非空凸集 $\mathcal{S}$ 和 $\mathcal{T}$，$\text{ri}(\mathcal{S})$ 与 $\text{ri}(\mathcal{T})$ 非空且凸的*, 且 $\text{cl}(\text{ri}(\mathcal{S})) = \text{cl}(\mathcal{S})$, $\text{cl}(\text{ri}(\mathcal{T})) = \text{cl}(\mathcal{T})$. 对于非空凸集 $\text{ri}(\mathcal{S})$ 和 $\text{ri}(\mathcal{T})$，由于二者不交, 故定存在 $\bm{a} \neq \bm{0}$ 分离二者且是 proper 的. 再根据 $\text{cl}(\text{ri}(\mathcal{S})) = \text{cl}(\mathcal{S})$, $\text{cl}(\text{ri}(\mathcal{T})) = \text{cl}(\mathcal{T})$，以及函数 $\bm{a}^\top \bm{x}$ 的连续性, 因此 $\sup_{\bm{x} \in \text{ri}(\mathcal{S})} \bm{a}^\top \bm{x} = \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x}$, $\inf_{\bm{y} \in \text{ri}(\mathcal{T})} \bm{a}^\top \bm{y} = \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y}$, 从而扩展到 $\mathcal{S}$ 和 $\mathcal{T}$ 上, 即 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的.
+ 
+@@ -765,7 +765,7 @@
+ ***Corollaries***. [Nesterov, § 3.1.4]
+ - $\mathcal{S}$ 和 $\mathcal{T}$ 是 strongly separable 的, 当且仅当 $\text{dist}(\mathcal{S}, \mathcal{T}) > 0$. 
+ - 特别地, 若 $\mathcal{S}, \mathcal{T}$ 是非空闭凸集, $\mathcal{S} \cap \mathcal{T} = \emptyset$，且至少有一个集合是 bounded 的 (即是 compact 的), 则二者是 strongly separable 的. 
+-- 若记 $\bm{s}^\star \in \mathcal{S}$ 和 $\bm{t}^\star \in \mathcal{T}$ 为二者的最短距离点, 则 $\bm{s}^\star$ 和 $\bm{t}^\star$ 是唯一的, 且 $\bm{a} := \bm{t}^\star - \bm{s}^\star$ 就是将二者分开的超平面的法向量.
++- 若记 $\bm{s}^\star \in \mathcal{S}$ 和 $\bm{t}^\star \in \mathcal{T}$ 为二者的最短距离点, 则 $\bm{s}^\star$ 和 $\bm{t}^\star$ 不一定唯一, 但差向量 $\bm{t}^\star-\bm{s}^\star$ 是唯一的, 且 $\bm{a} := \bm{t}^\star - \bm{s}^\star$ 就是将二者分开的超平面的法向量.
+ 
+ ### 3.3 Supporting hyperplane theorem
+ 
+@@ -783,7 +783,7 @@
+ 
+ ***Theorem* (Supporting hyperplane theorem)**: 若 $\mathcal{C} \subseteq \mathbb{R}^n$ 是凸集, 则在任意边界点 $\bm{x}^\star \in \text{bd}(\mathcal{C})$ 处, 都存在一个 supporting hyperplane.
+ 
+-*Proof Sketch*. 整体证明思路如下. 首先, 存在外部点列 $\{\bm{y}_k\} \subseteq \mathbb{R}^n \setminus \mathcal{C}$ 收敛到 $\bm{x}^\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\{\bm{a}_k\}$. 可以证明这个法向量序列是紧的, 因此根据 Bolzano-Weierstrass 定可以以选取一个收敛子列 $\{\bm{a}_{k_j}\}$ 收敛到某个 $\bm{a}^\star \neq \bm{0}$. 再根据连续性, 取极限后就可以得到在 $\bm{x}^\star$ 处的 supporting hyperplane.
++*Proof Sketch*. 整体证明思路如下. 首先考虑闭凸集, 存在外部点列 $\{\bm{y}_k\} \subseteq \mathbb{R}^n \setminus \mathcal{C}$ 收敛到 $\bm{x}^\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\{\bm{a}_k\}$. 将法向量归一化后, 序列位于紧的单位球面上, 因此根据 Bolzano-Weierstrass 定理可以选取一个收敛子列 $\{\bm{a}_{k_j}\}$ 收敛到某个 $\bm{a}^\star \neq \bm{0}$. 再根据连续性, 取极限后就可以得到在 $\bm{x}^\star$ 处的 supporting hyperplane.
+ 
+ *Proof*. 
+ 
+@@ -803,7 +803,7 @@
+ 
+ 若 $\mathcal{C}$ 不是闭集, 则考虑 $\text{cl}(\mathcal{C})$，此时 $\bm{x}^\star \in \text{bd}(\text{cl}(\mathcal{C}))$，且 $\text{cl}(\mathcal{C})$ 是闭凸集.而 $\mathcal{C} \subseteq \text{cl}(\mathcal{C})$，因此在 $\bm{x}^\star$ 处的 supporting hyperplane 同样是 $\mathcal{C}$ 的 supporting hyperplane.
+ 
+-***Corollary***: 任意非空闭凸集 $\mathcal{C}$ 都可以表示为所有包含它的 supporting hyperplane 的交集.
++***Corollary***: 任意非空闭凸集 $\mathcal{C}$ 都可以表示为所有包含它的 supporting halfspace 的交集.
+ 
+ ### 3.4 Support function and Exposed face
+ 
+@@ -821,12 +821,12 @@
+ $$
+ \sigma_{\mathcal{C}}(\bm{a}) := \sup_{\bm{x} \in \mathcal{C}} \bm{a}^\top \bm{x},
+ $$
+-- 故 supporting hyperplane 可以定义为:
++- 当上确界有限且在 $\mathcal{C}$ 中取得时, supporting hyperplane 可以定义为:
+   $$
+   \mathcal{H} = \{\bm{x} \in \mathbb{R}^n: \bm{a}^\top \bm{x} = \sigma_{\mathcal{C}}(\bm{a})\},~ \bm{a} \neq \bm{0}.
+   $$
+ 
+-- 前文提到, 一个非空闭凸集 $\mathcal{C}$ 可以表示为所有包含它的 supporting hyperplane 的交集, 因此也可以通过 support function 来表示 $\mathcal{C}$:
++- 前文提到, 一个非空闭凸集 $\mathcal{C}$ 可以表示为所有包含它的 supporting halfspace 的交集, 因此也可以通过 support function 来表示 $\mathcal{C}$:
+   $$
+   \mathcal{C} = \bigcap_{\bm{a} \in \mathbb{R}^n \setminus \{\bm{0}\}} \{\bm{x} \in \mathbb{R}^n: \bm{a}^\top \bm{x} \leq \sigma_{\mathcal{C}}(\bm{a})\}.
+   $$
+@@ -834,7 +834,7 @@
+ 
+ 下面是一些常见集合的 support function 的例子:
+ - 对于 Euclidean ball $\mathcal{B}(\bm{c}, r) := \{\bm{x} \in \mathbb{R}^n: \|\bm{x}-\bm{c}\|_2 \leq r\}$，有 $\sigma_{\mathcal{B}(\bm{c}, r)}(\bm{a}) = \bm{a}^\top \bm{c} + r\|\bm{a}\|_2$. 直观上, 可以理解为, 球在方向 $\bm{a}$ 上的评分, 就是由球心 $\bm{c}$ 在方向 $\bm{a}$ 上的投影, 再加上半径 $r$ 在方向 $\bm{a}$ 上的投影 (即 $r\|\bm{a}\|_2$).
+-- 对于 simplex $\Delta_n := \{\bm{x} \in \mathbb{R}^n: x_i \geq 0,~ \sum_{i=1}^n x_i = 1\}$，有 $\sigma_{\Delta_n}(\bm{a}) = \max_{i=1,\dots,n} a_i$. 
++- 对于 simplex $\Delta_{n-1} := \{\bm{x} \in \mathbb{R}^n: x_i \geq 0,~ \sum_{i=1}^n x_i = 1\}$，有 $\sigma_{\Delta_{n-1}}(\bm{a}) = \max_{i=1,\dots,n} a_i$. 
+   对于三维欧氏空间, simplex 即为由 $(1,0,0), (0,1,0), (0,0,1)$ 三个点构成的等边三角形和内部. 直观上, 可以理解为, simplex 在方向 $\bm{a}$ 上的评分, 就是由三个顶点在方向 $\bm{a}$ 上的投影中最大的那个.
+   <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261008224136252.png" width="40%">
+ - 对于 box-constraint set $[l,u]$, 有 $\sigma_{[l,u]}(\bm{a}) = \sum_{i=1}^n \max\{a_i l_i, a_i u_i\}$. 
+@@ -878,11 +878,11 @@
+   $$
+   \min \bm{0}^\top \bm{x} \quad \text{s.t.}~ \bm{A}\bm{x} = \bm{b},~ \bm{x} \geq \bm{0}.
+   $$
+-  其对偶问题为:
+-  $$
+-  \max \bm{b}^\top \bm{y} \quad \text{s.t.}~ \bm{y}^\top \bm{A} \geq \bm{0}^\top.
+-  $$
+-  如果 $\neq P$ 成立, 则说明原问题不可行, 则根据 LP 的对偶性质, 说明对偶问题要么是不可行的, 要么是无界的. 然而显然 $\bm{y} = \bm{0}$ 是对偶问题的一个可行解, 因此只能是对偶问题是无界的, 即 $\bm{b}^\top \bm{y} < 0$ (故最小化时是无界的). 因此, 存在 $\bm{y} \in \mathbb{R}^m$ 使得 $\bm{y}^\top \bm{A} \geq \bm{0}^\top$ 且 $\bm{y}^\top \bm{b} < 0$. 故 $Q$ 成立.
++  其对偶问题经变量取负后的等价形式为:
++  $$
++  \min \bm{b}^\top \bm{y} \quad \text{s.t.}~ \bm{y}^\top \bm{A} \geq \bm{0}^\top.
++  $$
++  如果 $\neg P$ 成立, 则说明原问题不可行, 则根据 LP 的对偶性质, 说明对偶问题要么是不可行的, 要么是无界的. 然而显然 $\bm{y} = \bm{0}$ 是对偶问题的一个可行解, 因此只能是对偶问题是无界的, 即 $\bm{b}^\top \bm{y} < 0$ (故最小化时是无界的). 因此, 存在 $\bm{y} \in \mathbb{R}^m$ 使得 $\bm{y}^\top \bm{A} \geq \bm{0}^\top$ 且 $\bm{y}^\top \bm{b} < 0$. 故 $Q$ 成立.
+ 
+ $\square$
+ 
+@@ -892,7 +892,7 @@
+ 
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261009201801658.png" width="45%">
+ 
+-因此, $\bm{y}^\top \bm{A} \geq \bm{0}^\top$ , $\bm{y}^\top \bm{b} < 0$ 就是原问题可行性的一个 certificate. 如果这个成立, 就一定不可行; 反之亦然.
++因此, $\bm{y}^\top \bm{A} \geq \bm{0}^\top$ , $\bm{y}^\top \bm{b} < 0$ 就是原问题不可行性的一个 certificate. 如果这个成立, 就一定不可行; 反之亦然.
+ 
+ 需要说明的是, 该视角的严格证明需要依赖于 *$\text{cone}(\bm{A})$ 是闭凸集* 这一事实, 而其 closedness 的证明并不是 trivial 的, 需要依赖于 Carathéodory 定理. 不过这里不妨承认之.
+ 
+@@ -904,30 +904,30 @@
+ - 记 $\bm{x} \in \mathbb{R}^n$ 为投资组合的权重且允许为负 (short selling). 则投资组合在期末的收益为 $\bm{w} = \bm{R}\bm{x} \in \mathbb{R}^m$. 
+ - 另外当前的投资组合价格为 $\bm{p} \in \mathbb{R}^n$, 故持有该投资组合的成本为 $\bm{p}^\top \bm{x}$. 
+ 
+-在金融市场中, 一个投资组合 $\bm{x}$ 是可套利的, 当存在某种组合 $\bm{x}$ 使得 $\bm{R}\bm{x} \geq \bm{0}$ 且 $\bm{p}^\top \bm{x} < 0$. 也即, 在期末的收益是非负的, 且在期初的成本是负的 (即不需要投入资金).
+-
+-故为使得市场无套利, 则必须不存在这样的 $\bm{x}$. 根据 Farkas lemma, 则等价于存在 $\bm{q}\in \mathbb{R}^m_{\geq 0}$ 使得 $\bm{R}^\top \bm{q} = \bm{p}$, 或等价地对于每个资产 $j=1,\dots,n$，有 $\bm{p}_j = \sum_{i=1}^m \bm{R}_{ij} \bm{q}_i$. 也即, 存在一个非负的状态价格向量 $\bm{q}$, 使得每个资产的价格等于其在各个状态下的收益的加权平均 (权重为 $\bm{q}$). 或者也可以看成是概率分布 $\bm{q}$ 下的期望收益. 这就是金融市场中无套利定价的基本原理.
++在金融市场中, 一个投资组合 $\bm{x}$ 在此处所讨论的严格负初始成本意义下是可套利的, 当存在某种组合 $\bm{x}$ 使得 $\bm{R}\bm{x} \geq \bm{0}$ 且 $\bm{p}^\top \bm{x} < 0$. 也即, 在期末的收益是非负的, 且在期初的成本是负的 (即不需要投入资金).
++
++故为使得市场无套利, 则必须不存在这样的 $\bm{x}$. 根据 Farkas lemma, 则等价于存在 $\bm{q}\in \mathbb{R}^m_{\geq 0}$ 使得 $\bm{R}^\top \bm{q} = \bm{p}$, 或等价地对于每个资产 $j=1,\dots,n$，有 $\bm{p}_j = \sum_{i=1}^m \bm{R}_{ij} \bm{q}_i$. 也即, 存在一个非负的状态价格向量 $\bm{q}$, 使得每个资产的价格等于其在各个状态下的收益的加权和 (权重为 $\bm{q}$). 若 $\sum_i q_i > 0$, 归一化后可看成概率分布下的期望收益再乘以 $\sum_i q_i$. 这就是金融市场中无套利定价的基本原理.
+ 
+ ### 4.2 Variants of Farkas lemma and General Discussion of Alternative System
+ 
+ ***Some Classic Variants***
+ 
+ 如下是 Farkas lemma 的一些常见变体, 其都是择一成立的, 有时也称之为 alternative system.
+-- Gordan lemma: $\bm{A}\bm{x} < 0$ $\leftrightarrow$ $\bm{A}^\top \bm{y} = 0,~ \bm{y} \geq 0,~ \bm{y} \neq 0$.
+-- $\bm{A}\bm{x} \leq 0$, $\bm{x} \geq 0$, $\bm{c}^\top \bm{x} > 0$ $\leftrightarrow$ $\bm{A}^\top \bm{y} \geq \bm{c}$, $\bm{y} \geq 0$.
+-- $\bm{A}\bm{x} \leq \bm{b}$, $\bm{B}\bm{x} = \bm{0}$, $\bm{c}^\top \bm{x} > 0$ $\leftrightarrow$ $\bm{A}^\top \bm{y} + \bm{B}^\top \bm{z} = \bm{c}$, $\bm{y} \geq 0$, $\bm{z}$ 任意.
++- Gordan lemma: $\bm{A}\bm{x} < 0$ $\text{与}$ $\bm{A}^\top \bm{y} = 0,~ \bm{y} \geq 0,~ \bm{y} \neq 0$.
++- $\bm{A}\bm{x} \leq 0$, $\bm{x} \geq 0$, $\bm{c}^\top \bm{x} > 0$ $\text{与}$ $\bm{A}^\top \bm{y} \geq \bm{c}$, $\bm{y} \geq 0$.
++- $\bm{A}\bm{x} \leq \bm{0}$, $\bm{B}\bm{x} = \bm{0}$, $\bm{c}^\top \bm{x} > 0$ $\text{与}$ $\bm{A}^\top \bm{y} + \bm{B}^\top \bm{z} = \bm{c}$, $\bm{y} \geq 0$, $\bm{z}$ 任意.
+ 
+ ***Alternative system***
+ 
+ 隐约感觉, Farkas lemma 并不是一个特殊的定理, 其背后有着一套更为普遍的分析框架. 故我们尝试讨论其背后的更一般的行为. 
+ 
+ 考虑一个集合 $\mathcal{S} \subseteq \mathbb{R}^n$，且给定 $\bm{b} \in \mathbb{R}^n$，可行性问题即为判断 $\bm{b} \in \mathcal{S}$ 是否成立, 这是一个 membership problem. 其一般有两种方法来判断 $\bm{b} \in \mathcal{S}$ 是否成立:
+-- Constructive: 如果我们认为 $\bm{b} \in \mathcal{S}$，则可以直接构造一个元素 $\bm{x} \in \mathcal{S}$，并证明其确实符合 $\mathcal{S}$ 的定义. 
++- Constructive: 如果我们认为 $\bm{b} \in \mathcal{S}$，则可以直接给出 $\bm{b}$ 属于 $\mathcal{S}$ 的构造，并证明其确实符合 $\mathcal{S}$ 的定义. 
+ - Certificate: 如果我们认为 $\bm{b} \notin \mathcal{S}$，则可以找到某些易于检查的性质 (certificate), 使得: 所有 $\mathcal{S}$ 中的元素定满足这些性质, 而 $\bm{b}$ 不满足这些性质. 
+ 
+   > 注意, 从逻辑上, 我们总可以说 $P \lor \neg P$，而 alternative system 之所以有意义, 是因为其给一个抽象的否命题提供了一组具体的条件, 甚至是一组线性泛函的条件, 这使得我们可以非常容易地检查条件的成立与否. 
+ 
+-而对于一个凸集 $\mathcal{S}$，separation theorem 给出了一个非常自然的 certificate. 
++而对于一个非空闭凸集 $\mathcal{S}$，separation theorem 给出了一个非常自然的 certificate. 
+ - 其自然地将一个集合的属于性问题, 转化为了一个线性不等式的成立性问题. 
+   - 按照几何的视角, 条件 $\bm{x} \geq 0, \bm{A}\bm{x}$ 就定义了一个凸锥 $\mathcal{S}:= \text{cone}(\bm{A})$，而不存在 $\bm{x} \geq 0$ 使得 $\bm{A}\bm{x} = \bm{b}$，则说明 $\bm{b} \notin \mathcal{S}$, 即存在锥外点 $\bm{b}$. 则根据 separation theorem, 存在一个超平面将 $\bm{b}$ 和 $\mathcal{S}$ 分开, 其法向量为 $\bm{y}$.
+   - 而超平面又可以通过 support function 来刻画, $\bm{b} \notin \mathcal{S}$ $\iff$ 存在 $\bm{y}$ 使得 $\bm{y}^\top \bm{b} > \sigma_{\mathcal{S}}(\bm{y}) = \sup_{\bm{x} \in \mathcal{S}} \bm{y}^\top \bm{x}$.
+@@ -968,7 +968,7 @@
+ $$
+ \begin{aligned}
+   \bm{A}\bm{x} &\leq \bm{0},\quad &&\bm{x} \geq 0,\quad \bm{b}^\top \bm{x} > 0, \quad \text{(System 1)}\\
+-  \bm{A}^\top \bm{y} &\geq \bm{0},\quad &&\bm{y} \geq 0. \quad \quad \text{(System 2)}
++  \bm{A}^\top \bm{y} &\geq \bm{b},\quad &&\bm{y} \geq 0. \quad \quad \text{(System 2)}
+ \end{aligned}
+ $$
+ 
+@@ -984,7 +984,7 @@
+   \bm{M}\bm{w} = \begin{bmatrix} \bm{A} & \bm{I}_m \\ \bm{b}^\top & 0 \end{bmatrix} \begin{bmatrix} \bm{x} \\ \bm{s} \end{bmatrix} = \begin{bmatrix} \bm{0}_m \\ 1 \end{bmatrix} = \bm{h},\quad \bm{w} \geq 0.
+   $$
+ 
+-故根据 Farkas lemma, System 1 有解当且仅当 System 2: $\bm{M}^\top \bm{z} \geq 0$, $\bm{h}^\top \bm{z} < 0$ 无解. 故下要证明 System 2 无解与题设 $\bm{A}^\top \bm{y} \geq 0$, $\bm{y} \geq 0$ 无解等价. 
++故根据 Farkas lemma, System 1 有解当且仅当 System 2: $\bm{M}^\top \bm{z} \geq 0$, $\bm{h}^\top \bm{z} < 0$ 无解. 故下要证明 System 2 无解与题设 $\bm{A}^\top \bm{y} \geq \bm{b}$, $\bm{y} \geq 0$ 无解等价. 
+ - 不妨将 $\bm{z} = \begin{bmatrix} \bm{z}_1 \\ z_2 \end{bmatrix}$，其中 $\bm{z}_1 \in \mathbb{R}^m$, $z_2 \in \mathbb{R}$. 则 System 2 可以写为:
+   $$
+   \begin{aligned}
+@@ -1010,7 +1010,7 @@
+ 
+     <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261023141151.png" width="30%">
+ 
+-  - 三角形的三个顶点都是 extreme points, 圆形的所有点都是 extreme points, 半空间没有 extreme points.
++  - 三角形的三个顶点都是 extreme points, 圆盘边界上的所有点都是 extreme points, 半空间没有 extreme points.
+ 
+ - **Vertex.** 对于 Polyhedron $\mathcal{P}$，定义 $\bm{x} \in \mathcal{P}$ 是 $\mathcal{P}$ 的 vertex, 如果存在 $\bm{c} \in \mathbb{R}^n$ 使得对任意 $\bm{y} \in \mathcal{P} \setminus \{\bm{x}\}$，有 $\bm{c}^\top \bm{x} < \bm{c}^\top \bm{y}$.  
+ 
+@@ -1018,7 +1018,7 @@
+ 
+   - Vertex 可以理解为: 若 supporting hyperplane 与 $\mathcal{P}$ 唯一相交于 $\bm{x}$，则 $\bm{x}$ 是 vertex. 
+ 
+-- **Basic feasible solution.** 考虑由线性等式和不等式构成的 polyhedron $\mathcal{P} \subseteq \mathbb{R}^n$，且 $\bm{x} \in \mathcal{R}^n$. 称 $\bm{x}$ 是 basic solution, 如果其所有等式约束都是 active 的, 且在所有 active constraints 中 (可能是等式或不等式约束) 恰有 $n$ 个约束是线性无关的. 若进一步 $\bm{x}$ 是 feasible 的, 则称 $\bm{x}$ 是 basic feasible solution (BFS). 
++- **Basic feasible solution.** 考虑由线性等式和不等式构成的 polyhedron $\mathcal{P} \subseteq \mathbb{R}^n$，且 $\bm{x} \in \mathbb{R}^n$. 称 $\bm{x}$ 是 basic solution, 如果其所有等式约束都是 active 的, 且在所有 active constraints 中 (可能是等式或不等式约束) 恰有 $n$ 个约束是线性无关的. 若进一步 $\bm{x}$ 是 feasible 的, 则称 $\bm{x}$ 是 basic feasible solution (BFS). 
+   - **Active constraints.** 分别记 LP 中的三种约束为 $\mathcal{M}_1 := \{i: \bm{a}_i^\top \bm{x} \geq b_i\}$, $\mathcal{M}_2 := \{i: \bm{a}_i^\top \bm{x} \leq b_i\}$, $\mathcal{M}_3 := \{i: \bm{a}_i^\top \bm{x} = b_i\}$. 若对于 $\bm{x}^* \in \mathcal{P}$，有 $\bm{a}_i^\top \bm{x}^* = b_i$，则称约束 $i$ 是 active 的.
+ 
+ 首先根据线性代数给出如下命题作为引理. 给定 $\bm{x}^* \in \mathbb{R}^n$, 令 $\mathcal{I} = \{i: \bm{a}_i^\top \bm{x}^* = b_i\}$. 则如下命题等价:
+@@ -1060,7 +1060,7 @@
+ 故, 可以将上述的讨论总结为如下定理.
+ 
+ ***Theorem* (Basic Solution Characterization in Standard Form)**.
+-考虑标准形式. $\bm{x}^* \in \mathcal{P}\subseteq \mathbb{R}^n$ 是 $\mathcal{P}$ 的 basic solution 当且仅当: 所有等式约束 $\bm{A}\bm{x} = \bm{b}$ 都是 active 的; 且存在 $m$ 个 inddex $B(1), \dots, B(m)$ 使得 (1) $\bm{A}$ 的对应列向量 $\bm{A}_{B(1)}, \dots, \bm{A}_{B(m)}$ 是线性无关的, 且 (2) 对于任意 $j \notin \{B(1), \dots, B(m)\}$，有 $\bm{x}^*_j = 0$.
++考虑标准形式. $\bm{x}^* \in \mathbb{R}^n$ 是 $\mathcal{P}$ 的 basic solution 当且仅当: 所有等式约束 $\bm{A}\bm{x} = \bm{b}$ 都是 active 的; 且存在 $m$ 个 indices $B(1), \dots, B(m)$ 使得 (1) $\bm{A}$ 的对应列向量 $\bm{A}_{B(1)}, \dots, \bm{A}_{B(m)}$ 是线性无关的, 且 (2) 对于任意 $j \notin \{B(1), \dots, B(m)\}$，有 $\bm{x}^*_j = 0$.
+ - 注意, 这里仅要求 $\bm{x}^*$ 是 basic solution, 并不要求其是 feasible 的. 若进一步要求 $\bm{x}^* \geq 0$，则称其为 basic feasible solution (BFS).
+ 
+ 为方便叙述, 称 $\bm{A}_{B(1)}, \dots, \bm{A}_{B(m)}$ 为 basic columns, 对应的变量 $\bm{x}_{B(1)}, \dots, \bm{x}_{B(m)}$ 为 basic variables, 其余的变量为 non-basic variables. 并且 wlog 可以将 $\bm{A}$ 进行列重排, 使得 $\bm{A} = [\bm{B}, \bm{N}]$，其中 $\bm{B} = [\bm{A}_{B(1)}, \dots, \bm{A}_{B(m)}] \in \mathbb{R}^{m \times m}$ 是 basic matrix, $\bm{N} = [\bm{A}_{j_1}, \dots, \bm{A}_{j_{n-m}}] \in \mathbb{R}^{m \times (n-m)}$ 是 non-basic matrix. 对应的变量为 $\bm{x} = [\bm{x}_B; \bm{x}_N]$.
+@@ -1141,7 +1141,7 @@
+ 
+ #### Basis and basic solution
+ 
+-考虑 basis matrix 和 basic solution 的关系, 可以发现: 一个 basis 只能对应一个 basic solution, 但一个 basic solution 或对应多个 basis. 
++考虑 basis matrix 和 basic solution 的关系, 可以发现: 一个 basis 只能对应一个 basic solution, 但一个 basic solution 可能对应多个 basis. 
+ - 对于标准形式 $\mathcal{P}$, 通过上述的构造方法, 选择 $m$ 个线性无关的列向量作为 basic columns 构造 $\bm{B}$, 令其余 $n-m$ 个对应的 $\bm{x}_N = 0$, 则可以求解 $\bm{x}_B = \bm{B}^{-1}\bm{b}$ 得到 basic solution $\bm{x} = [\bm{x}_B; \bm{x}_N]$. 由于 $\bm{B}$ 是非奇异的, 故 $\bm{x}_B$ 是唯一的.
+ 
+ - 然而反过来, 可能存在多个不同的 basis 对应同一个 basic solution. 这是因为, 在求解 $\bm{x}_B = \bm{B}^{-1}\bm{b}$ 时, 可能存在某些 $\bm{x}_B$ 的分量为 $0$. 而这些分量为 $0$ 的 basic variables, 也可以被视为 non-basic variables, 从而可以选择不同的 basic columns 来构造不同的 basis. 这就是 degeneracy 的来源.
+@@ -1166,7 +1166,7 @@
+ 此时, **若实际 active 的约束数大于 $n$, 则称 $\bm{x}^*$ 是 degenerate basic solution.** 因为在 $\mathbb{R}^n$ 空间中, 最多只有 $n$ 个线性无关的约束, 因此当活跃的约束数大于 $n$ 时, 必然存在冗余的约束, 也即存在某些约束是线性相关的. 这就导致了 degeneracy 的出现.
+ 
+ 故可以总结如下:
+-1. 在一般形势下, $\bm{x} \in \mathbb{R}^n$ 是 degenerate 的, 当且仅当其对应的 active constraints 的数量大于 $n$.
++1. 在一般形式下, basic solution $\bm{x} \in \mathbb{R}^n$ 是 degenerate 的, 当且仅当其对应的 active constraints 的数量大于 $n$.
+ 2. 在标准形式下, 一个 basic solution $\bm{x}^*$ 是 degenerate 的, 当且仅当其对应的 basic variables 中有至少一个为 $0$. 也即, 若 $\bm{x}^*$ 中 $0$ 的分量数大于 $n-m$ (即非 basic variables 的数量).
+ 3. 退化可能导致多个不同的 basis 对应同一个 basic solution (但不必然).
+ 
+@@ -1199,13 +1199,13 @@
+ - 若 $r = n$, 则 $\bm{x}$ 是 extreme point, 命题成立. 
+ - 若不然, $r<n$, 即 active 的约束的 normal vector 只能张成一个低于 $n$ 维的子空间. 此时在其正交补中一定存在非零向量 $\bm{d} \in \mathbb{R}^n$, 使得 $\bm{a}_i^\top \bm{d} = 0$ 对任意 $i \in \mathcal{I}$ 成立. 
+   - 因此, **沿着 $\bm{d}$ 的方向任意移动, 已有的 active constraints 依然 active**, 数学上即为, 对于 $\bm{y} = \bm{x} + \lambda \bm{d}$, 有 $\bm{a}_i^\top \bm{y} = \bm{a}_i^\top (\bm{x} + \lambda \bm{d}) = b_i$ 对任意 $i \in \mathcal{I}$ 成立.
+-  - 对于非活跃约束 $j \notin \mathcal{I}$, 由于 $\bm{s}_j := \bm{a}_j^\top \bm{x} - b_j > 0$, 故沿着 $\bm{d}$ 的方向移动, 只要距离 $\lambda$ 足够小 (通过下式可以反推 $|\lambda| < -\frac{\bm{s}_j}{2|\bm{a}_j^\top \bm{d}|}$), 就可以确保
++  - 对于非活跃约束 $j \notin \mathcal{I}$, 由于 $\bm{s}_j := \bm{a}_j^\top \bm{x} - b_j > 0$, 故沿着 $\bm{d}$ 的方向移动, 只要距离 $\lambda$ 足够小 (通过下式可以反推 $|\lambda| < \frac{\bm{s}_j}{2|\bm{a}_j^\top \bm{d}|}$, 对 $\bm{a}_j^\top \bm{d} \neq 0$; 若为零则无需限制), 就可以确保
+     $$
+       \bm{a}_j^\top \bm{y} - b_j = \bm{a}_j^\top (\bm{x} + \lambda \bm{d}) - b_j = \bm{s}_j + \lambda \bm{a}_j^\top \bm{d} > 0.
+     $$
+     即, 沿着 $\bm{d}$ 的方向移动, 非活跃约束在小范围内依然保持非活跃. 
+ 
+-- 根据 (2) 中题设, 由于 $\mathcal{P}$ 不包含一条完整的直线, 故沿着 $\bm{d}$ 的方向移动一定会被阻挡, 即存在某位置 $\bm{x}' := \bm{x} + \lambda^\star \bm{d}$, 使得恰好某个非活跃 $k$ 约束变为活跃 (即 $\bm{a}_k^\top \bm{x}' = b_k$, $\bm{a}_k^\top \bm{x} > b_k$). 此时, $\bm{a}_k^\top \bm{x}' = \bm{a}_k^\top (\bm{x} + \lambda^\star \bm{d}) = b_k$, 故 $\lambda^\star \bm{a}_k^\top \bm{d} = b_k - \bm{a}_k^\top \bm{x} \neq 0$, 故 $\bm{a}_k^\top \bm{d} \neq 0$. 因此, $\bm{a}_k$ 与 $\bm{d}$ 不正交, 也即 $\bm{a}_k$ 不在 $\text{span}\{\bm{a}_i: i \in \mathcal{I}\}$ 中. 故 $\text{dim}(\text{span}\{\bm{a}_i: i \in \mathcal{I} \cup \{k\}\}) = r + 1$. 即只要不断沿着 $\bm{d}$ 的方向移动, 我们就终归会碰到新的约束点, 且此时会增加活跃约束的数量.
++- 根据 (2) 中题设, 由于 $\mathcal{P}$ 不包含一条完整的直线, 故沿着 $\bm{d}$ 或 $-\bm{d}$ 中至少一个方向移动一定会被阻挡, 即存在某位置 $\bm{x}' := \bm{x} + \lambda^\star \bm{d}$, 使得恰好某个非活跃 $k$ 约束变为活跃 (即 $\bm{a}_k^\top \bm{x}' = b_k$, $\bm{a}_k^\top \bm{x} > b_k$). 此时, $\bm{a}_k^\top \bm{x}' = \bm{a}_k^\top (\bm{x} + \lambda^\star \bm{d}) = b_k$, 故 $\lambda^\star \bm{a}_k^\top \bm{d} = b_k - \bm{a}_k^\top \bm{x} \neq 0$, 故 $\bm{a}_k^\top \bm{d} \neq 0$. 因此, $\bm{a}_k$ 与 $\bm{d}$ 不正交, 也即 $\bm{a}_k$ 不在 $\text{span}\{\bm{a}_i: i \in \mathcal{I}\}$ 中. 故 $\text{dim}(\text{span}\{\bm{a}_i: i \in \mathcal{I} \cup \{k\}\}) = r + 1$. 即只要不断沿着 $\bm{d}$ 的方向移动, 我们就终归会碰到新的约束点, 且此时会增加活跃约束的数量.
+ 
+ - 到达新的点 $\bm{x}'$ 后, 重新计算其 active constraints 的 normal vectors 张成的空间维度. 若仍然小于 $n$, 则继续沿着新的正交补方向移动, 直到活跃约束的 normal vectors 张成 $\mathbb{R}^n$. 由于 $\mathcal{P}$ 不包含完整直线, 故最终一定会到达一个 extreme point.
+ 
+@@ -1234,8 +1234,8 @@
+ 若 $\mathcal{P}$ 至少有一个 extreme point, 且该 LP 问题存在最优解 $\bm{x}^*$, 则至少有一个最优解是 extreme point. 
+ 
+ *Proof.* 整体证明思路为: 首先找出原问题的全体最优解的集合, 并找出该最优解集内的 extreme point, 进而证明该 extreme point 也是原问题的极点. 
+-- 记 $\mathcal{Q} := \{\bm{x} \in \mathcal{P}: \bm{c}^\top \bm{x} = \arg\min_{\bm{x} \in \mathcal{P}} \bm{c}^\top \bm{x}\}$ 为原问题的最优解集. 由于 $\mathcal{P}$ 是 polyhedron, 且 $\mathcal{Q}$ 是在 $\mathcal{P}$ 的基础上额外增加了一个线性约束 $\bm{c}^\top \bm{x} = \text{const}$, 故 $\mathcal{Q}$ 也是 polyhedron, 且题设的极点存在性确保 $\mathcal{Q}$ 非空. 又因为 $\mathcal{P}$ 至少有一个 extreme point, 故定不包含直线, 故 $\mathcal{Q} \subseteq \mathcal{P}$ 也不包含直线. 根据极点存在性定理, $\mathcal{Q}$ 至少有一个 extreme point $\bm{x}^*$. 
+-- 下用反证法证明 $\bm{x}^*$ 也是原问题的极点. 若不然, 则根据极点定义, 定存在不同的 $\bm{y}, \bm{z} \in \mathcal{P}$ 和 $\lambda \in (0, 1)$, 使得 $\bm{x}^* = \lambda \bm{y} + (1-\lambda) \bm{z}$. 由于 $\bm{y}, \bm{z} \in \mathcal{P}$, 且 $\bm{x}^*$ 是最优解, 故 $\bm{c}^\top \bm{y}  \geq \bm{c}^\top \bm{x}^* = \lambda \bm{c}^\top \bm{y} + (1-\lambda) \bm{c}^\top \bm{z}$, 进而有 $\bm{c}^\top \bm{y} = \bm{c}^\top \bm{x}^* = \bm{c}^\top \bm{z}$, 故 $\bm{y}, \bm{z} \in \mathcal{Q}$. 这与 $\bm{x}^*$ 是 $\mathcal{Q}$ 的极点矛盾. 故 $\bm{x}^*$ 也是原问题的极点.
++- 记 $\mathcal{Q} := \{\bm{x} \in \mathcal{P}: \bm{c}^\top \bm{x} = \min_{\bm{x} \in \mathcal{P}} \bm{c}^\top \bm{x}\}$ 为原问题的最优解集. 由于 $\mathcal{P}$ 是 polyhedron, 且 $\mathcal{Q}$ 是在 $\mathcal{P}$ 的基础上额外增加了一个线性约束 $\bm{c}^\top \bm{x} = \text{const}$, 故 $\mathcal{Q}$ 也是 polyhedron, 且题设的最优解存在性确保 $\mathcal{Q}$ 非空. 又因为 $\mathcal{P}$ 至少有一个 extreme point, 故定不包含直线, 故 $\mathcal{Q} \subseteq \mathcal{P}$ 也不包含直线. 根据极点存在性定理, $\mathcal{Q}$ 至少有一个 extreme point $\bm{x}^*$. 
++- 下用反证法证明 $\bm{x}^*$ 也是原问题的极点. 若不然, 则根据极点定义, 定存在不同的 $\bm{y}, \bm{z} \in \mathcal{P}$ 和 $\lambda \in (0, 1)$, 使得 $\bm{x}^* = \lambda \bm{y} + (1-\lambda) \bm{z}$. 由于 $\bm{y}, \bm{z} \in \mathcal{P}$, 且 $\bm{x}^*$ 是最优解, 故 $\bm{c}^\top \bm{y}  \geq \bm{c}^\top \bm{x}^* = \lambda \bm{c}^\top \bm{y} + (1-\lambda) \bm{c}^\top \bm{z}$, 且 $\bm{c}^\top \bm{z} \geq \bm{c}^\top \bm{x}^*$, 进而有 $\bm{c}^\top \bm{y} = \bm{c}^\top \bm{x}^* = \bm{c}^\top \bm{z}$, 故 $\bm{y}, \bm{z} \in \mathcal{Q}$. 这与 $\bm{x}^*$ 是 $\mathcal{Q}$ 的极点矛盾. 故 $\bm{x}^*$ 也是原问题的极点.
+ 
+ $\square$
+ 
+@@ -1247,26 +1247,26 @@
+ 
+ 首先证明, 当目标函数有下界时, 对于任意可行点 $\bm{x} \in \mathcal{P}$, 都存在一个 BFS $\bm{w} \in \mathcal{P}$, 使得 $\bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$. 
+ - 任取某可行点 $\bm{x} \in \mathcal{P}$. 若 $k = n$, 即该点已经有 $n$ 个线性无关的 active constraints, 则 $\bm{x}$ 已经是 BFS, 取 $\bm{w} = \bm{x}$ 即可.
+-- 若 $k < n$, 则在 $\bm{x}$ 的正交补中一定存在非零向量 $\bm{d} \in \mathbb{R}^n$, 使得 $\bm{a}_i^\top \bm{d} = 0$ 对任意 $i \in \mathcal{I}$ 成立 (这与上一命题的构造完全相同). 记 $\bm{y} = \bm{x} + \lambda \bm{d}$, 则沿该方向移动, 任意已有活跃约束仍然是活跃的. 
+-- 与前述证明唯一不同的是, 在之前的论述中我们可以任取 $\bm{d}$ 的两侧去寻找下一个约束边界, 而这里的证明需要考虑目标函数的下降方向. $\mathcal{P}$ 中没有直线的条件并没有排除类似射线的情况, 其仍然有可能在某一侧是 unbounded 的. 因此若恰好是在下降一侧 unbounded, 则我们永远没有办法到达下一个约束边界, 也即无法找到更优的点 (这一点后面是通过目标函数 bounded 解决的). 
++- 若 $k < n$, 则在活跃约束法向量张成空间的正交补中一定存在非零向量 $\bm{d} \in \mathbb{R}^n$, 使得 $\bm{a}_i^\top \bm{d} = 0$ 对任意 $i \in \mathcal{I}$ 成立 (这与上一命题的构造完全相同). 记 $\bm{y} = \bm{x} + \lambda \bm{d}$, 则沿该方向移动, 任意已有活跃约束仍然是活跃的. 
++- 与前述证明唯一不同的是, 在之前的论述中我们可以任取 $\bm{d}$ 的两侧去寻找下一个约束边界, 而这里的证明需要考虑目标函数的下降方向. $\mathcal{P}$ 中没有直线的条件并没有排除类似射线的情况, 其仍然有可能在某一侧是 unbounded 的. 因此若恰好是在下降一侧 unbounded, 则我们永远没有办法到达下一个约束边界, 也即无法通过该方向到达下一个 BFS (这一点后面是通过目标函数 bounded 解决的). 
+ 
+ - 注意到, 在移动后的点 $\bm{y}$, 其目标函数值为 $\bm{c}^\top \bm{y} = \bm{c}^\top \bm{x} + \lambda \bm{c}^\top \bm{d}$. 因此目标函数的取值将由 $\bm{c}^\top \bm{d}$ 决定 (不妨假设 $\bm{c}^\top \bm{d} \leq 0$, $\lambda > 0$, 否则可以将 $\lambda$ 取负, 使得沿着 $-\bm{d}$ 的方向移动).
+   - 若 $\bm{c}^\top \bm{d} < 0$. 则此时对于移动后的点的目标值 $\bm{c}^\top \bm{y} = \bm{c}^\top \bm{x} + \lambda \bm{c}^\top \bm{d} < \bm{c}^\top \bm{x}$ 是严格下降的. 故断言沿此方向定会最终遇到新的约束边界点, 否则当 $\lambda \to +\infty$ 时, $\bm{c}^\top \bm{y} \to -\infty$, 与目标函数有下界矛盾. 与前文论述相同, 在新的边界点, 其活跃约束的 normal vectors 张成的空间维度至少增加 $1$. 
+-  - 若 $\bm{c}^\top \bm{d} = 0$. 则此时沿着 $\bm{d}$ 的方向移动, 目标函数值不变. 可以沿任意方向平移知道遇到新的约束边界点, 其活跃约束的 normal vectors 张成的空间维度至少增加 $1$.
++  - 若 $\bm{c}^\top \bm{d} = 0$. 则此时沿着 $\bm{d}$ 的方向移动, 目标函数值不变. 可选择 $\bm{d}$ 或 $-\bm{d}$ 中受阻的一侧平移直到遇到新的约束边界点, 其活跃约束的 normal vectors 张成的空间维度至少增加 $1$.
+ - 反复进行上述操作, 直到活跃约束的 normal vectors 张成 $\mathbb{R}^n$, 即到达一个 BFS $\bm{w} \in \mathcal{P}$, 且 $\bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$.
+ 
+-记 $\mathcal{P}$ 的全体 polyhedron 的 BFS 集合为 $\bm{w}_1, \dots, \bm{w}_K$ (其中 $K$ 是有限的, 因为 $\mathcal{P}$ 的 BFS 数量是有限的). 取其中 $\bm{w}^* = \arg\min_{k=1,\dots,K} \bm{c}^\top \bm{w}_k$. 在第一部分我们证明, 任意可行点 $\bm{x} \in \mathcal{P}$ 都存在一个 BFS $\bm{w} \in \mathcal{P}$, 使得 $\bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$. 因此, 有 $\bm{c}^\top \bm{w}^* \leq \bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$ 对任意 $\bm{x} \in \mathcal{P}$ 成立. 故 $\bm{w}^*$ 是最优解, 且是 BFS, 即 extreme point.
++记 $\mathcal{P}$ 的全体 polyhedron 的 BFS 集合为 $\bm{w}_1, \dots, \bm{w}_K$ (其中 $K$ 是有限的, 因为 $\mathcal{P}$ 的 BFS 数量是有限的). 取其中 $k^* \in \arg\min_{k=1,\dots,K} \bm{c}^\top \bm{w}_k,~ \bm{w}^* = \bm{w}_{k^*}$. 在第一部分我们证明, 任意可行点 $\bm{x} \in \mathcal{P}$ 都存在一个 BFS $\bm{w} \in \mathcal{P}$, 使得 $\bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$. 因此, 有 $\bm{c}^\top \bm{w}^* \leq \bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$ 对任意 $\bm{x} \in \mathcal{P}$ 成立. 故 $\bm{w}^*$ 是最优解, 且是 BFS, 即 extreme point.
+ 
+ ### 5.6 Cones and extreme rays
+ 
+-上面的论述说明, 若有 extreme rays, 且目标函数值有限, 则可在 BFS / 极点处达到最优. 而另一方面, 当目标函数无下界时, 我们希望给出对应的 certification. 因此需要引出极射线 (extreme rays) 的概念. 在章节安排上, 本小节位于 Bertsimas 的 Duality 一章, 我们在讨论这个问题的时候也应该留意对偶视角的联系.
++上面的论述说明, 若有 extreme points, 且目标函数值有限, 则可在 BFS / 极点处达到最优. 而另一方面, 当目标函数无下界时, 我们希望给出对应的 certification. 因此需要引出极射线 (extreme rays) 的概念. 在章节安排上, 本小节位于 Bertsimas 的 Duality 一章, 我们在讨论这个问题的时候也应该留意对偶视角的联系.
+ 
+ 首先顺承上述关于极点的讨论, 先给出 pointed cone 的定义. 给定一个 polyhedral cone $\mathcal{C} = \{\bm{x} \in \mathbb{R}^n: \bm{a}_i^\top \bm{x} \geq 0,~ i=1,\dots,m\}$. 一个 cone 是 pointed 当且仅当下述任一条件成立:
+ 1. $\mathcal{C}$ 不包含完整直线.
+ 2. $\bm{0}$ 是 $\mathcal{C}$ 的极点.
+ 3. 在 $\bm{a}_1, \dots, \bm{a}_m$ 中存在 $n$ 个线性无关的向量.
+ 
+-考虑 polyhedron $\mathcal{P} = \{\bm{x} \in \mathbb{R}^n: \bm{A}\bm{x} \geq \bm{b}\}$. 称从任意 $\bm{y} \in \mathcal{P}$ 出发, 可以无限沿着某个方向移动, 而仍然保持在 $\mathcal{P}$ 中的方向的集合为这个 polyhedron 的 recession cone, 记为 $\mathrm{rec}(\mathcal{P})$. Formally, 定义如下:
++考虑非空 polyhedron $\mathcal{P} = \{\bm{x} \in \mathbb{R}^n: \bm{A}\bm{x} \geq \bm{b}\}$. 称从任意 $\bm{y} \in \mathcal{P}$ 出发, 可以无限沿着某个方向移动, 而仍然保持在 $\mathcal{P}$ 中的方向的集合为这个 polyhedron 的 recession cone, 记为 $\mathrm{rec}(\mathcal{P})$. Formally, 定义如下:
+ $$
+ \mathrm{rec}(\mathcal{P}) := \{\bm{d} \in \mathbb{R}^n: \bm{A}(\bm{y} + \lambda \bm{d}) \geq \bm{b},~ \forall \lambda \geq 0,~ \forall \bm{y} \in \mathcal{P}\} = \{\bm{d} \in \mathbb{R}^n: \bm{A}\bm{d} \geq 0\}.
+ $$
+@@ -1275,24 +1275,24 @@
+ \mathrm{rec}(\mathcal{P}) := \{\bm{d} \in \mathbb{R}^n: \bm{A}\bm{d} = 0,~ \bm{d} \geq 0\}.
+ $$
+ 
+-接着, 仿照 BFS / 极点的定义, 我们可以定义极射线 (extreme rays) 的概念. 回顾对于极点 $\bm{x} \in \mathcal{P} \subseteq \mathbb{R}^n$, 其具有 $n$ 个线性无关的 active constraints. 而对于极射线 $\bm{d} \in \mathrm{rec}(\mathcal{P})$, 其具有 $n-1$ 个线性无关的 active constraints, 其相比于 extreme point 多了一个自由度, 也即可以沿着该方向无限移动. 
+-
+-如下图所示. (a) 中, $\bm{y}$ 边界点上, 因为恰有 $n-1=1$ 个线性无关的 active constraints, 故所有边界点 $\bm{y}$ 是极射线; 相反内部点不是 extreme ray, 因为没有 active constraints. (b) 中同理, 对于三棱锥, 其三条棱都是极射线, 而其内部点不是极射线. 
++接着, 仿照 BFS / 极点的定义, 我们可以定义极射线 (extreme rays) 的概念. 回顾对于极点 $\bm{x} \in \mathcal{P} \subseteq \mathbb{R}^n$, 其具有 $n$ 个线性无关的 active constraints. 而对于 pointed recession cone 的极射线方向 $\bm{d} \in \mathrm{rec}(\mathcal{P}) \setminus \{\bm{0}\}$, 其在 recession cone 中的 active constraints 的秩恰为 $n-1$, 其相比于 extreme point 多了一个自由度, 也即可以沿着该方向无限移动. 
++
++如下图所示. (a) 中, $\bm{y}$ 在非零边界点上, 因为恰有 $n-1=1$ 个线性无关的 active constraints, 故所有非零边界点 $\bm{y}$ 都生成极射线; 相反内部点不是 extreme ray, 因为没有 active constraints. (b) 中同理, 对于三棱锥, 其三条棱都是极射线, 而其内部点不是极射线. 
+ 
+ <img src="https://raw.githubusercontent.com/By-Xin/Blog-figs/main/20261105214905217.png" width="50%">
+ 
+-***Theorem* (Extreme rays on standard polyhedron)**. 考虑优化问题 $\min_{\bm{x} \in \mathcal{C}} \bm{c}^\top \bm{x}$, 其中 $\mathcal{C} = \{\bm{x} \in \mathbb{R}^n: \bm{a}_i^\top \bm{x} \geq 0,~ i=1,\dots,m\}$ 是一个 pointed cone. 则最优解等于 $-\infty$ 当且仅当存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$.
+-
+-*Proof*. ($\Leftarrow$) 若存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$, 则对于任意 $\lambda \geq 0$, 有 $\bm{x} + \lambda \bm{d} \in \mathcal{C}$, 且 $\bm{c}^\top (\bm{x} + \lambda \bm{d}) = \bm{c}^\top \bm{x} + \lambda \bm{c}^\top \bm{d}$, 随着 $\lambda \to +\infty$, $\bm{c}^\top (\bm{x} + \lambda \bm{d}) \to -\infty$, 故最优解为 $-\infty$.
+-
+-($\Rightarrow$) 欲证: 若最优解为 $-\infty$, 则存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$. 
+-- 首先, 由于最优解为 $-\infty$, 故定存在 $\bm{x} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{x} < 0$. 对 $\bm{x}$ 费用进行归一化为 $\tilde{\bm{x}} = {\bm{x}}/{(-\bm{c}^\top \bm{x})}$, 则 $\tilde{\bm{x}} \in \mathcal{C}$ 且 $\bm{c}^\top \tilde{\bm{x}} = -1$. 方便起见, 这里仍将 $\tilde{\bm{x}}$ 记为 $\bm{x}$. 故现有集合 $\mathcal{P} = \{\bm{x}: \bm{a}_i^\top \bm{x} \geq 0,~ i=1,\dots,m,~ \bm{c}^\top \bm{x} = -1\}$ 是一个 polyhedron, 且 $\mathcal{P} \neq \varnothing$.
+-- 由于 $\mathcal{C}$ 是 pointed cone, 故 $\bm{a}_1, \dots, \bm{a}_m$ 可以张成 $\mathbb{R}^n$. 而 $\mathcal{P}$ 是在 $\mathcal{C}$ 的基础上增加了一个线性约束 $\bm{c}^\top \bm{x} = -1$, 其不会减少张成的空间维度. 回顾, 对于 polyhedron $\mathcal{P}$, 其存在极点 iif 其不包含完整直线 iif $\operatorname{span}\{\bm{a}_1, \dots, \bm{a}_m, \bm{c}\} = \mathbb{R}^n$. 故 $\mathcal{P}$ 至少有一个 extreme point, 记为 $\bm{d}$. 此时有 $\bm{c}^\top \bm{d} = -1 < 0$.
+-- 下证明 $\bm{d}$ 是 $\mathcal{C}$ 的extreme ray. 由于 $\bm{d} \in \mathcal{P}$, 其等式约束恒成立. 而又因为在 $\bm{d}$ 处有 $n$ 个线性无关的 active constraints, 故 $\bm{d}$ 处有 $n-1$ 个线性无关的 active constraints, 故 $\bm{d}$ 是 $\mathcal{C}$ 的 extreme ray.
+-
+-$\square$
+-
+-上述论述还可以进一步推广到一般的 polyhedron $\mathcal{P} = \{\bm{x} \in \mathbb{R}^n: \bm{A}\bm{x} \geq \bm{b}\}$. 假设 $\mathcal{P}$ 至少有一个 extreme point, 则最优解为 $-\infty$ 当且仅当存在一个 extreme ray $\bm{d}$, 使得 $\bm{c}^\top \bm{d} < 0$. 
++***Theorem* (Extreme rays on standard polyhedron)**. 考虑优化问题 $\min_{\bm{x} \in \mathcal{C}} \bm{c}^\top \bm{x}$, 其中 $\mathcal{C} = \{\bm{x} \in \mathbb{R}^n: \bm{a}_i^\top \bm{x} \geq 0,~ i=1,\dots,m\}$ 是一个 pointed cone. 则最优值等于 $-\infty$ 当且仅当存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$.
++
++*Proof*. ($\Leftarrow$) 若存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$, 则对于任意 $\lambda \geq 0$, 有 $\bm{x} + \lambda \bm{d} \in \mathcal{C}$, 且 $\bm{c}^\top (\bm{x} + \lambda \bm{d}) = \bm{c}^\top \bm{x} + \lambda \bm{c}^\top \bm{d}$, 随着 $\lambda \to +\infty$, $\bm{c}^\top (\bm{x} + \lambda \bm{d}) \to -\infty$, 故最优值为 $-\infty$.
++
++($\Rightarrow$) 欲证: 若最优值为 $-\infty$, 则存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$. 
++- 首先, 由于最优值为 $-\infty$, 故定存在 $\bm{x} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{x} < 0$. 对 $\bm{x}$ 费用进行归一化为 $\tilde{\bm{x}} = {\bm{x}}/{(-\bm{c}^\top \bm{x})}$, 则 $\tilde{\bm{x}} \in \mathcal{C}$ 且 $\bm{c}^\top \tilde{\bm{x}} = -1$. 方便起见, 这里仍将 $\tilde{\bm{x}}$ 记为 $\bm{x}$. 故现有集合 $\mathcal{P} = \{\bm{x}: \bm{a}_i^\top \bm{x} \geq 0,~ i=1,\dots,m,~ \bm{c}^\top \bm{x} = -1\}$ 是一个 polyhedron, 且 $\mathcal{P} \neq \varnothing$.
++- 由于 $\mathcal{C}$ 是 pointed cone, 故 $\bm{a}_1, \dots, \bm{a}_m$ 可以张成 $\mathbb{R}^n$. 而 $\mathcal{P}$ 是在 $\mathcal{C}$ 的基础上增加了一个线性约束 $\bm{c}^\top \bm{x} = -1$, 其不会减少张成的空间维度. 回顾, 对于 polyhedron $\mathcal{P}$, 其存在极点 iff 其不包含完整直线 iff $\operatorname{span}\{\bm{a}_1, \dots, \bm{a}_m, \bm{c}\} = \mathbb{R}^n$. 故 $\mathcal{P}$ 至少有一个 extreme point, 记为 $\bm{d}$. 此时有 $\bm{c}^\top \bm{d} = -1 < 0$.
++- 下证明 $\bm{d}$ 是 $\mathcal{C}$ 的extreme ray. 由于 $\bm{d} \in \mathcal{P}$, 其等式约束恒成立. 而又因为在 $\bm{d}$ 处有 $n$ 个线性无关的 active constraints, 故除去 $\bm{c}^\top \bm{d}=-1$ 这一约束后, $\bm{d}$ 处锥约束的秩恰为 $n-1$, 故 $\bm{d}$ 是 $\mathcal{C}$ 的 extreme ray.
++
++$\square$
++
++上述论述还可以进一步推广到一般的 polyhedron $\mathcal{P} = \{\bm{x} \in \mathbb{R}^n: \bm{A}\bm{x} \geq \bm{b}\}$. 假设 $\mathcal{P}$ 至少有一个 extreme point, 则最优值为 $-\infty$ 当且仅当存在一个 extreme ray $\bm{d}$, 使得 $\bm{c}^\top \bm{d} < 0$. 
+ 
+ 
+ ### 5.7 Representations of polyhedra
+@@ -1303,10 +1303,10 @@
+   $$
+     \mathcal{P} = \{\bm{x}: \bm{A}\bm{x} \leq \bm{b}, \bm{C}\bm{x} = \bm{d}\}
+   $$ 
+-- ***V(ertices) representation***. V-representation 是通过描述多面体的顶点, 用这些顶点的凸包来表示多面体. 此外通过引入 cone 来表示 unbounded 的部分. 形如
++- ***V(ertices) representation***. V-representation 是通过描述多面体的有限生成点, 用这些点的凸包来表示多面体. 此外通过引入 cone 来表示 unbounded 的部分. 形如
+   $$
+     \mathcal{P} = \text{conv}(\mathcal{V}) + \text{cone}(\mathcal{R})
+   $$
+-  其中, $\text{conv}(\mathcal{V})$ 表示顶点集合 $\mathcal{V}$ 的凸包, $\text{cone}(\mathcal{R})$ 表示射线集合 $\mathcal{R}$ 的凸锥, 求和为 Minkowski sum. 即, 任意 polyhedron 都可以表示为 extreme point 的凸组合 + extreme ray 的非负组合. 
++  其中, $\text{conv}(\mathcal{V})$ 表示有限生成点集 $\mathcal{V}$ 的凸包, $\text{cone}(\mathcal{R})$ 表示射线集合 $\mathcal{R}$ 的凸锥, 求和为 Minkowski sum. 即, 任意非空 pointed polyhedron 都可以表示为 extreme point 的凸组合 + extreme ray 的非负组合; 一般 polyhedron 的有限生成点和生成方向不必是极点与极射线. 
+ 
+ 可以证明, 这两种表示是等价的.

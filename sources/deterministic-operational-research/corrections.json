@@ -1,0 +1,749 @@
+{
+  "source_sha256": "8464144490b01b27dd3baebbf30d99c9a4aca9f9dc9d5bafc397b4e1c0156fb0",
+  "changes": [
+    {
+      "id": "OR-01",
+      "source_line": 40,
+      "before": "  - 若对所有 $\\bm{x} \\in \\mathcal{B}_\\varepsilon(\\bm{x}^\\star) \\bigcap \\mathcal{S}$，有 $f(\\bm{x}) \\geq f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 local optimizer. 若对所有 $\\bm{x} \\neq \\bm{x}^\\star$，有 $f(\\bm{x}) > f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 strict local optimizer. 若对所有 $\\bm{x} \\in \\mathcal{S}$，$\\bm{x}^\\star$ 是唯一的局部最优解，则称 $\\bm{x}^\\star$ 是 isolated / strong local optimizer.",
+      "after": "  - 若存在 $\\varepsilon > 0$, 对所有 $\\bm{x} \\in \\mathcal{B}_\\varepsilon(\\bm{x}^\\star) \\bigcap \\mathcal{S}$，有 $f(\\bm{x}) \\geq f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 local optimizer. 若对所有 $\\bm{x} \\neq \\bm{x}^\\star$，有 $f(\\bm{x}) > f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 strict local optimizer. 若对所有 $\\bm{x} \\in \\mathcal{S}$，$\\bm{x}^\\star$ 是唯一的局部最优解，则称 $\\bm{x}^\\star$ 是 isolated / strong local optimizer.",
+      "count": 1,
+      "reason": "局部最优需要存在邻域半径"
+    },
+    {
+      "id": "OR-02",
+      "source_line": 40,
+      "before": "  - 若存在 $\\varepsilon > 0$, 对所有 $\\bm{x} \\in \\mathcal{B}_\\varepsilon(\\bm{x}^\\star) \\bigcap \\mathcal{S}$，有 $f(\\bm{x}) \\geq f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 local optimizer. 若对所有 $\\bm{x} \\neq \\bm{x}^\\star$，有 $f(\\bm{x}) > f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 strict local optimizer. 若对所有 $\\bm{x} \\in \\mathcal{S}$，$\\bm{x}^\\star$ 是唯一的局部最优解，则称 $\\bm{x}^\\star$ 是 isolated / strong local optimizer.",
+      "after": "  - 若存在 $\\varepsilon > 0$, 对所有 $\\bm{x} \\in \\mathcal{B}_\\varepsilon(\\bm{x}^\\star) \\bigcap \\mathcal{S}$，有 $f(\\bm{x}) \\geq f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 local optimizer. 若对该邻域内所有可行的 $\\bm{x} \\neq \\bm{x}^\\star$，有 $f(\\bm{x}) > f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 strict local optimizer. 若对所有 $\\bm{x} \\in \\mathcal{S}$，$\\bm{x}^\\star$ 是唯一的局部最优解，则称 $\\bm{x}^\\star$ 是 isolated / strong local optimizer.",
+      "count": 1,
+      "reason": "严格局部最优的比较范围也是邻域"
+    },
+    {
+      "id": "OR-03",
+      "source_line": 40,
+      "before": "  - 若存在 $\\varepsilon > 0$, 对所有 $\\bm{x} \\in \\mathcal{B}_\\varepsilon(\\bm{x}^\\star) \\bigcap \\mathcal{S}$，有 $f(\\bm{x}) \\geq f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 local optimizer. 若对该邻域内所有可行的 $\\bm{x} \\neq \\bm{x}^\\star$，有 $f(\\bm{x}) > f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 strict local optimizer. 若对所有 $\\bm{x} \\in \\mathcal{S}$，$\\bm{x}^\\star$ 是唯一的局部最优解，则称 $\\bm{x}^\\star$ 是 isolated / strong local optimizer.",
+      "after": "  - 若存在 $\\varepsilon > 0$, 对所有 $\\bm{x} \\in \\mathcal{B}_\\varepsilon(\\bm{x}^\\star) \\bigcap \\mathcal{S}$，有 $f(\\bm{x}) \\geq f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 local optimizer. 若对该邻域内所有可行的 $\\bm{x} \\neq \\bm{x}^\\star$，有 $f(\\bm{x}) > f(\\bm{x}^\\star)$，则称 $\\bm{x}^\\star$ 是 strict local optimizer. 若 $\\bm{x}^\\star$ 是某个邻域内唯一的局部最优解，则称 $\\bm{x}^\\star$ 是 isolated local optimizer.",
+      "count": 1,
+      "reason": "孤立局部最优是邻域性质；strong 并非统一同义术语"
+    },
+    {
+      "id": "OR-04",
+      "source_line": 138,
+      "before": "- Affine independent 可以理解为, 给定一个参考点 $\\bm{v}_0$，与其余点构成的向量两两是不共线的. 因此这与其所处的空间维度是有密切联系的. 例如在二维平面中, 3 个点不共线, 给定一个参考点, 其余两个点可以 span 整个平面; 然而如果有四个点, 则必定会有一个点是冗余的. **在 $n$ 维空间中, 最多只能有 $n+1$ 个 affinely independent 的点.** (这些点 span 出了一个 $n$-dimensional affine space)",
+      "after": "- Affine independent 可以理解为, 给定一个参考点 $\\bm{v}_0$，与其余点构成的向量是线性无关的. 因此这与其所处的空间维度是有密切联系的. 例如在二维平面中, 3 个点不共线, 给定一个参考点, 其余两个点可以 span 整个平面; 然而如果有四个点, 则必定会有一个点是冗余的. **在 $n$ 维空间中, 最多只能有 $n+1$ 个 affinely independent 的点.** (这些点 span 出了一个 $n$-dimensional affine space)",
+      "count": 1,
+      "reason": "两两不共线不足以推出多个向量线性无关"
+    },
+    {
+      "id": "OR-05",
+      "source_line": 167,
+      "before": "        其中 $\\bm{A} \\in \\mathbb{R}^{m \\times n}$, $\\bm{b}, \\bm{c} \\in \\mathbb{R}^m$, $d \\in \\mathbb{R}$. 这就是一个 SOC 约束.",
+      "after": "        其中 $\\bm{A} \\in \\mathbb{R}^{m \\times n}$, $\\bm{b} \\in \\mathbb{R}^m$, $\\bm{c} \\in \\mathbb{R}^n$, $d \\in \\mathbb{R}$. 这就是一个 SOC 约束.",
+      "count": 1,
+      "reason": "SOC 右侧 c 与 x 维数必须一致"
+    },
+    {
+      "id": "OR-06",
+      "source_line": 193,
+      "before": "- 仿射的 preimage: 若 $\\bm{A} \\in \\mathbb{R}^{m \\times n}$ 且 $\\bm{b} \\in \\mathbb{R}^m$，则 $\\{\\bm{x} \\in \\mathbb{R}^n: \\bm{A}\\bm{x} + \\bm{b} \\in \\mathcal{C}\\}$ 是凸集.",
+      "after": "- 仿射的 preimage: 若 $\\bm{A} \\in \\mathbb{R}^{m \\times n}$ 且 $\\bm{b} \\in \\mathbb{R}^m$，且这里 $\\mathcal{C} \\subseteq \\mathbb{R}^m$, 则 $\\{\\bm{x} \\in \\mathbb{R}^n: \\bm{A}\\bm{x} + \\bm{b} \\in \\mathcal{C}\\}$ 是凸集.",
+      "count": 1,
+      "reason": "仿射原像的目标集合位于 R^m"
+    },
+    {
+      "id": "OR-07",
+      "source_line": 242,
+      "before": "  - 在优化视角, **$\\mathcal{S}$ 是 compact set 当且仅当 $\\mathcal{S}$ 中任何一个序列都存在一个收敛的子序列, 且其极限点仍然在 $\\mathcal{S}$ 中.** 这保证了算法迭代点的收敛性. ",
+      "after": "  - 在优化视角, **$\\mathcal{S}$ 是 compact set 当且仅当 $\\mathcal{S}$ 中任何一个序列都存在一个收敛的子序列, 且其极限点仍然在 $\\mathcal{S}$ 中.** 这保证了集合内迭代点列存在收敛子列. ",
+      "count": 1,
+      "reason": "紧性不保证整个算法点列收敛"
+    },
+    {
+      "id": "OR-08",
+      "source_line": 280,
+      "before": "- 优化中, 证明最优解存的通常思路:",
+      "after": "- 优化中, 证明最优解存在的通常思路:",
+      "count": 1,
+      "reason": "缺字"
+    },
+    {
+      "id": "OR-09",
+      "source_line": 282,
+      "before": "  - 即使 feasible set 是 unbounded, 但存在某个 sublevel set $\\{\\bm{x} \\in \\mathcal{S}: f(\\bm{x}) \\leq \\alpha\\}$ 是紧的, 则可以将问题限制在这个 sublevel set 上",
+      "after": "  - 即使 feasible set 是 unbounded, 但存在某个非空 sublevel set $\\{\\bm{x} \\in \\mathcal{S}: f(\\bm{x}) \\leq \\alpha\\}$ 是紧的, 则可以将问题限制在这个 sublevel set 上",
+      "count": 1,
+      "reason": "空集紧不能证明最优解存在"
+    },
+    {
+      "id": "OR-10",
+      "source_line": 288,
+      "before": "> *在 Beck 的论述中, 其将 Weierstrass theorem 的条件, 从 $f: S \\to \\mathbb{R}$ 是连续函数, 放宽为 $f$ 是 proper 且 closed 函数. 这是一个更弱的条件, 但其证明思路是类似的.]*",
+      "after": "> *在 Beck 的论述中, 其将 Weierstrass theorem 的条件, 从 $f: S \\to \\mathbb{R}$ 是连续函数, 放宽为 $f$ 是 proper 且 closed 函数. 这是一个更弱的条件, 但其证明思路是类似的.*",
+      "count": 1,
+      "reason": "多余编辑符号"
+    },
+    {
+      "id": "OR-11",
+      "source_line": 290,
+      "before": "- **先证 $f$ bounded below**. *在 sketch 中我们直接定义 $\\alpha := \\inf_{\\bm{x} \\in \\mathcal{S}} f(\\bm{x})$. 然而这样的 inf 的存在本身也是需要严格证明的.* 即, 要证: 存在 $L \\in \\mathbb{R}$ 使得 $f(\\bm{x}) \\geq L$ 对所有 $\\bm{x} \\in \\mathcal{S}$ 成立. ",
+      "after": "- **先证 $f$ bounded below**. *在 sketch 中我们直接定义 $\\alpha := \\inf_{\\bm{x} \\in \\mathcal{S}} f(\\bm{x})$. 然而这个 inf 是有限实数本身也是需要严格证明的.* 即, 要证: 存在 $L \\in \\mathbb{R}$ 使得 $f(\\bm{x}) \\geq L$ 对所有 $\\bm{x} \\in \\mathcal{S}$ 成立. ",
+      "count": 1,
+      "reason": "扩展实数下确界总存在，需要证有限性"
+    },
+    {
+      "id": "OR-12",
+      "source_line": 291,
+      "before": "  - 反证法, 假设 $f$ 不存在下界, 则对于每一个 $\\bm{x}_k$, 都可以找到 $\\bm{x}_k \\in \\mathcal{S}$ 使得 $f(\\bm{x}_k) \\leq -k$. 于是我们可以构造一个序列 $\\{\\bm{x}_k\\} \\subseteq \\mathcal{S}$ 使得 $f(\\bm{x}_k) \\to -\\infty$. 由于 $\\mathcal{S}$ 是 compact set, $\\{\\bm{x}_k\\}$ 有一个收敛的子序列 $\\{\\bm{x}_{k_j}\\} \\to \\bar{\\bm{x}} \\in \\mathcal{S}$. 由于 $f$ 是连续函数且 $\\bm{x}_{k_j} \\to \\bar{\\bm{x}}$，则 $f(\\bm{x}_{k_j}) \\to f(\\bar{\\bm{x}})$ 是一个有限值. 然而 $f(\\bm{x}_{k_j}) \\to -\\infty$, 这与 $f(\\bar{\\bm{x}})$ 是有限值矛盾. ",
+      "after": "  - 反证法, 假设 $f$ 不存在下界, 则对于每一个正整数 $k$, 都可以找到 $\\bm{x}_k \\in \\mathcal{S}$ 使得 $f(\\bm{x}_k) \\leq -k$. 于是我们可以构造一个序列 $\\{\\bm{x}_k\\} \\subseteq \\mathcal{S}$ 使得 $f(\\bm{x}_k) \\to -\\infty$. 由于 $\\mathcal{S}$ 是 compact set, $\\{\\bm{x}_k\\}$ 有一个收敛的子序列 $\\{\\bm{x}_{k_j}\\} \\to \\bar{\\bm{x}} \\in \\mathcal{S}$. 由于 $f$ 是连续函数且 $\\bm{x}_{k_j} \\to \\bar{\\bm{x}}$，则 $f(\\bm{x}_{k_j}) \\to f(\\bar{\\bm{x}})$ 是一个有限值. 然而 $f(\\bm{x}_{k_j}) \\to -\\infty$, 这与 $f(\\bar{\\bm{x}})$ 是有限值矛盾. ",
+      "count": 1,
+      "reason": "量词对象误写"
+    },
+    {
+      "id": "OR-13",
+      "source_line": 322,
+      "before": "- 根据 Weistrass theorem, 由于目标函数是连续的, 故只需给出一个紧的可行域即可. Compact = closed + bounded, 而 closed 已经给出, 故只需找到一个 bounded 的可行域即可.",
+      "after": "- 根据 Weierstrass theorem, 由于目标函数是连续的, 故只需给出一个紧的可行域即可. Compact = closed + bounded, 而 closed 已经给出, 故只需找到一个 bounded 的可行域即可.",
+      "count": 1,
+      "reason": "拼写"
+    },
+    {
+      "id": "OR-14",
+      "source_line": 338,
+      "before": "  因此两式相减得",
+      "after": "  因此由第二式整理得",
+      "count": 1,
+      "reason": "对应实际代数操作"
+    },
+    {
+      "id": "OR-15",
+      "source_line": 340,
+      "before": "  \\left\\langle \\bm{y} - \\bm{x}_1^\\star, \\bm{y} - \\bm{x}_2^\\star \\right\\rangle = -\\frac{1}{2}\\|\\bm{x}_1^\\star - \\bm{x}_2^\\star\\|_2^2 < 0.",
+      "after": "  \\left\\langle \\bm{y} - \\bm{x}_1^\\star, \\bm{y} - \\bm{x}_2^\\star \\right\\rangle = d(\\bm{y}, \\mathcal{C})^2 -\\frac{1}{2}\\|\\bm{x}_1^\\star - \\bm{x}_2^\\star\\|_2^2 < d(\\bm{y}, \\mathcal{C})^2.",
+      "count": 1,
+      "reason": "投影唯一性证明遗漏共同最优距离平方"
+    },
+    {
+      "id": "OR-16",
+      "source_line": 346,
+      "before": "    &= \\frac{1}{4}\\|\\bm{y}-\\bm{x}_1^\\star\\|_2^2 + \\frac{1}{4}\\|\\bm{y}-\\bm{x}_2^\\star\\|_2^2 + \\frac{1}{4}\\left\\langle \\bm{y}-\\bm{x}_1^\\star, \\bm{y}-\\bm{x}_2^\\star \\right\\rangle\\\\",
+      "after": "    &= \\frac{1}{4}\\|\\bm{y}-\\bm{x}_1^\\star\\|_2^2 + \\frac{1}{4}\\|\\bm{y}-\\bm{x}_2^\\star\\|_2^2 + \\frac{1}{2}\\left\\langle \\bm{y}-\\bm{x}_1^\\star, \\bm{y}-\\bm{x}_2^\\star \\right\\rangle\\\\",
+      "count": 1,
+      "reason": "平方展开交叉项系数应为 1/2"
+    },
+    {
+      "id": "OR-17",
+      "source_line": 347,
+      "before": "    &< \\frac{1}{4}\\|\\bm{y}-\\bm{x}_1^\\star\\|_2^2 + \\frac{1}{4}\\|\\bm{y}-\\bm{x}_2^\\star\\|_2^2 = d(\\bm{y}, \\mathcal{C})^2.",
+      "after": "    &< \\frac{1}{4}\\|\\bm{y}-\\bm{x}_1^\\star\\|_2^2 + \\frac{1}{4}\\|\\bm{y}-\\bm{x}_2^\\star\\|_2^2 + \\frac12 d(\\bm{y}, \\mathcal{C})^2 = d(\\bm{y}, \\mathcal{C})^2.",
+      "count": 1,
+      "reason": "配套使用正确内积上界得到严格小于最优距离平方"
+    },
+    {
+      "id": "OR-18",
+      "source_line": 386,
+      "before": "左右两边同时除以 $t > 0$，并令 $t \\downarrow 0$，则有",
+      "after": "消去两边共同的平方距离项后, 左右两边同时除以 $t > 0$，并令 $t \\downarrow 0$，则有",
+      "count": 1,
+      "reason": "除以 t 前需消去常数项"
+    },
+    {
+      "id": "OR-19",
+      "source_line": 414,
+      "before": "- $\\bm{x}_c \\in \\mathcal{C}$ 是集合的角点. 则法锥是构成角点的法向量的凸组合. 也即, 法锥是一个凸锥, 其包含了所有指向集合外部的向量.",
+      "after": "- $\\bm{x}_c \\in \\mathcal{C}$ 是集合的角点. 则法锥是构成角点的法向量的非负锥组合. 也即, 法锥是一个凸锥, 其包含了所有指向集合外部的向量.",
+      "count": 1,
+      "reason": "法锥不限制权重和为 1"
+    },
+    {
+      "id": "OR-20",
+      "source_line": 414,
+      "before": "- $\\bm{x}_c \\in \\mathcal{C}$ 是集合的角点. 则法锥是构成角点的法向量的非负锥组合. 也即, 法锥是一个凸锥, 其包含了所有指向集合外部的向量.",
+      "after": "- $\\bm{x}_c \\in \\mathcal{C}$ 是集合的角点. 则法锥是构成角点的法向量的非负锥组合. 也即, 法锥是一个凸锥, 其包含了所有满足上述法向不等式的向量.",
+      "count": 1,
+      "reason": "指向外部不是法向量的充分条件"
+    },
+    {
+      "id": "OR-21",
+      "source_line": 429,
+      "before": "此外, 回顾一个超平面的定义 $\\{\\bm{x} \\in \\mathbb{R}^n: \\bm{a}^\\top \\bm{x} = b\\}$, 其法向量就是 $\\bm{a}$. 因此确定了一个法向量就确定了一个平面的方向, 再加上平面过的一个点, 就确定了一个超平面. 而对于法锥中的法向量, 这样定义的超平面很完美地将集合分为了内外两部分.",
+      "after": "此外, 回顾一个超平面的定义 $\\{\\bm{x} \\in \\mathbb{R}^n: \\bm{a}^\\top \\bm{x} = b\\}$, 其法向量就是 $\\bm{a}$. 因此确定了一个法向量就确定了一个平面的方向, 再加上平面过的一个点, 就确定了一个超平面. 而对于法锥中的法向量, 这样定义的超平面很完美地使集合完全位于超平面的一侧.",
+      "count": 1,
+      "reason": "支持平面不会切开凸集"
+    },
+    {
+      "id": "OR-22",
+      "source_line": 486,
+      "before": "给定非空闭凸集 $\\mathcal{C} \\subseteq \\mathbb{R}^n$，定义 $\\bm{x} \\in \\mathcal{C}$ 处的极锥为:",
+      "after": "给定非空闭凸集 $\\mathcal{C} \\subseteq \\mathbb{R}^n$，定义 $\\mathcal{C}$ 的极锥为:",
+      "count": 1,
+      "reason": "极锥属于集合而非某个点"
+    },
+    {
+      "id": "OR-23",
+      "source_line": 511,
+      "before": "### 2.4 Stability of projection: Non-expansiveness and Pythagorean theorem ",
+      "after": "### 2.5 Stability of projection: Non-expansiveness and Pythagorean theorem ",
+      "count": 1,
+      "reason": "修复重复小节编号并顺延"
+    },
+    {
+      "id": "OR-24",
+      "source_line": 553,
+      "before": "### 2.5 Projection Distance",
+      "after": "### 2.6 Projection Distance",
+      "count": 1,
+      "reason": "修复重复小节编号并顺延"
+    },
+    {
+      "id": "OR-25",
+      "source_line": 611,
+      "before": "### 2.6 Proximal operator and Moreau envelope",
+      "after": "### 2.7 Proximal operator and Moreau envelope",
+      "count": 1,
+      "reason": "修复重复小节编号并顺延"
+    },
+    {
+      "id": "OR-26",
+      "source_line": 643,
+      "before": "### 2.7 Examples of projections",
+      "after": "### 2.8 Examples of projections",
+      "count": 1,
+      "reason": "修复重复小节编号并顺延"
+    },
+    {
+      "id": "OR-27",
+      "source_line": 613,
+      "before": "Proximal operator 是投影算子的一种推广, 其定义为:",
+      "after": "对于 proper closed convex 函数 $f$, proximal operator 是投影算子的一种推广, 其定义为:",
+      "count": 1,
+      "reason": "确保 prox 和 Moreau 的 argmin 存在且唯一的原稿缺失前提"
+    },
+    {
+      "id": "OR-28",
+      "source_line": 619,
+      "before": "Indicator function $\\delta_{\\mathcal{C}}(\\bm{x})$ 是一个特殊的凸函数, 其定义为:",
+      "after": "对于非空闭凸集 $\\mathcal{C}$, indicator function $\\delta_{\\mathcal{C}}(\\bm{x})$ 是一个特殊的凸函数, 其定义为:",
+      "count": 1,
+      "reason": "指标函数凸性及投影光滑性所需前提"
+    },
+    {
+      "id": "OR-29",
+      "source_line": 641,
+      "before": "  这也反映了 Moreau envelope 具有光滑化的特性. 对比原始的 $\\delta_{\\mathcal{C}}(\\bm{x})$，其在 $\\mathcal{C}$ 内部是平的, 在 $\\mathcal{C}$ 外部是无穷大, 其梯度在 $\\mathcal{C}$ 内部处处为零, 在 $\\mathcal{C}$ 外部处处不存在. 而 Moreau envelope 则是一个光滑的函数, 其梯度恰为 $\\nabla M_{\\gamma \\delta_{\\mathcal{C}}}(\\bm{y}) = \\frac{1}{\\gamma}(\\bm{y}-\\Pi_{\\mathcal{C}}(\\bm{y}))$.",
+      "after": "  这也反映了 Moreau envelope 具有光滑化的特性. 对比原始的 $\\delta_{\\mathcal{C}}(\\bm{x})$，其在 $\\mathcal{C}$ 内部是平的, 在 $\\mathcal{C}$ 外部是无穷大, 其梯度在 $\\operatorname{int}(\\mathcal{C})$ 内处处为零, 在 $\\mathcal{C}$ 外部处处不存在. 而 Moreau envelope 则是一个光滑的函数, 其梯度恰为 $\\nabla M_{\\gamma \\delta_{\\mathcal{C}}}(\\bm{y}) = \\frac{1}{\\gamma}(\\bm{y}-\\Pi_{\\mathcal{C}}(\\bm{y}))$.",
+      "count": 1,
+      "reason": "排除边界处指标函数不可微情况"
+    },
+    {
+      "id": "OR-30",
+      "source_line": 650,
+      "before": "*Proof*. $\\bm{y} \\in \\mathcal{H}$ 的情况是显然的. 若 $\\bm{y} \\notin \\mathcal{H}$，实际上这是解析几何的经典公式. 这里作为复习. 最短距离定出现在点到边界的垂线段上, 因此若记投影点为 $\\bm{x}_0$ (即垂足), 则 $\\bm{y}$ 在其法方向上, 即 $\\bm{y} = \\bm{x}_0 + \\lambda \\bm{a}$, $\\lambda \\in \\mathbb{R}$. 此外又知 $\\bm{x}_0 \\in \\mathcal{H}$，即 $\\bm{a}^\\top \\bm{x}_0 = b$. 二者联立, 得 $\\lambda = \\frac{\\bm{a}^\\top \\bm{y}-b}{\\|\\bm{a}\\|_2^2}$，从而代入可知 $\\bm{x}_0 = \\bm{y} - \\frac{\\bm{a}^\\top \\bm{y}-b}{\\|\\bm{a}\\|_2^2}\\bm{a}$.",
+      "after": "*Proof*. $\\bm{y} \\in \\mathcal{H}$ 的情况是显然的. 若 $\\bm{y} \\notin \\mathcal{H}$，实际上这是解析几何的经典公式. 这里作为复习. 最短距离定出现在点到边界的垂线段上, 因此若记投影点为 $\\bm{x}_0$ (即垂足), 则 $\\bm{y}$ 在其法方向上, 即 $\\bm{y} = \\bm{x}_0 + \\lambda \\bm{a}$, $\\lambda \\in \\mathbb{R}$. 此外又知 $\\bm{x}_0 \\in \\partial \\mathcal{H}$，即 $\\bm{a}^\\top \\bm{x}_0 = b$. 二者联立, 得 $\\lambda = \\frac{\\bm{a}^\\top \\bm{y}-b}{\\|\\bm{a}\\|_2^2}$，从而代入可知 $\\bm{x}_0 = \\bm{y} - \\frac{\\bm{a}^\\top \\bm{y}-b}{\\|\\bm{a}\\|_2^2}\\bm{a}$.",
+      "count": 1,
+      "reason": "垂足在边界才推出等式"
+    },
+    {
+      "id": "OR-31",
+      "source_line": 670,
+      "before": "## 3. Seperation theorem and supporting hyperplane theorem",
+      "after": "## 3. Separation theorem and supporting hyperplane theorem",
+      "count": 1,
+      "reason": "拼写"
+    },
+    {
+      "id": "OR-32",
+      "source_line": 672,
+      "before": "### 3.1 Seperations",
+      "after": "### 3.1 Separations",
+      "count": 1,
+      "reason": "拼写"
+    },
+    {
+      "id": "OR-33",
+      "source_line": 695,
+      "before": "### 3.2 Seperation theorem",
+      "after": "### 3.2 Separation theorem",
+      "count": 1,
+      "reason": "拼写"
+    },
+    {
+      "id": "OR-34",
+      "source_line": 682,
+      "before": "- 这里再复习/提供一下几何直觉. 给定一个方向 $\\bm{a}$，则 $\\langle \\bm{a}, \\bm{x} \\rangle$ 可以理解为 $\\bm{x}$ 在 $\\bm{a}$ 方向上的投影 (这里最好把 $\\bm{x}$ 理解为点而不是向量), 也就是 $\\bm{x}$ 在 $\\bm{a}$ 方向上的坐标. 而固定一个方向 $\\bm{a}$，对应超平面就只能在 $\\bm{a}$ 方向上下移动. 因此只要两个集合在 $\\bm{a}$ 方向上的投影不重叠, 则再二者的 gap 区域取的点都可以确定一个超平面, 使得二者被分开. ",
+      "after": "- 这里再复习/提供一下几何直觉. 给定一个方向 $\\bm{a}$，则 $\\langle \\bm{a}, \\bm{x} \\rangle$ 可以理解为 $\\bm{x}$ 在 $\\bm{a}$ 方向上的投影 (这里最好把 $\\bm{x}$ 理解为点而不是向量), 也就是 $\\bm{x}$ 在 $\\bm{a}$ 方向上的坐标. 而固定一个方向 $\\bm{a}$，对应超平面就只能在 $\\bm{a}$ 方向上下移动. 因此只要两个集合在 $\\bm{a}$ 方向上的投影不重叠, 则在二者的 gap 区域取的点都可以确定一个超平面, 使得二者被分开. ",
+      "count": 1,
+      "reason": "错字"
+    },
+    {
+      "id": "OR-35",
+      "source_line": 745,
+      "before": "> 在凸分析中, 常用的一个 trick 是将两个集合的分离问题转化为一个集合和一个点的分离问题. 也即, 考虑 $\\mathcal{S}$ 与 $\\mathcal{T}$ 的差集 $\\mathcal{D} := \\mathcal{S}-\\mathcal{T} := \\{\\bm{x}-\\bm{y}: \\bm{x} \\in \\mathcal{S}, \\bm{y} \\in \\mathcal{T}\\}$，则 $\\mathcal{D}$ 是非空闭凸集, 且 $0 \\in \\mathcal{D} \\iff \\mathcal{S} \\cap \\mathcal{T} \\neq \\emptyset$. 且回顾, 若 $\\mathcal{S}$ 和 $\\mathcal{T}$ 是 properly separable 的, 则存在 $\\bm{a} \\in \\mathbb{R}^n$ 使得",
+      "after": "> 在凸分析中, 常用的一个 trick 是将两个集合的分离问题转化为一个集合和一个点的分离问题. 也即, 考虑 $\\mathcal{S}$ 与 $\\mathcal{T}$ 的差集 $\\mathcal{D} := \\mathcal{S}-\\mathcal{T} := \\{\\bm{x}-\\bm{y}: \\bm{x} \\in \\mathcal{S}, \\bm{y} \\in \\mathcal{T}\\}$，则 $\\mathcal{D}$ 是非空凸集, 但不一定闭, 且 $0 \\in \\mathcal{D} \\iff \\mathcal{S} \\cap \\mathcal{T} \\neq \\emptyset$. 且回顾, 若 $\\mathcal{S}$ 和 $\\mathcal{T}$ 是 properly separable 的, 则存在 $\\bm{a} \\in \\mathbb{R}^n$ 使得",
+      "count": 1,
+      "reason": "闭凸集的差不一定闭"
+    },
+    {
+      "id": "OR-36",
+      "source_line": 759,
+      "before": "则不可能存在 $\\bm{z} \\in \\text{ri}(\\mathcal{S}) \\cap \\text{ri}(\\mathcal{T})$. 由反证法, 若不然, 则由于 $\\bm{z} \\in \\text{ri}(\\mathcal{S})$，且 $\\bm{z} \\in \\text{ri}(\\mathcal{T})$，故有 $\\bm{a}^\\top \\bm{z} \\leq \\sup_{\\bm{x} \\in \\mathcal{S}} \\bm{a}^\\top \\bm{x} \\leq \\inf_{\\bm{y} \\in \\mathcal{T}} \\bm{a}^\\top \\bm{y} \\leq \\bm{a}^\\top \\bm{z}$，从而 $\\bm{a}^\\top \\bm{z} = \\sup_{\\bm{x} \\in \\mathcal{S}} \\bm{a}^\\top \\bm{x} = \\inf_{\\bm{y} \\in \\mathcal{T}} \\bm{a}^\\top \\bm{y}$. 然而有引理: *若线性目标函数 $\\bm{a}^\\top \\bm{x}$ 在凸集 $\\mathcal{C}$ 的内部 $\\text{ri}(\\mathcal{C})$ 上取得最优值, 则该目标函数必为常函数.* 而这与 proper 的定义矛盾, 因此 $\\text{ri}(\\mathcal{S}) \\cap \\text{ri}(\\mathcal{T}) = \\emptyset$.",
+      "after": "则不可能存在 $\\bm{z} \\in \\text{ri}(\\mathcal{S}) \\cap \\text{ri}(\\mathcal{T})$. 由反证法, 若不然, 则由于 $\\bm{z} \\in \\text{ri}(\\mathcal{S})$，且 $\\bm{z} \\in \\text{ri}(\\mathcal{T})$，故有 $\\bm{a}^\\top \\bm{z} \\leq \\sup_{\\bm{x} \\in \\mathcal{S}} \\bm{a}^\\top \\bm{x} \\leq \\inf_{\\bm{y} \\in \\mathcal{T}} \\bm{a}^\\top \\bm{y} \\leq \\bm{a}^\\top \\bm{z}$，从而 $\\bm{a}^\\top \\bm{z} = \\sup_{\\bm{x} \\in \\mathcal{S}} \\bm{a}^\\top \\bm{x} = \\inf_{\\bm{y} \\in \\mathcal{T}} \\bm{a}^\\top \\bm{y}$. 然而有引理: *若线性目标函数 $\\bm{a}^\\top \\bm{x}$ 在凸集 $\\mathcal{C}$ 的内部 $\\text{ri}(\\mathcal{C})$ 上取得最优值, 则该目标函数在 $\\mathcal{C}$ 上必为常函数.* 而这与 proper 的定义矛盾, 因此 $\\text{ri}(\\mathcal{S}) \\cap \\text{ri}(\\mathcal{T}) = \\emptyset$.",
+      "count": 1,
+      "reason": "常值结论只针对该集合"
+    },
+    {
+      "id": "OR-37",
+      "source_line": 768,
+      "before": "- 若记 $\\bm{s}^\\star \\in \\mathcal{S}$ 和 $\\bm{t}^\\star \\in \\mathcal{T}$ 为二者的最短距离点, 则 $\\bm{s}^\\star$ 和 $\\bm{t}^\\star$ 是唯一的, 且 $\\bm{a} := \\bm{t}^\\star - \\bm{s}^\\star$ 就是将二者分开的超平面的法向量.",
+      "after": "- 若记 $\\bm{s}^\\star \\in \\mathcal{S}$ 和 $\\bm{t}^\\star \\in \\mathcal{T}$ 为二者的最短距离点, 则 $\\bm{s}^\\star$ 和 $\\bm{t}^\\star$ 不一定唯一, 但差向量 $\\bm{t}^\\star-\\bm{s}^\\star$ 是唯一的, 且 $\\bm{a} := \\bm{t}^\\star - \\bm{s}^\\star$ 就是将二者分开的超平面的法向量.",
+      "count": 1,
+      "reason": "平行线段有多个最近点对，但差向量唯一"
+    },
+    {
+      "id": "OR-38",
+      "source_line": 786,
+      "before": "*Proof Sketch*. 整体证明思路如下. 首先, 存在外部点列 $\\{\\bm{y}_k\\} \\subseteq \\mathbb{R}^n \\setminus \\mathcal{C}$ 收敛到 $\\bm{x}^\\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\\{\\bm{a}_k\\}$. 可以证明这个法向量序列是紧的, 因此根据 Bolzano-Weierstrass 定可以以选取一个收敛子列 $\\{\\bm{a}_{k_j}\\}$ 收敛到某个 $\\bm{a}^\\star \\neq \\bm{0}$. 再根据连续性, 取极限后就可以得到在 $\\bm{x}^\\star$ 处的 supporting hyperplane.",
+      "after": "*Proof Sketch*. 整体证明思路如下. 首先考虑闭凸集, 存在外部点列 $\\{\\bm{y}_k\\} \\subseteq \\mathbb{R}^n \\setminus \\mathcal{C}$ 收敛到 $\\bm{x}^\\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\\{\\bm{a}_k\\}$. 可以证明这个法向量序列是紧的, 因此根据 Bolzano-Weierstrass 定可以以选取一个收敛子列 $\\{\\bm{a}_{k_j}\\}$ 收敛到某个 $\\bm{a}^\\star \\neq \\bm{0}$. 再根据连续性, 取极限后就可以得到在 $\\bm{x}^\\star$ 处的 supporting hyperplane.",
+      "count": 1,
+      "reason": "点集强分离的闭性条件，与下方证明一致"
+    },
+    {
+      "id": "OR-39",
+      "source_line": 786,
+      "before": "*Proof Sketch*. 整体证明思路如下. 首先考虑闭凸集, 存在外部点列 $\\{\\bm{y}_k\\} \\subseteq \\mathbb{R}^n \\setminus \\mathcal{C}$ 收敛到 $\\bm{x}^\\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\\{\\bm{a}_k\\}$. 可以证明这个法向量序列是紧的, 因此根据 Bolzano-Weierstrass 定可以以选取一个收敛子列 $\\{\\bm{a}_{k_j}\\}$ 收敛到某个 $\\bm{a}^\\star \\neq \\bm{0}$. 再根据连续性, 取极限后就可以得到在 $\\bm{x}^\\star$ 处的 supporting hyperplane.",
+      "after": "*Proof Sketch*. 整体证明思路如下. 首先考虑闭凸集, 存在外部点列 $\\{\\bm{y}_k\\} \\subseteq \\mathbb{R}^n \\setminus \\mathcal{C}$ 收敛到 $\\bm{x}^\\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\\{\\bm{a}_k\\}$. 将法向量归一化后, 序列位于紧的单位球面上, 因此根据 Bolzano-Weierstrass 定理可以选取一个收敛子列 $\\{\\bm{a}_{k_j}\\}$ 收敛到某个 $\\bm{a}^\\star \\neq \\bm{0}$. 再根据连续性, 取极限后就可以得到在 $\\bm{x}^\\star$ 处的 supporting hyperplane.",
+      "count": 1,
+      "reason": "归一化保证非零极限；修正紧性措辞及错字"
+    },
+    {
+      "id": "OR-40",
+      "source_line": 806,
+      "before": "***Corollary***: 任意非空闭凸集 $\\mathcal{C}$ 都可以表示为所有包含它的 supporting hyperplane 的交集.",
+      "after": "***Corollary***: 任意非空闭凸集 $\\mathcal{C}$ 都可以表示为所有包含它的 supporting halfspace 的交集.",
+      "count": 1,
+      "reason": "闭凸集是支持半空间交而非超平面交"
+    },
+    {
+      "id": "OR-41",
+      "source_line": 829,
+      "before": "- 前文提到, 一个非空闭凸集 $\\mathcal{C}$ 可以表示为所有包含它的 supporting hyperplane 的交集, 因此也可以通过 support function 来表示 $\\mathcal{C}$:",
+      "after": "- 前文提到, 一个非空闭凸集 $\\mathcal{C}$ 可以表示为所有包含它的 supporting halfspace 的交集, 因此也可以通过 support function 来表示 $\\mathcal{C}$:",
+      "count": 1,
+      "reason": "闭凸集是支持半空间交而非超平面交"
+    },
+    {
+      "id": "OR-42",
+      "source_line": 824,
+      "before": "- 故 supporting hyperplane 可以定义为:",
+      "after": "- 当上确界有限且在 $\\mathcal{C}$ 中取得时, supporting hyperplane 可以定义为:",
+      "count": 1,
+      "reason": "未取得的 support supremum 不产生相交支持平面"
+    },
+    {
+      "id": "OR-43",
+      "source_line": 837,
+      "before": "- 对于 simplex $\\Delta_n := \\{\\bm{x} \\in \\mathbb{R}^n: x_i \\geq 0,~ \\sum_{i=1}^n x_i = 1\\}$，有 $\\sigma_{\\Delta_n}(\\bm{a}) = \\max_{i=1,\\dots,n} a_i$. ",
+      "after": "- 对于 simplex $\\Delta_{n-1} := \\{\\bm{x} \\in \\mathbb{R}^n: x_i \\geq 0,~ \\sum_{i=1}^n x_i = 1\\}$，有 $\\sigma_{\\Delta_{n-1}}(\\bm{a}) = \\max_{i=1,\\dots,n} a_i$. ",
+      "count": 1,
+      "reason": "统一前文以 simplex 维数作下标的约定"
+    },
+    {
+      "id": "OR-44",
+      "source_line": 883,
+      "before": "  \\max \\bm{b}^\\top \\bm{y} \\quad \\text{s.t.}~ \\bm{y}^\\top \\bm{A} \\geq \\bm{0}^\\top.",
+      "after": "  \\min \\bm{b}^\\top \\bm{y} \\quad \\text{s.t.}~ \\bm{y}^\\top \\bm{A} \\geq \\bm{0}^\\top.",
+      "count": 1,
+      "reason": "使用标准 max 对偶变量取负后的等价 min 形式，与后文负证书一致"
+    },
+    {
+      "id": "OR-45",
+      "source_line": 881,
+      "before": "  其对偶问题为:",
+      "after": "  其对偶问题经变量取负后的等价形式为:",
+      "count": 1,
+      "reason": "说明对偶变号，避免误称标准对偶"
+    },
+    {
+      "id": "OR-46",
+      "source_line": 885,
+      "before": "  如果 $\\neq P$ 成立, 则说明原问题不可行, 则根据 LP 的对偶性质, 说明对偶问题要么是不可行的, 要么是无界的. 然而显然 $\\bm{y} = \\bm{0}$ 是对偶问题的一个可行解, 因此只能是对偶问题是无界的, 即 $\\bm{b}^\\top \\bm{y} < 0$ (故最小化时是无界的). 因此, 存在 $\\bm{y} \\in \\mathbb{R}^m$ 使得 $\\bm{y}^\\top \\bm{A} \\geq \\bm{0}^\\top$ 且 $\\bm{y}^\\top \\bm{b} < 0$. 故 $Q$ 成立.",
+      "after": "  如果 $\\neg P$ 成立, 则说明原问题不可行, 则根据 LP 的对偶性质, 说明对偶问题要么是不可行的, 要么是无界的. 然而显然 $\\bm{y} = \\bm{0}$ 是对偶问题的一个可行解, 因此只能是对偶问题是无界的, 即 $\\bm{b}^\\top \\bm{y} < 0$ (故最小化时是无界的). 因此, 存在 $\\bm{y} \\in \\mathbb{R}^m$ 使得 $\\bm{y}^\\top \\bm{A} \\geq \\bm{0}^\\top$ 且 $\\bm{y}^\\top \\bm{b} < 0$. 故 $Q$ 成立.",
+      "count": 1,
+      "reason": "逻辑否定符误写"
+    },
+    {
+      "id": "OR-47",
+      "source_line": 895,
+      "before": "因此, $\\bm{y}^\\top \\bm{A} \\geq \\bm{0}^\\top$ , $\\bm{y}^\\top \\bm{b} < 0$ 就是原问题可行性的一个 certificate. 如果这个成立, 就一定不可行; 反之亦然.",
+      "after": "因此, $\\bm{y}^\\top \\bm{A} \\geq \\bm{0}^\\top$ , $\\bm{y}^\\top \\bm{b} < 0$ 就是原问题不可行性的一个 certificate. 如果这个成立, 就一定不可行; 反之亦然.",
+      "count": 1,
+      "reason": "负证书证明不可行"
+    },
+    {
+      "id": "OR-48",
+      "source_line": 909,
+      "before": "故为使得市场无套利, 则必须不存在这样的 $\\bm{x}$. 根据 Farkas lemma, 则等价于存在 $\\bm{q}\\in \\mathbb{R}^m_{\\geq 0}$ 使得 $\\bm{R}^\\top \\bm{q} = \\bm{p}$, 或等价地对于每个资产 $j=1,\\dots,n$，有 $\\bm{p}_j = \\sum_{i=1}^m \\bm{R}_{ij} \\bm{q}_i$. 也即, 存在一个非负的状态价格向量 $\\bm{q}$, 使得每个资产的价格等于其在各个状态下的收益的加权平均 (权重为 $\\bm{q}$). 或者也可以看成是概率分布 $\\bm{q}$ 下的期望收益. 这就是金融市场中无套利定价的基本原理.",
+      "after": "故为使得市场无套利, 则必须不存在这样的 $\\bm{x}$. 根据 Farkas lemma, 则等价于存在 $\\bm{q}\\in \\mathbb{R}^m_{\\geq 0}$ 使得 $\\bm{R}^\\top \\bm{q} = \\bm{p}$, 或等价地对于每个资产 $j=1,\\dots,n$，有 $\\bm{p}_j = \\sum_{i=1}^m \\bm{R}_{ij} \\bm{q}_i$. 也即, 存在一个非负的状态价格向量 $\\bm{q}$, 使得每个资产的价格等于其在各个状态下的收益的加权和 (权重为 $\\bm{q}$). 若 $\\sum_i q_i > 0$, 归一化后可看成概率分布下的期望收益再乘以 $\\sum_i q_i$. 这就是金融市场中无套利定价的基本原理.",
+      "count": 1,
+      "reason": "状态价格一般不是总和为 1 的概率"
+    },
+    {
+      "id": "OR-49",
+      "source_line": 907,
+      "before": "在金融市场中, 一个投资组合 $\\bm{x}$ 是可套利的, 当存在某种组合 $\\bm{x}$ 使得 $\\bm{R}\\bm{x} \\geq \\bm{0}$ 且 $\\bm{p}^\\top \\bm{x} < 0$. 也即, 在期末的收益是非负的, 且在期初的成本是负的 (即不需要投入资金).",
+      "after": "在金融市场中, 一个投资组合 $\\bm{x}$ 在此处所讨论的严格负初始成本意义下是可套利的, 当存在某种组合 $\\bm{x}$ 使得 $\\bm{R}\\bm{x} \\geq \\bm{0}$ 且 $\\bm{p}^\\top \\bm{x} < 0$. 也即, 在期末的收益是非负的, 且在期初的成本是负的 (即不需要投入资金).",
+      "count": 1,
+      "reason": "明确本例采用的较窄套利概念，避免混同完整无套利定理"
+    },
+    {
+      "id": "OR-50",
+      "source_line": 916,
+      "before": "- Gordan lemma: $\\bm{A}\\bm{x} < 0$ $\\leftrightarrow$ $\\bm{A}^\\top \\bm{y} = 0,~ \\bm{y} \\geq 0,~ \\bm{y} \\neq 0$.",
+      "after": "- Gordan lemma: $\\bm{A}\\bm{x} < 0$ $\\text{与}$ $\\bm{A}^\\top \\bm{y} = 0,~ \\bm{y} \\geq 0,~ \\bm{y} \\neq 0$.",
+      "count": 1,
+      "reason": "择一系统不是逻辑等价"
+    },
+    {
+      "id": "OR-51",
+      "source_line": 917,
+      "before": "- $\\bm{A}\\bm{x} \\leq 0$, $\\bm{x} \\geq 0$, $\\bm{c}^\\top \\bm{x} > 0$ $\\leftrightarrow$ $\\bm{A}^\\top \\bm{y} \\geq \\bm{c}$, $\\bm{y} \\geq 0$.",
+      "after": "- $\\bm{A}\\bm{x} \\leq 0$, $\\bm{x} \\geq 0$, $\\bm{c}^\\top \\bm{x} > 0$ $\\text{与}$ $\\bm{A}^\\top \\bm{y} \\geq \\bm{c}$, $\\bm{y} \\geq 0$.",
+      "count": 1,
+      "reason": "择一系统不是逻辑等价"
+    },
+    {
+      "id": "OR-52",
+      "source_line": 918,
+      "before": "- $\\bm{A}\\bm{x} \\leq \\bm{b}$, $\\bm{B}\\bm{x} = \\bm{0}$, $\\bm{c}^\\top \\bm{x} > 0$ $\\leftrightarrow$ $\\bm{A}^\\top \\bm{y} + \\bm{B}^\\top \\bm{z} = \\bm{c}$, $\\bm{y} \\geq 0$, $\\bm{z}$ 任意.",
+      "after": "- $\\bm{A}\\bm{x} \\leq \\bm{b}$, $\\bm{B}\\bm{x} = \\bm{0}$, $\\bm{c}^\\top \\bm{x} > 0$ $\\text{与}$ $\\bm{A}^\\top \\bm{y} + \\bm{B}^\\top \\bm{z} = \\bm{c}$, $\\bm{y} \\geq 0$, $\\bm{z}$ 任意.",
+      "count": 1,
+      "reason": "择一系统不是逻辑等价"
+    },
+    {
+      "id": "OR-53",
+      "source_line": 918,
+      "before": "- $\\bm{A}\\bm{x} \\leq \\bm{b}$, $\\bm{B}\\bm{x} = \\bm{0}$, $\\bm{c}^\\top \\bm{x} > 0$ $\\text{与}$ $\\bm{A}^\\top \\bm{y} + \\bm{B}^\\top \\bm{z} = \\bm{c}$, $\\bm{y} \\geq 0$, $\\bm{z}$ 任意.",
+      "after": "- $\\bm{A}\\bm{x} \\leq \\bm{0}$, $\\bm{B}\\bm{x} = \\bm{0}$, $\\bm{c}^\\top \\bm{x} > 0$ $\\text{与}$ $\\bm{A}^\\top \\bm{y} + \\bm{B}^\\top \\bm{z} = \\bm{c}$, $\\bm{y} \\geq 0$, $\\bm{z}$ 任意.",
+      "count": 1,
+      "reason": "齐次变体遗漏 RHS 为零，否则所述证书不成立"
+    },
+    {
+      "id": "OR-54",
+      "source_line": 925,
+      "before": "- Constructive: 如果我们认为 $\\bm{b} \\in \\mathcal{S}$，则可以直接构造一个元素 $\\bm{x} \\in \\mathcal{S}$，并证明其确实符合 $\\mathcal{S}$ 的定义. ",
+      "after": "- Constructive: 如果我们认为 $\\bm{b} \\in \\mathcal{S}$，则可以直接给出 $\\bm{b}$ 属于 $\\mathcal{S}$ 的构造，并证明其确实符合 $\\mathcal{S}$ 的定义. ",
+      "count": 1,
+      "reason": "任意集合元素不足以证明给定 b 的归属性"
+    },
+    {
+      "id": "OR-55",
+      "source_line": 930,
+      "before": "而对于一个凸集 $\\mathcal{S}$，separation theorem 给出了一个非常自然的 certificate. ",
+      "after": "而对于一个非空闭凸集 $\\mathcal{S}$，separation theorem 给出了一个非常自然的 certificate. ",
+      "count": 1,
+      "reason": "任意外点的严格分离需闭性"
+    },
+    {
+      "id": "OR-56",
+      "source_line": 971,
+      "before": "  \\bm{A}^\\top \\bm{y} &\\geq \\bm{0},\\quad &&\\bm{y} \\geq 0. \\quad \\quad \\text{(System 2)}",
+      "after": "  \\bm{A}^\\top \\bm{y} &\\geq \\bm{b},\\quad &&\\bm{y} \\geq 0. \\quad \\quad \\text{(System 2)}",
+      "count": 1,
+      "reason": "修正择一系统 RHS，与后续证明一致"
+    },
+    {
+      "id": "OR-57",
+      "source_line": 987,
+      "before": "故根据 Farkas lemma, System 1 有解当且仅当 System 2: $\\bm{M}^\\top \\bm{z} \\geq 0$, $\\bm{h}^\\top \\bm{z} < 0$ 无解. 故下要证明 System 2 无解与题设 $\\bm{A}^\\top \\bm{y} \\geq 0$, $\\bm{y} \\geq 0$ 无解等价. ",
+      "after": "故根据 Farkas lemma, System 1 有解当且仅当 System 2: $\\bm{M}^\\top \\bm{z} \\geq 0$, $\\bm{h}^\\top \\bm{z} < 0$ 无解. 故下要证明 System 2 无解与题设 $\\bm{A}^\\top \\bm{y} \\geq \\bm{b}$, $\\bm{y} \\geq 0$ 无解等价. ",
+      "count": 1,
+      "reason": "同步修正题设回指"
+    },
+    {
+      "id": "OR-58",
+      "source_line": 1013,
+      "before": "  - 三角形的三个顶点都是 extreme points, 圆形的所有点都是 extreme points, 半空间没有 extreme points.",
+      "after": "  - 三角形的三个顶点都是 extreme points, 圆盘边界上的所有点都是 extreme points, 半空间没有 extreme points.",
+      "count": 1,
+      "reason": "圆盘内部不是极点"
+    },
+    {
+      "id": "OR-59",
+      "source_line": 1021,
+      "before": "- **Basic feasible solution.** 考虑由线性等式和不等式构成的 polyhedron $\\mathcal{P} \\subseteq \\mathbb{R}^n$，且 $\\bm{x} \\in \\mathcal{R}^n$. 称 $\\bm{x}$ 是 basic solution, 如果其所有等式约束都是 active 的, 且在所有 active constraints 中 (可能是等式或不等式约束) 恰有 $n$ 个约束是线性无关的. 若进一步 $\\bm{x}$ 是 feasible 的, 则称 $\\bm{x}$ 是 basic feasible solution (BFS). ",
+      "after": "- **Basic feasible solution.** 考虑由线性等式和不等式构成的 polyhedron $\\mathcal{P} \\subseteq \\mathbb{R}^n$，且 $\\bm{x} \\in \\mathbb{R}^n$. 称 $\\bm{x}$ 是 basic solution, 如果其所有等式约束都是 active 的, 且在所有 active constraints 中 (可能是等式或不等式约束) 恰有 $n$ 个约束是线性无关的. 若进一步 $\\bm{x}$ 是 feasible 的, 则称 $\\bm{x}$ 是 basic feasible solution (BFS). ",
+      "count": 1,
+      "reason": "实数空间符号误写"
+    },
+    {
+      "id": "OR-60",
+      "source_line": 1063,
+      "before": "考虑标准形式. $\\bm{x}^* \\in \\mathcal{P}\\subseteq \\mathbb{R}^n$ 是 $\\mathcal{P}$ 的 basic solution 当且仅当: 所有等式约束 $\\bm{A}\\bm{x} = \\bm{b}$ 都是 active 的; 且存在 $m$ 个 inddex $B(1), \\dots, B(m)$ 使得 (1) $\\bm{A}$ 的对应列向量 $\\bm{A}_{B(1)}, \\dots, \\bm{A}_{B(m)}$ 是线性无关的, 且 (2) 对于任意 $j \\notin \\{B(1), \\dots, B(m)\\}$，有 $\\bm{x}^*_j = 0$.",
+      "after": "考虑标准形式. $\\bm{x}^* \\in \\mathbb{R}^n$ 是 $\\mathcal{P}$ 的 basic solution 当且仅当: 所有等式约束 $\\bm{A}\\bm{x} = \\bm{b}$ 都是 active 的; 且存在 $m$ 个 inddex $B(1), \\dots, B(m)$ 使得 (1) $\\bm{A}$ 的对应列向量 $\\bm{A}_{B(1)}, \\dots, \\bm{A}_{B(m)}$ 是线性无关的, 且 (2) 对于任意 $j \\notin \\{B(1), \\dots, B(m)\\}$，有 $\\bm{x}^*_j = 0$.",
+      "count": 1,
+      "reason": "basic solution 不要求可行，与后句一致"
+    },
+    {
+      "id": "OR-61",
+      "source_line": 1063,
+      "before": "考虑标准形式. $\\bm{x}^* \\in \\mathbb{R}^n$ 是 $\\mathcal{P}$ 的 basic solution 当且仅当: 所有等式约束 $\\bm{A}\\bm{x} = \\bm{b}$ 都是 active 的; 且存在 $m$ 个 inddex $B(1), \\dots, B(m)$ 使得 (1) $\\bm{A}$ 的对应列向量 $\\bm{A}_{B(1)}, \\dots, \\bm{A}_{B(m)}$ 是线性无关的, 且 (2) 对于任意 $j \\notin \\{B(1), \\dots, B(m)\\}$，有 $\\bm{x}^*_j = 0$.",
+      "after": "考虑标准形式. $\\bm{x}^* \\in \\mathbb{R}^n$ 是 $\\mathcal{P}$ 的 basic solution 当且仅当: 所有等式约束 $\\bm{A}\\bm{x} = \\bm{b}$ 都是 active 的; 且存在 $m$ 个 indices $B(1), \\dots, B(m)$ 使得 (1) $\\bm{A}$ 的对应列向量 $\\bm{A}_{B(1)}, \\dots, \\bm{A}_{B(m)}$ 是线性无关的, 且 (2) 对于任意 $j \\notin \\{B(1), \\dots, B(m)\\}$，有 $\\bm{x}^*_j = 0$.",
+      "count": 1,
+      "reason": "拼写"
+    },
+    {
+      "id": "OR-62",
+      "source_line": 1144,
+      "before": "考虑 basis matrix 和 basic solution 的关系, 可以发现: 一个 basis 只能对应一个 basic solution, 但一个 basic solution 或对应多个 basis. ",
+      "after": "考虑 basis matrix 和 basic solution 的关系, 可以发现: 一个 basis 只能对应一个 basic solution, 但一个 basic solution 可能对应多个 basis. ",
+      "count": 1,
+      "reason": "错字"
+    },
+    {
+      "id": "OR-63",
+      "source_line": 1169,
+      "before": "1. 在一般形势下, $\\bm{x} \\in \\mathbb{R}^n$ 是 degenerate 的, 当且仅当其对应的 active constraints 的数量大于 $n$.",
+      "after": "1. 在一般形式下, $\\bm{x} \\in \\mathbb{R}^n$ 是 degenerate 的, 当且仅当其对应的 active constraints 的数量大于 $n$.",
+      "count": 1,
+      "reason": "错字"
+    },
+    {
+      "id": "OR-64",
+      "source_line": 1169,
+      "before": "1. 在一般形式下, $\\bm{x} \\in \\mathbb{R}^n$ 是 degenerate 的, 当且仅当其对应的 active constraints 的数量大于 $n$.",
+      "after": "1. 在一般形式下, basic solution $\\bm{x} \\in \\mathbb{R}^n$ 是 degenerate 的, 当且仅当其对应的 active constraints 的数量大于 $n$.",
+      "count": 1,
+      "reason": "退化定义的对象需为基解"
+    },
+    {
+      "id": "OR-65",
+      "source_line": 1202,
+      "before": "  - 对于非活跃约束 $j \\notin \\mathcal{I}$, 由于 $\\bm{s}_j := \\bm{a}_j^\\top \\bm{x} - b_j > 0$, 故沿着 $\\bm{d}$ 的方向移动, 只要距离 $\\lambda$ 足够小 (通过下式可以反推 $|\\lambda| < -\\frac{\\bm{s}_j}{2|\\bm{a}_j^\\top \\bm{d}|}$), 就可以确保",
+      "after": "  - 对于非活跃约束 $j \\notin \\mathcal{I}$, 由于 $\\bm{s}_j := \\bm{a}_j^\\top \\bm{x} - b_j > 0$, 故沿着 $\\bm{d}$ 的方向移动, 只要距离 $\\lambda$ 足够小 (通过下式可以反推 $|\\lambda| < \\frac{\\bm{s}_j}{2|\\bm{a}_j^\\top \\bm{d}|}$, 对 $\\bm{a}_j^\\top \\bm{d} \\neq 0$; 若为零则无需限制), 就可以确保",
+      "count": 1,
+      "reason": "正 slack 给正步长，并排除除零"
+    },
+    {
+      "id": "OR-66",
+      "source_line": 1208,
+      "before": "- 根据 (2) 中题设, 由于 $\\mathcal{P}$ 不包含一条完整的直线, 故沿着 $\\bm{d}$ 的方向移动一定会被阻挡, 即存在某位置 $\\bm{x}' := \\bm{x} + \\lambda^\\star \\bm{d}$, 使得恰好某个非活跃 $k$ 约束变为活跃 (即 $\\bm{a}_k^\\top \\bm{x}' = b_k$, $\\bm{a}_k^\\top \\bm{x} > b_k$). 此时, $\\bm{a}_k^\\top \\bm{x}' = \\bm{a}_k^\\top (\\bm{x} + \\lambda^\\star \\bm{d}) = b_k$, 故 $\\lambda^\\star \\bm{a}_k^\\top \\bm{d} = b_k - \\bm{a}_k^\\top \\bm{x} \\neq 0$, 故 $\\bm{a}_k^\\top \\bm{d} \\neq 0$. 因此, $\\bm{a}_k$ 与 $\\bm{d}$ 不正交, 也即 $\\bm{a}_k$ 不在 $\\text{span}\\{\\bm{a}_i: i \\in \\mathcal{I}\\}$ 中. 故 $\\text{dim}(\\text{span}\\{\\bm{a}_i: i \\in \\mathcal{I} \\cup \\{k\\}\\}) = r + 1$. 即只要不断沿着 $\\bm{d}$ 的方向移动, 我们就终归会碰到新的约束点, 且此时会增加活跃约束的数量.",
+      "after": "- 根据 (2) 中题设, 由于 $\\mathcal{P}$ 不包含一条完整的直线, 故沿着 $\\bm{d}$ 或 $-\\bm{d}$ 中至少一个方向移动一定会被阻挡, 即存在某位置 $\\bm{x}' := \\bm{x} + \\lambda^\\star \\bm{d}$, 使得恰好某个非活跃 $k$ 约束变为活跃 (即 $\\bm{a}_k^\\top \\bm{x}' = b_k$, $\\bm{a}_k^\\top \\bm{x} > b_k$). 此时, $\\bm{a}_k^\\top \\bm{x}' = \\bm{a}_k^\\top (\\bm{x} + \\lambda^\\star \\bm{d}) = b_k$, 故 $\\lambda^\\star \\bm{a}_k^\\top \\bm{d} = b_k - \\bm{a}_k^\\top \\bm{x} \\neq 0$, 故 $\\bm{a}_k^\\top \\bm{d} \\neq 0$. 因此, $\\bm{a}_k$ 与 $\\bm{d}$ 不正交, 也即 $\\bm{a}_k$ 不在 $\\text{span}\\{\\bm{a}_i: i \\in \\mathcal{I}\\}$ 中. 故 $\\text{dim}(\\text{span}\\{\\bm{a}_i: i \\in \\mathcal{I} \\cup \\{k\\}\\}) = r + 1$. 即只要不断沿着 $\\bm{d}$ 的方向移动, 我们就终归会碰到新的约束点, 且此时会增加活跃约束的数量.",
+      "count": 1,
+      "reason": "无直线只保证至少一侧受阻"
+    },
+    {
+      "id": "OR-67",
+      "source_line": 1237,
+      "before": "- 记 $\\mathcal{Q} := \\{\\bm{x} \\in \\mathcal{P}: \\bm{c}^\\top \\bm{x} = \\arg\\min_{\\bm{x} \\in \\mathcal{P}} \\bm{c}^\\top \\bm{x}\\}$ 为原问题的最优解集. 由于 $\\mathcal{P}$ 是 polyhedron, 且 $\\mathcal{Q}$ 是在 $\\mathcal{P}$ 的基础上额外增加了一个线性约束 $\\bm{c}^\\top \\bm{x} = \\text{const}$, 故 $\\mathcal{Q}$ 也是 polyhedron, 且题设的极点存在性确保 $\\mathcal{Q}$ 非空. 又因为 $\\mathcal{P}$ 至少有一个 extreme point, 故定不包含直线, 故 $\\mathcal{Q} \\subseteq \\mathcal{P}$ 也不包含直线. 根据极点存在性定理, $\\mathcal{Q}$ 至少有一个 extreme point $\\bm{x}^*$. ",
+      "after": "- 记 $\\mathcal{Q} := \\{\\bm{x} \\in \\mathcal{P}: \\bm{c}^\\top \\bm{x} = \\min_{\\bm{x} \\in \\mathcal{P}} \\bm{c}^\\top \\bm{x}\\}$ 为原问题的最优解集. 由于 $\\mathcal{P}$ 是 polyhedron, 且 $\\mathcal{Q}$ 是在 $\\mathcal{P}$ 的基础上额外增加了一个线性约束 $\\bm{c}^\\top \\bm{x} = \\text{const}$, 故 $\\mathcal{Q}$ 也是 polyhedron, 且题设的极点存在性确保 $\\mathcal{Q}$ 非空. 又因为 $\\mathcal{P}$ 至少有一个 extreme point, 故定不包含直线, 故 $\\mathcal{Q} \\subseteq \\mathcal{P}$ 也不包含直线. 根据极点存在性定理, $\\mathcal{Q}$ 至少有一个 extreme point $\\bm{x}^*$. ",
+      "count": 1,
+      "reason": "最优值不是最优点集合"
+    },
+    {
+      "id": "OR-68",
+      "source_line": 1237,
+      "before": "- 记 $\\mathcal{Q} := \\{\\bm{x} \\in \\mathcal{P}: \\bm{c}^\\top \\bm{x} = \\min_{\\bm{x} \\in \\mathcal{P}} \\bm{c}^\\top \\bm{x}\\}$ 为原问题的最优解集. 由于 $\\mathcal{P}$ 是 polyhedron, 且 $\\mathcal{Q}$ 是在 $\\mathcal{P}$ 的基础上额外增加了一个线性约束 $\\bm{c}^\\top \\bm{x} = \\text{const}$, 故 $\\mathcal{Q}$ 也是 polyhedron, 且题设的极点存在性确保 $\\mathcal{Q}$ 非空. 又因为 $\\mathcal{P}$ 至少有一个 extreme point, 故定不包含直线, 故 $\\mathcal{Q} \\subseteq \\mathcal{P}$ 也不包含直线. 根据极点存在性定理, $\\mathcal{Q}$ 至少有一个 extreme point $\\bm{x}^*$. ",
+      "after": "- 记 $\\mathcal{Q} := \\{\\bm{x} \\in \\mathcal{P}: \\bm{c}^\\top \\bm{x} = \\min_{\\bm{x} \\in \\mathcal{P}} \\bm{c}^\\top \\bm{x}\\}$ 为原问题的最优解集. 由于 $\\mathcal{P}$ 是 polyhedron, 且 $\\mathcal{Q}$ 是在 $\\mathcal{P}$ 的基础上额外增加了一个线性约束 $\\bm{c}^\\top \\bm{x} = \\text{const}$, 故 $\\mathcal{Q}$ 也是 polyhedron, 且题设的最优解存在性确保 $\\mathcal{Q}$ 非空. 又因为 $\\mathcal{P}$ 至少有一个 extreme point, 故定不包含直线, 故 $\\mathcal{Q} \\subseteq \\mathcal{P}$ 也不包含直线. 根据极点存在性定理, $\\mathcal{Q}$ 至少有一个 extreme point $\\bm{x}^*$. ",
+      "count": 1,
+      "reason": "最优解集合非空来自最优解存在"
+    },
+    {
+      "id": "OR-69",
+      "source_line": 1238,
+      "before": "- 下用反证法证明 $\\bm{x}^*$ 也是原问题的极点. 若不然, 则根据极点定义, 定存在不同的 $\\bm{y}, \\bm{z} \\in \\mathcal{P}$ 和 $\\lambda \\in (0, 1)$, 使得 $\\bm{x}^* = \\lambda \\bm{y} + (1-\\lambda) \\bm{z}$. 由于 $\\bm{y}, \\bm{z} \\in \\mathcal{P}$, 且 $\\bm{x}^*$ 是最优解, 故 $\\bm{c}^\\top \\bm{y}  \\geq \\bm{c}^\\top \\bm{x}^* = \\lambda \\bm{c}^\\top \\bm{y} + (1-\\lambda) \\bm{c}^\\top \\bm{z}$, 进而有 $\\bm{c}^\\top \\bm{y} = \\bm{c}^\\top \\bm{x}^* = \\bm{c}^\\top \\bm{z}$, 故 $\\bm{y}, \\bm{z} \\in \\mathcal{Q}$. 这与 $\\bm{x}^*$ 是 $\\mathcal{Q}$ 的极点矛盾. 故 $\\bm{x}^*$ 也是原问题的极点.",
+      "after": "- 下用反证法证明 $\\bm{x}^*$ 也是原问题的极点. 若不然, 则根据极点定义, 定存在不同的 $\\bm{y}, \\bm{z} \\in \\mathcal{P}$ 和 $\\lambda \\in (0, 1)$, 使得 $\\bm{x}^* = \\lambda \\bm{y} + (1-\\lambda) \\bm{z}$. 由于 $\\bm{y}, \\bm{z} \\in \\mathcal{P}$, 且 $\\bm{x}^*$ 是最优解, 故 $\\bm{c}^\\top \\bm{y}  \\geq \\bm{c}^\\top \\bm{x}^* = \\lambda \\bm{c}^\\top \\bm{y} + (1-\\lambda) \\bm{c}^\\top \\bm{z}$, 且 $\\bm{c}^\\top \\bm{z} \\geq \\bm{c}^\\top \\bm{x}^*$, 进而有 $\\bm{c}^\\top \\bm{y} = \\bm{c}^\\top \\bm{x}^* = \\bm{c}^\\top \\bm{z}$, 故 $\\bm{y}, \\bm{z} \\in \\mathcal{Q}$. 这与 $\\bm{x}^*$ 是 $\\mathcal{Q}$ 的极点矛盾. 故 $\\bm{x}^*$ 也是原问题的极点.",
+      "count": 1,
+      "reason": "凸组合等值推导需要同时用两个最优性不等式"
+    },
+    {
+      "id": "OR-70",
+      "source_line": 1250,
+      "before": "- 若 $k < n$, 则在 $\\bm{x}$ 的正交补中一定存在非零向量 $\\bm{d} \\in \\mathbb{R}^n$, 使得 $\\bm{a}_i^\\top \\bm{d} = 0$ 对任意 $i \\in \\mathcal{I}$ 成立 (这与上一命题的构造完全相同). 记 $\\bm{y} = \\bm{x} + \\lambda \\bm{d}$, 则沿该方向移动, 任意已有活跃约束仍然是活跃的. ",
+      "after": "- 若 $k < n$, 则在活跃约束法向量张成空间的正交补中一定存在非零向量 $\\bm{d} \\in \\mathbb{R}^n$, 使得 $\\bm{a}_i^\\top \\bm{d} = 0$ 对任意 $i \\in \\mathcal{I}$ 成立 (这与上一命题的构造完全相同). 记 $\\bm{y} = \\bm{x} + \\lambda \\bm{d}$, 则沿该方向移动, 任意已有活跃约束仍然是活跃的. ",
+      "count": 1,
+      "reason": "应垂直于活跃法向量而非点 x"
+    },
+    {
+      "id": "OR-71",
+      "source_line": 1251,
+      "before": "- 与前述证明唯一不同的是, 在之前的论述中我们可以任取 $\\bm{d}$ 的两侧去寻找下一个约束边界, 而这里的证明需要考虑目标函数的下降方向. $\\mathcal{P}$ 中没有直线的条件并没有排除类似射线的情况, 其仍然有可能在某一侧是 unbounded 的. 因此若恰好是在下降一侧 unbounded, 则我们永远没有办法到达下一个约束边界, 也即无法找到更优的点 (这一点后面是通过目标函数 bounded 解决的). ",
+      "after": "- 与前述证明唯一不同的是, 在之前的论述中我们可以任取 $\\bm{d}$ 的两侧去寻找下一个约束边界, 而这里的证明需要考虑目标函数的下降方向. $\\mathcal{P}$ 中没有直线的条件并没有排除类似射线的情况, 其仍然有可能在某一侧是 unbounded 的. 因此若恰好是在下降一侧 unbounded, 则我们永远没有办法到达下一个约束边界, 也即无法通过该方向到达下一个 BFS (这一点后面是通过目标函数 bounded 解决的). ",
+      "count": 1,
+      "reason": "无界下降存在更优点，原句结论相反"
+    },
+    {
+      "id": "OR-72",
+      "source_line": 1255,
+      "before": "  - 若 $\\bm{c}^\\top \\bm{d} = 0$. 则此时沿着 $\\bm{d}$ 的方向移动, 目标函数值不变. 可以沿任意方向平移知道遇到新的约束边界点, 其活跃约束的 normal vectors 张成的空间维度至少增加 $1$.",
+      "after": "  - 若 $\\bm{c}^\\top \\bm{d} = 0$. 则此时沿着 $\\bm{d}$ 的方向移动, 目标函数值不变. 可选择 $\\bm{d}$ 或 $-\\bm{d}$ 中受阻的一侧平移直到遇到新的约束边界点, 其活跃约束的 normal vectors 张成的空间维度至少增加 $1$.",
+      "count": 1,
+      "reason": "无直线只保证一侧受阻并修正错字"
+    },
+    {
+      "id": "OR-73",
+      "source_line": 1258,
+      "before": "记 $\\mathcal{P}$ 的全体 polyhedron 的 BFS 集合为 $\\bm{w}_1, \\dots, \\bm{w}_K$ (其中 $K$ 是有限的, 因为 $\\mathcal{P}$ 的 BFS 数量是有限的). 取其中 $\\bm{w}^* = \\arg\\min_{k=1,\\dots,K} \\bm{c}^\\top \\bm{w}_k$. 在第一部分我们证明, 任意可行点 $\\bm{x} \\in \\mathcal{P}$ 都存在一个 BFS $\\bm{w} \\in \\mathcal{P}$, 使得 $\\bm{c}^\\top \\bm{w} \\leq \\bm{c}^\\top \\bm{x}$. 因此, 有 $\\bm{c}^\\top \\bm{w}^* \\leq \\bm{c}^\\top \\bm{w} \\leq \\bm{c}^\\top \\bm{x}$ 对任意 $\\bm{x} \\in \\mathcal{P}$ 成立. 故 $\\bm{w}^*$ 是最优解, 且是 BFS, 即 extreme point.",
+      "after": "记 $\\mathcal{P}$ 的全体 polyhedron 的 BFS 集合为 $\\bm{w}_1, \\dots, \\bm{w}_K$ (其中 $K$ 是有限的, 因为 $\\mathcal{P}$ 的 BFS 数量是有限的). 取其中 $k^* \\in \\arg\\min_{k=1,\\dots,K} \\bm{c}^\\top \\bm{w}_k,~ \\bm{w}^* = \\bm{w}_{k^*}$. 在第一部分我们证明, 任意可行点 $\\bm{x} \\in \\mathcal{P}$ 都存在一个 BFS $\\bm{w} \\in \\mathcal{P}$, 使得 $\\bm{c}^\\top \\bm{w} \\leq \\bm{c}^\\top \\bm{x}$. 因此, 有 $\\bm{c}^\\top \\bm{w}^* \\leq \\bm{c}^\\top \\bm{w} \\leq \\bm{c}^\\top \\bm{x}$ 对任意 $\\bm{x} \\in \\mathcal{P}$ 成立. 故 $\\bm{w}^*$ 是最优解, 且是 BFS, 即 extreme point.",
+      "count": 1,
+      "reason": "索引 argmin 不是向量"
+    },
+    {
+      "id": "OR-74",
+      "source_line": 1262,
+      "before": "上面的论述说明, 若有 extreme rays, 且目标函数值有限, 则可在 BFS / 极点处达到最优. 而另一方面, 当目标函数无下界时, 我们希望给出对应的 certification. 因此需要引出极射线 (extreme rays) 的概念. 在章节安排上, 本小节位于 Bertsimas 的 Duality 一章, 我们在讨论这个问题的时候也应该留意对偶视角的联系.",
+      "after": "上面的论述说明, 若有 extreme points, 且目标函数值有限, 则可在 BFS / 极点处达到最优. 而另一方面, 当目标函数无下界时, 我们希望给出对应的 certification. 因此需要引出极射线 (extreme rays) 的概念. 在章节安排上, 本小节位于 Bertsimas 的 Duality 一章, 我们在讨论这个问题的时候也应该留意对偶视角的联系.",
+      "count": 1,
+      "reason": "上文最优极点定理的前提"
+    },
+    {
+      "id": "OR-75",
+      "source_line": 1269,
+      "before": "考虑 polyhedron $\\mathcal{P} = \\{\\bm{x} \\in \\mathbb{R}^n: \\bm{A}\\bm{x} \\geq \\bm{b}\\}$. 称从任意 $\\bm{y} \\in \\mathcal{P}$ 出发, 可以无限沿着某个方向移动, 而仍然保持在 $\\mathcal{P}$ 中的方向的集合为这个 polyhedron 的 recession cone, 记为 $\\mathrm{rec}(\\mathcal{P})$. Formally, 定义如下:",
+      "after": "考虑非空 polyhedron $\\mathcal{P} = \\{\\bm{x} \\in \\mathbb{R}^n: \\bm{A}\\bm{x} \\geq \\bm{b}\\}$. 称从任意 $\\bm{y} \\in \\mathcal{P}$ 出发, 可以无限沿着某个方向移动, 而仍然保持在 $\\mathcal{P}$ 中的方向的集合为这个 polyhedron 的 recession cone, 记为 $\\mathrm{rec}(\\mathcal{P})$. Formally, 定义如下:",
+      "count": 1,
+      "reason": "衰退锥所列等价式需要非空"
+    },
+    {
+      "id": "OR-76",
+      "source_line": 1278,
+      "before": "接着, 仿照 BFS / 极点的定义, 我们可以定义极射线 (extreme rays) 的概念. 回顾对于极点 $\\bm{x} \\in \\mathcal{P} \\subseteq \\mathbb{R}^n$, 其具有 $n$ 个线性无关的 active constraints. 而对于极射线 $\\bm{d} \\in \\mathrm{rec}(\\mathcal{P})$, 其具有 $n-1$ 个线性无关的 active constraints, 其相比于 extreme point 多了一个自由度, 也即可以沿着该方向无限移动. ",
+      "after": "接着, 仿照 BFS / 极点的定义, 我们可以定义极射线 (extreme rays) 的概念. 回顾对于极点 $\\bm{x} \\in \\mathcal{P} \\subseteq \\mathbb{R}^n$, 其具有 $n$ 个线性无关的 active constraints. 而对于 pointed recession cone 的极射线方向 $\\bm{d} \\in \\mathrm{rec}(\\mathcal{P}) \\setminus \\{\\bm{0}\\}$, 其在 recession cone 中的 active constraints 的秩恰为 $n-1$, 其相比于 extreme point 多了一个自由度, 也即可以沿着该方向无限移动. ",
+      "count": 1,
+      "reason": "非零性及 pointed 前提，避免零向量和仅至少 n-1 的歧义"
+    },
+    {
+      "id": "OR-77",
+      "source_line": 1280,
+      "before": "如下图所示. (a) 中, $\\bm{y}$ 边界点上, 因为恰有 $n-1=1$ 个线性无关的 active constraints, 故所有边界点 $\\bm{y}$ 是极射线; 相反内部点不是 extreme ray, 因为没有 active constraints. (b) 中同理, 对于三棱锥, 其三条棱都是极射线, 而其内部点不是极射线. ",
+      "after": "如下图所示. (a) 中, $\\bm{y}$ 在非零边界点上, 因为恰有 $n-1=1$ 个线性无关的 active constraints, 故所有边界点 $\\bm{y}$ 是极射线; 相反内部点不是 extreme ray, 因为没有 active constraints. (b) 中同理, 对于三棱锥, 其三条棱都是极射线, 而其内部点不是极射线. ",
+      "count": 1,
+      "reason": "原点不是射线方向"
+    },
+    {
+      "id": "OR-78",
+      "source_line": 1280,
+      "before": "如下图所示. (a) 中, $\\bm{y}$ 在非零边界点上, 因为恰有 $n-1=1$ 个线性无关的 active constraints, 故所有边界点 $\\bm{y}$ 是极射线; 相反内部点不是 extreme ray, 因为没有 active constraints. (b) 中同理, 对于三棱锥, 其三条棱都是极射线, 而其内部点不是极射线. ",
+      "after": "如下图所示. (a) 中, $\\bm{y}$ 在非零边界点上, 因为恰有 $n-1=1$ 个线性无关的 active constraints, 故所有非零边界点 $\\bm{y}$ 都生成极射线; 相反内部点不是 extreme ray, 因为没有 active constraints. (b) 中同理, 对于三棱锥, 其三条棱都是极射线, 而其内部点不是极射线. ",
+      "count": 1,
+      "reason": "点是射线的生成方向"
+    },
+    {
+      "id": "OR-79",
+      "source_line": 1284,
+      "before": "***Theorem* (Extreme rays on standard polyhedron)**. 考虑优化问题 $\\min_{\\bm{x} \\in \\mathcal{C}} \\bm{c}^\\top \\bm{x}$, 其中 $\\mathcal{C} = \\{\\bm{x} \\in \\mathbb{R}^n: \\bm{a}_i^\\top \\bm{x} \\geq 0,~ i=1,\\dots,m\\}$ 是一个 pointed cone. 则最优解等于 $-\\infty$ 当且仅当存在一个 extreme ray $\\bm{d} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$.",
+      "after": "***Theorem* (Extreme rays on standard polyhedron)**. 考虑优化问题 $\\min_{\\bm{x} \\in \\mathcal{C}} \\bm{c}^\\top \\bm{x}$, 其中 $\\mathcal{C} = \\{\\bm{x} \\in \\mathbb{R}^n: \\bm{a}_i^\\top \\bm{x} \\geq 0,~ i=1,\\dots,m\\}$ 是一个 pointed cone. 则最优值等于 $-\\infty$ 当且仅当存在一个 extreme ray $\\bm{d} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$.",
+      "count": 1,
+      "reason": "无下界的最优值为负无穷，而不存在最优解"
+    },
+    {
+      "id": "OR-80",
+      "source_line": 1286,
+      "before": "*Proof*. ($\\Leftarrow$) 若存在一个 extreme ray $\\bm{d} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$, 则对于任意 $\\lambda \\geq 0$, 有 $\\bm{x} + \\lambda \\bm{d} \\in \\mathcal{C}$, 且 $\\bm{c}^\\top (\\bm{x} + \\lambda \\bm{d}) = \\bm{c}^\\top \\bm{x} + \\lambda \\bm{c}^\\top \\bm{d}$, 随着 $\\lambda \\to +\\infty$, $\\bm{c}^\\top (\\bm{x} + \\lambda \\bm{d}) \\to -\\infty$, 故最优解为 $-\\infty$.",
+      "after": "*Proof*. ($\\Leftarrow$) 若存在一个 extreme ray $\\bm{d} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$, 则对于任意 $\\lambda \\geq 0$, 有 $\\bm{x} + \\lambda \\bm{d} \\in \\mathcal{C}$, 且 $\\bm{c}^\\top (\\bm{x} + \\lambda \\bm{d}) = \\bm{c}^\\top \\bm{x} + \\lambda \\bm{c}^\\top \\bm{d}$, 随着 $\\lambda \\to +\\infty$, $\\bm{c}^\\top (\\bm{x} + \\lambda \\bm{d}) \\to -\\infty$, 故最优值为 $-\\infty$.",
+      "count": 1,
+      "reason": "无下界的最优值为负无穷，而不存在最优解"
+    },
+    {
+      "id": "OR-81",
+      "source_line": 1288,
+      "before": "($\\Rightarrow$) 欲证: 若最优解为 $-\\infty$, 则存在一个 extreme ray $\\bm{d} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$. ",
+      "after": "($\\Rightarrow$) 欲证: 若最优值为 $-\\infty$, 则存在一个 extreme ray $\\bm{d} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$. ",
+      "count": 1,
+      "reason": "无下界的最优值为负无穷，而不存在最优解"
+    },
+    {
+      "id": "OR-82",
+      "source_line": 1289,
+      "before": "- 首先, 由于最优解为 $-\\infty$, 故定存在 $\\bm{x} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{x} < 0$. 对 $\\bm{x}$ 费用进行归一化为 $\\tilde{\\bm{x}} = {\\bm{x}}/{(-\\bm{c}^\\top \\bm{x})}$, 则 $\\tilde{\\bm{x}} \\in \\mathcal{C}$ 且 $\\bm{c}^\\top \\tilde{\\bm{x}} = -1$. 方便起见, 这里仍将 $\\tilde{\\bm{x}}$ 记为 $\\bm{x}$. 故现有集合 $\\mathcal{P} = \\{\\bm{x}: \\bm{a}_i^\\top \\bm{x} \\geq 0,~ i=1,\\dots,m,~ \\bm{c}^\\top \\bm{x} = -1\\}$ 是一个 polyhedron, 且 $\\mathcal{P} \\neq \\varnothing$.",
+      "after": "- 首先, 由于最优值为 $-\\infty$, 故定存在 $\\bm{x} \\in \\mathcal{C}$, 使得 $\\bm{c}^\\top \\bm{x} < 0$. 对 $\\bm{x}$ 费用进行归一化为 $\\tilde{\\bm{x}} = {\\bm{x}}/{(-\\bm{c}^\\top \\bm{x})}$, 则 $\\tilde{\\bm{x}} \\in \\mathcal{C}$ 且 $\\bm{c}^\\top \\tilde{\\bm{x}} = -1$. 方便起见, 这里仍将 $\\tilde{\\bm{x}}$ 记为 $\\bm{x}$. 故现有集合 $\\mathcal{P} = \\{\\bm{x}: \\bm{a}_i^\\top \\bm{x} \\geq 0,~ i=1,\\dots,m,~ \\bm{c}^\\top \\bm{x} = -1\\}$ 是一个 polyhedron, 且 $\\mathcal{P} \\neq \\varnothing$.",
+      "count": 1,
+      "reason": "无下界的最优值为负无穷，而不存在最优解"
+    },
+    {
+      "id": "OR-83",
+      "source_line": 1295,
+      "before": "上述论述还可以进一步推广到一般的 polyhedron $\\mathcal{P} = \\{\\bm{x} \\in \\mathbb{R}^n: \\bm{A}\\bm{x} \\geq \\bm{b}\\}$. 假设 $\\mathcal{P}$ 至少有一个 extreme point, 则最优解为 $-\\infty$ 当且仅当存在一个 extreme ray $\\bm{d}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$. ",
+      "after": "上述论述还可以进一步推广到一般的 polyhedron $\\mathcal{P} = \\{\\bm{x} \\in \\mathbb{R}^n: \\bm{A}\\bm{x} \\geq \\bm{b}\\}$. 假设 $\\mathcal{P}$ 至少有一个 extreme point, 则最优值为 $-\\infty$ 当且仅当存在一个 extreme ray $\\bm{d}$, 使得 $\\bm{c}^\\top \\bm{d} < 0$. ",
+      "count": 1,
+      "reason": "无下界的最优值为负无穷，而不存在最优解"
+    },
+    {
+      "id": "OR-84",
+      "source_line": 1290,
+      "before": "- 由于 $\\mathcal{C}$ 是 pointed cone, 故 $\\bm{a}_1, \\dots, \\bm{a}_m$ 可以张成 $\\mathbb{R}^n$. 而 $\\mathcal{P}$ 是在 $\\mathcal{C}$ 的基础上增加了一个线性约束 $\\bm{c}^\\top \\bm{x} = -1$, 其不会减少张成的空间维度. 回顾, 对于 polyhedron $\\mathcal{P}$, 其存在极点 iif 其不包含完整直线 iif $\\operatorname{span}\\{\\bm{a}_1, \\dots, \\bm{a}_m, \\bm{c}\\} = \\mathbb{R}^n$. 故 $\\mathcal{P}$ 至少有一个 extreme point, 记为 $\\bm{d}$. 此时有 $\\bm{c}^\\top \\bm{d} = -1 < 0$.",
+      "after": "- 由于 $\\mathcal{C}$ 是 pointed cone, 故 $\\bm{a}_1, \\dots, \\bm{a}_m$ 可以张成 $\\mathbb{R}^n$. 而 $\\mathcal{P}$ 是在 $\\mathcal{C}$ 的基础上增加了一个线性约束 $\\bm{c}^\\top \\bm{x} = -1$, 其不会减少张成的空间维度. 回顾, 对于 polyhedron $\\mathcal{P}$, 其存在极点 iff 其不包含完整直线 iff $\\operatorname{span}\\{\\bm{a}_1, \\dots, \\bm{a}_m, \\bm{c}\\} = \\mathbb{R}^n$. 故 $\\mathcal{P}$ 至少有一个 extreme point, 记为 $\\bm{d}$. 此时有 $\\bm{c}^\\top \\bm{d} = -1 < 0$.",
+      "count": 1,
+      "reason": "拼写"
+    },
+    {
+      "id": "OR-85",
+      "source_line": 1291,
+      "before": "- 下证明 $\\bm{d}$ 是 $\\mathcal{C}$ 的extreme ray. 由于 $\\bm{d} \\in \\mathcal{P}$, 其等式约束恒成立. 而又因为在 $\\bm{d}$ 处有 $n$ 个线性无关的 active constraints, 故 $\\bm{d}$ 处有 $n-1$ 个线性无关的 active constraints, 故 $\\bm{d}$ 是 $\\mathcal{C}$ 的 extreme ray.",
+      "after": "- 下证明 $\\bm{d}$ 是 $\\mathcal{C}$ 的extreme ray. 由于 $\\bm{d} \\in \\mathcal{P}$, 其等式约束恒成立. 而又因为在 $\\bm{d}$ 处有 $n$ 个线性无关的 active constraints, 故除去 $\\bm{c}^\\top \\bm{d}=-1$ 这一约束后, $\\bm{d}$ 处锥约束的秩恰为 $n-1$, 故 $\\bm{d}$ 是 $\\mathcal{C}$ 的 extreme ray.",
+      "count": 1,
+      "reason": "区分截面与锥的活跃约束"
+    },
+    {
+      "id": "OR-86",
+      "source_line": 1310,
+      "before": "  其中, $\\text{conv}(\\mathcal{V})$ 表示顶点集合 $\\mathcal{V}$ 的凸包, $\\text{cone}(\\mathcal{R})$ 表示射线集合 $\\mathcal{R}$ 的凸锥, 求和为 Minkowski sum. 即, 任意 polyhedron 都可以表示为 extreme point 的凸组合 + extreme ray 的非负组合. ",
+      "after": "  其中, $\\text{conv}(\\mathcal{V})$ 表示顶点集合 $\\mathcal{V}$ 的凸包, $\\text{cone}(\\mathcal{R})$ 表示射线集合 $\\mathcal{R}$ 的凸锥, 求和为 Minkowski sum. 即, 任意非空 pointed polyhedron 都可以表示为 extreme point 的凸组合 + extreme ray 的非负组合; 一般 polyhedron 的有限生成点和生成方向不必是极点与极射线. ",
+      "count": 1,
+      "reason": "含直线的多面体可能没有极点，保留一般 H/V 等价而修正极点限定"
+    },
+    {
+      "id": "OR-87",
+      "source_line": 404,
+      "before": "- 集合某点的法锥可以理解为从该点出发, 指向集合外部的所有向量的集合.",
+      "after": "- 集合某点的法锥可以理解为从该点出发, 与任意可行位移都呈直角或钝角的向量的集合.",
+      "count": 1,
+      "reason": "并非所有指向外部的向量都是法向量"
+    },
+    {
+      "id": "OR-88",
+      "source_line": 412,
+      "before": "- $\\bm{x}_a \\in \\text{int}(\\mathcal{C})$ 是集合的内点. 则四周都是集合的点, 因此从 $\\bm{x}_a$ 出发, 指向集合外部的向量是不存在的. 因此 $\\mathcal{N}_{\\mathcal{C}}(\\bm{x}_a) = \\{\\bm{0}\\}$.",
+      "after": "- $\\bm{x}_a \\in \\text{int}(\\mathcal{C})$ 是集合的内点. 则四周都是集合的点, 因此从 $\\bm{x}_a$ 出发, 满足法向不等式的非零向量是不存在的. 因此 $\\mathcal{N}_{\\mathcal{C}}(\\bm{x}_a) = \\{\\bm{0}\\}$.",
+      "count": 1,
+      "reason": "内部点仍可用长向量指向外部，但没有非零法向量"
+    },
+    {
+      "id": "OR-89",
+      "source_line": 470,
+      "before": "**切锥为指向给定集合内部的所有方向的集合.** ",
+      "after": "**切锥为可行方向及其极限方向构成的集合.** ",
+      "count": 1,
+      "reason": "切向极限不一定是可行方向"
+    },
+    {
+      "id": "OR-90",
+      "source_line": 478,
+      "before": "- 因此切锥可理解为从 $\\bm{x}$ 出发, 在一阶意义下, 指向集合内部的所有方向的集合 (可以认为是可行方向的集合).",
+      "after": "- 因此切锥可理解为从 $\\bm{x}$ 出发, 在一阶意义下, 指向集合内部的所有方向的集合 (包括可行方向及其极限).",
+      "count": 1,
+      "reason": "与下方圆盘切向例子一致"
+    },
+    {
+      "id": "OR-91",
+      "source_line": 484,
+      "before": "**极锥为指向给定集合外部的所有方向的集合, 即极锥的任意向量与集合中所有向量都呈直角或钝角.**",
+      "after": "**极锥为与给定集合中所有向量内积非正的向量集合, 即极锥的任意向量与集合中所有向量都呈直角或钝角.**",
+      "count": 1,
+      "reason": "外部方向不足以刻画极锥"
+    },
+    {
+      "id": "OR-92",
+      "source_line": 1306,
+      "before": "- ***V(ertices) representation***. V-representation 是通过描述多面体的顶点, 用这些顶点的凸包来表示多面体. 此外通过引入 cone 来表示 unbounded 的部分. 形如",
+      "after": "- ***V(ertices) representation***. V-representation 是通过描述多面体的有限生成点, 用这些点的凸包来表示多面体. 此外通过引入 cone 来表示 unbounded 的部分. 形如",
+      "count": 1,
+      "reason": "一般多面体可能没有顶点"
+    },
+    {
+      "id": "OR-93",
+      "source_line": 1310,
+      "before": "  其中, $\\text{conv}(\\mathcal{V})$ 表示顶点集合 $\\mathcal{V}$ 的凸包, $\\text{cone}(\\mathcal{R})$ 表示射线集合 $\\mathcal{R}$ 的凸锥, 求和为 Minkowski sum. 即, 任意非空 pointed polyhedron 都可以表示为 extreme point 的凸组合 + extreme ray 的非负组合; 一般 polyhedron 的有限生成点和生成方向不必是极点与极射线. ",
+      "after": "  其中, $\\text{conv}(\\mathcal{V})$ 表示有限生成点集 $\\mathcal{V}$ 的凸包, $\\text{cone}(\\mathcal{R})$ 表示射线集合 $\\mathcal{R}$ 的凸锥, 求和为 Minkowski sum. 即, 任意非空 pointed polyhedron 都可以表示为 extreme point 的凸组合 + extreme ray 的非负组合; 一般 polyhedron 的有限生成点和生成方向不必是极点与极射线. ",
+      "count": 1,
+      "reason": "一般 H/V 表示中的生成点不必是极点"
+    }
+  ]
+}

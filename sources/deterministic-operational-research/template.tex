@@ -1,0 +1,313 @@
+% !LW recipe = AM (XeLaTeX)
+\PassOptionsToPackage{no-math}{fontspec}
+\documentclass[11pt,UTF8,scheme=plain,fontset=fandol,linespread=1.3]{ctexart}
+\usepackage[skip=0.55\baselineskip plus 2pt]{parskip}
+\usepackage{amsmath, amsthm, amsfonts, amssymb, bm}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{newtxtext}
+\newfontfamily\blocktitleface{texgyrepagella}[
+  Extension=.otf,
+  UprightFont=*-regular,
+  BoldFont=*-bold,
+  ItalicFont=*-italic,
+  BoldItalicFont=*-bolditalic
+]
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+
+\usepackage[bookmarks=true, unicode, colorlinks, citecolor=blue, linkcolor=black]{hyperref}
+%bookmarks=true: enable PDF bookmarks for navigation.
+%colorlinks: colored link text instead of boxed links.
+%citecolor=blue: citation link color.
+%linkcolor=black: ordinary link color (e.g. TOC).
+\usepackage{geometry}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage[strict]{changepage} % adjustwidth environment
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{pifont} % circled numbers / dingbats
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{url}
+% Restart figure numbering each section.
+\numberwithin{figure}{section}
+
+%%% Fonts: XeLaTeX + ctex. scheme=plain keeps English structural names.
+% \songti 宋体, \heiti 黑体, \fangsong 仿宋, \kaishu 楷书。
+
+\everymath{\displaystyle}% global display-style math in inline math
+\usepackage{etoolbox}
+
+% Math shortcuts + shared notation / algorithm helpers (from writing preamble).
+\input{tex/preamble.tex}
+
+\usetikzlibrary{arrows.meta,calc}
+\definecolor{EUteal}{RGB}{0,145,137}
+\definecolor{EUorange}{RGB}{175,100,25}
+% Shared appearance; coordinate scaling leaves all text sizes unchanged.
+\tikzset{EU diagram/.style={
+    x=4.9cm,y=4.9cm,
+    line cap=round,line join=round,
+    font=\normalsize,text=black!85,
+    axis/.style={-{Stealth[length=1.8mm,width=1.3mm]},black!75,line width=0.65pt},
+    boundary/.style={black!50,line width=0.65pt},
+    indifference/.style={EUteal!85!black,line width=0.95pt},
+    level label/.style={font=\normalsize,text=black!85,fill=white,
+        inner xsep=2.5pt,inner ysep=2pt},
+    vertex/.style={circle,fill=black!80,
+        inner sep=0pt,minimum size=3.2pt}
+}}
+
+% Theorem-like environments (section-numbered). Defined here, not in macros.tex,
+% so the note template owns the numbering scheme.
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[subsection]
+\newtheorem{remark}{Remark}[section]
+\newenvironment{solution}{\begin{proof}[\noindent\bfseries Solution]}{\end{proof}}
+\renewcommand{\proofname}{\textit{Proof.}}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{%
+  \par\pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep #1]%
+        \normalfont
+}{%
+  \popQED\endtrivlist\@endpetrue
+}
+\makeatother
+
+\usepackage{wasysym}
+\geometry{a4paper,centering,scale=0.85}
+
+\definecolor{qingse}{RGB}{240,249,248}  % cyan-ish back
+\definecolor{zise}{RGB}{71,57,147}  % purple title
+\definecolor{qianhongse}{RGB}{254,249,251} % light red
+\definecolor{qianlvse}{RGB}{57,127,49} % green title
+\definecolor{huise}{RGB}{237,237,239}  % grey
+\definecolor{hongse}{RGB}{255,230,230}  % red
+\definecolor{qianheise}{RGB}{81,81,83}   % dark grey (exercises)
+\definecolor{fense}{RGB}{255,164,190}  % pink
+\newcommand{\blocktitlefont}{\normalsize\blocktitleface\bfseries}
+% Gloss as an in-block footnote (rule + mark at the bottom of the colored box).
+\renewcommand{\thempfootnote}{\ensuremath{\dagger^{\arabic{mpfootnote}}}}
+\newcommand{\note}[1]{\footnote{\fangsong #1}}
+
+% ------------------******-------------------
+% Per-subsection counters for colored blocks
+\newcounter{subsectionlemma}[subsection]
+\renewcommand{\thesubsectionlemma}{\thesubsection.\arabic{subsectionlemma}}
+
+\newcounter{subsectionproposition}[subsection]
+\renewcommand{\thesubsectionproposition}{\thesubsection.\arabic{subsectionproposition}}
+
+\newcounter{subsectioncorollary}[subsection]
+\renewcommand{\thesubsectioncorollary}{\thesubsection.\arabic{subsectioncorollary}}
+
+\newcounter{subsectiontheorem}[subsection]
+\renewcommand{\thesubsectiontheorem}{\thesubsection.\arabic{subsectiontheorem}}
+
+\newcounter{subsectionaxiom}[subsection]
+\renewcommand{\thesubsectionaxiom}{\thesubsection.\arabic{subsectionaxiom}}
+
+\newcounter{subsectiondefinition}[subsection]
+\renewcommand{\thesubsectiondefinition}{\thesubsection.\arabic{subsectiondefinition}}
+
+\newcounter{subsectionexample}[subsection]
+\renewcommand{\thesubsectionexample}{\thesubsection.\arabic{subsectionexample}}
+
+\newcounter{subsectionexercise}[subsection]
+\renewcommand{\thesubsectionexercise}{\thesubsection.\arabic{subsectionexercise}}
+
+\newcounter{subsectionremark}[subsection]
+\renewcommand{\thesubsectionremark}{\thesubsection.\arabic{subsectionremark}}
+
+\newenvironment{lemmablock}[1][]{%
+    \refstepcounter{subsectionlemma}
+    \begin{tcolorbox}[
+        fonttitle=\blocktitlefont,
+        title={Lemma~\thesubsectionlemma\quad #1},
+        colback=red!4,
+        colframe=red!4,
+        coltitle=black,
+        boxsep=1.5pt,
+        top=4pt,
+        bottom=4pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{propositionblock}[1][]{%
+    \refstepcounter{subsectionproposition}
+    \begin{tcolorbox}[
+        fonttitle=\blocktitlefont,
+        title={Proposition~\thesubsectionproposition\quad #1},
+        colback=red!4,
+        colframe=red!4,
+        coltitle=black,
+        boxsep=1.5pt,
+        top=4pt,
+        bottom=4pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{colblock}[1][]{%
+    \refstepcounter{subsectioncorollary}
+    \begin{tcolorbox}[
+        colback=red!4,
+        colframe=red!4,
+        coltitle=black,
+        fonttitle=\blocktitlefont,
+        title={Corollary~\thesubsectioncorollary\quad #1},
+        boxsep=1.5pt,
+        top=2pt,
+        bottom=4pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{thmblock}[1][]{%
+    \refstepcounter{subsectiontheorem}
+    \begin{tcolorbox}[
+        fonttitle=\blocktitlefont,
+        title={Theorem~\thesubsectiontheorem\quad #1},
+        colback=red!4,
+        colframe=red!4,
+        coltitle=black,
+        boxsep=1.5pt,
+        top=4pt,
+        bottom=4pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{axiomblock}[1][]{%
+    \refstepcounter{subsectionaxiom}
+    \begin{tcolorbox}[
+        fonttitle=\blocktitlefont,
+        title={Axiom~\thesubsectionaxiom\quad #1},
+        colback=red!4,
+        colframe=red!4,
+        coltitle=black,
+        boxsep=1.5pt,
+        top=4pt,
+        bottom=4pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{defblock}[1][]{%
+    \refstepcounter{subsectiondefinition}
+    \begin{tcolorbox}[
+        colback = qingse,
+        colframe = qingse,
+        coltitle=zise,
+        fonttitle=\blocktitlefont,
+        title={Definition~\thesubsectiondefinition\quad #1},
+        boxsep=1.5pt,
+        top=4pt,
+        bottom=4pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{exampleblock}[1][]{%
+    \refstepcounter{subsectionexample}
+    \begin{tcolorbox}[
+        colback = huise,
+        frame empty,
+        boxsep=1.5pt,
+        top=2pt,
+        bottom=4pt,
+        arc=0pt,
+        breakable,
+        lines before break=6
+    ]
+    % Separate paragraphs with a modest gap and keep every paragraph flush left.
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{0.45\baselineskip plus 1pt minus 1pt}\noindent
+    {\blocktitlefont Example~\thesubsectionexample\quad #1}
+    \normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{exerciseblock}[1][]{%
+    \refstepcounter{subsectionexercise}
+    \begin{tcolorbox}[
+        colback = huise,
+        frame empty,
+        boxsep=1.5pt,
+        top=2pt,
+        bottom=4pt,
+        arc=0pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\noindent
+    {\blocktitlefont \textcolor{qianheise}{\ding{45}~Exercise~\thesubsectionexercise\quad #1}}
+    \normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+\newenvironment{remarkblock}[1][]{%
+    \refstepcounter{subsectionremark}
+    \begin{tcolorbox}[
+        colback =white,
+        frame empty,
+        boxsep=1.5pt,
+        top=2pt,
+        bottom=4pt,
+        arc=0pt,
+        breakable
+    ]
+    \setlength{\parindent}{0pt}\noindent
+    {\blocktitlefont \textcolor{fense}{\ding{96}~Remark~\thesubsectionremark\quad #1}}
+    \normalsize\em
+}{%
+    \end{tcolorbox}
+}
+
+% ----------------*******---------------
+\usepackage{lastpage}
+\usepackage{enumitem}
+
+%%% Header / footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\cfoot{\thepage}
+
+% -------------------------
+
+\title{\textbf{Deterministic Operational Research (SJTU, 2026)}}
+\author{Baiying, according to lectures by Prof. Guohua Wan, Shanghai Jiao Tong University}
+\date{November 6, 2026}
+
+% ------------------******-------------------
+\newenvironment{proof*}[1][Proof]{\begin{proof}[#1]\renewcommand{\qedsymbol}{}}{\end{proof}}

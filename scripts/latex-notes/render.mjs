@@ -58,7 +58,7 @@ tags: ${JSON.stringify(meta.tags)}
 
 <div class="latex-byline">${escapeHtml(meta.byline)}</div>
 
-<nav class="latex-editions" aria-label="Reading formats"><span>LECTURE NOTES</span><a href="./${meta.asset_slug}/${meta.slug}.pdf">Download PDF ↗</a></nav>
+<nav class="latex-editions" aria-label="Reading formats"><span>LECTURE NOTES</span><a href="./${meta.asset_slug}/${meta.slug}.pdf">Download PDF ↗</a>${meta.source_bundle ? `<a href="./${meta.asset_slug}/${meta.slug}-LaTeX.zip">LaTeX source ↗</a>` : ''}</nav>
 
 `
 fs.mkdirSync(path.dirname(outFile), { recursive: true })
