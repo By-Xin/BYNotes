@@ -61,8 +61,8 @@ title: BYNotes
     <h2 id="recent-updates">Recent Updates</h2>
     <ol>
       <li>
-        <time datetime="2026-11-06">November 6, 2026</time>
-        <h3>Deterministic Operational Research</h3>
+        <time datetime="2026-11-12">November 12, 2026</time>
+        <h3>Convex Geometry and Convex Optimization Foundations</h3>
         <p>
           Added <a href="./DeterministicOperationalResearch/Convex-Geometry-and-Optimization">convex geometry and optimization foundations</a>
           to <a href="./DeterministicOperationalResearch/">Deterministic Operational Research (SJTU, 2026)</a>,

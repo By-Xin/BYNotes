@@ -46,9 +46,6 @@ References:
 
 \subsubsection{一般优化模型}
 
-
-% Source Markdown lines 36–41
-\begin{defblock}[{一般优化模型}]
 考虑 $\min_{\bm{x} \in \mathcal{S}} f(\bm{x})$, 其中 $\mathcal{S} \subseteq \mathbb{R}^n$ 是可行域，$f: \mathcal{S} \to \mathbb{R}$ 是目标函数.
 
 \begin{itemize}
@@ -69,13 +66,8 @@ References:
 
 \end{itemize}
 
-\end{defblock}
-
 \subsubsection{线性规划与标准型}
 
-
-% Source Markdown lines 45–62
-\begin{defblock}[{线性规划与标准型}]
 考虑线性规划问题, 其一般形式为
 
 \[
@@ -115,16 +107,9 @@ References:
 
 \end{enumerate}
 
-\end{defblock}
-
 \subsubsection{凸优化问题}
 
-
-% Source Markdown lines 67–67
-\begin{defblock}[{凸优化问题}]
 给定非空凸集 $\mathcal{S} \subseteq \mathbb{R}^n$ 和凸函数 $f: \mathcal{S} \to \mathbb{R}$，则一个一般的凸优化问题可以写为 $\min_{\bm{x} \in \mathcal{S}} f(\bm{x})$.
-
-\end{defblock}
 
 
 % Source Markdown lines 69–69
@@ -359,9 +344,6 @@ Ellipsoid 是一个凸集, 给定 $\bm{P} \in \mathbb{S}_{++}^n$ 和 $\bm{c} \in
 
 \end{defblock}
 
-
-% Source Markdown lines 179–183
-\begin{defblock}[{Conic optimization}]
 总的而言, conic optimization 是一个重要的优化问题类别, 其形式为:
 
 \[
@@ -369,8 +351,6 @@ Ellipsoid 是一个凸集, 给定 $\bm{P} \in \mathbb{S}_{++}^n$ 和 $\bm{c} \in
 \]
 
 其中 $\mathcal{K}$ 是一个 convex cone. 其包含了 LP, SOCP, SDP 等优化问题.
-
-\end{defblock}
 
 \textbf{Cone 是一种广义的非负.} simplex 主要讨论的是一种位置关系, 而 cone 主要讨论的是一种方向关系. 对应的, simplex 会关心 extreme points, 而 cone 会关心 extreme rays.
 
@@ -433,8 +413,6 @@ Ellipsoid 是一个凸集, 给定 $\bm{P} \in \mathbb{S}_{++}^n$ 和 $\bm{c} \in
 \begin{thmblock}[{Carathéodory}]
 设 $\mathcal{S} \subseteq \mathbb{R}^n$. 若 $\bm{x} \in \text{conv}(\mathcal{S})$，则 $\bm{x}$ 可以表示为 $\mathcal{S}$ 中至多 $n+1$ 个点的凸组合. $^\dagger$ 也即, 若 $\mathcal{S} \subseteq \mathbb{R}^n$，$\text{dim}~\text{aff}(\text{conv}(\mathcal{S})) = m$，那么对任意 $\bm{x} \in \text{conv}(\mathcal{S})$，存在至多 $m+1$ 个点 $\bm{x}_1, \ldots, \bm{x}_{k} \in \mathcal{S}$ ($k \leq m+1$) 和系数 $\theta_1, \ldots, \theta_k \geq 0$，使得 $\sum_{i=1}^k \theta_i = 1$ 且 $\bm{x} = \sum_{i=1}^k \theta_i \bm{x}_i$.
 
-\end{thmblock}
-
 \begin{itemize}
 \item {}直观理解, 在 $n$ 维空间中, 最多只需要 $n+1$ 个点就可以表示出任意一个凸组合. 其实这个 theorem 有点类似 simplex 的反向理解.
 
@@ -463,6 +441,8 @@ $~^\dagger$ \emph{[Nemirovski, Appendix. B §B.2.1]} :
 
 \end{proof}
 
+\end{thmblock}
+
 \subsection{Basic Topologies}
 
 在优化过程中, 算法总是会产生一系列的迭代点 $\bm{x}_1, \bm{x}_2, \ldots$，我们希望 $\bm{x}_k \to \bm{x}^\star$ 收敛到一个最优解 $\bm{x}^\star$. 因此会有一系列问题: 如果 $\bm{x}_k \in \mathcal{S}$ 且 $\bm{x}_k \to \bm{x}^\star$，是否有 $\bm{x}^\star \in \mathcal{S}$? 如果 $f(\bm{x}_k) \to \inf f$, 是否有 $\bm{x}^\star \in \mathcal{S}$ 且 $f(\bm{x}^\star) = \inf f$? 这些问题都与集合的拓扑性质有关.
@@ -471,9 +451,6 @@ $~^\dagger$ \emph{[Nemirovski, Appendix. B §B.2.1]} :
 
 首先考虑如下几个基本的集合拓扑概念. 给定 $S \subseteq \mathbb{R}^n$:
 
-
-% Source Markdown lines 230–246
-\begin{defblock}[{Basic topologies}]
 \begin{itemize}
 \item {}$\text{int}(\mathcal{S}) := \{\bm{x} \in \mathcal{S}: \exists \varepsilon > 0, \mathcal{B}(\bm{x}, \varepsilon) \subseteq \mathcal{S}\}$.
 
@@ -546,8 +523,6 @@ $~^\dagger$ \emph{[Nemirovski, Appendix. B §B.2.1]} :
 
 \end{itemize}
 
-\end{defblock}
-
 接着引入 \textbf{relative interior} 的概念.
 
 
@@ -613,8 +588,6 @@ $~^\dagger$ \emph{[Nemirovski, Appendix. B §B.2.1]} :
 f(\bm{x}^\star) = \min_{\bm{x} \in \mathcal{S}} f(\bm{x}).
 \]
 
-\end{thmblock}
-
 \begin{itemize}
 \item {}Tl;dr: 可行域紧 + 目标函数连续 $\implies$ 存在最优解.
 
@@ -634,16 +607,11 @@ f(\bm{x}^\star) = \min_{\bm{x} \in \mathcal{S}} f(\bm{x}).
 \end{itemize}
 
 
-% Source Markdown lines 284–284
-\begin{proof*}[{Proof Sketch}]
-令 $\alpha := \inf_{\bm{x} \in \mathcal{S}} f(\bm{x})$. 选择一个序列 $\{\bm{x}_k\} \subseteq \mathcal{S}$ 使得 $f(\bm{x}_k) \downarrow \alpha$. 因为 $\mathcal{S}$ 是 compact set, $\{\bm{x}_k\}$ 有一个收敛的子序列 $\{\bm{x}_{k_j}\} \to \bm{x}^\star \in \mathcal{S}$. 由于 $f$ 是连续函数, 则 $f(\bm{x}_{k_j}) \to f(\bm{x}^\star)$. 因此 $f(\bm{x}^\star) = \alpha$, 即 $\bm{x}^\star$ 是最优解.
-
-\end{proof*}
-
-
-% Source Markdown lines 286–295
+% Source Markdown lines 284–295
 \begin{proof}{}
-\emph{[Beck, Ch. 2]}:
+\textbf{Proof sketch.} 令 $\alpha := \inf_{\bm{x} \in \mathcal{S}} f(\bm{x})$. 选择一个序列 $\{\bm{x}_k\} \subseteq \mathcal{S}$ 使得 $f(\bm{x}_k) \downarrow \alpha$. 因为 $\mathcal{S}$ 是 compact set, $\{\bm{x}_k\}$ 有一个收敛的子序列 $\{\bm{x}_{k_j}\} \to \bm{x}^\star \in \mathcal{S}$. 由于 $f$ 是连续函数, 则 $f(\bm{x}_{k_j}) \to f(\bm{x}^\star)$. 因此 $f(\bm{x}^\star) = \alpha$, 即 $\bm{x}^\star$ 是最优解.
+
+\textbf{Proof.} \emph{[Beck, Ch. 2]}:
 
 \begin{quote}
 \emph{在 Beck 的论述中, 其将 Weierstrass theorem 的条件, 从 $f: S \to \mathbb{R}$ 是连续函数, 放宽为 $f$ 是 proper 且 closed 函数. 这是一个更弱的条件, 但其证明思路是类似的.}
@@ -666,6 +634,8 @@ f(\bm{x}^\star) = \min_{\bm{x} \in \mathcal{S}} f(\bm{x}).
 \end{itemize}
 
 \end{proof}
+
+\end{thmblock}
 
 
 % Source Markdown lines 297–297
@@ -699,8 +669,6 @@ d(\bm{x}, \mathcal{C}) := \inf_{\bm{y} \in \mathcal{C}} \|\bm{x}-\bm{y}\|_2.
 % Source Markdown lines 314–314
 \begin{thmblock}[{凸闭集上的投影存在唯一}]
 若 $\mathcal{C} \subseteq \mathbb{R}^n$ 是非空, 闭, 凸的, 则对每个 $\bm{y} \in \mathbb{R}^n$，存在唯一的 $\bm{x}^\star \in \mathcal{C}$ 使得 $\bm{x}^\star = \Pi_{\mathcal{C}}(\bm{y})$.
-
-\end{thmblock}
 
 
 % Source Markdown lines 316–352
@@ -765,6 +733,8 @@ d(\bm{x}, \mathcal{C}) := \inf_{\bm{y} \in \mathcal{C}} \|\bm{x}-\bm{y}\|_2.
 
 \end{proof}
 
+\end{thmblock}
+
 \subsection{Projection variational inequality}
 
 
@@ -775,8 +745,6 @@ d(\bm{x}, \mathcal{C}) := \inf_{\bm{y} \in \mathcal{C}} \|\bm{x}-\bm{y}\|_2.
 \[
 \left\langle \bm{y} - \bm{x}^\star, \bm{x} - \bm{x}^\star \right\rangle \leq 0,~ \forall \bm{x} \in \mathcal{C}.
 \]
-
-\end{thmblock}
 
 \begin{center}
 \includegraphics[width=0.3\linewidth]{figures/20260929215140832.png}
@@ -819,6 +787,8 @@ $(\Rightarrow)$ 定义 $\bm{x}_t := \bm{x}^\star + t(\bm{x}-\bm{x}^\star)$, $t \
 \]
 
 \end{proof}
+
+\end{thmblock}
 
 \subsection{Normal cone and optimality condition}
 
@@ -1064,8 +1034,6 @@ Firm non-expansiveness 可以直接推出 Non-expansiveness, 即
 \|\Pi_{\mathcal{C}}(\bm{y}_1) - \Pi_{\mathcal{C}}(\bm{y}_2)\|_2 \leq \|\bm{y}_1 - \bm{y}_2\|_2.
 \]
 
-\end{thmblock}
-
 \begin{itemize}
 \item {}Non-expansiveness (非扩张性): 投影后的点之间的距离不会大于投影前的点之间的距离
 
@@ -1097,6 +1065,8 @@ Firm non-expansiveness 可以直接推出 Non-expansiveness, 即
 \]
 
 \end{proof}
+
+\end{thmblock}
 
 
 % Source Markdown lines 547–551
@@ -1135,8 +1105,6 @@ Firm non-expansiveness 可以直接推出 Non-expansiveness, 即
 \nabla \rho_{\mathcal{C}}(\bm{y}) = \bm{y}-\Pi_{\mathcal{C}}(\bm{y}).
 \]
 
-\end{propositionblock}
-
 
 % Source Markdown lines 567–594
 \begin{proof}{}
@@ -1173,6 +1141,8 @@ Firm non-expansiveness 可以直接推出 Non-expansiveness, 即
 令 $\bm{d} \to 0$，故$\rho_{\mathcal{C}}$ 在 $\bm{y}_1$ 处 Fréchet 可微, 其梯度为 $\nabla \rho_{\mathcal{C}}(\bm{y}_1) = \bm{y}_1 - \bm{p}_1$.
 
 \end{proof}
+
+\end{propositionblock}
 
 
 % Source Markdown lines 596–608
@@ -1282,8 +1252,6 @@ M_{\gamma \delta_{\mathcal{C}}}(\bm{y}) = \min_{\bm{x} \in \mathbb{R}^n} \left\{
 \Pi_{\mathcal{H}}(\bm{y}) = \begin{cases} \bm{y}, & \text{if } \bm{y} \in \mathcal{H}\\ \bm{y} - \frac{(\bm{a}^\top \bm{y}-b)_+}{\|\bm{a}\|_2^2}\bm{a}, & \text{if } \bm{y} \notin \mathcal{H}\end{cases}.
 \]
 
-\end{exampleblock}
-
 
 % Source Markdown lines 650–654
 \begin{proof}{}
@@ -1294,6 +1262,8 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 \end{center}
 
 \end{proof}
+
+\end{exampleblock}
 
 
 % Source Markdown lines 656–662
@@ -1306,8 +1276,6 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 
 即 coordinate-wise ReLU.
 
-\end{exampleblock}
-
 
 % Source Markdown lines 664–668
 \begin{proof}{}
@@ -1319,6 +1287,8 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 \end{quote}
 
 \end{proof}
+
+\end{exampleblock}
 
 \section{Separation theorem and supporting hyperplane theorem}
 
@@ -1383,8 +1353,6 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 \bm{c}^\top \bm{x} < \bm{c}^\top \bm{x}^\star.
 \]
 
-\end{thmblock}
-
 \begin{center}
 \includegraphics[width=0.3\linewidth]{figures/20261003113803639.png}
 \end{center}
@@ -1435,6 +1403,8 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 
 \end{proof}
 
+\end{thmblock}
+
 从上述证明过程也可以看出, 从投影点 $\bm{y}$ 指向外部点 $\bm{x}^\star$ 的向量 $\bm{c}$ 就是将点和集合分开的超平面的法向量. 也即, 超平面 $\mathcal{H} := \{\bm{z} \in \mathbb{R}^n: \bm{c}^\top \bm{z} = \bm{c}^\top \bm{y}\}$ 将集合 $\mathcal{C}$ 和点 $\bm{x}^\star$ 分开.
 
 
@@ -1445,8 +1415,6 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 \[
 \text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T}) = \emptyset.
 \]
-
-\end{thmblock}
 
 \begin{quote}
 \emph{Note}.
@@ -1470,7 +1438,9 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 
 
 % Source Markdown lines 753–763
-\begin{proof}[{Proof Sketch}]
+\begin{proof}{}
+\textbf{Proof sketch.}
+
 \textbf{(Necessity)}. 即假设 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的, 即存在 $\bm{a} \in \mathbb{R}^n$ 使得
 
 \[
@@ -1482,6 +1452,8 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 \textbf{(Sufficiency)}. 即假设 $\text{ri}(\mathcal{S}) \cap \text{ri}(\mathcal{T}) = \emptyset$，则 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的. 这里有两个事实: \emph{对于非空凸集 $\mathcal{S}$ 和 $\mathcal{T}$，$\text{ri}(\mathcal{S})$ 与 $\text{ri}(\mathcal{T})$ 非空且凸的}, 且 $\text{cl}(\text{ri}(\mathcal{S})) = \text{cl}(\mathcal{S})$, $\text{cl}(\text{ri}(\mathcal{T})) = \text{cl}(\mathcal{T})$. 对于非空凸集 $\text{ri}(\mathcal{S})$ 和 $\text{ri}(\mathcal{T})$，由于二者不交, 故定存在 $\bm{a} \neq \bm{0}$ 分离二者且是 proper 的. 再根据 $\text{cl}(\text{ri}(\mathcal{S})) = \text{cl}(\mathcal{S})$, $\text{cl}(\text{ri}(\mathcal{T})) = \text{cl}(\mathcal{T})$，以及函数 $\bm{a}^\top \bm{x}$ 的连续性, 因此 $\sup_{\bm{x} \in \text{ri}(\mathcal{S})} \bm{a}^\top \bm{x} = \sup_{\bm{x} \in \mathcal{S}} \bm{a}^\top \bm{x}$, $\inf_{\bm{y} \in \text{ri}(\mathcal{T})} \bm{a}^\top \bm{y} = \inf_{\bm{y} \in \mathcal{T}} \bm{a}^\top \bm{y}$, 从而扩展到 $\mathcal{S}$ 和 $\mathcal{T}$ 上, 即 $\mathcal{S}$ 和 $\mathcal{T}$ 是 properly separable 的.
 
 \end{proof}
+
+\end{thmblock}
 
 
 % Source Markdown lines 765–768
@@ -1534,19 +1506,12 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 \begin{thmblock}[{Supporting hyperplane theorem}]
 若 $\mathcal{C} \subseteq \mathbb{R}^n$ 是凸集, 则在任意边界点 $\bm{x}^\star \in \text{bd}(\mathcal{C})$ 处, 都存在一个 supporting hyperplane.
 
-\end{thmblock}
 
+% Source Markdown lines 786–804
+\begin{proof*}{}
+\textbf{Proof sketch.} 整体证明思路如下. 首先考虑闭凸集, 存在外部点列 $\{\bm{y}_k\} \subseteq \mathbb{R}^n \setminus \mathcal{C}$ 收敛到 $\bm{x}^\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\{\bm{a}_k\}$. 将法向量归一化后, 序列位于紧的单位球面上, 因此根据 Bolzano-Weierstrass 定理可以选取一个收敛子列 $\{\bm{a}_{k_j}\}$ 收敛到某个 $\bm{a}^\star \neq \bm{0}$. 再根据连续性, 取极限后就可以得到在 $\bm{x}^\star$ 处的 supporting hyperplane.
 
-% Source Markdown lines 786–786
-\begin{proof*}[{Proof Sketch}]
-整体证明思路如下. 首先考虑闭凸集, 存在外部点列 $\{\bm{y}_k\} \subseteq \mathbb{R}^n \setminus \mathcal{C}$ 收敛到 $\bm{x}^\star$. 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 $\{\bm{a}_k\}$. 将法向量归一化后, 序列位于紧的单位球面上, 因此根据 Bolzano-Weierstrass 定理可以选取一个收敛子列 $\{\bm{a}_{k_j}\}$ 收敛到某个 $\bm{a}^\star \neq \bm{0}$. 再根据连续性, 取极限后就可以得到在 $\bm{x}^\star$ 处的 supporting hyperplane.
-
-\end{proof*}
-
-
-% Source Markdown lines 788–804
-\begin{proof*}[{Proof}]
-首先考虑 $\mathcal{C}$ 是闭凸集.
+\textbf{Proof.} 首先考虑 $\mathcal{C}$ 是闭凸集.
 
 \begin{itemize}
 \item {}\textbf{Step 1}. 由于 $\bm{x}^\star \in \text{bd}(\mathcal{C})$，则存在 $\{\bm{y}_k\} \subseteq \mathbb{R}^n \setminus \mathcal{C}$ 收敛到 $\bm{x}^\star$. 这是由边界点的定义直接得到的. 也即, 对于任意 $\epsilon > 0$，存在 $\bm{y} \in \mathbb{R}^n \setminus \mathcal{C}$，使得 $\|\bm{y}-\bm{x}^\star\|_2 < \epsilon$. 因此, 对于任意 $k \in \mathbb{N}$，取 $\epsilon = 1/k$，则存在 $\bm{y}_k \in \mathbb{R}^n \setminus \mathcal{C}$，使得 $\|\bm{y}_k - \bm{x}^\star\|_2 < 1/k$，从而 $\bm{y}_k \to \bm{x}^\star$.
@@ -1575,6 +1540,8 @@ $\bm{y} \in \mathcal{H}$ 的情况是显然的. 若 $\bm{y} \notin \mathcal{H}$�
 若 $\mathcal{C}$ 不是闭集, 则考虑 $\text{cl}(\mathcal{C})$，此时 $\bm{x}^\star \in \text{bd}(\text{cl}(\mathcal{C}))$，且 $\text{cl}(\mathcal{C})$ 是闭凸集.而 $\mathcal{C} \subseteq \text{cl}(\mathcal{C})$，因此在 $\bm{x}^\star$ 处的 supporting hyperplane 同样是 $\mathcal{C}$ 的 supporting hyperplane.
 
 \end{proof*}
+
+\end{thmblock}
 
 
 % Source Markdown lines 806–806
@@ -1736,8 +1703,6 @@ Farkas lemma 给出了线性系统的可行性的一个判断条件. 其有多�
 
 \end{enumerate}
 
-\end{thmblock}
-
 
 % Source Markdown lines 875–887
 \begin{proof}{}
@@ -1765,6 +1730,8 @@ Farkas lemma 给出了线性系统的可行性的一个判断条件. 其有多�
 \end{itemize}
 
 \end{proof}
+
+\end{thmblock}
 
 这是一个很简洁的证明视角, 不过其证明依赖于 LP 的对偶理论 (不过有趣的是, 确实不存在循环论证的问题). Bertsimas 接着还给出了一个几何的视角说明, 这或许更为直观, 而且和 separation theorem 密切相关.
 
@@ -1918,8 +1885,6 @@ Farkas lemma 给出了线性系统的可行性的一个判断条件. 其有多�
 \end{aligned}
 \]
 
-\end{exampleblock}
-
 
 % Source Markdown lines 975–997
 \begin{proof}{}
@@ -1968,6 +1933,8 @@ Farkas lemma 给出了线性系统的可行性的一个判断条件. 其有多�
 \end{itemize}
 
 \end{proof}
+
+\end{exampleblock}
 
 \section{The geometry of LP}
 
@@ -2330,8 +2297,6 @@ Note.
 
 \end{enumerate}
 
-\end{thmblock}
-
 
 % Source Markdown lines 1196–1221
 \begin{proof}{}
@@ -2385,6 +2350,8 @@ Note.
 
 \end{proof}
 
+\end{thmblock}
+
 
 % Source Markdown lines 1223–1223
 \begin{colblock}{}
@@ -2407,8 +2374,6 @@ Note.
 \begin{thmblock}[{Optimality of extreme points}]
 若 $\mathcal{P}$ 至少有一个 extreme point, 且该 LP 问题存在最优解 $\bm{x}^*$, 则至少有一个最优解是 extreme point.
 
-\end{thmblock}
-
 
 % Source Markdown lines 1236–1240
 \begin{proof}{}
@@ -2425,14 +2390,14 @@ Note.
 
 \end{proof}
 
+\end{thmblock}
+
 该命题可以进一步加强如下.
 
 
 % Source Markdown lines 1244–1244
 \begin{thmblock}[{Optimality of extreme points}]
 若 $\mathcal{P}$ 至少有一个 extreme point, 则 LP 问题 $\min_{\bm{x} \in \mathcal{P}} \bm{c}^\top \bm{x}$ 要么无下界, 要么存在最优解 $\bm{x}^*$在 extreme point 上.
-
-\end{thmblock}
 
 
 % Source Markdown lines 1246–1258
@@ -2471,6 +2436,8 @@ Note.
 记 $\mathcal{P}$ 的全体 polyhedron 的 BFS 集合为 $\bm{w}_1, \dots, \bm{w}_K$ (其中 $K$ 是有限的, 因为 $\mathcal{P}$ 的 BFS 数量是有限的). 取其中 $k^* \in \arg\min_{k=1,\dots,K} \bm{c}^\top \bm{w}_k,~ \bm{w}^* = \bm{w}_{k^*}$. 在第一部分我们证明, 任意可行点 $\bm{x} \in \mathcal{P}$ 都存在一个 BFS $\bm{w} \in \mathcal{P}$, 使得 $\bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$. 因此, 有 $\bm{c}^\top \bm{w}^* \leq \bm{c}^\top \bm{w} \leq \bm{c}^\top \bm{x}$ 对任意 $\bm{x} \in \mathcal{P}$ 成立. 故 $\bm{w}^*$ 是最优解, 且是 BFS, 即 extreme point.
 
 \end{proof*}
+
+\end{thmblock}
 
 \subsection{Cones and extreme rays}
 
@@ -2530,8 +2497,6 @@ Note.
 \begin{thmblock}[{Extreme rays on standard polyhedron}]
 考虑优化问题 $\min_{\bm{x} \in \mathcal{C}} \bm{c}^\top \bm{x}$, 其中 $\mathcal{C} = \{\bm{x} \in \mathbb{R}^n: \bm{a}_i^\top \bm{x} \geq 0,~ i=1,\dots,m\}$ 是一个 pointed cone. 则最优值等于 $-\infty$ 当且仅当存在一个 extreme ray $\bm{d} \in \mathcal{C}$, 使得 $\bm{c}^\top \bm{d} < 0$.
 
-\end{thmblock}
-
 
 % Source Markdown lines 1286–1293
 \begin{proof}{}
@@ -2553,6 +2518,8 @@ Note.
 
 \end{proof}
 
+\end{thmblock}
+
 
 % Source Markdown lines 1295–1295
 \begin{colblock}{}
@@ -2564,9 +2531,6 @@ Note.
 
 对于多面体 Polyhedron, 可以有两种不同的表示方式.
 
-
-% Source Markdown lines 1302–1310
-\begin{defblock}[{H- and V-representations}]
 \begin{itemize}
 \item {}\emph{\textbf{H(alf-space) representation}}. H-representation 是在外部通过一系列超平面进行划分框定, 得到的多面体. 形如
 
@@ -2585,8 +2549,6 @@ Note.
 
 
 \end{itemize}
-
-\end{defblock}
 
 可以证明, 这两种表示是等价的.
 

@@ -1,0 +1,40 @@
+{
+  "import": {
+    "passed": true,
+    "math_preserved_in_order": 1409,
+    "qed_preserved_as_proof_endings": 15,
+    "prose_fragments_checked": 534,
+    "semantic_blocks": 90,
+    "image_occurrences": 18
+  },
+  "conversion": {
+    "passed": true,
+    "structure_counts": {
+      "colblock": 6,
+      "defblock": 31,
+      "enumerate": 8,
+      "exampleblock": 6,
+      "itemize": 89,
+      "lemmablock": 1,
+      "proof": 15,
+      "proof*": 2,
+      "propositionblock": 12,
+      "quote": 6,
+      "remarkblock": 2,
+      "thmblock": 15
+    },
+    "prose_chunks_checked": 595,
+    "footnotes": 0,
+    "pdf_web_labels_matched": 0,
+    "anchor_links_checked": 82,
+    "images": 18,
+    "errors": [],
+    "limitations": "Structural and retained-prose checks; not a mathematical correctness audit or a substitute for visual comparison."
+  },
+  "pdf_pages": 42,
+  "proof_toggles": 17,
+  "proofs_outside_statement": 0,
+  "sketch_passages_inside_proof": 3,
+  "visible_clipping_1280_and_375": 0,
+  "toc_last_link_reachable": true
+}

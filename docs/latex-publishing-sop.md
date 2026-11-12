@@ -113,7 +113,12 @@ builds keep social cards enabled.
   `quartz/styles/latex-notes.scss`; never shrink the LaTeX/PDF template for them.
 - Preserve the full document and its numbering. Native Markdown headings
   feed Quartz's TOC; stable `latex-*` anchors serve LaTeX references.
-- Proofs remain inside their original parent blocks and are expanded native
+- Use Definition only for specific mathematical terms; general model overviews
+  and broad introductory material stay in ordinary prose. Article titles name
+  the lecture; the course name belongs to its topic index.
+- Group a proof sketch and detailed proof inside one Proof environment, and
+  nest that environment in the statement being proved. Preserve all argument
+  text and source QED markers. Proofs are expanded native
   `<details>` elements. The end-of-proof square remains visible.
 - Footnotes get globally unique web numbers, backlinks, and are placed at
   their containing block's end, or document end for ordinary body footnotes.
@@ -195,3 +200,6 @@ the topic index/catalog/sidebar/homepage as required by the publishing
 runbook, and perform the full-site build/release checks. Do not manually edit
 generated HTML to repair content: fix the adapter or authorized source copy,
 then regenerate.
+
+2026-11-12: revised Convex Geometry title/block semantics and fixed TOC flex
+scroll sizing; see `docs/releases/2026-11-12-convex-geometry.md`.

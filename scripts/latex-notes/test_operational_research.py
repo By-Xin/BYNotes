@@ -10,6 +10,21 @@ class RevisionTests(unittest.TestCase):
     def test_ledger_reconstructs_exact_revision(self):
         self.assertEqual(apply_corrections((SOURCE/'original.md').read_text(), json.loads((SOURCE/'corrections.json').read_text())), (SOURCE/'revised.md').read_text())
 
+    def test_proofs_belong_to_their_statements(self):
+        from convert import Parser, uncomment, BLOCKS
+        body=(SOURCE/'main.tex').read_text().split(r'\begin{document}',1)[1].split(r'\end{document}',1)[0]
+        proofs=[]
+        def visit(nodes, parent=None):
+            for n in nodes:
+                if n.kind in ('proof','proof*'):
+                    self.assertIn(parent, BLOCKS)
+                    proofs.append(n)
+                visit(n.children,n.kind if n.kind in BLOCKS else parent)
+        visit(Parser(uncomment(body)).parse())
+        self.assertEqual(len(proofs),17)
+        self.assertTrue(all(n.option != 'Proof Sketch' for n in proofs))
+        self.assertNotIn(r'\begin{defblock}[{一般优化模型}]',body)
+
     def test_projection_midpoint_algebra(self):
         # Equal-distance points: the cross term need not be negative.
         y, x1, x2 = (0, 3), (-1, 0), (1, 0)

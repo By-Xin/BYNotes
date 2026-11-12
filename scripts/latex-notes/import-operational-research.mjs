@@ -15,9 +15,6 @@ const lines = source.split('\n')
 const parser = unified().use(remarkParse).use(remarkMath)
 const ranges = []
 function block(start,end,env,title='',strip='') { ranges.push({start,end,env,title,strip}) }
-block(36,41,'defblock','一般优化模型')
-block(45,62,'defblock','线性规划与标准型')
-block(67,67,'defblock','凸优化问题')
 block(69,69,'propositionblock')
 block(76,84,'defblock','Affine and convex combinations')
 block(85,85,'propositionblock','',/^\s*- \*\*Proposition\*\*: /)
@@ -28,17 +25,14 @@ block(130,147,'defblock','Simplex',/^\*\*Simplex\.\*\*/)
 block(150,155,'defblock','Convex cone',/^\*\*Convex cone\.\*\*/)
 block(159,168,'defblock','Second-order cone')
 block(169,177,'defblock','Positive semidefinite cone')
-block(179,183,'defblock','Conic optimization')
 block(190,196,'propositionblock','保凸运算')
 block(202,206,'defblock','Affine space')
 block(208,208,'thmblock','Carathéodory',/^\*\*\*Theorem\* \(Carathéodory\)\*\*: /)
 block(213,220,'proof','',/^\*Proof\$~\^\\dagger\$\* /)
-block(230,246,'defblock','Basic topologies')
 block(249,260,'defblock','Relative interior')
 block(262,268,'propositionblock','Relative interior of a convex set')
 block(274,278,'thmblock','Weierstrass',/^\*\*\*Theorem\* \(Weierstrass\)\*\*: /)
-block(284,284,'proof*','Proof Sketch',/^\*Proof Sketch\*: /)
-block(286,295,'proof','',/^\*Proof\* /)
+block(284,295,'proof','',/^\*Proof Sketch\*: /)
 block(297,297,'colblock','强凸函数在闭凸集上的最优解存在且唯一',/^\*\*\*Corollary\* /)
 block(305,312,'defblock','Euclidean distance and projection')
 block(314,314,'thmblock','凸闭集上的投影存在唯一',/^\*\*\*Theorem\*\*\* \*\(凸闭集上的投影存在唯一\)\*: /)
@@ -73,12 +67,11 @@ block(697,700,'thmblock','Point-set separation',/^\*\*\*Theorem\* \(Point-set se
 block(705,732,'proof','',/^\*Proof\*\. */)
 block(737,740,'thmblock','Finite-dimensional separation',/^\*\*\*Theorem\* \(Finite-dimensional separation\)\*\* /)
 block(745,751,'remarkblock','Separation via the difference set')
-block(753,763,'proof','Proof Sketch',/^\*Proof Sketch\*\. ?/)
+block(753,763,'proof','',/^\*Proof Sketch\*\. ?/)
 block(765,768,'colblock','',/^\*\*\*Corollaries\*\*\*\. /)
 block(772,780,'defblock','Supporting hyperplane')
 block(784,784,'thmblock','Supporting hyperplane theorem',/^\*\*\*Theorem\* \(Supporting hyperplane theorem\)\*\*: /)
-block(786,786,'proof*','Proof Sketch',/^\*Proof Sketch\*\. /)
-block(788,804,'proof*','Proof',/^\*Proof\*\. ?/)
+block(786,804,'proof*','',/^\*Proof Sketch\*\. /)
 block(806,806,'colblock','',/^\*\*\*Corollary\*\*\*: /)
 block(819,823,'defblock','Support function')
 block(828,832,'propositionblock','Support function representation')
@@ -112,7 +105,6 @@ block(1278,1278,'defblock','Extreme rays')
 block(1284,1284,'thmblock','Extreme rays on standard polyhedron',/^\*\*\*Theorem\* \(Extreme rays on standard polyhedron\)\*\*\. /)
 block(1286,1293,'proof','',/^\*Proof\*\. /)
 block(1295,1295,'colblock')
-block(1302,1310,'defblock','H- and V-representations')
 
 const images = []; const inventory = {text:[],math:[]}
 const esc = s=>s.replace(/[\\{}%&#_$~^]/g,c=>({'\\':'\\textbackslash{}','~':'\\textasciitilde{}','^':'\\textasciicircum{}'}[c]??'\\'+c))
@@ -146,12 +138,16 @@ function emit(n) {
   }
 }
 function convert(s) { return emit(parser.parse(s)) }
-let body='', cursor=1
+// Proofs belong to the statement they establish; intermediate explanation stays in order.
+const proofEnds = new Map([[208,220],[274,295],[314,352],[357,391],[515,545],[562,594],[645,654],[656,668],[697,732],[737,763],[784,804],[871,887],[967,997],[1191,1221],[1233,1240],[1244,1258],[1284,1293]])
+let body='', cursor=1, parent=null
 for (const b of ranges) {
   if(b.start<cursor) throw Error('Overlapping semantic ranges')
   body+=convert(lines.slice(cursor-1,b.start-1).join('\n'))
   let chunk=lines.slice(b.start-1,b.end).join('\n')
   if(b.strip) { if(!b.strip.test(chunk)) throw Error('Prefix mismatch '+b.start); chunk=chunk.replace(b.strip,b.start===213?'$~^\\dagger$ ':'') }
+  if([284,753,786].includes(b.start)) chunk='**Proof sketch.** '+chunk
+  if([284,786].includes(b.start)) chunk=chunk.replace(/\*Proof\*\.?\s*/,'**Proof.** ')
   if(b.env==='proof') {
     if(!chunk.includes('$\\square$')) throw Error('Missing QED '+b.start)
     chunk=chunk.replace('$\\square$','')
@@ -160,7 +156,10 @@ for (const b of ranges) {
   if([297,562].includes(b.start)) chunk=chunk.replace(']**',']')
   if(!chunk.trim()) throw Error('Empty semantic block '+b.start)
   if(chunk.split('\n').filter(l=>l.trim()==='$$').length%2) throw Error('Math fence crosses semantic block '+b.start)
-  body+='\n% Source Markdown lines '+b.start+'–'+b.end+'\n\\begin{'+b.env+'}'+(b.title?'[{'+esc(b.title)+'}]':'{}')+'\n'+convert(chunk)+'\\end{'+b.env+'}\n\n'
+  body+='\n% Source Markdown lines '+b.start+'–'+b.end+'\n\\begin{'+b.env+'}'+(b.title?'[{'+esc(b.title)+'}]':'{}')+'\n'+convert(chunk)
+  if(proofEnds.has(b.start)) parent={env:b.env,end:proofEnds.get(b.start)}
+  else body+='\\end{'+b.env+'}\n\n'
+  if(parent && b.end===parent.end) { body+='\\end{'+parent.env+'}\n\n'; parent=null }
   cursor=b.end+1
 }
 body+=convert(lines.slice(cursor-1).join('\n'))

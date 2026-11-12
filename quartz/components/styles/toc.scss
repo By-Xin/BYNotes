@@ -4,14 +4,20 @@
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-  min-height: 1.4rem;
-  flex: 0 0.5 auto;
+  min-height: 0;
+  flex: 1 1 0;
   &:has(button.toc-header.collapsed) {
     flex: 0 1 1.4rem;
   }
 }
 
+// Keep the flex layout when the desktop-only utility resets display.
+@media all and ($desktop) {
+  .toc.desktop-only { display: flex; }
+}
+
 button.toc-header {
+  flex-shrink: 0;
   background-color: transparent;
   border: none;
   text-align: left;
@@ -43,7 +49,11 @@ ul.toc-content.overflow {
   position: relative;
   margin: 0.5rem 0;
   padding: 0;
-  max-height: calc(100% - 2rem);
+  // Shrink the scrolling list to the space left below its header. A percentage
+  // max-height can leave a taller list clipped by the flex parent's overflow.
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
   overscroll-behavior: contain;
   list-style: none;
 

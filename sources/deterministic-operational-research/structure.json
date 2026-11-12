@@ -2,24 +2,6 @@
   "revised_sha256": "78d3e3e87117c9ecfe8dd58716c227eb993de4a23d2f6b958590e3d71f909c29",
   "blocks": [
     {
-      "start": 36,
-      "end": 41,
-      "env": "defblock",
-      "title": "一般优化模型"
-    },
-    {
-      "start": 45,
-      "end": 62,
-      "env": "defblock",
-      "title": "线性规划与标准型"
-    },
-    {
-      "start": 67,
-      "end": 67,
-      "env": "defblock",
-      "title": "凸优化问题"
-    },
-    {
       "start": 69,
       "end": 69,
       "env": "propositionblock",
@@ -80,12 +62,6 @@
       "title": "Positive semidefinite cone"
     },
     {
-      "start": 179,
-      "end": 183,
-      "env": "defblock",
-      "title": "Conic optimization"
-    },
-    {
       "start": 190,
       "end": 196,
       "env": "propositionblock",
@@ -110,12 +86,6 @@
       "title": ""
     },
     {
-      "start": 230,
-      "end": 246,
-      "env": "defblock",
-      "title": "Basic topologies"
-    },
-    {
       "start": 249,
       "end": 260,
       "env": "defblock",
@@ -135,12 +105,6 @@
     },
     {
       "start": 284,
-      "end": 284,
-      "env": "proof*",
-      "title": "Proof Sketch"
-    },
-    {
-      "start": 286,
       "end": 295,
       "env": "proof",
       "title": ""
@@ -353,7 +317,7 @@
       "start": 753,
       "end": 763,
       "env": "proof",
-      "title": "Proof Sketch"
+      "title": ""
     },
     {
       "start": 765,
@@ -375,15 +339,9 @@
     },
     {
       "start": 786,
-      "end": 786,
-      "env": "proof*",
-      "title": "Proof Sketch"
-    },
-    {
-      "start": 788,
       "end": 804,
       "env": "proof*",
-      "title": "Proof"
+      "title": ""
     },
     {
       "start": 806,
@@ -582,12 +540,6 @@
       "end": 1295,
       "env": "colblock",
       "title": ""
-    },
-    {
-      "start": 1302,
-      "end": 1310,
-      "env": "defblock",
-      "title": "H- and V-representations"
     }
   ],
   "images": [
@@ -1060,7 +1012,8 @@
       "证明 feasible set 是紧的",
       "即使 feasible set 是 unbounded, 但存在某个非空 sublevel set ",
       " 是紧的, 则可以将问题限制在这个 sublevel set 上",
-      "令 ",
+      "Proof sketch.",
+      " 令 ",
       ". 选择一个序列 ",
       " 使得 ",
       ". 因为 ",
@@ -1071,6 +1024,8 @@
       ". 因此 ",
       ", 即 ",
       " 是最优解.",
+      "Proof.",
+      " ",
       "[Beck, Ch. 2]",
       ":",
       "在 Beck 的论述中, 其将 Weierstrass theorem 的条件, 从 ",
@@ -1517,6 +1472,7 @@
       "，也即 ",
       " 和 ",
       " 是 strongly separable 的.",
+      "Proof sketch.",
       "(Necessity)",
       ". 即假设 ",
       " 和 ",
@@ -1587,14 +1543,16 @@
       "若 ",
       " 是凸集, 则在任意边界点 ",
       " 处, 都存在一个 supporting hyperplane.",
-      "整体证明思路如下. 首先考虑闭凸集, 存在外部点列 ",
+      "Proof sketch.",
+      " 整体证明思路如下. 首先考虑闭凸集, 存在外部点列 ",
       " 收敛到 ",
       ". 对于外部的每一个点, 根据点与集合的分离定理, 都存在一个分离超平面, 对应着一列法向量 ",
       ". 将法向量归一化后, 序列位于紧的单位球面上, 因此根据 Bolzano-Weierstrass 定理可以选取一个收敛子列 ",
       " 收敛到某个 ",
       ". 再根据连续性, 取极限后就可以得到在 ",
       " 处的 supporting hyperplane.",
-      "首先考虑 ",
+      "Proof.",
+      " 首先考虑 ",
       " 是闭凸集.",
       "Step 1",
       ". 由于 ",

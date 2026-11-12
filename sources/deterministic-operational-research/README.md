@@ -52,3 +52,9 @@ range, and regenerate into a separate review copy first.
 
 See [release review](../../docs/releases/2026-11-06-deterministic-operational-research.md)
 and [publishing SOP](../../docs/latex-publishing-sop.md).
+
+2026-11-12 presentation revision: the lecture title is **Convex Geometry and
+Convex Optimization Foundations**. General model/topology overviews use ordinary
+prose; specific mathematical terms use Definition. Sketch and detailed proof
+share one Proof nested in the corresponding statement. The importer reproduces
+this reviewed layout; the original Markdown and correction ledger are unchanged.
