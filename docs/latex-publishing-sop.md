@@ -101,16 +101,24 @@ builds keep social cards enabled.
 
 ## Rendering decisions
 
-- Use the opt-in `cssclasses: [latex-note]` profile. Existing notes keep their
-  existing styles. This profile intentionally preserves the source's blue
-  definitions, pink statements, grey examples, sans-serif ordinary body text,
-  Pagella headings, and italic Latin/Kai Chinese in statement bodies.
-- As requested on 2026-11-06, both published LaTeX notes use web font sizes
-  one CSS step (1px) smaller: ordinary body 16px desktop / 15px mobile.
-  Paragraph line-height multipliers are 85% of the preceding profile; nested
-  paragraphs also override the site's separate paragraph rule. Keep statement
-  and proof font families unchanged. These changes belong only in
-  `quartz/styles/latex-notes.scss`; never shrink the LaTeX/PDF template for them.
+- Use the opt-in `cssclasses: [latex-note]` profile. As requested on 2026-11-14,
+  web reading typography follows ordinary notes: the site's sans-serif body
+  family for prose, definitions, statements, quotes and proofs; the site's
+  heading family for headings/block titles. Do not apply italic to whole
+  environments. Retain explicit source emphasis and conventional math fonts.
+- Use a compact, consistent 15px body and 1.6 paragraph/list line-height on
+  desktop and mobile. Paragraphs, headings, statement boxes and display-math
+  spacing should support continuous reading; do not reproduce the PDF's
+  enlarged leading or mix paragraph line-height profiles. This supersedes the
+  earlier 2026-11-06 template-style font and spacing profile.
+- Web inline math uses KaTeX textstyle by default, like ordinary Markdown
+  notes. Never prepend `\displaystyle` to every inline formula. Preserve any
+  explicit style commands in the source. Keep display equations in display
+  mode, and keep horizontal scrolling for long math. Inline wrappers reserve
+  paint room for accents/descenders without forcing every line taller.
+- Web typography changes belong in `quartz/styles/latex-notes.scss` and the
+  web renderer. The LaTeX source, downloadable PDF and source ZIP retain their
+  own typography; do not regenerate them for a web typography edit.
 - Preserve the full document and its numbering. Native Markdown headings
   feed Quartz's TOC; stable `latex-*` anchors serve LaTeX references.
 - Use Definition only for specific mathematical terms; general model overviews
@@ -161,8 +169,11 @@ never rerun the importer over subsequent manual LaTeX edits.
 
 ## Fonts
 
-Reading fonts and licenses live in `quartz/static/latex-fonts/`. The supplied
-subsets cover this pilot. For additional notes, regenerate from the **union**
+Historical template font subsets and licenses live in
+`quartz/static/latex-fonts/`. They are retained for the original profile; the
+current web profile uses the
+site's standard self-hosted fonts. If a future explicitly requested profile uses
+these TeX fonts, regenerate from the **union**
 of all LaTeX note sources, so new glyphs are added without removing old ones:
 
 ```bash

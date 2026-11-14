@@ -29,6 +29,11 @@ The 2026-11-06 union additionally includes the revised Operational Research
 sources under `sources/deterministic-operational-research/`, including the imported
 main/body/template TeX and shared TeX dependencies. The underlying revised Markdown
 SHA-256 is `78d3e3e87117c9ecfe8dd58716c227eb993de4a23d2f6b958590e3d71f909c29`.
-The Decision Theory corrected edition remains in the corpus. Ordinary body
-text now uses the site's locally hosted sans-serif family; these fonts remain
-in use for headings, statement environments and proofs.
+The Decision Theory corrected edition remains in the corpus. In that release, ordinary body
+text switched to the site's locally hosted sans-serif family while these fonts
+remained in headings, statement environments and proofs.
+
+Since 2026-11-14, the web reading profile uses the same sans-serif body and
+heading fonts as ordinary notes, including statement/proof environments. These
+historical subsets and their licenses remain available but are no longer loaded
+by the current LaTeX note stylesheet. The downloadable PDFs retain TeX fonts.

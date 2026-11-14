@@ -16,7 +16,7 @@ const escapeHtml = (value) =>
 const data = JSON.parse(fs.readFileSync(input, "utf8"))
 let body = data.html
 data.math.forEach((m, i) => {
-  const tex = (m.display ? "" : "\\displaystyle ") + m.tex + (m.number ? `\\tag{${m.number}}` : "")
+  const tex = m.tex + (m.number ? `\\tag{${m.number}}` : "")
   const rendered = katex.renderToString(tex, {
     displayMode: m.display,
     throwOnError: true,
@@ -76,7 +76,7 @@ fs.writeFileSync(
       labels: data.labels,
       style_adaptations: [
         "mathds mapped to mathbb for the indicator glyph",
-        "Inline math uses displaystyle, matching the source",
+        "Inline math uses normal textstyle for compact web paragraphs; explicit source styles are preserved",
       ],
     },
     null,
